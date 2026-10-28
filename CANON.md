@@ -59,6 +59,7 @@ This file contains locked in-universe facts. Real-world evidence belongs in `RES
 - Their sensory evolution is their own achievement. Long before anomalous perception becomes reliable, natural selection and culture are already favoring extreme attention to weak environmental information, multisensory integration, pattern recognition, memory, and learned prediction.
 - Alchul exploits and nudges that existing trajectory. Alchul does not create their intelligence, sensory sophistication, or technical culture from nothing.
 - By a human analogy this civilization may sit near a cusp-industrial threshold, but its industry does not reproduce the human path of standardized factories, fossil fuels, mass metallurgy, and electronics.
+- The surface civilization never passes through a human-style Iron Age. Material engineering develops around sensing and working existing properties of stone, wood, water, heat, pressure, chemistry, organisms, and environmental systems. This does not settle whether isolated metals were ever used.
 - Surface technology increasingly works by cultivating or redirecting natural process: fire, fermentation, water, pressure, heat, gas, mineral chemistry, structural stress, living systems, and ecological feedback.
 - Some tools and structures are manufactured objects; others are modified landscapes, cultivated organisms, managed chemical systems, or natural structures made functional through repeated intervention.
 - The distinction between natural system and technical system has already begun to blur before the Long Descent.
@@ -66,7 +67,8 @@ This file contains locked in-universe facts. Real-world evidence belongs in `RES
 - Once surface installations are abandoned, many are progressively absorbed into erosion, vegetation, sedimentation, groundwater alteration, mineralization, and other ordinary geological processes.
 - The later K–Pg catastrophe and roughly 66 million years of subsequent geology further destroy, bury, alter, or decontextualize the remaining surface record.
 - A surviving trace of this civilization need not look like a machine to a modern investigator. It may first present as geology, ecology, combustion residue, an anomalous mineral association, an altered water system, or an apparently natural structure.
-- Exact population scale, city form, metallurgy, durable record-keeping media, and the degree of centralized organization remain open until separately reconstructed.
+- By the peak surface period, egg-bearing descendants retain developing eggs internally for approximately three quarters of embryonic development before laying them for the remaining external incubation. The exact anatomy, oxygen-transfer mechanism, shell chemistry, clutch size, and timing remain subjects for biological reconstruction.
+- Exact population scale, city form, extent of non-ferrous or incidental metal use, durable record-keeping media, and the degree of centralized organization remain open until separately reconstructed.
 
 ## The coming catastrophe
 
