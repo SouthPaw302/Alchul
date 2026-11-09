@@ -32,23 +32,23 @@ func _run() -> void:
 		quit(1)
 		return
 
-	var root_script: Node = scene
-	if root_script.worldbook.get("schema", "") != "alchul.native-worldbook.v1":
+	var book: Dictionary = scene.get("worldbook")
+	if book.get("schema", "") != "alchul.native-worldbook.v1":
 		push_error("ALCHUL SMOKE FAIL: local worldbook schema")
 		quit(1)
 		return
-	if root_script.worldbook.get("sites", []).size() != 4:
+	if book.get("sites", []).size() != 4:
 		push_error("ALCHUL SMOKE FAIL: expected four local study places")
 		quit(1)
 		return
 
-	root_script._set_lens("resident")
-	if root_script.lens_id != "resident":
+	scene.call("_set_lens", "resident")
+	if scene.get("lens_id") != "resident":
 		push_error("ALCHUL SMOKE FAIL: switching to resident view")
 		quit(1)
 		return
-	root_script._set_lens("contact")
-	if root_script.lens_id != "contact":
+	scene.call("_set_lens", "contact")
+	if scene.get("lens_id") != "contact":
 		push_error("ALCHUL SMOKE FAIL: switching to contact view")
 		quit(1)
 		return
