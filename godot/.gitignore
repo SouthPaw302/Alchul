@@ -1,0 +1,8 @@
+# Godot 4 generated editor/import caches
+.godot/
+# Local builds and test artifacts
+build/
+dist/
+exports/
+*.tmp
+*.log
