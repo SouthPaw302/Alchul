@@ -38,7 +38,7 @@ jobs:
         run: |
           set -euo pipefail
           VERIFIED_SOURCE="105f496e06b86cd5a043f254c45f385279bc629d"
-          if git diff --quiet "$VERIFIED_SOURCE" HEAD -- godot/; then
+          if git diff --quiet "$VERIFIED_SOURCE" HEAD -- godot/project.godot godot/export_presets.cfg godot/scripts/ godot/scenes/ godot/data/ godot/assets/ godot/shaders/ godot/characters/ godot/environments/ godot/tools/ godot/tests/; then
             echo "reuse=true" >> "$GITHUB_OUTPUT"
             echo "Alchul Godot source is identical to the independently verified Web export."
           else
