@@ -1,0 +1,44 @@
+name: Publish Alchul Godot World (GitHub Pages)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "godot/**"
+      - ".github/workflows/alchul-pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "alchul-pages"
+  cancel-in-progress: false
+
+jobs:
+  publish-alchul:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out authoritative Alchul only
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Install engine-download utilities
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq curl unzip
+      - name: Export Alchul for a single-threaded browser
+        run: bash godot/tools/build_web.sh
+      - name: Upload verified Godot site files
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: godot/build/web
+      - name: Verify GitHub Pages is enabled
+        uses: actions/configure-pages@v5
+      - name: Publish web world
+        id: deployment
+        uses: actions/deploy-pages@v4
