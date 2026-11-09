@@ -1,0 +1,42 @@
+name: Alchul Godot browser export
+on:
+  push:
+    branches: [main]
+    paths:
+      - "godot/**"
+      - "vercel.json"
+      - ".github/workflows/alchul-web-export.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  export-web:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 24
+    steps:
+      - name: Check out Alchul
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Install engine unpack utilities
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq curl unzip
+      - name: Build standalone Godot Web
+        run: bash godot/tools/build_web.sh
+      - name: Validate generated website
+        run: |
+          test -s godot/build/web/index.html
+          test -s godot/build/web/index.js
+          test -s godot/build/web/index.wasm
+          test -s godot/build/web/index.pck
+          test "$(du -b godot/build/web/index.wasm | cut -f1)" -gt 100000
+          grep -q 'Alchul' godot/build/web/index.html
+          echo "ALCHUL BROWSER EXPORT TECHNICAL PASS"
+      - name: Provide playable site as a GitHub Actions artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: alchul-godot-web
+          path: godot/build/web/
+          retention-days: 30
+          if-no-files-found: error
