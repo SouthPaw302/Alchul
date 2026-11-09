@@ -4,6 +4,15 @@
 
 **Start here:** [Centralization policy](CENTRALIZATION.md) · [Native Godot project](godot/README.md) · [Prototype provenance](godot/PROVENANCE.md) · [Read-only prototype audit](godot/PROTOTYPE_AUDIT.md).
 
+### Run in a browser — no local installation required
+
+The native Godot 4 project **passes its engine smoke test**, and a single-threaded **Godot Web export builds successfully in GitHub Actions**. Use [the no-local publishing instructions](godot/WEB_PUBLISHING.md).
+
+A GitHub Pages publishing workflow has been added at [.github/workflows/alchul-pages.yml](.github/workflows/alchul-pages.yml). The build and artifact upload passed, but publishing is **blocked only because GitHub Pages has not yet been enabled** for this repository. To allow the cloud deploy, open [Alchul Settings → Pages](https://github.com/SouthPaw302/Alchul/settings/pages), choose **Source: GitHub Actions**, then [rerun the publishing workflow](https://github.com/SouthPaw302/Alchul/actions/workflows/alchul-pages.yml) against `main`. The expected address after a successful deploy is `https://southpaw302.github.io/Alchul/` (not verified live yet).
+
+Vercel project creation returned **HTTP 403**, so no Vercel project was created. Previous repositories were not touched.
+
+
 To run after pulling this GitHub branch into your local checkout:
 
 ```sh
