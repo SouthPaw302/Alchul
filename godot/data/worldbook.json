@@ -1,0 +1,90 @@
+{
+  "schema": "alchul.native-worldbook.v1",
+  "status": "working_reconstruction",
+  "edition": "2026-11-09",
+  "scene": "Braided Reach — composite environmental study",
+  "era": "Mature surface civilization; absolute date deliberately unresolved",
+  "notes": "The terrain, person, materials, beliefs and positions are working scenography, not settled biological or geological canon. Alchul is never modeled as a visible object.",
+  "sources": [
+    "CANON.md",
+    "TIMELINE.md",
+    "SPECIES.md",
+    "VISUAL_CANON.md",
+    "CIVILIZATION.md",
+    "LORE/EMBODIED_WORLDVIEW_ATLAS.md",
+    "LORE/BELIEF_HISTORY_ARCHETYPES.md",
+    "LORE/INDIVIDUAL_01_TESH_BODY_AND_LIFE.md"
+  ],
+  "lenses": {
+    "outside": {
+      "title": "Outside observer",
+      "explanation": "Inspect material structure, geometry, river margin and provisional anatomy. No camera can directly expose the inhabitants' private sensory life."
+    },
+    "resident": {
+      "title": "Resident interpretation",
+      "explanation": "A place matters through movement, stable routes, shared air, substrate response, kin responsibilities and prior experiments. This is a translation, not simulated dinosaur vision."
+    },
+    "contact": {
+      "title": "Contact testimony (unclosed)",
+      "explanation": "Witnesses report familiar places in other conditions. Ordinary inferences and genuine anomalies remain in dispute. The model does not depict Alchul's body, mind or perspective."
+    }
+  },
+  "sites": [
+    {
+      "id": "bank",
+      "label": "River-reading station",
+      "category": "environmental engineering",
+      "position": [
+        8,
+        0
+      ],
+      "lenses": {
+        "outside": "Wood and stone elements form a riverbank observation platform. This is a demonstration of environmental testing, not a real excavated Cretaceous structure.",
+        "resident": "An altered sound through a braced stave may be the first warning that the ground is not as stable as the last return. A second reader must test the claim.",
+        "contact": "The ordinary change in flow can be measured. No anomalous report is required to explain it, though testimony sometimes changes which tests are attempted."
+      }
+    },
+    {
+      "id": "nursery",
+      "label": "Nursery approach",
+      "category": "care and circulation",
+      "position": [
+        -10,
+        7
+      ],
+      "lenses": {
+        "outside": "A proposed protected shelf and broad approach. No exact incubation temperature, clutch size, shell chemistry or gestation organ is represented.",
+        "resident": "The route must remain usable by a vulnerable or egg-bearing adult; shared clean air and the right to refuse entry matter more than a symmetrical doorway.",
+        "contact": "Contact-linked testimony does not override independently verified nursery air, water, exit or reproductive safety procedures."
+      }
+    },
+    {
+      "id": "harvest",
+      "label": "Managed Harvest site",
+      "category": "fermentation and historical memory",
+      "position": [
+        -5,
+        -2
+      ],
+      "lenses": {
+        "outside": "A controlled organic-processing area illustrates fermented plant material as a material resource, not a supernatural substance.",
+        "resident": "Repeated returns, cultivation, teaching and risk change what this place means. Chemical work and ritual can occupy the same ground.",
+        "contact": "Some altered-state reports arise in Harvest-related conditions. Fermentation is natural; the ontology of Alchul remains unresolved."
+      }
+    },
+    {
+      "id": "witness",
+      "label": "Testimony circle",
+      "category": "contested perception",
+      "position": [
+        13,
+        10
+      ],
+      "lenses": {
+        "outside": "Simple stone markers separate independent observations. No object here represents the shape or intention of Alchul.",
+        "resident": "An unusual report can be retained without forcing the community to accept its interpretation. Disagreement and repeatable tests protect shared decisions.",
+        "contact": "Accounts of the same place in different times or conditions are preserved as testimony, not shown as certain predictions or Alchul's point of view."
+      }
+    }
+  ]
+}
