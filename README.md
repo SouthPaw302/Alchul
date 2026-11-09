@@ -1,5 +1,19 @@
 # Alchul
 
+**The central and independent home for the Alchul universe and its native Godot 4 world.** This repository now contains authoritative lore, research, a first Godot runtime study, self-contained scene data, tests, and its own validation workflow.
+
+**Start here:** [Centralization policy](CENTRALIZATION.md) · [Native Godot project](godot/README.md) · [Prototype provenance](godot/PROVENANCE.md) · [Read-only prototype audit](godot/PROTOTYPE_AUDIT.md).
+
+To run after pulling this GitHub branch into your local checkout:
+
+```sh
+python3 godot/tools/validate_worldbook.py
+godot --path godot --editor
+godot --path godot
+```
+
+Requires a locally installed Godot 4 executable (possibly named `godot4`). This does **not** fetch or clone any other user repository, and there is no configured Vercel deployment. The world scene is a **working noncanonical study**, not a finished game. The native Godot engine smoke test is defined in `godot/tests/smoke.gd` and the Alchul-only GitHub workflow.
+
 Canonical repository for the Alchul universe.
 
 This project is written as reconstructed natural history and deep-time history. Real geology, paleontology, evolution, ecology, and human folklore are researched separately from in-universe interpretation.
@@ -42,7 +56,7 @@ The next creative focus is no longer only archaeological chronology: **what it i
 - `LORE/THREE_LENS_3D_STORYBOARD.md` — annotated 3D viewpoints and integrity rules for the interactive console;
 - `WRITING/PERSPECTIVES_01_THE_SAME_CHAMBER.md` — one event told by external observer, resident, witness and later descendant.
 
-**Status:** exploratory lore and narrative, **not canon promotion**. Actual Alchul viewpoint remains unknowable. The interactive 3D console now offers Outside / Resident / Contact Reports lenses with an **approximate body-height resident camera**, and removes a previously misleading literal “Alchul core” and unsupported incubation precision. Its scene geometries and sensory representation remain provisional; the implementation has not yet been runtime/build verified.
+**Status:** exploratory lore and narrative, **not canon promotion**. Actual Alchul viewpoint remains unknowable. **Historical prototype note:** an earlier companion browser console offered Outside / Resident / Contact Reports lenses. The newly centralized Godot runtime implements its *own* interpretation controls and scene data. The previous console is not an Alchul runtime dependency, and its source is not imported.
 
 ## Mature surface individual and working 3D anatomy (2026-11-09)
 
@@ -52,4 +66,4 @@ The next inside-out study is **Tesh**, a deliberately provisional adult surface 
 - `LORE/INDIVIDUAL_01_TESH_BODY_AND_LIFE.md` — individual profile, nonhuman body, social relationships and five lived contexts;
 - `WRITING/SCENE_03_FIVE_DISTANCES_AROUND_TESH.md` — five scenes from external observation through work, nursery, disagreement and contact testimony.
 
-The interactive 3D implementation is in the companion console at `src/components/MatureSurfaceBodyLab.tsx`, integrated into the **Species & Morphology** view. It has inspectable articulated geometry, profile/head-on/overhead cameras, structural and surface views, five task scenes, and labels that mark proposed physical traits. `src/data/speciesData.ts` was corrected to remove unjustified exact population dimensions and anatomical certainty. This is **source-level implementation**; runtime/build testing has not been completed. `CANON.md` is unchanged.
+**Historical prototype note:** a former companion browser model explored Tesh's anatomy and activities. The new self-contained `godot/` environment contains a *separate native study silhouette*, not a direct copy of that implementation. Species-specific measurements and receptor geometry remain unapproved. `CANON.md` is unchanged.
