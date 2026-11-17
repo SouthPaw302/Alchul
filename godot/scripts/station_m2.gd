@@ -143,7 +143,7 @@ func _build_canopy() -> void:
 			if j > 0 and k in [2, 4, 6, 8, 10, 12]:
 				_segment(Vector3(x, base_y + 3.1 * sin(a), z - 1.05), p, 0.055, dark_root)
 		for sign in [-1.0, 1.0]:
-			var x := CENTER_X + sign * 6.0
+			var x: float = CENTER_X + float(sign) * 6.0
 			_segment(Vector3(x + sign * 0.42, base_y - 0.35, z),
 				Vector3(x - sign * 0.85, base_y + 1.95, z), 0.16, dark_root)
 			_sphere(Vector3(x, base_y - 0.19, z), Vector3(0.61, 0.41, 0.47), wet_stone)
