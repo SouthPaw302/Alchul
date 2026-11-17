@@ -26,6 +26,15 @@ func _run() -> void:
 			quit(1)
 			return
 
+	for candidate_path in [
+		"M1RiverEnvironment_Candidate/M2RiverReadingStation_Candidate",
+		"M1RiverEnvironment_Candidate/M3ProtectedNursery_Candidate"
+	]:
+		if scene.get_node_or_null(candidate_path) == null:
+			push_error("ALCHUL SMOKE FAIL: missing study module " + candidate_path)
+			quit(1)
+			return
+
 	var camera: Node = scene.get_node_or_null("OutsideVisitor/VisitorCamera")
 	if camera == null or not (camera is Camera3D):
 		push_error("ALCHUL SMOKE FAIL: observer camera missing")
