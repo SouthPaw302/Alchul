@@ -35,7 +35,7 @@
 - The independent M4 Godot procedural model is **not a GLB import** and must not be described as the same mesh as the sandbox GLB.
 - `godot/tests/smoke.gd` requires the M4 node in addition to M2 and M3, without weakening existing camera, worldbook or interpretation tests.
 - Existing `godot/data/worldbook.json`, original four interpretive markers, user controls and live GitHub Pages deployment are unchanged.
-- [Validation workflow for this code revision](https://github.com/SouthPaw302/Alchul/actions/runs/44029161811). Do not infer passage from the prior M3 success; validate this revision itself.
+- **Passed** [M4 native validation run #44029161811](https://github.com/SouthPaw302/Alchul/actions/runs/44029161811): both `offline-contract` and `godot-native-smoke` succeeded against commit `841675e9`. This validates script compilation, scene startup, M2/M3/M4 presence, observer and lens contracts; it does **not** validate graphical quality, navigation, frame rate, or browser deployment.
 
 ## 5 — Integrity checks
 
