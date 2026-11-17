@@ -1,5 +1,7 @@
 extends Node3D
 
+const M2_STATION: Script = preload("res://scripts/station_m2.gd")
+
 ## Alchul M1 additive river-settlement visual study.
 ## Primitive geometry is intentionally noncanonical. No external files/network.
 ## Does not replace the existing visitor, markers, lenses, or terrain.
@@ -21,7 +23,7 @@ func _ready() -> void:
 	moss_mat = _mat(Color(0.22, 0.39, 0.23))
 	reed_mat = _mat(Color(0.39, 0.48, 0.25))
 	water_mat = _mat(Color(0.18, 0.42, 0.42, 0.88), 0.22, true)
-	_build_river_reading_station()
+	_build_m2_station()
 	_build_covered_nursery_route()
 	_build_harvest_precinct()
 	_build_bank_reinforcement()
@@ -102,6 +104,12 @@ func _arched_gallery(cx: float, cz: float, length: int, width: float, rise: floa
 					Vector3(x, y0 + rise * sin(t * PI), cz + width * (t - 0.5)),
 					0.075, timber_mat
 				)
+
+func _build_m2_station() -> void:
+	var candidate: Node3D = M2_STATION.new()
+	candidate.name = "M2RiverReadingStation_Candidate"
+	candidate.set("height_at", height_at)
+	add_child(candidate)
 
 func _build_river_reading_station() -> void:
 	# Near the existing bank marker at (8,0), leave marker and inspection free.
