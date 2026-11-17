@@ -2,6 +2,7 @@ extends Node3D
 
 const M2_STATION: Script = preload("res://scripts/station_m2.gd")
 const M3_NURSERY: Script = preload("res://scripts/nursery_m3.gd")
+const M4_HARVEST: Script = preload("res://scripts/harvest_m4.gd")
 
 ## Alchul M1 additive river-settlement visual study.
 ## Primitive geometry is intentionally noncanonical. No external files/network.
@@ -26,7 +27,7 @@ func _ready() -> void:
 	water_mat = _mat(Color(0.18, 0.42, 0.42, 0.88), 0.22, true)
 	_build_m2_station()
 	_build_m3_nursery()
-	_build_harvest_precinct()
+	_build_m4_harvest()
 	_build_bank_reinforcement()
 	_build_wetland_detail()
 
@@ -161,6 +162,12 @@ func _build_covered_nursery_route() -> void:
 			var angle := j * TAU / 6.0
 			_rod(Vector3(xx + cos(angle) * 1.85, yy, zz + sin(angle) * 1.85),
 				Vector3(xx + cos(angle) * 1.68, yy + 1.1, zz + sin(angle) * 1.68), 0.10, branch_mat)
+
+func _build_m4_harvest() -> void:
+	var candidate: Node3D = M4_HARVEST.new()
+	candidate.name = "M4HarvestPrecinct_Candidate"
+	candidate.set("height_at", height_at)
+	add_child(candidate)
 
 func _build_harvest_precinct() -> void:
 	var cx := -5.0
