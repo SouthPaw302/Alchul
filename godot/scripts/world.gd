@@ -4,6 +4,7 @@ extends Node3D
 ## All scene geometry is original, provisional, and explicitly noncanonical.
 
 const OBSERVER_SCENE: Script = preload("res://scripts/observer.gd")
+const M1_ENVIRONMENT: Script = preload("res://scripts/environment_m1.gd")
 const WORLDBOOK: String = "res://data/worldbook.json"
 const LAND_EXTENT: float = 60.0
 const LAND_STEPS: int = 52
@@ -35,11 +36,19 @@ func _ready() -> void:
 	_build_land()
 	_build_water()
 	_build_vegetation()
+	_build_m1_environment()
 	_build_study_sites()
 	_build_study_figure()
 	_build_observer()
 	_build_interface()
 	_set_lens("outside")
+
+func _build_m1_environment() -> void:
+	# Additive, reversible visual study; existing terrain, navigation and interpretive sites remain authoritative.
+	var study: Node3D = M1_ENVIRONMENT.new()
+	study.name = "M1RiverEnvironment_Candidate"
+	study.set("height_at", Callable(self, "terrain_height"))
+	add_child(study)
 
 func _load_worldbook() -> void:
 	var bytes: String = FileAccess.get_file_as_string(WORLDBOOK)
