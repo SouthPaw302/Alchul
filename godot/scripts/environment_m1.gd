@@ -1,6 +1,7 @@
 extends Node3D
 
 const M2_STATION: Script = preload("res://scripts/station_m2.gd")
+const M3_NURSERY: Script = preload("res://scripts/nursery_m3.gd")
 
 ## Alchul M1 additive river-settlement visual study.
 ## Primitive geometry is intentionally noncanonical. No external files/network.
@@ -24,7 +25,7 @@ func _ready() -> void:
 	reed_mat = _mat(Color(0.39, 0.48, 0.25))
 	water_mat = _mat(Color(0.18, 0.42, 0.42, 0.88), 0.22, true)
 	_build_m2_station()
-	_build_covered_nursery_route()
+	_build_m3_nursery()
 	_build_harvest_precinct()
 	_build_bank_reinforcement()
 	_build_wetland_detail()
@@ -133,6 +134,12 @@ func _build_river_reading_station() -> void:
 	for i in range(3):
 		_beam(Vector3(cx + 1.5, deck_y + 0.26, cz - 2.15 + float(i) * 0.43), Vector3(5.9, 0.07, 0.12), wet_stone_mat)
 	_arched_gallery(10.0, -2.6, 4, 4.8, 2.5)
+
+func _build_m3_nursery() -> void:
+	var candidate: Node3D = M3_NURSERY.new()
+	candidate.name = "M3ProtectedNursery_Candidate"
+	candidate.set("height_at", height_at)
+	add_child(candidate)
 
 func _build_covered_nursery_route() -> void:
 	# A broad, smooth route with protected access. No claims about egg anatomy or incubation.
