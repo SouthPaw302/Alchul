@@ -12,6 +12,7 @@ const LAND_STEPS: int = 52
 
 var worldbook: Dictionary = {}
 var m10_world_visual_stats: Dictionary = {}
+var m10_web_perf_profile: String = "reference"
 var observer: AlchulObserver
 var lens_id: String = "outside"
 var focused_site: Dictionary = {}
@@ -33,6 +34,7 @@ var marker_material: StandardMaterial3D
 
 func _ready() -> void:
 	_load_worldbook()
+	m10_web_perf_profile = _read_m10_web_perf_profile()
 	_initialize_materials()
 	_build_sky_and_light()
 	_build_land()
@@ -45,11 +47,24 @@ func _ready() -> void:
 	_build_interface()
 	_set_lens("outside")
 
+# Diagnostic URL switch for PR-only A/B software-WebGL profiling.
+# The default and all native runs retain the existing scene settings.
+# Read-only; no requests, cookies, or external runtime dependencies.
+func _read_m10_web_perf_profile() -> String:
+	if not OS.has_feature("web"):
+		return "reference"
+	var requested: Variant = JavaScriptBridge.eval("new URLSearchParams(window.location.search).get('alchul_perf') || 'reference'")
+	var mode: String = str(requested)
+	if mode in ["no_shadows", "simple_m6", "static_water", "all_light"]:
+		return mode
+	return "reference"
+
 func _build_m1_environment() -> void:
 	# Additive, reversible visual study; existing terrain, navigation and interpretive sites remain authoritative.
 	var study: Node3D = M1_ENVIRONMENT.new()
 	study.name = "M1RiverEnvironment_Candidate"
 	study.set("height_at", Callable(self, "terrain_height"))
+	study.set("m10_web_perf_profile", m10_web_perf_profile)
 	add_child(study)
 
 func _load_worldbook() -> void:
@@ -99,7 +114,7 @@ func _build_sky_and_light() -> void:
 	sun.name = "IllustrativeDaylight"
 	sun.rotation_degrees = Vector3(-57.0, 28.0, 0.0)
 	sun.light_energy = 1.15
-	sun.shadow_enabled = true
+	sun.shadow_enabled = not m10_web_perf_profile in ["no_shadows", "all_light"]
 	add_child(sun)
 
 func river_center(x: float) -> float:
