@@ -6,6 +6,7 @@ const M4_HARVEST: Script = preload("res://scripts/harvest_m4.gd")
 const M5_CONNECTIVE: Script = preload("res://scripts/connective_m5.gd")
 const M6_MATERIALS: Script = preload("res://scripts/materials_m6.gd")
 const M7_PBR: Script = preload("res://scripts/materials_m7.gd")
+const M8_ENVIRONMENT: Script = preload("res://scripts/environment_m8.gd")
 
 ## Alchul M1 additive river-settlement visual study.
 ## Primitive geometry is intentionally noncanonical. No external files/network.
@@ -34,6 +35,7 @@ func _ready() -> void:
 	_build_m5_connective()
 	_build_m6_materials()
 	_build_m7_pbr()
+	_build_m8_environment()
 	_build_bank_reinforcement()
 	_build_wetland_detail()
 
@@ -168,6 +170,12 @@ func _build_covered_nursery_route() -> void:
 			var angle := j * TAU / 6.0
 			_rod(Vector3(xx + cos(angle) * 1.85, yy, zz + sin(angle) * 1.85),
 				Vector3(xx + cos(angle) * 1.68, yy + 1.1, zz + sin(angle) * 1.68), 0.10, branch_mat)
+
+func _build_m8_environment() -> void:
+	var candidate: Node3D = M8_ENVIRONMENT.new()
+	candidate.name = "M8RiverbankWebCandidate"
+	candidate.set("height_at", height_at)
+	add_child(candidate)
 
 func _build_m7_pbr() -> void:
 	var material_pass: Node3D = M7_PBR.new()
