@@ -30,6 +30,7 @@ async function main() {
   if(!webgl) throw new Error('Chromium SwiftShader has no WebGL2 support');
   await page.locator('canvas').first().waitFor({state:'attached',timeout:90000});
   await page.waitForTimeout(9000);
+  const diagnosticProfile = await page.evaluate(()=>window.alchulM10ActiveProfile || 'not_reported');
   await page.screenshot({path:output+'/M8_GODOT_BROWSER_PREVIEW.png',fullPage:true,timeout:25000});
   const timings = await page.evaluate(()=>new Promise(resolve=>{
     let last=performance.now();const deltas=[];
@@ -48,7 +49,7 @@ async function main() {
   const sample=timings.slice(10).sort((a,b)=>a-b);
   const p95=sample[Math.floor(sample.length*0.95)];
   const median=sample[Math.floor(sample.length*0.5)];
-  const result={software_renderer_budget_p95_ms:250,software_renderer_budget_met:Number.isFinite(p95)&&p95<=250, url,rendering_context:'Chromium headless SwiftShader/WebGL2',canvas_count:await page.locator('canvas').count(),sampled_raf_frames:sample.length,raf_median_ms:median,raf_p95_ms:p95,console_warnings:warnings.slice(0,20),fatal_errors:fatal,disclaimer:'RAF sample measures browser scheduling in software GL CI; not a player hardware or Godot-engine FPS benchmark.'};
+  const result={software_renderer_budget_p95_ms:250,software_renderer_budget_met:Number.isFinite(p95)&&p95<=250, url,rendering_context:'Chromium headless SwiftShader/WebGL2',canvas_count:await page.locator('canvas').count(),sampled_raf_frames:sample.length,active_m10_profile:diagnosticProfile,raf_median_ms:median,raf_p95_ms:p95,console_warnings:warnings.slice(0,20),fatal_errors:fatal,disclaimer:'RAF sample measures browser scheduling in software GL CI; not a player hardware or Godot-engine FPS benchmark.'};
   fs.writeFileSync(output+'/M8_BROWSER_METRICS.json',JSON.stringify(result,null,2));
   await browser.close();
   if(fatal.length) throw new Error('Browser game raised fatal errors: '+fatal.join('; '));
