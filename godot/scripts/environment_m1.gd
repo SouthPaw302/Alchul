@@ -15,6 +15,7 @@ const M10_STATIC_BATCHER: Script = preload("res://scripts/m10_static_batcher.gd"
 
 var height_at: Callable
 var m10_static_batch_stats: Dictionary = {}
+var m10_extended_batch_stats: Dictionary = {}
 var branch_mat: StandardMaterial3D
 var timber_mat: StandardMaterial3D
 var stone_mat: StandardMaterial3D
@@ -158,6 +159,9 @@ func _build_m3_nursery() -> void:
 	candidate.name = "M3ProtectedNursery_Candidate"
 	candidate.set("height_at", height_at)
 	add_child(candidate)
+	# Stage-specific, reversible consolidation of static opaque MeshInstance3D.
+	if OS.get_environment("ALCHUL_M10_STATIC_BATCH") != "0":
+		m10_extended_batch_stats["nursery"] = M10_STATIC_BATCHER.batch_direct_static_meshes(candidate)
 
 func _build_covered_nursery_route() -> void:
 	# A broad, smooth route with protected access. No claims about egg anatomy or incubation.
@@ -202,12 +206,18 @@ func _build_m5_connective() -> void:
 	candidate.name = "M5SettlementConnectors_Candidate"
 	candidate.set("height_at", height_at)
 	add_child(candidate)
+	# Stage-specific, reversible consolidation of static opaque MeshInstance3D.
+	if OS.get_environment("ALCHUL_M10_STATIC_BATCH") != "0":
+		m10_extended_batch_stats["connective"] = M10_STATIC_BATCHER.batch_direct_static_meshes(candidate)
 
 func _build_m4_harvest() -> void:
 	var candidate: Node3D = M4_HARVEST.new()
 	candidate.name = "M4HarvestPrecinct_Candidate"
 	candidate.set("height_at", height_at)
 	add_child(candidate)
+	# Stage-specific, reversible consolidation of static opaque MeshInstance3D.
+	if OS.get_environment("ALCHUL_M10_STATIC_BATCH") != "0":
+		m10_extended_batch_stats["harvest"] = M10_STATIC_BATCHER.batch_direct_static_meshes(candidate)
 
 func _build_harvest_precinct() -> void:
 	var cx := -5.0
