@@ -31,12 +31,35 @@ func _run() -> void:
 		"M1RiverEnvironment_Candidate/M3ProtectedNursery_Candidate",
 		"M1RiverEnvironment_Candidate/M4HarvestPrecinct_Candidate",
 		"M1RiverEnvironment_Candidate/M5SettlementConnectors_Candidate",
-		"M1RiverEnvironment_Candidate/M6RiverbankMaterials_Candidate"
+		"M1RiverEnvironment_Candidate/M6RiverbankMaterials_Candidate",
+		"M1RiverEnvironment_Candidate/M7GodotPBRMaterialPass_Candidate"
 	]:
 		if scene.get_node_or_null(candidate_path) == null:
 			push_error("ALCHUL SMOKE FAIL: missing study module " + candidate_path)
 			quit(1)
 			return
+
+	var pbr_node: Node = scene.get_node_or_null("M1RiverEnvironment_Candidate/M7GodotPBRMaterialPass_Candidate")
+	var pbr_state: Dictionary = pbr_node.call("validation_summary")
+	if int(pbr_state.get("families",0)) != 7:
+		push_error("ALCHUL M7 PBR FAIL: not all seven materials initialized")
+		quit(1)
+		return
+	var detail_mesh: Node = scene.get_node_or_null("M1RiverEnvironment_Candidate/M6RiverbankMaterials_Candidate/DetailedRiverbankSurface")
+	if not (detail_mesh is GeometryInstance3D):
+		push_error("ALCHUL M7 PBR FAIL: surface mesh not instantiated")
+		quit(1)
+		return
+	var applied_material: Material = (detail_mesh as GeometryInstance3D).material_override
+	if not (applied_material is StandardMaterial3D):
+		push_error("ALCHUL M7 PBR FAIL: native standard material missing")
+		quit(1)
+		return
+	var standard_material := applied_material as StandardMaterial3D
+	if standard_material.albedo_texture == null or standard_material.normal_texture == null or standard_material.roughness_texture == null:
+		push_error("ALCHUL M7 PBR FAIL: PBR maps not bound")
+		quit(1)
+		return
 
 	var camera: Node = scene.get_node_or_null("OutsideVisitor/VisitorCamera")
 	if camera == null or not (camera is Camera3D):
