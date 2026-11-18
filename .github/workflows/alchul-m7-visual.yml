@@ -3,6 +3,8 @@ on:
   workflow_dispatch:
   pull_request:
     paths:
+      - "godot/scripts/world.gd"
+      - "godot/scripts/materials_m6.gd"
       - "godot/scripts/materials_m7.gd"
       - "godot/scripts/environment_m1.gd"
       - "godot/tests/render_m7.gd"
