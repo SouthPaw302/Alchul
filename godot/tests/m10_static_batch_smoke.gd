@@ -48,7 +48,7 @@ func _run() -> void:
 	var extended: Dictionary = m1.get("m10_extended_batch_stats")
 	var combined_before: int = before
 	var combined_after: int = after
-	for name in ["nursery", "harvest", "connective"]:
+	for name in ["nursery", "harvest", "connective", "wetland_detail"]:
 		if not extended.has(name):
 			_fail("extended module never attempted: " + name)
 			return
@@ -66,6 +66,21 @@ func _run() -> void:
 			return
 		combined_before += count_before
 		combined_after += count_after
+	var backdrop: Dictionary = scene.get("m10_world_visual_stats")
+	if not bool(backdrop.get("applied", false)):
+		_fail("background floodplain tree chunking not applied " + JSON.stringify(backdrop))
+		return
+	var vegetation_before: int = int(backdrop.get("original_nodes", 0))
+	var vegetation_after: int = int(backdrop.get("merged_nodes", 0))
+	if vegetation_before < 50 or vegetation_after < 1 or vegetation_after >= vegetation_before:
+		_fail("incorrect chunked tree geometry reduction " + JSON.stringify(backdrop))
+		return
+	if int(backdrop.get("triangles_before", -1)) != int(backdrop.get("triangles_after", -2)):
+		_fail("chunked tree triangles not conserved")
+		return
+	combined_before += vegetation_before
+	combined_after += vegetation_after
+	print("ALCHUL M10 TREE CHUNKED BATCH PASS: ", JSON.stringify(backdrop))
 	print("ALCHUL M10 TOTAL STATIC NODE REDUCTION: ", combined_before, " -> ", combined_after)
 	print("ALCHUL M10 EXTENDED BATCH PASS: ", JSON.stringify(extended))
 	print("ALCHUL M10 STATIC BATCH PASS: ", JSON.stringify(stats))
