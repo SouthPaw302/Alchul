@@ -32,9 +32,18 @@ async function main() {
   await page.screenshot({path:output+'/M8_GODOT_BROWSER_PREVIEW.png',fullPage:true});
   const timings = await page.evaluate(()=>new Promise(resolve=>{
     let last=performance.now();const deltas=[];
-    const next=(now)=>{deltas.push(now-last);last=now; if(deltas.length>=120){resolve(deltas);}else requestAnimationFrame(next);};
+    let finished=false;
+    // Without a watchdog, an inactive WebGL2 canvas can hang CI indefinitely.
+    const timer=setTimeout(()=>{if(!finished){finished=true;resolve(deltas);}}, 20000);
+    const next=(now)=>{
+      if(finished)return;
+      deltas.push(now-last);last=now;
+      if(deltas.length>=120){finished=true;clearTimeout(timer);resolve(deltas);}
+      else requestAnimationFrame(next);
+    };
     requestAnimationFrame(next);
   }));
+  if (timings.length < 40) throw new Error('Browser did not deliver enough animation frames ('+timings.length+')');
   const sample=timings.slice(10).sort((a,b)=>a-b);
   const p95=sample[Math.floor(sample.length*0.95)];
   const median=sample[Math.floor(sample.length*0.5)];
