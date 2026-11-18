@@ -1,8 +1,5 @@
 extends Node3D
 
-const SEGMENT_BATCH: Script = preload("res://scripts/segment_batch_m8.gd")
-var beam_batch: Node3D
-
 ## M4: Harvest bioprocessing precinct, procedural and reversible.
 ## The process is symbolic: no chemistry formulae, biological recipes, or calibrated
 ## flow assumptions. This is NOT an archaeological or canon assertion.
@@ -21,9 +18,6 @@ const CENTER_X: float = -7.8
 const CENTER_Z: float = -2.1
 
 func _ready() -> void:
-	beam_batch = SEGMENT_BATCH.new()
-	beam_batch.name = "M8BatchedBeams"
-	add_child(beam_batch)
 	stone = _material(Color(0.50, 0.49, 0.37))
 	wet_stone = _material(Color(0.33, 0.36, 0.31), 0.77)
 	clay = _material(Color(0.57, 0.37, 0.25))
@@ -38,8 +32,6 @@ func _ready() -> void:
 	_build_seep_channels()
 	_build_clay_chambers()
 	_build_wetland_buffer()
-
-	beam_batch.call("flush")
 
 func _material(col: Color, roughness: float = 0.91, transparent: bool = false) -> StandardMaterial3D:
 	var m := StandardMaterial3D.new()
@@ -75,8 +67,17 @@ func _disc(pos: Vector3, radius: float, height: float, material: Material) -> vo
 	m.radial_segments = 14
 	_mesh(pos, m, material)
 
-func _rod(a: Vector3, b: Vector3, radius: float, mat: Material) -> void:
-	beam_batch.call("add_rod",a,b,radius,mat)
+func _rod(a: Vector3, b: Vector3, radius: float, material: Material) -> void:
+	var direction: Vector3 = b - a
+	if direction.length_squared() < 0.000001:
+		return
+	var mesh := CylinderMesh.new()
+	mesh.height = direction.length()
+	mesh.top_radius = radius * 0.90
+	mesh.bottom_radius = radius
+	mesh.radial_segments = 6
+	var node := _mesh((a + b) * 0.5, mesh, material)
+	node.quaternion = Quaternion(Vector3.UP, direction.normalized())
 
 func _bulb(p: Vector3, scale_vec: Vector3, material: Material) -> void:
 	var mesh := SphereMesh.new()
