@@ -45,6 +45,29 @@ func _run() -> void:
 	if actual_merged != after:
 		_fail("merged runtime node count differs from reported " + str(after))
 		return
+	var extended: Dictionary = m1.get("m10_extended_batch_stats")
+	var combined_before: int = before
+	var combined_after: int = after
+	for name in ["nursery", "harvest", "connective"]:
+		if not extended.has(name):
+			_fail("extended module never attempted: " + name)
+			return
+		var state: Dictionary = extended[name]
+		if not bool(state.get("applied", false)):
+			_fail("extended module did not batch: " + name + " " + JSON.stringify(state))
+			return
+		var count_before: int = int(state.get("original_nodes", 0))
+		var count_after: int = int(state.get("merged_nodes", 0))
+		if count_before < 10 or count_after < 1 or count_after >= count_before:
+			_fail("invalid node reduction in " + name + ": " + JSON.stringify(state))
+			return
+		if int(state.get("triangles_before", -1)) != int(state.get("triangles_after", -2)):
+			_fail("triangle mismatch in " + name)
+			return
+		combined_before += count_before
+		combined_after += count_after
+	print("ALCHUL M10 TOTAL STATIC NODE REDUCTION: ", combined_before, " -> ", combined_after)
+	print("ALCHUL M10 EXTENDED BATCH PASS: ", JSON.stringify(extended))
 	print("ALCHUL M10 STATIC BATCH PASS: ", JSON.stringify(stats))
 	scene.queue_free()
 	quit(0)
