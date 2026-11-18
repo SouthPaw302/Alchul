@@ -30,7 +30,8 @@ func _run() -> void:
 		"M1RiverEnvironment_Candidate/M2RiverReadingStation_Candidate",
 		"M1RiverEnvironment_Candidate/M3ProtectedNursery_Candidate",
 		"M1RiverEnvironment_Candidate/M4HarvestPrecinct_Candidate",
-		"M1RiverEnvironment_Candidate/M5SettlementConnectors_Candidate"
+		"M1RiverEnvironment_Candidate/M5SettlementConnectors_Candidate",
+		"M1RiverEnvironment_Candidate/M6RiverbankMaterials_Candidate"
 	]:
 		if scene.get_node_or_null(candidate_path) == null:
 			push_error("ALCHUL SMOKE FAIL: missing study module " + candidate_path)
