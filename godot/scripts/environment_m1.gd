@@ -7,12 +7,14 @@ const M5_CONNECTIVE: Script = preload("res://scripts/connective_m5.gd")
 const M6_MATERIALS: Script = preload("res://scripts/materials_m6.gd")
 const M7_PBR: Script = preload("res://scripts/materials_m7.gd")
 const M8_ENVIRONMENT: Script = preload("res://scripts/environment_m8.gd")
+const M10_STATIC_BATCHER: Script = preload("res://scripts/m10_static_batcher.gd")
 
 ## Alchul M1 additive river-settlement visual study.
 ## Primitive geometry is intentionally noncanonical. No external files/network.
 ## Does not replace the existing visitor, markers, lenses, or terrain.
 
 var height_at: Callable
+var m10_static_batch_stats: Dictionary = {}
 var branch_mat: StandardMaterial3D
 var timber_mat: StandardMaterial3D
 var stone_mat: StandardMaterial3D
@@ -120,6 +122,13 @@ func _build_m2_station() -> void:
 	candidate.name = "M2RiverReadingStation_Candidate"
 	candidate.set("height_at", height_at)
 	add_child(candidate)
+	# Full original procedural geometry is retained if the feature is disabled.
+	# Exact 3D transforms are baked into combined meshes; no M8 roof-spike shortcuts.
+	if OS.get_environment("ALCHUL_M10_STATIC_BATCH") != "0":
+		m10_static_batch_stats = M10_STATIC_BATCHER.batch_direct_static_meshes(candidate)
+		print("ALCHUL M10 STATIC BATCH: ", JSON.stringify(m10_static_batch_stats))
+	else:
+		m10_static_batch_stats = {"applied": false, "disabled_for_AB_capture": true}
 
 func _build_river_reading_station() -> void:
 	# Near the existing bank marker at (8,0), leave marker and inspection free.
