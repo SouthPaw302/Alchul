@@ -1,0 +1,65 @@
+name: Alchul M10 original 3D/PBR native screenshot review
+
+on:
+  pull_request:
+    paths:
+      - "godot/assets/**"
+      - "godot/data/m10_m6_archive_manifest.json"
+      - "godot/scenes/m10_import_pilot.tscn"
+      - "godot/scripts/m10_import_pilot.gd"
+      - "godot/scripts/materials_m7.gd"
+      - "godot/tests/render_m10.gd"
+      - ".github/workflows/alchul-m10-visual.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-m10-pilot:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      ALCHUL_M10_RENDER_DIR: ${{ github.workspace }}/m10-native-shots
+      LIBGL_ALWAYS_SOFTWARE: "1"
+    steps:
+      - name: Checkout only Alchul PR source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Install official engine dependencies and virtual display
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq curl unzip xvfb libgl1-mesa-dri libglu1-mesa libxrandr2
+          curl -fL --retry 3 \
+            "https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip" \
+            -o "$RUNNER_TEMP/godot.zip"
+          echo "cadd3204e728a35d3f13adb7fd0d7902636b79f6b95c40c265eb73b6c35329e4  $RUNNER_TEMP/godot.zip" | sha256sum -c -
+          unzip -q "$RUNNER_TEMP/godot.zip" -d "$RUNNER_TEMP"
+          chmod +x "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64"
+      - name: Import original GLB and PNGs
+        run: |
+          set -euo pipefail
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless \
+            --path godot --editor --import --quit
+      - name: Check original source hashes and native material instantiation
+        run: |
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless \
+            --path godot --script res://tests/m10_import_smoke.gd
+      - name: Capture ten real original-asset Godot screenshots
+        run: |
+          mkdir -p "$ALCHUL_M10_RENDER_DIR"
+          xvfb-run -a -s '-screen 0 1024x768x24' \
+            "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" \
+              --path godot --rendering-method gl_compatibility \
+              --script res://tests/render_m10.gd
+          test "$(find "$ALCHUL_M10_RENDER_DIR" -type f -name '*.png' | wc -l)" -eq 10
+      - name: Upload original-source visual evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: alchul-m10-original-assets-ten-godot-views
+          path: m10-native-shots/
+          if-no-files-found: warn
+          retention-days: 21
