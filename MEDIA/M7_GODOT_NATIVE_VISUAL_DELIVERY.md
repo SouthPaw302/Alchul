@@ -74,3 +74,10 @@ The real Godot screenshots show that the world finally has visible continuous gr
 Keep this work in the existing **draft PR #1**. Do not merge it into `main`, call the live URL updated, assert a finished 3D GLB integration, or change canon until Web/browser performance and collision/geometry acceptance have passed.
 
 **Recommended Batch 08:** Import source PBR PNGs and a deliberately optimized M6 GLB into a dedicated native Godot scene; fix terrain seams and collision/locomotion, then measure actual web performance while preserving the canonical worldbook and live rollback path.
+
+## 7. Final Drive production ledger and readback
+
+- [Complete M7 production bundle: import-ready M6 assets, real native Godot screenshots, offline 3D QA images and manifests](https://drive.google.com/file/d/1nwgYkl-PcGQDNzMOIUsX6aoOLDYi6pz7/view).
+- [Batch 07 production ledger](https://drive.google.com/file/d/1zRih6u8uOcUhD3VJ0nlgIYaxMXwL87wJ/view) and [final SHA-256 manifest](https://drive.google.com/file/d/1sp8GBHNWaLN6muFzjzQUNt--SN8NDtqk/view).
+- Google Drive readback confirmed **13** native screenshot-folder files (10 PNG + contact sheet + metrics + ZIP), **11** offline QA image-folder files, **one** verified original import-ready ZIP, and **8** supporting QA/documentation files.
+- The complete bundle contains three independently CRC-validated ZIP archives plus ledger, checksum manifest and contact sheets.
