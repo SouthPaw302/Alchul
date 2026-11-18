@@ -34,6 +34,10 @@ static func batch_direct_static_meshes(target: Node3D) -> Dictionary:
 		if mesh == null or material == null or mesh.get_surface_count() != 1:
 			untouched += 1
 			continue
+		# Preserve source alpha draw order; do not combine transparent water planes.
+		if material is BaseMaterial3D and (material as BaseMaterial3D).transparency != BaseMaterial3D.TRANSPARENCY_DISABLED:
+			untouched += 1
+			continue
 		if mesh.surface_get_primitive_type(0) != Mesh.PRIMITIVE_TRIANGLES:
 			untouched += 1
 			continue
