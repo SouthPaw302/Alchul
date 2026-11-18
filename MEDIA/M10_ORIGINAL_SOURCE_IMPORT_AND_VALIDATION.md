@@ -42,3 +42,22 @@ The M6 complete production archive separately passed CRC and hash checks. Its or
 5. **Production:** only after reviews, merge M9 then M10 in order and deliberately publish. No approval/release is implied by creating this PR.
 
 **Reference:** [M9 verification](M9_SOURCE_INTEGRITY_CHECK.md), [M9 registry](ASSET_INTEGRATION_REGISTER.json), [M9–M12 roadmap](ROADMAP_M9_M12_ASSETS_AND_INHABITANTS.md).
+
+## 5. Actual CI validation and archived review output (2026-11-18)
+
+**Native source import — PASS:** [Godot foundation workflow #44275186787](https://github.com/SouthPaw302/Alchul/actions/runs/44275186787). The native import and M10 smoke succeeded on official Godot 4.7.2. The scene checked all **29 source-file SHA-256 values** (M2 GLB + 28 M6 textures), verified 19 imported station meshes, seven original 768px PBR families, and zero generated fallback maps. Existing world smoke also passed.
+
+**M10 native visuals — PASS (mechanical capture):** [Original GLB/PBR capture workflow #44275186985](https://github.com/SouthPaw302/Alchul/actions/runs/44275186985). It produced **10 actual Godot screenshots at 960×540** and `capture_metrics.json`. Review shows a coherent arched station (no rejected M8 roof spikes), water channel geometry, preserved source color surfaces, and seven original-texture swatches. This is a first visual reviewer check, not canonical architectural approval. Source-station model loaded = true; material `original_asset_families = 7`, `generated_fallback_maps = 0`. Screenshot capture latencies [1742,234,250,239,225,252,241,241,242,125]ms **are not FPS**.
+
+**Archive copies saved into the project Drive folder:** [M10 Evidence folder](https://drive.google.com/drive/folders/1_6L1Q5P5kZLCglOWKfP_yOIo7HryCfBk) including [ten real Godot PNGs + JSON metrics as ZIP](https://drive.google.com/file/d/18bo-IDqlOjKqe713Kw4H0yoHlWnfzXBv/view) and [10-view contact sheet JPG](https://drive.google.com/file/d/1ugZOPRtqApDELBd-5qFShlX66w7jQ5xe/view).
+
+**Web export + browser functional smoke — PASS, performance target NOT MET:** [Godot M8 Web preview workflow #44275186831](https://github.com/SouthPaw302/Alchul/actions/runs/44275186831). New `index.pck` ≈ 12 MiB, `index.wasm` ≈ 38 MiB. Chromium headless SwiftShader/WebGL2 showed browser canvas, no fatal errors or console warnings, 26 sampled RAF frames, **median ≈633.3 ms; p95 ≈750.1 ms** against an explicit **250ms p95 software-renderer budget**. Therefore do NOT clear for release on performance grounds. These scheduling timings are not a benchmark of desktop GPU frame rate and samples differ from M8 archive baseline.
+
+**Disposition:** native and functional Web gates passed; visual sample archival done; **browser performance gate FAILED**. Keep stacked PR #3 **draft and unmerged**. Do not publish to GitHub Pages until geometry optimization + retest, and the separate M9 review/merge are complete.
+
+### Next controlled optimization proposal
+
+- Reduce draw calls by controlled baking/grouping of the imported station meshes, preserving the existing curved arch shape and original geometry as immutable source; avoid the rejected M8 MultiMesh transform method.
+- Add genuinely UV-authored station material surfaces or deliberately triplanar candidates without overwriting the original GLB or inventing mapped UVs.
+- Consider a **view-specific** native optimized geometry candidate and measurable Web export LOD; record source-to-derived geometry counts and source hashes.
+- Repeat native screenshot views and browser smoke, with explicit before/after comparable CI runs; no canonical species implications.
