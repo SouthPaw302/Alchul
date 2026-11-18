@@ -1,0 +1,243 @@
+{
+  "batch": "06",
+  "status": "CANDIDATE_NOT_CANON",
+  "file_count_without_manifest": 46,
+  "files": [
+    {
+      "path": "TEXTURES/ALC_M6_clay_albedo_768.png",
+      "bytes": 370524,
+      "sha256": "5e8396c1db8bdf29bcfa05ec3e80c70ec9653e9a3e0659019c86ddd0aeee9fcf"
+    },
+    {
+      "path": "TEXTURES/ALC_M6_clay_height_768.png",
+      "bytes": 248890,
+      "sha256": "af80158a0bdbdfa89702e4c266c26476c40c4a707a6402cce31388be9b221a38"
+    },
+    {
+      "path": "TEXTURES/ALC_M6_clay_normal_768.png",
+      "bytes": 789164,
+      "sha256": "e4f1ad75873627a69072fe7622b289329e14a661bf258d411b30d4c3149042d2"
+    },
+    {
+      "path": "TEXTURES/ALC_M6_clay_roughness_768.png",
+      "bytes": 139951,
+      "sha256": "df16aab1aa1876f8cab2fda60aa93f6da888d3f7b3e9b00056ae953376460362"
+    },
+    {
+      "path": "TEXTURES/ALC_M6_fern_albedo_768.png",
+      "bytes": 391045,
+      "sha256": "0163dbde024e4e95281bfeb98e86a0e6a06439c05e706abc8bf94dcbb8945610"
+    },
+    {
+      "path": "TEXTURES/ALC_M6_fern_height_768.png",
+      "bytes": 248771,
+      "sha256": "e96c8fda7bdf23072b4d3d6a61956a49ac945dd68e12cc8aefee698488765c90"
+    },
+    {
+      "path": "TEXTURES/ALC_M6_fern_normal_768.png",
+      "bytes": 789039,
+      "sha256": "f659dbfcb265a6fb63943b7a445202e77c4b7a0bc085a1be0c6ca586af4981b4"
+    },
+    {
+      "path": "TEXTURES/ALC_M6_fern_roughness_768.png",
+      "bytes": 139851,
+      "sha256": "0d5f7637be422aa8f6b06ab07bd60a07a8a6b8a52811fbd969e4ecadab53c792"
+    },
+    {
+      "path": "TEXTURES/ALC_M6_limestone_albedo_768.png",
+      "bytes": 413759,
+      "sha256": "69ca878a45cca1a935af873ac7057d885142ad78d1bf76c640450687ec52b2f4"
+    },
+    {
+      "path": "TEXTURES/ALC_M6_limestone_height_768.png",
+      "bytes": 252326,
+      "sha256": "b8e610f9a17e3b151055ad8c276f3020f3ede130c56bb9461e025d88c9bcd5ed"
+    },
+    {
+      "path": "TEXTURES/ALC_M6_limestone_normal_768.png",
+      "bytes": 794521,
+      "sha256": "a42299602efedb6aa2064518f3dd9aadf44bfeb489becfdfa7c70eff63a774d6"
+    },
+    {
+      "path": "TEXTURES/ALC_M6_limestone_roughness_768.png",
+      "bytes": 142946,
+      "sha256": "525ba95a433ff20a68dbfb6aaf94525da35547780fefa8070f81e0512bfd90d5"
+    },
+    {
+      "path": "TEXTURES/ALC_M6_moss_albedo_768.png",
+      "bytes": 378984,
+      "sha256": "ca8fa748478f4452452dc74caec9037f984e7a5b7cfe427c8888f992a03beb6c"
+    },
+    {
+      "path": "TEXTURES/ALC_M6_moss_height_768.png",
+      "bytes": 248648,
+      "sha256": "f73b2cec896c4dd78e91fb565410878a759fa772ac88408a961565b8502bf0a1"
+    },
+    {
+      "path": "TEXTURES/ALC_M6_moss_normal_768.png",
+      "bytes": 788322,
+      "sha256": "c081ee4a52040a671a5451b42454f93e0b88b385796463049ed528ac96dcb607"
+    },
+    {
+      "path": "TEXTURES/ALC_M6_moss_roughness_768.png",
+      "bytes": 139552,
+      "sha256": "b8a654b571865cd3cb6ddeda4120ea600902150d029ffec55443921dccc5bb09"
+    },
+    {
+      "path": "TEXTURES/ALC_M6_rootwood_albedo_768.png",
+      "bytes": 346393,
+      "sha256": "68511c0330caafd13dfc71d8c2f56860e33d5f1f559df5851825db47a08e7b92"
+    },
+    {
+      "path": "TEXTURES/ALC_M6_rootwood_height_768.png",
+      "bytes": 215382,
+      "sha256": "f11c5614f31bdbf79d46fe3276c8e77d0f78d8d2dfff10cb7feb99fc86bff3c2"
+    },
+    {
+      "path": "TEXTURES/ALC_M6_rootwood_normal_768.png",
+      "bytes": 637530,
+      "sha256": "99bf757e229e681191f5cf11ecc0b57f2440df66950b7506e818305fa3d1f352"
+    },
+    {
+      "path": "TEXTURES/ALC_M6_rootwood_roughness_768.png",
+      "bytes": 115522,
+      "sha256": "ebf3dbb2fb656b47f2cc7ec672d627decfd94d1b92fb749a4219b0dc00701d32"
+    },
+    {
+      "path": "TEXTURES/ALC_M6_silt_albedo_768.png",
+      "bytes": 317755,
+      "sha256": "338d46ebf2dde41fe11d8d702811f0ce078a40590602abcf075c7a0e0bc1891a"
+    },
+    {
+      "path": "TEXTURES/ALC_M6_silt_height_768.png",
+      "bytes": 249054,
+      "sha256": "5d374ef0e33d9bb757534282ec4f751d074b8208fedec058e208f20c16949b61"
+    },
+    {
+      "path": "TEXTURES/ALC_M6_silt_normal_768.png",
+      "bytes": 789823,
+      "sha256": "66b794becb0c52545265207aa1b4a705015a09791ed9cfdf7063bd4b060fd6c1"
+    },
+    {
+      "path": "TEXTURES/ALC_M6_silt_roughness_768.png",
+      "bytes": 139912,
+      "sha256": "dbfa09021a32849082b24a6b03f8a2752dc525b702427cc85d004462f8e1e62f"
+    },
+    {
+      "path": "TEXTURES/ALC_M6_water_albedo_768.png",
+      "bytes": 302962,
+      "sha256": "1950fa044fced62772cb9e086ec4c5a3baba1cca549082ea3b3bb6b5b84870c8"
+    },
+    {
+      "path": "TEXTURES/ALC_M6_water_height_768.png",
+      "bytes": 187001,
+      "sha256": "2c274c43b8539357e4b98bec94e527be959fc8c0de92ed4476281a11a425745b"
+    },
+    {
+      "path": "TEXTURES/ALC_M6_water_normal_768.png",
+      "bytes": 533524,
+      "sha256": "628ca9fbd1ab3a0a803bec36f2149190a8345878608179bf569d615bae95ef6b"
+    },
+    {
+      "path": "TEXTURES/ALC_M6_water_roughness_768.png",
+      "bytes": 110469,
+      "sha256": "874320e81afdd0306e4e93f940f5430f6c10c7c99e4f7968d93d601570ba7bc9"
+    },
+    {
+      "path": "RENDERS/ALC_M6_RENDER_01_overview_v001.png",
+      "bytes": 849876,
+      "sha256": "c35a4df85d7129fefe212e90635811ee4cd621e05bdcb09d713d50e92e1eebc9"
+    },
+    {
+      "path": "RENDERS/ALC_M6_RENDER_02_terraces_v001.png",
+      "bytes": 1249170,
+      "sha256": "f7954ae8d37d0b73f244b59b49d42da0f4c6c43cd3143d6e693301e2efaab50b"
+    },
+    {
+      "path": "RENDERS/ALC_M6_RENDER_03_rootwood_v001.png",
+      "bytes": 1079031,
+      "sha256": "01c6a8de847422f1bd2144794c1407b17472c721ed381fcb986f028b981029b9"
+    },
+    {
+      "path": "RENDERS/ALC_M6_RENDER_04_fern_closeup_v001.png",
+      "bytes": 1188622,
+      "sha256": "a27bacd4b4d65d25a0883447e36e3f274cca9d0b264f99bbc103d94e992e3789"
+    },
+    {
+      "path": "RENDERS/ALC_M6_RENDER_05_floodplain_v001.png",
+      "bytes": 952770,
+      "sha256": "233d1c717db079779fe9f0457fb8c9305709786ec66f677b7ee1974892682af4"
+    },
+    {
+      "path": "RENDERS/ALC_M6_RENDER_06_bank_slope_v001.png",
+      "bytes": 1202943,
+      "sha256": "ed2845a15bf67c634fbaec4d856d43e2f9cb84e5d5673422b5df5bc901e4f848"
+    },
+    {
+      "path": "RENDERS/ALC_M6_RENDER_07_calibration_ledge_v001.png",
+      "bytes": 1300469,
+      "sha256": "efec4bd72b7d2bb2f9b08a5d8c335ecb7c529c2c8cb844482dbf3472928e0889"
+    },
+    {
+      "path": "RENDERS/ALC_M6_RENDER_08_overhead_v001.png",
+      "bytes": 1052306,
+      "sha256": "be6ec772ccff72389399cf54e147733ce1f0f4c90a74c8be1692ddcda2c060cd"
+    },
+    {
+      "path": "RENDERS/ALC_M6_RENDER_09_canopy_v001.png",
+      "bytes": 1165105,
+      "sha256": "a439e608c4c62df01c7b257109633ccc431f4811d59b97fbe23981affc54ca4b"
+    },
+    {
+      "path": "RENDERS/ALC_M6_RENDER_10_dusk_v001.png",
+      "bytes": 878442,
+      "sha256": "0892549725ffb8f5f9b3f29fff3fced05a6245991f40872f6bf5a9cadb246012"
+    },
+    {
+      "path": "RENDERS/ALC_M6_CONTACT_SHEET_10_v001.jpg",
+      "bytes": 617617,
+      "sha256": "e0a83e16e3e5d194d263140a69d24b24ad7506e574aeced9e10a554f06c8dde8"
+    },
+    {
+      "path": "ALC_M6_RIVERBANK_DETAIL_TEXTURED_v001.glb",
+      "bytes": 13728468,
+      "sha256": "0f640fc0a5bc8dd385d272a7d4bde33af110931f26da785d5546150b7a42c606"
+    },
+    {
+      "path": "build_visual_zone.py",
+      "bytes": 12286,
+      "sha256": "31615be6116785ce488a284c70d3930901ce2b9a280ea1406d1e68c9f57362d5"
+    },
+    {
+      "path": "render_visual_zone.py",
+      "bytes": 4918,
+      "sha256": "42f2a9e5f18c27ebf4ec2b6f65944c967a7db2260b1fd360a07ea0593f230ab0"
+    },
+    {
+      "path": "package_batch.py",
+      "bytes": 1309,
+      "sha256": "b22f8c7b7f8e0b03d8a2b3dc002ff5c39192477c29af96dee9dcc91cc62073a1"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2923,
+      "sha256": "58cbd8416941733d04ded4132fcf9fc77d9db37bfbcdd5097a104eaaaf88866b"
+    },
+    {
+      "path": "GODOT_MODULE_DESIGN.md",
+      "bytes": 460,
+      "sha256": "058d2cfbb71602f67fb732aacaa488e9df0cb13962e824d5700bcae493c1c8ba"
+    },
+    {
+      "path": "ASSET_MANIFEST.json",
+      "bytes": 1765,
+      "sha256": "9255941b07cf672ac79f6591ced7774a3b94529bf22ebb943193ef76dd6a0fdd"
+    }
+  ],
+  "verification": [
+    "GLB parsed by trimesh",
+    "ten actual camera renders generated from GLB",
+    "PBR textures generated programmatically",
+    "ZIP testzip CRC check"
+  ]
+}
