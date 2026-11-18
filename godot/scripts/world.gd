@@ -129,13 +129,13 @@ func _build_land() -> void:
 		for xi in range(LAND_STEPS):
 			var x0: float = -LAND_EXTENT + (float(xi) / LAND_STEPS) * LAND_EXTENT * 2.0
 			var x1: float = -LAND_EXTENT + (float(xi + 1) / LAND_STEPS) * LAND_EXTENT * 2.0
-			# CCW orientation keeps terrain normals upward.
+			# Correct winding for native Godot front faces, verified with M7 3D screenshots.
 			_put_colored_vertex(surface, x0, z0)
-			_put_colored_vertex(surface, x0, z1)
-			_put_colored_vertex(surface, x1, z0)
 			_put_colored_vertex(surface, x1, z0)
 			_put_colored_vertex(surface, x0, z1)
+			_put_colored_vertex(surface, x1, z0)
 			_put_colored_vertex(surface, x1, z1)
+			_put_colored_vertex(surface, x0, z1)
 	surface.generate_normals()
 	var mesh := surface.commit()
 	var land := MeshInstance3D.new()
