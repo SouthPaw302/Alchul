@@ -16,6 +16,7 @@ const M10_STATIC_BATCHER: Script = preload("res://scripts/m10_static_batcher.gd"
 var height_at: Callable
 var m10_static_batch_stats: Dictionary = {}
 var m10_extended_batch_stats: Dictionary = {}
+var m10_web_perf_profile: String = "reference"
 var branch_mat: StandardMaterial3D
 var timber_mat: StandardMaterial3D
 var stone_mat: StandardMaterial3D
@@ -191,6 +192,7 @@ func _build_covered_nursery_route() -> void:
 func _build_m8_environment() -> void:
 	var candidate: Node3D = M8_ENVIRONMENT.new()
 	candidate.name = "M8RiverbankWebCandidate"
+	candidate.set("simple_web_water", m10_web_perf_profile in ["static_water", "all_light"])
 	candidate.set("height_at", height_at)
 	add_child(candidate)
 
@@ -202,6 +204,7 @@ func _build_m7_pbr() -> void:
 func _build_m6_materials() -> void:
 	var candidate: Node3D = M6_MATERIALS.new()
 	candidate.name = "M6RiverbankMaterials_Candidate"
+	candidate.set("simple_web_shader", m10_web_perf_profile in ["simple_m6", "all_light"])
 	candidate.set("height_at", height_at)
 	add_child(candidate)
 
