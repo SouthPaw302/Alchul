@@ -84,6 +84,14 @@ func _run() -> void:
 			push_error("M7 VISUAL FAIL: image capture failed at " + PATHS[i])
 			quit(1)
 			return
+		# Prevent a historic regression where the ground was invisible due to
+		# triangle winding. This camera/pixel is part of the stable review rig.
+		if i == 0:
+			var ground: Color = image.get_pixel(480, 450)
+			if ground.g > 0.56 or ground.b > 0.56:
+				push_error("M7 VISUAL FAIL: floodplain pixel resembles sky; inspect terrain winding")
+				quit(1)
+				return
 		var destination: String = output_path.path_join(PATHS[i] + ".png")
 		if image.save_png(destination) != OK:
 			push_error("M7 VISUAL FAIL: unable to save screenshot " + destination)
