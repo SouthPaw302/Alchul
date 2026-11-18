@@ -1,8 +1,5 @@
 extends Node3D
 
-const SEGMENT_BATCH: Script = preload("res://scripts/segment_batch_m8.gd")
-var beam_batch: Node3D
-
 ## Batch 03: protected nursery approach (candidate, not canon).
 ## Nonhuman spatial logic is a hypothesis. No inhabitants, eggs or exact dimensions shown.
 ## No external assets, no runtime network dependencies.
@@ -17,9 +14,6 @@ var moss: StandardMaterial3D
 var water: StandardMaterial3D
 
 func _ready() -> void:
-	beam_batch = SEGMENT_BATCH.new()
-	beam_batch.name = "M8BatchedBeams"
-	add_child(beam_batch)
 	earth = _material(Color(0.38, 0.38, 0.27))
 	clay = _material(Color(0.62, 0.47, 0.34))
 	stone = _material(Color(0.52, 0.53, 0.42))
@@ -33,8 +27,6 @@ func _ready() -> void:
 	_build_chamber(-3.4, 9.0, 2.7)
 	_build_drainage()
 	_build_growth()
-
-	beam_batch.call("flush")
 
 func _material(c: Color, rough: float = 0.90, alpha: bool = false) -> StandardMaterial3D:
 	var m := StandardMaterial3D.new()
@@ -58,7 +50,16 @@ func _mesh(p: Vector3, m: Mesh, mat: Material) -> MeshInstance3D:
 	return o
 
 func _rod(a: Vector3, b: Vector3, radius: float, mat: Material) -> void:
-	beam_batch.call("add_rod",a,b,radius,mat)
+	var d := b - a
+	if d.length_squared() <= 0.000001:
+		return
+	var m := CylinderMesh.new()
+	m.height = d.length()
+	m.top_radius = radius * 0.85
+	m.bottom_radius = radius
+	m.radial_segments = 7
+	var o := _mesh((a + b) * 0.5, m, mat)
+	o.quaternion = Quaternion(Vector3.UP, d.normalized())
 
 func _box(p: Vector3, size: Vector3, mat: Material) -> void:
 	var m := BoxMesh.new()
