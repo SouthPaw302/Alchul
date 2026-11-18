@@ -1,5 +1,8 @@
 extends Node3D
 
+const SEGMENT_BATCH: Script = preload("res://scripts/segment_batch_m8.gd")
+var beam_batch: Node3D
+
 ## Batch 02 / River-reading station — Godot-native schematic geometry.
 ## Exploratory and reproducible: no foreign imports, no magic, no live network.
 ## Separate from the standalone GLB candidate archived on Google Drive.
@@ -18,6 +21,9 @@ const CENTER_X := 8.1
 const CENTER_Z := -2.9
 
 func _ready() -> void:
+	beam_batch = SEGMENT_BATCH.new()
+	beam_batch.name = "M8BatchedBeams"
+	add_child(beam_batch)
 	stone = _mat(Color(0.47, 0.47, 0.37), 0.93)
 	wet_stone = _mat(Color(0.32, 0.37, 0.33), 0.71)
 	timber = _mat(Color(0.48, 0.34, 0.20), 0.85)
@@ -32,6 +38,8 @@ func _ready() -> void:
 	_build_sensor_stones()
 	_build_water_return()
 	_build_shore_growth()
+
+	beam_batch.call("flush")
 
 func _mat(color: Color, rough: float, alpha: bool = false) -> StandardMaterial3D:
 	var m := StandardMaterial3D.new()
@@ -58,16 +66,7 @@ func _box(p: Vector3, s: Vector3, mat: Material) -> void:
 	_mesh(p, b, mat)
 
 func _segment(a: Vector3, b: Vector3, radius: float, mat: Material) -> void:
-	var d := b - a
-	if d.length_squared() < 0.000001:
-		return
-	var cyl := CylinderMesh.new()
-	cyl.height = d.length()
-	cyl.bottom_radius = radius
-	cyl.top_radius = radius * 0.82
-	cyl.radial_segments = 7
-	var n := _mesh((a + b) * 0.5, cyl, mat)
-	n.quaternion = Quaternion(Vector3.UP, d.normalized())
+	beam_batch.call("add_rod",a,b,radius,mat)
 
 func _sphere(p: Vector3, scale_vec: Vector3, mat: Material) -> void:
 	var s := SphereMesh.new()
