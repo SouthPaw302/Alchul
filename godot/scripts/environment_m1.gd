@@ -41,6 +41,10 @@ func _ready() -> void:
 	_build_m8_environment()
 	_build_bank_reinforcement()
 	_build_wetland_detail()
+	# The parent contains only extra static bankside mesh instances plus independent
+	# child modules; this operation never walks into the other candidates.
+	if OS.get_environment("ALCHUL_M10_STATIC_BATCH") != "0":
+		m10_extended_batch_stats["wetland_detail"] = M10_STATIC_BATCHER.batch_direct_static_meshes(self)
 
 func _mat(color: Color, roughness: float = 0.91, alpha: bool = false) -> StandardMaterial3D:
 	var m := StandardMaterial3D.new()
