@@ -81,3 +81,12 @@ The M8 beam-batching attempt made roof arches appear as spikes and was rejected.
 **M9 is not a new artwork batch.** The next deliverable is a verified original station + texture import, not another depiction of the station.
 
 Related: [M9–M12 roadmap](ROADMAP_M9_M12_ASSETS_AND_INHABITANTS.md) · [Godot source](../godot/) · [Drive archive](https://drive.google.com/drive/folders/1EwcWrWDHsSr5KniPfhmhN2zLRmGMXANW).
+
+## Follow-up verification: pilot asset bytes and UVs (2026-11-18)
+
+[Complete source-integrity report](M9_SOURCE_INTEGRITY_CHECK.md) now records direct downloaded-byte verification for the M2 GLB and independently checked M6 archive members. This replaces the initial purely metadata-based status **for those specific sources only**.
+
+- **M2 GLB direct SHA-256 matched its archived manifest:** `4e1a48850ea6d3e2b50e2a923ac07d11f637b9629090e7bcda5f3299ab5822c3`; 19 meshes, 93,114 triangles and **zero meshes with UV coordinates**.
+- **M6 source ZIP passed CRC, SHA-256 and size checks on all 46 manifest-listed members**, including 28 original 768×768 PNG textures and the M6 GLB. The packaged M6 GLB has 7 meshes, 141,176 triangles and UV coordinates on all 7 meshes.
+- **Critical M10 design correction:** import M2 source geometry separately; test genuine M6 textures first on the M6 UV-ready mesh. Add UV mapping or a documented triplanar solution for selected M2 structural surfaces instead of assuming it already has UVs.
+- This does **not** establish the checksums of separately stored M6 Drive PNGs, or substitute for a native Godot visual validation. Gate 0 remains open and the live site is unchanged.
