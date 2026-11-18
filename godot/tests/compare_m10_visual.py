@@ -45,7 +45,22 @@ def compare(original: pathlib.Path, optimized: pathlib.Path, out: pathlib.Path) 
             if changed_fraction > 0.35 or mae > 42.0:
                 flagged.append(first.name)
     out.parent.mkdir(parents=True, exist_ok=True)
+    before_metrics = json.loads((original / "capture_metrics.json").read_text("utf-8"))
+    after_metrics = json.loads((optimized / "capture_metrics.json").read_text("utf-8"))
+    before_draw_calls = before_metrics.get("draw_calls_per_view", [])
+    after_draw_calls = after_metrics.get("draw_calls_per_view", [])
+    if len(before_draw_calls) != 10 or len(after_draw_calls) != 10:
+        raise RuntimeError("Expected real draw-call counters for all ten native views")
+    draw_reductions = [a - b for a, b in zip(before_draw_calls, after_draw_calls)]
     result = {
+        "native_draw_calls": {
+            "before": before_draw_calls,
+            "after": after_draw_calls,
+            "per_view_reduction": draw_reductions,
+            "median_before": sorted(before_draw_calls)[5],
+            "median_after": sorted(after_draw_calls)[5],
+            "metric_note": "Godot RenderingServer draw calls, not web RAF or desktop FPS",
+        },
         "status": "candidate_visual_regression_data_not_canon",
         "reference": "unbatched station from same Git SHA",
         "variant": "M10 SurfaceTool static bake, full local transforms, alpha excluded",
@@ -61,6 +76,8 @@ def compare(original: pathlib.Path, optimized: pathlib.Path, out: pathlib.Path) 
     out.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     for r in report:
         print(f"{r['name']}: pixel_change={r['pixels_differing_over_32_ratio']:.3%}, MAE={r['mae_0_to_255']:.2f}")
+    print("M10 DRAW CALLS BEFORE:", before_draw_calls)
+    print("M10 DRAW CALLS AFTER:", after_draw_calls)
     print("M10 VISUAL QA:", "FLAGGED " + ", ".join(flagged) if flagged else "THRESHOLD PASS")
     return 1 if flagged else 0
 
