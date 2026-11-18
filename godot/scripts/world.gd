@@ -4,6 +4,7 @@ extends Node3D
 ## All scene geometry is original, provisional, and explicitly noncanonical.
 
 const OBSERVER_SCENE: Script = preload("res://scripts/observer.gd")
+const M1_ENVIRONMENT: Script = preload("res://scripts/environment_m1.gd")
 const WORLDBOOK: String = "res://data/worldbook.json"
 const LAND_EXTENT: float = 60.0
 const LAND_STEPS: int = 52
@@ -35,11 +36,19 @@ func _ready() -> void:
 	_build_land()
 	_build_water()
 	_build_vegetation()
+	_build_m1_environment()
 	_build_study_sites()
 	_build_study_figure()
 	_build_observer()
 	_build_interface()
 	_set_lens("outside")
+
+func _build_m1_environment() -> void:
+	# Additive, reversible visual study; existing terrain, navigation and interpretive sites remain authoritative.
+	var study: Node3D = M1_ENVIRONMENT.new()
+	study.name = "M1RiverEnvironment_Candidate"
+	study.set("height_at", Callable(self, "terrain_height"))
+	add_child(study)
 
 func _load_worldbook() -> void:
 	var bytes: String = FileAccess.get_file_as_string(WORLDBOOK)
@@ -120,13 +129,13 @@ func _build_land() -> void:
 		for xi in range(LAND_STEPS):
 			var x0: float = -LAND_EXTENT + (float(xi) / LAND_STEPS) * LAND_EXTENT * 2.0
 			var x1: float = -LAND_EXTENT + (float(xi + 1) / LAND_STEPS) * LAND_EXTENT * 2.0
-			# CCW orientation keeps terrain normals upward.
+			# Correct winding for native Godot front faces, verified with M7 3D screenshots.
 			_put_colored_vertex(surface, x0, z0)
-			_put_colored_vertex(surface, x0, z1)
-			_put_colored_vertex(surface, x1, z0)
 			_put_colored_vertex(surface, x1, z0)
 			_put_colored_vertex(surface, x0, z1)
+			_put_colored_vertex(surface, x1, z0)
 			_put_colored_vertex(surface, x1, z1)
+			_put_colored_vertex(surface, x0, z1)
 	surface.generate_normals()
 	var mesh := surface.commit()
 	var land := MeshInstance3D.new()

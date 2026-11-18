@@ -1,0 +1,68 @@
+name: Alchul M7 native visual review
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "godot/scripts/world.gd"
+      - "godot/scripts/materials_m6.gd"
+      - "godot/scripts/environment_m8.gd"
+      - "godot/scripts/segment_batch_m8.gd"
+      - "godot/scripts/station_m2.gd"
+      - "godot/scripts/nursery_m3.gd"
+      - "godot/scripts/harvest_m4.gd"
+      - "godot/tests/smoke.gd"
+      - "godot/scripts/materials_m7.gd"
+      - "godot/scripts/environment_m1.gd"
+      - "godot/tests/render_m7.gd"
+      - ".github/workflows/alchul-m7-visual.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  godot-visual-capture:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      ALCHUL_M7_RENDER_DIR: ${{ github.workspace }}/m7-screens
+      LIBGL_ALWAYS_SOFTWARE: "1"
+    steps:
+      - name: Checkout candidate
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Prepare virtual OpenGL display
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq curl unzip xvfb libgl1-mesa-dri libglu1-mesa libxrandr2
+      - name: Install pinned Godot 4.7.2
+        run: |
+          set -euo pipefail
+          curl -fL --retry 3 \
+            "https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip" \
+            -o "$RUNNER_TEMP/godot.zip"
+          echo "cadd3204e728a35d3f13adb7fd0d7902636b79f6b95c40c265eb73b6c35329e4  $RUNNER_TEMP/godot.zip" | sha256sum -c -
+          unzip -q "$RUNNER_TEMP/godot.zip" -d "$RUNNER_TEMP"
+          chmod +x "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64"
+      - name: Import and compile native Godot project
+        run: |
+          set -euo pipefail
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot --editor --import --quit
+      - name: Render ten actual engine screenshots
+        run: |
+          set -euo pipefail
+          mkdir -p "$ALCHUL_M7_RENDER_DIR"
+          xvfb-run -a -s '-screen 0 1024x768x24' \
+            "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" \
+              --path godot --rendering-method gl_compatibility \
+              --script res://tests/render_m7.gd
+          test "$(find "$ALCHUL_M7_RENDER_DIR" -name '*.png' | wc -l)" -eq 10
+      - name: Archive native screenshot evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: alchul-m7-godot-native-screenshots
+          path: m7-screens/
+          if-no-files-found: warn
+          retention-days: 14
