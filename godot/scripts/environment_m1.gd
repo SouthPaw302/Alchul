@@ -1,5 +1,8 @@
 extends Node3D
 
+const SEGMENT_BATCH: Script = preload("res://scripts/segment_batch_m8.gd")
+var beam_batch: Node3D
+
 const M2_STATION: Script = preload("res://scripts/station_m2.gd")
 const M3_NURSERY: Script = preload("res://scripts/nursery_m3.gd")
 const M4_HARVEST: Script = preload("res://scripts/harvest_m4.gd")
@@ -22,6 +25,9 @@ var reed_mat: StandardMaterial3D
 var water_mat: StandardMaterial3D
 
 func _ready() -> void:
+	beam_batch = SEGMENT_BATCH.new()
+	beam_batch.name = "M8BatchedBeams"
+	add_child(beam_batch)
 	branch_mat = _mat(Color(0.30, 0.21, 0.14))
 	timber_mat = _mat(Color(0.46, 0.34, 0.22))
 	stone_mat = _mat(Color(0.43, 0.46, 0.36))
@@ -38,6 +44,8 @@ func _ready() -> void:
 	_build_m8_environment()
 	_build_bank_reinforcement()
 	_build_wetland_detail()
+
+	beam_batch.call("flush")
 
 func _mat(color: Color, roughness: float = 0.91, alpha: bool = false) -> StandardMaterial3D:
 	var m := StandardMaterial3D.new()
@@ -66,16 +74,7 @@ func _beam(where: Vector3, size: Vector3, mat: Material) -> void:
 	_mesh(where, b, mat)
 
 func _rod(a: Vector3, b: Vector3, radius: float, mat: Material) -> void:
-	var delta := b - a
-	if delta.length_squared() < 0.00001:
-		return
-	var c := CylinderMesh.new()
-	c.height = delta.length()
-	c.top_radius = radius * 0.9
-	c.bottom_radius = radius
-	c.radial_segments = 7
-	var node := _mesh((a + b) / 2.0, c, mat)
-	node.quaternion = Quaternion(Vector3.UP, delta.normalized())
+	beam_batch.call("add_rod",a,b,radius,mat)
 
 func _disc(p: Vector3, radius: float, thickness: float, mat: Material) -> void:
 	var c := CylinderMesh.new()
