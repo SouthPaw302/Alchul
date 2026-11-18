@@ -55,9 +55,11 @@ func _read_m10_web_perf_profile() -> String:
 		return "reference"
 	var requested: Variant = JavaScriptBridge.eval("new URLSearchParams(window.location.search).get('alchul_perf') || 'reference'")
 	var mode: String = str(requested)
-	if mode in ["no_shadows", "simple_m6", "static_water", "all_light"]:
-		return mode
-	return "reference"
+	if not mode in ["no_shadows", "simple_m6", "static_water", "all_light"]:
+		mode = "reference"
+	# Test harness can prove which switch Godot actually selected.
+	JavaScriptBridge.eval("window.alchulM10ActiveProfile='" + mode + "'")
+	return mode
 
 func _build_m1_environment() -> void:
 	# Additive, reversible visual study; existing terrain, navigation and interpretive sites remain authoritative.
