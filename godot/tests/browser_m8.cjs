@@ -7,6 +7,7 @@ const url = process.argv[2] || 'http://127.0.0.1:8765/';
 const output = process.env.ALCHUL_M8_BROWSER_DIR || 'm8-browser';
 fs.mkdirSync(output, {recursive:true});
 
+const hardStop = setTimeout(()=>{console.error("ALCHUL M8 BROWSER FAIL: 90-second watchdog expired");process.exit(2);}, 90000);
 async function main() {
   const browser = await chromium.launch({
     headless:true,
@@ -29,7 +30,7 @@ async function main() {
   if(!webgl) throw new Error('Chromium SwiftShader has no WebGL2 support');
   await page.locator('canvas').first().waitFor({state:'attached',timeout:90000});
   await page.waitForTimeout(9000);
-  await page.screenshot({path:output+'/M8_GODOT_BROWSER_PREVIEW.png',fullPage:true});
+  await page.screenshot({path:output+'/M8_GODOT_BROWSER_PREVIEW.png',fullPage:true,timeout:25000});
   const timings = await page.evaluate(()=>new Promise(resolve=>{
     let last=performance.now();const deltas=[];
     let finished=false;
@@ -52,6 +53,7 @@ async function main() {
   await browser.close();
   if(fatal.length) throw new Error('Browser game raised fatal errors: '+fatal.join('; '));
   if(!Number.isFinite(p95)||p95>250) throw new Error('Browser rendering stalled, p95 RAF '+p95+' ms');
+  clearTimeout(hardStop);
   console.log('ALCHUL M8 BROWSER SMOKE PASS',JSON.stringify(result));
 }
 main().catch(e=>{console.error('ALCHUL M8 BROWSER FAIL',e.stack||e.message); process.exit(1);});
