@@ -54,3 +54,13 @@ Accept only when:
 5. The change is deliberately promoted from PR to main and the GitHub Pages deployment result is confirmed.
 
 Until then, link users to the **existing** GitHub Pages game as the baseline, and the M8 GitHub Actions artifact as the candidate, *not* to a non-existent preview URL.
+
+## 8. Verified execution and QA findings (November 18)
+
+- **Native collision + scene test passed** on M8 commit `cddbe6ae` in [run 44261526155](https://github.com/SouthPaw302/Alchul/actions/runs/44261526155).
+- **Ten actual native Godot screenshots** passed in [run 44261526230](https://github.com/SouthPaw302/Alchul/actions/runs/44261526230), archived on [Drive (v001, retained)](https://drive.google.com/drive/folders/1TjtRy3huMRqIyb-UmX-s5NzIqFMR3fX0).
+- The **first standalone Godot browser export** compiled and **actually launched in Chromium SwiftShader/WebGL2**, producing a [browser screenshot](https://drive.google.com/file/d/1xO2T7M7994eyHxdgXYkClccvNB1ZXdym/view), [complete downloadable Web export](https://drive.google.com/file/d/1HDVvRIMUvoLIAaUrPkgfNc2iVQAn9Orp/view) and [recorded browser metrics](https://drive.google.com/file/d/1im3sUR_WwzOEUQmUUOYUSdwwcuUvwNqr/view). JavaScript fatal error count was zero; software-GL RAF median ~733ms, p95 ~883ms — **performance budget not met**, so no automatic promotion to Pages.
+- Performance optimization trial: material-batched `MultiMesh` beams compiled, but ten real native Godot images showed the roof arches had become **vertical spikes**. This was a serious visual regression. The trial is archived under [REJECTED_M8_BEAM_MULTIMESH_EXPERIMENT_v002](https://drive.google.com/drive/folders/1SLx2fVWhjfoxdcZwCvx9W4JDkqJrpyrS). The main M1–M4 source was restored from the verified pre-experiment commit `54536b07`; the unused batch helper was deleted. **Never use the v002 imagery as accepted assets.**
+- A separate browser smoke now distinguishes a *functional* WebGL2 run from the *performance acceptance gate*; SwiftShader measurements remain a warning, not proof of user hardware FPS.
+- Final source after rollback: `fbe5f472b6ce7cc071f411050412a1dd06be7ad1`. Native and Web verification of that exact source run through [native](https://github.com/SouthPaw302/Alchul/actions/runs/44263026169), [ten-shot capture](https://github.com/SouthPaw302/Alchul/actions/runs/44263026121) and [Web preview](https://github.com/SouthPaw302/Alchul/actions/runs/44263026289). Treat those last run statuses as pending unless read back as complete.
+- Source archive and production ledger are in [Batch 08 QA documentation folder](https://drive.google.com/drive/folders/1VL8ot48oZ1yIWOaLhTVtzpe6asuLJhFq); current public Pages stays on unchanged main.
