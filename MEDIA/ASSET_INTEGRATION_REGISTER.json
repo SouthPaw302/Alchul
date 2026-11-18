@@ -1160,10 +1160,30 @@
       "bytes": 2364296,
       "url": "https://drive.google.com/file/d/1f-iQjSM6P7m4StfFaECLh0Kb6Q_NacPN/view?usp=drivesdk",
       "role": "source_glb",
-      "sha256": null,
-      "sha256_verification": "pending_independent_byte_check",
+      "sha256": "4e1a48850ea6d3e2b50e2a923ac07d11f637b9629090e7bcda5f3299ab5822c3",
+      "sha256_verification": "independent_direct_drive_bytes_sha256_matches_archived_manifest",
       "runtime_status": "not_imported_to_tracked_godot_assets",
-      "acceptance": "candidate_not_approved"
+      "acceptance": "candidate_not_approved",
+      "geometry_analysis": {
+        "mesh_count": 19,
+        "triangle_count": 93114,
+        "vertex_count": 78493,
+        "uv_mesh_count": 0,
+        "coordinate_system": "Y_up_meters_from_manifest",
+        "bounds_m": {
+          "min": [
+            -41.83597183,
+            -1.99510014,
+            -41
+          ],
+          "max": [
+            41.83597183,
+            7.3397975,
+            41
+          ]
+        },
+        "notes": "No UVs in any of 19 meshes; do not assume immediate conventional UV-PBR texture mapping."
+      }
     },
     {
       "id": "1HnNQEiRh3diiNPe_t32Hu5zKvC5OyBWY",
@@ -2303,7 +2323,13 @@
       "sha256": null,
       "sha256_verification": "pending_independent_byte_check",
       "runtime_status": "not_imported_to_tracked_godot_assets",
-      "acceptance": "candidate_not_approved"
+      "acceptance": "candidate_not_approved",
+      "package_member_sha256_status": "independently_hash_verified_from_M6_complete_visual_pack_zip",
+      "package_member_path": "TEXTURES/ALC_M6_clay_albedo_768.png",
+      "package_member_dimensions_px": [
+        768,
+        768
+      ]
     },
     {
       "id": "1dZdgQA4xnL4POubfM_F8WFfUgW8RQKrc",
@@ -2318,7 +2344,13 @@
       "sha256": null,
       "sha256_verification": "pending_independent_byte_check",
       "runtime_status": "not_imported_to_tracked_godot_assets",
-      "acceptance": "candidate_not_approved"
+      "acceptance": "candidate_not_approved",
+      "package_member_sha256_status": "independently_hash_verified_from_M6_complete_visual_pack_zip",
+      "package_member_path": "TEXTURES/ALC_M6_clay_height_768.png",
+      "package_member_dimensions_px": [
+        768,
+        768
+      ]
     },
     {
       "id": "15K_K5v4B18VsBIvwC0qb-RHtn1uWVOC0",
@@ -2333,7 +2365,13 @@
       "sha256": null,
       "sha256_verification": "pending_independent_byte_check",
       "runtime_status": "not_imported_to_tracked_godot_assets",
-      "acceptance": "candidate_not_approved"
+      "acceptance": "candidate_not_approved",
+      "package_member_sha256_status": "independently_hash_verified_from_M6_complete_visual_pack_zip",
+      "package_member_path": "TEXTURES/ALC_M6_clay_normal_768.png",
+      "package_member_dimensions_px": [
+        768,
+        768
+      ]
     },
     {
       "id": "156MXjRtrvnH47HEBlhN1VthBrq3mATCy",
@@ -2348,7 +2386,13 @@
       "sha256": null,
       "sha256_verification": "pending_independent_byte_check",
       "runtime_status": "not_imported_to_tracked_godot_assets",
-      "acceptance": "candidate_not_approved"
+      "acceptance": "candidate_not_approved",
+      "package_member_sha256_status": "independently_hash_verified_from_M6_complete_visual_pack_zip",
+      "package_member_path": "TEXTURES/ALC_M6_clay_roughness_768.png",
+      "package_member_dimensions_px": [
+        768,
+        768
+      ]
     },
     {
       "id": "1JT8WpfRaLkzauSX94XNdnzYTCs30cZeO",
@@ -2363,7 +2407,13 @@
       "sha256": null,
       "sha256_verification": "pending_independent_byte_check",
       "runtime_status": "not_imported_to_tracked_godot_assets",
-      "acceptance": "candidate_not_approved"
+      "acceptance": "candidate_not_approved",
+      "package_member_sha256_status": "independently_hash_verified_from_M6_complete_visual_pack_zip",
+      "package_member_path": "TEXTURES/ALC_M6_fern_albedo_768.png",
+      "package_member_dimensions_px": [
+        768,
+        768
+      ]
     },
     {
       "id": "1Ch595Xu6QFmoiJEk09aul8noBs5g_VqQ",
@@ -2378,7 +2428,13 @@
       "sha256": null,
       "sha256_verification": "pending_independent_byte_check",
       "runtime_status": "not_imported_to_tracked_godot_assets",
-      "acceptance": "candidate_not_approved"
+      "acceptance": "candidate_not_approved",
+      "package_member_sha256_status": "independently_hash_verified_from_M6_complete_visual_pack_zip",
+      "package_member_path": "TEXTURES/ALC_M6_fern_height_768.png",
+      "package_member_dimensions_px": [
+        768,
+        768
+      ]
     },
     {
       "id": "1gu8WsO_9v3HI5eQudLeU4PE9RQThchBo",
@@ -2393,7 +2449,13 @@
       "sha256": null,
       "sha256_verification": "pending_independent_byte_check",
       "runtime_status": "not_imported_to_tracked_godot_assets",
-      "acceptance": "candidate_not_approved"
+      "acceptance": "candidate_not_approved",
+      "package_member_sha256_status": "independently_hash_verified_from_M6_complete_visual_pack_zip",
+      "package_member_path": "TEXTURES/ALC_M6_fern_normal_768.png",
+      "package_member_dimensions_px": [
+        768,
+        768
+      ]
     },
     {
       "id": "1ty8pq5XtRZL3LUbkVfQebPAFyeA0moNH",
@@ -2408,7 +2470,13 @@
       "sha256": null,
       "sha256_verification": "pending_independent_byte_check",
       "runtime_status": "not_imported_to_tracked_godot_assets",
-      "acceptance": "candidate_not_approved"
+      "acceptance": "candidate_not_approved",
+      "package_member_sha256_status": "independently_hash_verified_from_M6_complete_visual_pack_zip",
+      "package_member_path": "TEXTURES/ALC_M6_fern_roughness_768.png",
+      "package_member_dimensions_px": [
+        768,
+        768
+      ]
     },
     {
       "id": "1lBTcsTOJxzs7wOhxddAyKM1O7uBLrGkI",
@@ -2423,7 +2491,13 @@
       "sha256": null,
       "sha256_verification": "pending_independent_byte_check",
       "runtime_status": "not_imported_to_tracked_godot_assets",
-      "acceptance": "candidate_not_approved"
+      "acceptance": "candidate_not_approved",
+      "package_member_sha256_status": "independently_hash_verified_from_M6_complete_visual_pack_zip",
+      "package_member_path": "TEXTURES/ALC_M6_limestone_albedo_768.png",
+      "package_member_dimensions_px": [
+        768,
+        768
+      ]
     },
     {
       "id": "1UsO8PSlvcwZpCH74JpxsRmV1PtEwAgaa",
@@ -2438,7 +2512,13 @@
       "sha256": null,
       "sha256_verification": "pending_independent_byte_check",
       "runtime_status": "not_imported_to_tracked_godot_assets",
-      "acceptance": "candidate_not_approved"
+      "acceptance": "candidate_not_approved",
+      "package_member_sha256_status": "independently_hash_verified_from_M6_complete_visual_pack_zip",
+      "package_member_path": "TEXTURES/ALC_M6_limestone_height_768.png",
+      "package_member_dimensions_px": [
+        768,
+        768
+      ]
     },
     {
       "id": "1L34JZr4itP3OHySa9afsMoFHdDJh8oOe",
@@ -2453,7 +2533,13 @@
       "sha256": null,
       "sha256_verification": "pending_independent_byte_check",
       "runtime_status": "not_imported_to_tracked_godot_assets",
-      "acceptance": "candidate_not_approved"
+      "acceptance": "candidate_not_approved",
+      "package_member_sha256_status": "independently_hash_verified_from_M6_complete_visual_pack_zip",
+      "package_member_path": "TEXTURES/ALC_M6_limestone_normal_768.png",
+      "package_member_dimensions_px": [
+        768,
+        768
+      ]
     },
     {
       "id": "1w22S7b7WGYV232_LdFLeNGHF5f84um0B",
@@ -2468,7 +2554,13 @@
       "sha256": null,
       "sha256_verification": "pending_independent_byte_check",
       "runtime_status": "not_imported_to_tracked_godot_assets",
-      "acceptance": "candidate_not_approved"
+      "acceptance": "candidate_not_approved",
+      "package_member_sha256_status": "independently_hash_verified_from_M6_complete_visual_pack_zip",
+      "package_member_path": "TEXTURES/ALC_M6_limestone_roughness_768.png",
+      "package_member_dimensions_px": [
+        768,
+        768
+      ]
     },
     {
       "id": "1DRYMc5RdHYhc1WqCmJqu7FU3F-s7Kiml",
@@ -2483,7 +2575,13 @@
       "sha256": null,
       "sha256_verification": "pending_independent_byte_check",
       "runtime_status": "not_imported_to_tracked_godot_assets",
-      "acceptance": "candidate_not_approved"
+      "acceptance": "candidate_not_approved",
+      "package_member_sha256_status": "independently_hash_verified_from_M6_complete_visual_pack_zip",
+      "package_member_path": "TEXTURES/ALC_M6_moss_albedo_768.png",
+      "package_member_dimensions_px": [
+        768,
+        768
+      ]
     },
     {
       "id": "1pzGwFg0o_8CCVfH2KzZ_J39SHMqrZa5n",
@@ -2498,7 +2596,13 @@
       "sha256": null,
       "sha256_verification": "pending_independent_byte_check",
       "runtime_status": "not_imported_to_tracked_godot_assets",
-      "acceptance": "candidate_not_approved"
+      "acceptance": "candidate_not_approved",
+      "package_member_sha256_status": "independently_hash_verified_from_M6_complete_visual_pack_zip",
+      "package_member_path": "TEXTURES/ALC_M6_moss_height_768.png",
+      "package_member_dimensions_px": [
+        768,
+        768
+      ]
     },
     {
       "id": "162g65ULPFY0h9lvLy9MtZ03iBG8t0Krl",
@@ -2513,7 +2617,13 @@
       "sha256": null,
       "sha256_verification": "pending_independent_byte_check",
       "runtime_status": "not_imported_to_tracked_godot_assets",
-      "acceptance": "candidate_not_approved"
+      "acceptance": "candidate_not_approved",
+      "package_member_sha256_status": "independently_hash_verified_from_M6_complete_visual_pack_zip",
+      "package_member_path": "TEXTURES/ALC_M6_moss_normal_768.png",
+      "package_member_dimensions_px": [
+        768,
+        768
+      ]
     },
     {
       "id": "1ds3104SIqh5WFMHKwOuYNsU7B2xThpcZ",
@@ -2528,7 +2638,13 @@
       "sha256": null,
       "sha256_verification": "pending_independent_byte_check",
       "runtime_status": "not_imported_to_tracked_godot_assets",
-      "acceptance": "candidate_not_approved"
+      "acceptance": "candidate_not_approved",
+      "package_member_sha256_status": "independently_hash_verified_from_M6_complete_visual_pack_zip",
+      "package_member_path": "TEXTURES/ALC_M6_moss_roughness_768.png",
+      "package_member_dimensions_px": [
+        768,
+        768
+      ]
     },
     {
       "id": "1WFYcDbN5DOl0uw3bd3BzuxF00C1uxgbR",
@@ -2543,7 +2659,13 @@
       "sha256": null,
       "sha256_verification": "pending_independent_byte_check",
       "runtime_status": "not_imported_to_tracked_godot_assets",
-      "acceptance": "candidate_not_approved"
+      "acceptance": "candidate_not_approved",
+      "package_member_sha256_status": "independently_hash_verified_from_M6_complete_visual_pack_zip",
+      "package_member_path": "TEXTURES/ALC_M6_rootwood_albedo_768.png",
+      "package_member_dimensions_px": [
+        768,
+        768
+      ]
     },
     {
       "id": "1REcLG6pmWdVt8mHPy-x6xJAqX_72i8n1",
@@ -2558,7 +2680,13 @@
       "sha256": null,
       "sha256_verification": "pending_independent_byte_check",
       "runtime_status": "not_imported_to_tracked_godot_assets",
-      "acceptance": "candidate_not_approved"
+      "acceptance": "candidate_not_approved",
+      "package_member_sha256_status": "independently_hash_verified_from_M6_complete_visual_pack_zip",
+      "package_member_path": "TEXTURES/ALC_M6_rootwood_height_768.png",
+      "package_member_dimensions_px": [
+        768,
+        768
+      ]
     },
     {
       "id": "1Hqv3N-rIFGk9tHgoR17YnC5Ch8--_3yx",
@@ -2573,7 +2701,13 @@
       "sha256": null,
       "sha256_verification": "pending_independent_byte_check",
       "runtime_status": "not_imported_to_tracked_godot_assets",
-      "acceptance": "candidate_not_approved"
+      "acceptance": "candidate_not_approved",
+      "package_member_sha256_status": "independently_hash_verified_from_M6_complete_visual_pack_zip",
+      "package_member_path": "TEXTURES/ALC_M6_rootwood_normal_768.png",
+      "package_member_dimensions_px": [
+        768,
+        768
+      ]
     },
     {
       "id": "1p02R2ZEV8Glp9vzF7GqXGGmZsjS7gZlp",
@@ -2588,7 +2722,13 @@
       "sha256": null,
       "sha256_verification": "pending_independent_byte_check",
       "runtime_status": "not_imported_to_tracked_godot_assets",
-      "acceptance": "candidate_not_approved"
+      "acceptance": "candidate_not_approved",
+      "package_member_sha256_status": "independently_hash_verified_from_M6_complete_visual_pack_zip",
+      "package_member_path": "TEXTURES/ALC_M6_rootwood_roughness_768.png",
+      "package_member_dimensions_px": [
+        768,
+        768
+      ]
     },
     {
       "id": "1RE2sRqGIs4U2ng5wkNQZkJbrqUxoe7n9",
@@ -2603,7 +2743,13 @@
       "sha256": null,
       "sha256_verification": "pending_independent_byte_check",
       "runtime_status": "not_imported_to_tracked_godot_assets",
-      "acceptance": "candidate_not_approved"
+      "acceptance": "candidate_not_approved",
+      "package_member_sha256_status": "independently_hash_verified_from_M6_complete_visual_pack_zip",
+      "package_member_path": "TEXTURES/ALC_M6_silt_albedo_768.png",
+      "package_member_dimensions_px": [
+        768,
+        768
+      ]
     },
     {
       "id": "10pSDiJ97Oomh-WTlxzy_zQhka6QAXHVW",
@@ -2618,7 +2764,13 @@
       "sha256": null,
       "sha256_verification": "pending_independent_byte_check",
       "runtime_status": "not_imported_to_tracked_godot_assets",
-      "acceptance": "candidate_not_approved"
+      "acceptance": "candidate_not_approved",
+      "package_member_sha256_status": "independently_hash_verified_from_M6_complete_visual_pack_zip",
+      "package_member_path": "TEXTURES/ALC_M6_silt_height_768.png",
+      "package_member_dimensions_px": [
+        768,
+        768
+      ]
     },
     {
       "id": "1czQQ9Nb7_wWr94kf6Hm46Fe8WxYD9b7i",
@@ -2633,7 +2785,13 @@
       "sha256": null,
       "sha256_verification": "pending_independent_byte_check",
       "runtime_status": "not_imported_to_tracked_godot_assets",
-      "acceptance": "candidate_not_approved"
+      "acceptance": "candidate_not_approved",
+      "package_member_sha256_status": "independently_hash_verified_from_M6_complete_visual_pack_zip",
+      "package_member_path": "TEXTURES/ALC_M6_silt_normal_768.png",
+      "package_member_dimensions_px": [
+        768,
+        768
+      ]
     },
     {
       "id": "12hAjHh0rnSW8L3uf-jO6BCbNTQ_KZArk",
@@ -2648,7 +2806,13 @@
       "sha256": null,
       "sha256_verification": "pending_independent_byte_check",
       "runtime_status": "not_imported_to_tracked_godot_assets",
-      "acceptance": "candidate_not_approved"
+      "acceptance": "candidate_not_approved",
+      "package_member_sha256_status": "independently_hash_verified_from_M6_complete_visual_pack_zip",
+      "package_member_path": "TEXTURES/ALC_M6_silt_roughness_768.png",
+      "package_member_dimensions_px": [
+        768,
+        768
+      ]
     },
     {
       "id": "1U7fLvP05LrWXq5SUWR9JOH7o0WvRHCdN",
@@ -2663,7 +2827,13 @@
       "sha256": null,
       "sha256_verification": "pending_independent_byte_check",
       "runtime_status": "not_imported_to_tracked_godot_assets",
-      "acceptance": "candidate_not_approved"
+      "acceptance": "candidate_not_approved",
+      "package_member_sha256_status": "independently_hash_verified_from_M6_complete_visual_pack_zip",
+      "package_member_path": "TEXTURES/ALC_M6_water_albedo_768.png",
+      "package_member_dimensions_px": [
+        768,
+        768
+      ]
     },
     {
       "id": "17HX76fu-9cmDoD4fKS-FNIfI8gz6ou8W",
@@ -2678,7 +2848,13 @@
       "sha256": null,
       "sha256_verification": "pending_independent_byte_check",
       "runtime_status": "not_imported_to_tracked_godot_assets",
-      "acceptance": "candidate_not_approved"
+      "acceptance": "candidate_not_approved",
+      "package_member_sha256_status": "independently_hash_verified_from_M6_complete_visual_pack_zip",
+      "package_member_path": "TEXTURES/ALC_M6_water_height_768.png",
+      "package_member_dimensions_px": [
+        768,
+        768
+      ]
     },
     {
       "id": "1UofytLK9mZcp-BJB8oyvr4j8ArWpPfrO",
@@ -2693,7 +2869,13 @@
       "sha256": null,
       "sha256_verification": "pending_independent_byte_check",
       "runtime_status": "not_imported_to_tracked_godot_assets",
-      "acceptance": "candidate_not_approved"
+      "acceptance": "candidate_not_approved",
+      "package_member_sha256_status": "independently_hash_verified_from_M6_complete_visual_pack_zip",
+      "package_member_path": "TEXTURES/ALC_M6_water_normal_768.png",
+      "package_member_dimensions_px": [
+        768,
+        768
+      ]
     },
     {
       "id": "1oTNbEyRDXIECUUX9O_J8yh2mmctBh0vB",
@@ -2708,7 +2890,13 @@
       "sha256": null,
       "sha256_verification": "pending_independent_byte_check",
       "runtime_status": "not_imported_to_tracked_godot_assets",
-      "acceptance": "candidate_not_approved"
+      "acceptance": "candidate_not_approved",
+      "package_member_sha256_status": "independently_hash_verified_from_M6_complete_visual_pack_zip",
+      "package_member_path": "TEXTURES/ALC_M6_water_roughness_768.png",
+      "package_member_dimensions_px": [
+        768,
+        768
+      ]
     },
     {
       "id": "1dmymmRG0QAI8LSih0yC6t5tIrv24R29t",
@@ -2738,7 +2926,27 @@
       "sha256": null,
       "sha256_verification": "pending_independent_byte_check",
       "runtime_status": "not_imported_to_tracked_godot_assets",
-      "acceptance": "candidate_not_approved"
+      "acceptance": "candidate_not_approved",
+      "package_member_sha256": "0f640fc0a5bc8dd385d272a7d4bde33af110931f26da785d5546150b7a42c606",
+      "package_member_validation": "independently_hash_verified_from_M6_complete_visual_pack_zip",
+      "geometry_analysis": {
+        "mesh_count": 7,
+        "triangle_count": 141176,
+        "vertex_count": 139280,
+        "uv_mesh_count": 7,
+        "bounds_m": {
+          "min": [
+            -25.00814629,
+            -1.33043718,
+            -25
+          ],
+          "max": [
+            25.2789917,
+            9.80840683,
+            25
+          ]
+        }
+      }
     },
     {
       "id": "18y7PJnXAtbNl73dUhhAqWhUzTM69mVks",
@@ -3805,5 +4013,19 @@
       "runtime_status": "not_imported_to_tracked_godot_assets",
       "acceptance": "candidate_not_approved"
     }
-  ]
+  ],
+  "source_integrity_check": {
+    "checked_date": "2026-11-18",
+    "m2_direct_glb_sha256_verified": true,
+    "m2_verified_sha256": "4e1a48850ea6d3e2b50e2a923ac07d11f637b9629090e7bcda5f3299ab5822c3",
+    "m2_manifest_claim_equal": true,
+    "m6_complete_zip_sha256": "fd9a1a4b861fb950955f40c9b4b8b859c061a81abf62aac0768ac94b6a63ac64",
+    "m6_zip_crc_ok": true,
+    "m6_zip_expected_member_sha256_matches": 46,
+    "m6_zip_expected_member_mismatches": 0,
+    "m6_zip_member_original_pbr_pngs_hash_verified": 28,
+    "m6_zip_member_original_glb_hash_verified": true,
+    "caveat": "M6 source verification is from complete ZIP members only. Standalone Drive file IDs are not independently byte-verified. SHA256 null on standalone records remains intentional.",
+    "source_file": "MEDIA/M9_SOURCE_INTEGRITY_CHECK.md"
+  }
 }
