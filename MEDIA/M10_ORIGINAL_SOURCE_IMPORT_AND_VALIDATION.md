@@ -61,3 +61,38 @@ The M6 complete production archive separately passed CRC and hash checks. Its or
 - Add genuinely UV-authored station material surfaces or deliberately triplanar candidates without overwriting the original GLB or inventing mapped UVs.
 - Consider a **view-specific** native optimized geometry candidate and measurable Web export LOD; record source-to-derived geometry counts and source hashes.
 - Repeat native screenshot views and browser smoke, with explicit before/after comparable CI runs; no canonical species implications.
+
+## 6. Batch 10 optimization pass v002 — source-preserving static batching
+
+**Date:** 2026-11-18. **PR #3 remains draft.** This is an actual executable source-code optimization, not a pre-rendered visual replacement.
+
+### Implementation and scope
+
+The isolated **original M2 GLB remains untouched**. The playable main world retains its authored procedural study geometry but now bakes static **opaque** primitive meshes through `SurfaceTool.append_from(mesh, 0, exact_original_local_transform)` into material-grouped `ArrayMesh` surfaces. This specifically avoids the previously rejected M8 MultiMesh orientation bug; source cylinder orientations, roof arches, normal attributes, materials and triangle totals are preserved. Transparent water remains unbatched for correct blend/sort order. Wide background trees are grouped into **24m spatial cells** to retain broad frustum culling.
+
+The feature is reversible without modifying original authoring resources: set `ALCHUL_M10_STATIC_BATCH=0` to render the unchanged unbatched study on the **same Git SHA**, or omit the flag (or set `1`) to enable batching. This is a **candidate**, not a canonical depiction.
+
+### Native Godot test evidence
+
+[GitHub native geometry/source CI, official Godot 4.7.2](https://github.com/SouthPaw302/Alchul/actions/runs/44331941935) — **PASS**: world smoke, original M2 GLB and all 28 M6 original PNG hashes, exact triangle conservation, and batching assertions.
+
+| Study module | Original static opaque MeshInstance3D nodes | Baked mesh nodes | Triangles retained |
+|---|---:|---:|---:|
+| M2 procedural station | 907 | 7 | 75,716 |
+| M3 nursery candidate | 1,016 | 6 | 87,648 |
+| M4 Harvest candidate | 623 | 7 | 45,708 |
+| M5 connectors | 96 | 2 | 7,644 |
+| Extra M1 shoreline/wetland details | 540 | 5 | 60,032 |
+| Illustrative background trees/stones (24m chunks) | 374 | 75 | 44,928 |
+| **Combined (eligible opaque static only)** | **3,556** | **102** | **321,676** |
+
+Count exclusions: alpha-blended surfaces, MultiMesh components, non-PrimitiveMesh assets, collision and actor nodes. This table is an authored instance count, **not** total renderer draw calls or source polygon reduction.
+
+[Full native 10-view A/B and draw-call CI](https://github.com/SouthPaw302/Alchul/actions/runs/44331942259) — **PASS**, 20 960×540 real Godot Compatibility screenshots (same 10 camera coordinates under unbatched/optimized flags) and automated screenshot diff.
+
+- **Actual native RenderingServer draw calls** over the ten matched views: arithmetic mean **8,454.1 before → 580.3 after** (about **93.1% fewer native draw calls** in these captures). This is a meaningful real-engine reduction, not a node-count proxy.
+- Source and batched 960×540 images remained close: pixels differing by >32 per RGB channel maxed at **1.959% in the nursery view**, with average absolute color error per component ≤2.83 (0–255). This is a threshold-pass visual regression, **not** archaeological accuracy or human visual signoff.
+- Original GLB and 28 texture SHA gates remain unchanged; no code was copied from other user repositories.
+- [Drive native A/B ZIP (20 PNGs, metrics, JSON)](https://drive.google.com/file/d/1okuQluqlkAEO7ognSeiG7LIjOlJimf2q/view) and [10-view paired contact sheet](https://drive.google.com/file/d/1vjdQ1cu-nZlZNMHUO8iZYlvecaYgnj35/view), both preserved under the [M10 project Drive archive](https://drive.google.com/drive/folders/1_6L1Q5P5kZLCglOWKfP_yOIo7HryCfBk).
+
+**Browser release still separately gated.** The native 93% draw-call reduction does not automatically establish the browser RAF ≤250ms p95 budget or a desktop GPU FPS target. The updated Web export + Chromium SwiftShader run must be read separately before calling it production-ready. Do not merge to main, publish GitHub Pages, or promote species/civilization visual details to canon solely from these measurements.
