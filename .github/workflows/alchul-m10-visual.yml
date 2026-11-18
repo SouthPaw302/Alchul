@@ -8,6 +8,9 @@ on:
       - "godot/scenes/m10_import_pilot.tscn"
       - "godot/scripts/m10_import_pilot.gd"
       - "godot/scripts/materials_m7.gd"
+      - "godot/scripts/m10_static_batcher.gd"
+      - "godot/scripts/environment_m1.gd"
+      - "godot/tests/compare_m10_visual.py"
       - "godot/tests/render_m10.gd"
       - ".github/workflows/alchul-m10-visual.yml"
   workflow_dispatch:
@@ -31,7 +34,7 @@ jobs:
         run: |
           set -euo pipefail
           sudo apt-get update -qq
-          sudo apt-get install -y -qq curl unzip xvfb libgl1-mesa-dri libglu1-mesa libxrandr2
+          sudo apt-get install -y -qq curl unzip xvfb libgl1-mesa-dri libglu1-mesa libxrandr2 python3-pil
           curl -fL --retry 3 \
             "https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip" \
             -o "$RUNNER_TEMP/godot.zip"
@@ -61,5 +64,32 @@ jobs:
         with:
           name: alchul-m10-original-assets-ten-godot-views
           path: m10-native-shots/
+          if-no-files-found: warn
+          retention-days: 21
+
+      - name: A/B capture the SAME ten native world cameras without/with material-baked station
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p m10-before m10-after
+          ALCHUL_M10_STATIC_BATCH=0 ALCHUL_M7_RENDER_DIR="$GITHUB_WORKSPACE/m10-before" \
+            xvfb-run -a -s '-screen 0 1024x768x24' \
+            "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" \
+              --path godot --rendering-method gl_compatibility --script res://tests/render_m7.gd
+          ALCHUL_M10_STATIC_BATCH=1 ALCHUL_M7_RENDER_DIR="$GITHUB_WORKSPACE/m10-after" \
+            xvfb-run -a -s '-screen 0 1024x768x24' \
+            "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" \
+              --path godot --rendering-method gl_compatibility --script res://tests/render_m7.gd
+          python3 godot/tests/compare_m10_visual.py \
+            m10-before m10-after m10-batch-review/m10_ab_native_difference.json
+      - name: Archive original-versus-batched visual evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: alchul-m10-source-mesh-batching-ab-review
+          path: |
+            m10-before/
+            m10-after/
+            m10-batch-review/
           if-no-files-found: warn
           retention-days: 21
