@@ -1,7 +1,7 @@
 extends RefCounted
 
 ## ALCHUL M10 controlled CPU-side static mesh merging.
-## This operates ONLY on the existing, noncanonical procedural station.
+## This operates ONLY on explicitly selected noncanonical procedural modules.
 ## It bakes each original MeshInstance3D's full local Transform3D into its vertices,
 ## rather than using the previously rejected M8 MultiMesh beam transform shortcut.
 ## Source GLBs, materials, collision meshes and default scene hierarchy stay intact.
@@ -18,7 +18,7 @@ static func _triangles(mesh: Mesh) -> int:
 		total += (indices.size() if indices.size() > 0 else vertices.size()) / 3
 	return total
 
-static func batch_direct_static_meshes(target: Node3D) -> Dictionary:
+static func batch_direct_static_meshes(target: Node3D, chunk_size: float = 0.0) -> Dictionary:
 	var groups: Dictionary = {}
 	var eligible: Array[MeshInstance3D] = []
 	var original_triangles: int = 0
@@ -51,6 +51,11 @@ static func batch_direct_static_meshes(target: Node3D) -> Dictionary:
 			if source_arrays[attribute] != null and source_arrays[attribute].size() > 0:
 				format_flags |= 1 << attribute
 		var signature: String = str(material.get_instance_id()) + ":" + str(format_flags)
+		# Optional spatial buckets retain broad-area tree culling instead of
+		# combining everything into a single enormous always-visible mesh.
+		if chunk_size > 0.0:
+			signature += ":" + str(floori(item.position.x / chunk_size))
+			signature += ":" + str(floori(item.position.z / chunk_size))
 		if not groups.has(signature):
 			var tool := SurfaceTool.new()
 			tool.begin(Mesh.PRIMITIVE_TRIANGLES)
@@ -103,5 +108,6 @@ static func batch_direct_static_meshes(target: Node3D) -> Dictionary:
 		"triangles_before": original_triangles,
 		"triangles_after": baked_triangles,
 		"untouched": untouched,
-		"method": "SurfaceTool.append_from + exact local transforms by material"
+		"method": "SurfaceTool.append_from + exact local transforms by material",
+		"spatial_chunk_m": chunk_size
 	}
