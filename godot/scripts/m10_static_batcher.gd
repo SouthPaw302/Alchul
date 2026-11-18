@@ -12,8 +12,6 @@ extends RefCounted
 static func _triangles(mesh: Mesh) -> int:
 	var total: int = 0
 	for surface_index in range(mesh.get_surface_count()):
-		if mesh.surface_get_primitive_type(surface_index) != Mesh.PRIMITIVE_TRIANGLES:
-			continue
 		var arrays: Array = mesh.surface_get_arrays(surface_index)
 		var indices: PackedInt32Array = arrays[Mesh.ARRAY_INDEX]
 		var vertices: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
@@ -38,14 +36,20 @@ static func batch_direct_static_meshes(target: Node3D) -> Dictionary:
 		if material is BaseMaterial3D and (material as BaseMaterial3D).transparency != BaseMaterial3D.TRANSPARENCY_DISABLED:
 			untouched += 1
 			continue
-		if mesh.surface_get_primitive_type(0) != Mesh.PRIMITIVE_TRIANGLES:
+		if not (mesh is PrimitiveMesh):
 			untouched += 1
 			continue
 		# Do not batch any skinned, shadow-only, or collision-bearing objects.
 		if item.skin != null or item.get_child_count() != 0:
 			untouched += 1
 			continue
-		var format_flags: int = mesh.surface_get_format(0)
+		# PrimitiveMesh does not expose ArrayMesh's surface_get_format method.
+		# Inspect its real surface arrays to keep dissimilar formats isolated.
+		var source_arrays: Array = mesh.surface_get_arrays(0)
+		var format_flags: int = 0
+		for attribute in [Mesh.ARRAY_NORMAL, Mesh.ARRAY_TANGENT, Mesh.ARRAY_COLOR, Mesh.ARRAY_TEX_UV, Mesh.ARRAY_TEX_UV2]:
+			if source_arrays[attribute] != null and source_arrays[attribute].size() > 0:
+				format_flags |= 1 << attribute
 		var signature: String = str(material.get_instance_id()) + ":" + str(format_flags)
 		if not groups.has(signature):
 			var tool := SurfaceTool.new()
