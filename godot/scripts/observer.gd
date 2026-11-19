@@ -9,6 +9,7 @@ const FAST_FACTOR: float = 2.0
 const POINTER_SENSITIVITY: float = 0.003
 
 var terrain_height: Callable
+var movement_enabled: bool = true
 var yaw: float = 0.0
 var pitch: float = -0.11
 var camera: Camera3D
@@ -26,6 +27,8 @@ func _ready() -> void:
 	position = Vector3(0.0, _sample_height(0.0, 15.0), 15.0)
 
 func _unhandled_input(event: InputEvent) -> void:
+	if not movement_enabled:
+		return
 	if event is InputEventMouseMotion and Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 		yaw -= event.relative.x * POINTER_SENSITIVITY
 		pitch = clampf(pitch - event.relative.y * POINTER_SENSITIVITY, -1.25, 1.05)
@@ -35,6 +38,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func _process(delta: float) -> void:
+	if not movement_enabled:
+		return
 	var rightward: float = 0.0
 	var forward: float = 0.0
 	if Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_UP):
