@@ -435,6 +435,7 @@ func _show_ending() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if not (event is InputEventKey) or not event.pressed or event.echo:
 		return
+	var handled: bool = true
 	match event.keycode:
 		KEY_TAB:
 			if state == "playing":
@@ -452,7 +453,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		KEY_ENTER, KEY_KP_ENTER:
 			if state == "entry":
 				_resume()
-	get_viewport().set_input_as_handled()
+		else:
+			handled = false
+	if handled:
+		get_viewport().set_input_as_handled()
 
 func _process(delta: float) -> void:
 	refresh_clock += delta
