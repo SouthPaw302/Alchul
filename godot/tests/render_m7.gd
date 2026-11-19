@@ -44,6 +44,11 @@ func _run() -> void:
 	root.size = Vector2i(960,540)
 	root.add_child(scene)
 	await process_frame
+	# Visual regression images document the actual geometry, not the new title
+	# overlay. The title/gameplay UI has a separate chapter full-loop test.
+	var game: Node = scene.get_node_or_null("BraidedReachChapter")
+	if game != null:
+		game.visible = false
 
 	var m7: Node = scene.get_node_or_null("M1RiverEnvironment_Candidate/M7GodotPBRMaterialPass_Candidate")
 	if m7 == null:
