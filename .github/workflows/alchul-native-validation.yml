@@ -55,6 +55,15 @@ jobs:
           set -euo pipefail
           "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless \
             --path godot --editor --import --quit
+      - name: Parse the new chapter and field-map GDScript directly
+        shell: bash
+        run: |
+          set -euo pipefail
+          for script in res://scripts/game_map.gd res://scripts/game_loop.gd res://scripts/world.gd; do
+            "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless \
+              --path godot --check-only --script "$script"
+          done
+
       - name: Test scene, visitor, data and interpretation switching
         shell: bash
         run: |
