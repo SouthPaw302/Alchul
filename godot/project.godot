@@ -3,9 +3,9 @@
 config_version=5
 
 [application]
-config/name="Alchul — Living World (Study)"
+config/name="ALCHUL — The Braided Reach"
 run/main_scene="res://scenes/main.tscn"
-config/description="Provisional Alchul native environment, independently contained in the canonical repo"
+config/description="A complete four-site exploration chapter using provisional late-surface worldbuilding"
 
 [display]
 window/size/viewport_width=1280
