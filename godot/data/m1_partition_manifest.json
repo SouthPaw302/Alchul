@@ -1,0 +1,127 @@
+{
+  "version": 1,
+  "source_file": "ALC_SURFACE_RIVER_M1_v001.glb",
+  "source_sha256": "f42cedb11a998a9e0149756d7cf0af04180a12c47899830aa4039f3bf83ba818",
+  "source_bytes": 5569072,
+  "source_triangles": 232700,
+  "derived": [
+    {
+      "path": "m1/ALCHUL_M1_GEOMETRY_01.glb",
+      "sha256": "7dec515beeaf401df0dfb0c62ed2a9e16a1dfac489394911a023aea96927e24c",
+      "bytes": 1375176,
+      "triangle_count": 49518,
+      "geometry_names": [
+        "m1__land",
+        "m1__leaf_000000_035958"
+      ],
+      "bounds": [
+        [
+          -57.0,
+          -0.04831,
+          -57.0
+        ],
+        [
+          57.0,
+          12.00136,
+          57.0
+        ]
+      ]
+    },
+    {
+      "path": "m1/ALCHUL_M1_GEOMETRY_02.glb",
+      "sha256": "270c2ac1d4b6125968894739d3e88be5e9dc88dec59f964c8df5c37f9ffcbefb",
+      "bytes": 783832,
+      "triangle_count": 35958,
+      "geometry_names": [
+        "m1__leaf_035958_071916"
+      ],
+      "bounds": [
+        [
+          -54.90339,
+          0.01887,
+          -56.11367
+        ],
+        [
+          55.26392,
+          12.20533,
+          50.27129
+        ]
+      ]
+    },
+    {
+      "path": "m1/ALCHUL_M1_GEOMETRY_03.glb",
+      "sha256": "485170a63012a5d31f6a88079e28ed3493abbf1e315816e277f142ed2f4aa0b8",
+      "bytes": 1191700,
+      "triangle_count": 50362,
+      "geometry_names": [
+        "m1__leaf_light",
+        "m1__mineral",
+        "m1__moss",
+        "m1__mud"
+      ],
+      "bounds": [
+        [
+          -57.0,
+          -0.2639,
+          -57.0
+        ],
+        [
+          57.0,
+          12.20533,
+          57.0
+        ]
+      ]
+    },
+    {
+      "path": "m1/ALCHUL_M1_GEOMETRY_04.glb",
+      "sha256": "515397086f165d7080dba64b171fa0bd0f98d838019dfb5e29f7bdc975cdb539",
+      "bytes": 1086224,
+      "triangle_count": 44210,
+      "geometry_names": [
+        "m1__reed",
+        "m1__rock",
+        "m1__root",
+        "m1__sand",
+        "m1__stone_dark",
+        "m1__water",
+        "m1__water_foam",
+        "m1__wet_silt"
+      ],
+      "bounds": [
+        [
+          -57.40959,
+          -1.26151,
+          -50.14867
+        ],
+        [
+          57.40959,
+          2.14,
+          50.28846
+        ]
+      ]
+    },
+    {
+      "path": "m1/ALCHUL_M1_GEOMETRY_05.glb",
+      "sha256": "84cc9459a047807509f3ddb4e54bd8095575d024e4d7757beb65def972f676a8",
+      "bytes": 1134840,
+      "triangle_count": 52652,
+      "geometry_names": [
+        "m1__wood",
+        "m1__wood_light"
+      ],
+      "bounds": [
+        [
+          -56.57713,
+          -0.60549,
+          -56.92079
+        ],
+        [
+          57.28586,
+          14.49869,
+          56.96196
+        ]
+      ]
+    }
+  ],
+  "geometry_policy": "native GLB geometric redistribution only; no simplification; all triangles preserved; M6 albedo/normal/roughness textures are external originals"
+}
