@@ -453,7 +453,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		KEY_ENTER, KEY_KP_ENTER:
 			if state == "entry":
 				_resume()
-		else:
+		_:
 			handled = false
 	if handled:
 		get_viewport().set_input_as_handled()
