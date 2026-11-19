@@ -1,5 +1,16 @@
 # Alchul — Standalone Godot Runtime
 
+## ALCHUL — The Braided Reach: playable Chapter I (November 19, 2026)
+
+The available native scene and current first-party media now support a **complete short offline desktop game**, with four explorable places, a field map, evidence journal, persistent local save/continue, start/pause/controls, three worldbook interpretation lenses, a return-to-bank conclusion and replay. This closes the **existing-assets game chapter**; it does not claim to have finished the full fictional universe or locked speculative historical canon.
+
+**Windows, Linux and unsigned macOS builds** are generated through `.github/workflows/alchul-desktop-build.yml`. The exact game branch is `game-braided-reach-complete-chapter-20261119` (stacked on reviewed M10 assets). Download the three platform artifacts from the passing CI workflow or the associated ALCHUL Drive release folder. Windows: run `Alchul.exe`; Linux: run `Alchul.x86_64`; macOS: open the unsigned application subject to OS protection. No Godot editor installation is required to play.
+
+**Controls:** WASD/arrows move; right-drag look; Shift faster; E examine; Tab field journal; H help; Escape pause; 1/2/3 select interpretive lens. Inspect bank, nursery, Harvest and witness circle, then return to the bank to finish. Saves reside in the platform's Godot user-data directory; no network activity.
+
+Tests: `tests/chapter_full_loop_smoke.gd`, `tests/render_chapter_states.gd`, original native `tests/smoke.gd` and ten-view `tests/render_m7.gd`. See `../MEDIA/CHAPTER_I_PLAYABLE_RELEASE.md` for scope and scientific caveats.
+
+
 This native Godot 4 workspace is **inside** the authoritative Alchul repository. It has no submodules, network fetches, live dependencies on other GitHub repositories, or hidden media services. It is a first environmental/interaction proof, **not** a finished game or final depiction of any historical individual.
 
 ## Open locally
