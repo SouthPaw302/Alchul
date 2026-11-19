@@ -34,12 +34,17 @@ var nearest_label: Label
 var site_list_label: Label
 var lens_label: Label
 var map_widget: Control
+var asset_atlas: Node3D
+var stage_card: PanelContainer
+var stage_picker: OptionButton
+var stage_status: Label
 
 func setup(scene: Node3D, player: AlchulObserver, data: Dictionary) -> void:
 	world = scene
 	visitor = player
 	book = data
 	sites = book.get("sites", [])
+	asset_atlas = world.get_node_or_null("OriginalFirstPartyMediaAtlas") as Node3D
 
 func _ready() -> void:
 	_build_hud()
@@ -151,6 +156,36 @@ func _build_hud() -> void:
 	right.add_child(site_list_label)
 	right.add_child(_label("Gold: unvisited   Green: recorded", 12, MUTED))
 
+	# Native 3D source scenes are complete models, not flattened screenshots.
+	# Each is loaded at full authoring scale, one at a time to avoid intersecting
+	# duplicate landscapes from the six independent scene studies.
+	stage_card = PanelContainer.new()
+	stage_card.name = "OriginalArchiveMediaSelector"
+	stage_card.add_theme_stylebox_override("panel", _card_style())
+	stage_card.anchor_left = 1.0
+	stage_card.anchor_right = 1.0
+	stage_card.offset_left = -304.0
+	stage_card.offset_right = -16.0
+	stage_card.offset_top = 440.0
+	stage_card.offset_bottom = 630.0
+	root_ui.add_child(stage_card)
+	var stage_column := VBoxContainer.new()
+	stage_column.add_theme_constant_override("separation", 7)
+	stage_card.add_child(stage_column)
+	stage_column.add_child(_label("ORIGINAL 3D ENVIRONMENTS", 15, GOLD))
+	stage_picker = OptionButton.new()
+	stage_picker.name = "ModelSelect"
+	stage_picker.custom_minimum_size = Vector2(240, 36)
+	if asset_atlas != null:
+		var idx: int = 0
+		for source in asset_atlas.list_stages():
+			stage_picker.add_item(str(source["name"]), idx)
+			idx += 1
+	stage_picker.item_selected.connect(_choose_scene)
+	stage_column.add_child(stage_picker)
+	stage_status = _label("F1–F7 change source model. Original M7/M8 chapter modules remain available.", 13, MUTED)
+	stage_column.add_child(stage_status)
+
 	var help := PanelContainer.new()
 	help.name = "ControlsHint"
 	help.add_theme_stylebox_override("panel", _card_style())
@@ -193,6 +228,7 @@ func _change_state(next: String) -> void:
 	overlay.visible = state != "playing"
 	hud_card.visible = state != "title" and state != "ending"
 	map_card.visible = state != "title" and state != "ending"
+	stage_card.visible = state != "title" and state != "ending"
 	var hint: Control = root_ui.get_node("ControlsHint") as Control
 	hint.visible = state == "playing"
 	_refresh_hud()
@@ -232,12 +268,16 @@ func _modal_screen(kicker: String, title: String, sections: Array, actions: Arra
 	overlay.visible = true
 
 func _show_title() -> void:
+	if asset_atlas != null:
+		asset_atlas.select_stage(0)
+		stage_picker.select(0)
 	_change_state("title")
 	var intro: Array = [
 		{"heading": "One river. Four places. A contested history.",
 		"body": "Explore an ancient engineered river margin, record what its residents might have known, and return to the river-reading station with all four accounts."},
 		{"heading": "An independent world",
 		"body": "The terrain and surviving structures are provisional reconstructions. The inhabitants evolved from Earth life; their exact form is unresolved. No model depicts Alchul itself."},
+		{"heading": "The actual source media", "body": "The expedition opens with the original M1 river world. Use the media dropdown or F1–F7 to explore the original full-size 3D models for the station, nursery, Harvest, settlement and textured riverbank. These separate historical studies are displayed one at a time to preserve their geometry."},
 		{"heading": "How the chapter works",
 		"body": "Find four stone markers, press E to examine them, and read the Outside, Resident and Contact interpretations. Once all four are recorded, return to the river-reading station to finish your report. Progress saves locally."}
 	]
@@ -248,6 +288,7 @@ func _show_title() -> void:
 	_modal_screen("A SELF-CONTAINED EXPLORATION CHAPTER", "ALCHUL / THE BRAIDED REACH", intro, actions)
 
 func _start_new() -> void:
+	_choose_scene(1)
 	visited = {}
 	completed = false
 	visitor.position = Vector3(0.0, world.terrain_height(0.0, 15.0), 15.0)
@@ -256,6 +297,7 @@ func _start_new() -> void:
 	_change_state("playing")
 
 func _continue() -> void:
+	_choose_scene(1)
 	_load()
 	if completed:
 		_show_ending()
@@ -267,6 +309,16 @@ func _quit() -> void:
 
 func _resume() -> void:
 	_change_state("playing")
+
+func _choose_scene(index: int) -> void:
+	if asset_atlas == null:
+		return
+	if asset_atlas.select_stage(index):
+		stage_picker.select(index)
+		stage_status.text = "Genuine GLB geometry • " + str(asset_atlas.imported_meshes) + " mesh nodes. Original PBR on M6."
+	else:
+		stage_status.text = "Media missing or unavailable. The previous model is preserved."
+		stage_picker.select(int(asset_atlas.selected))
 
 func _choose_lens(id: String) -> void:
 	world._set_lens(id)
@@ -395,8 +447,8 @@ func _show_help() -> void:
 		return
 	_change_state("help")
 	_modal_screen("FIELD GUIDE", "Controls and purpose", [
-		{"heading": "Navigation", "body": "WASD or arrow keys: walk. Hold right mouse button and drag: look. Hold Shift: faster movement. Your body and map marker show an outside visitor, not a reconstructed species viewpoint."},
-		{"heading": "Research", "body": "Press E near a marker to record an account. Tab opens the field journal. Keys 1, 2, 3 switch the interpretive lens. H opens this guide. Escape opens the pause menu."},
+		{"heading": "Navigation", "body": "WASD or arrow keys: walk. Hold right mouse button and drag: look. Hold Shift: faster movement. Press F1 for the original procedural chapter, F2 for authored M1, F3 M2, F4 M3, F5 M4, F6 M5, F7 M6. The model selector offers the same options."},
+		{"heading": "Research", "body": "Press E near a marker to record an account. Tab opens the field journal. Keys 1, 2, 3 switch the interpretive lens. H opens this guide. Escape opens the pause menu. Each source model is a complete separate study; changing models never deletes your recorded evidence."},
 		{"heading": "Completion", "body": "Record the four sites and return to the River-reading station for the concluding report. The save file lives on this computer and contains only recorded site IDs."}
 	], [{"text": "Continue", "callable": Callable(self, "_resume"), "primary": true}])
 
@@ -450,6 +502,9 @@ func _unhandled_input(event: InputEvent) -> void:
 				_pause()
 			elif state in ["paused", "journal", "entry", "help"]:
 				_resume()
+		KEY_F1, KEY_F2, KEY_F3, KEY_F4, KEY_F5, KEY_F6, KEY_F7:
+			if state == "playing":
+				_choose_scene(event.keycode - KEY_F1)
 		KEY_ENTER, KEY_KP_ENTER:
 			if state == "entry":
 				_resume()
