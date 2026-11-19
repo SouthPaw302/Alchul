@@ -7,6 +7,7 @@ const OBSERVER_SCENE: Script = preload("res://scripts/observer.gd")
 const M1_ENVIRONMENT: Script = preload("res://scripts/environment_m1.gd")
 const M10_STATIC_BATCHER: Script = preload("res://scripts/m10_static_batcher.gd")
 const GAME_SCRIPT: Script = preload("res://scripts/game_loop.gd")
+const ORIGINAL_ATLAS_SCRIPT: Script = preload("res://scripts/original_media_atlas.gd")
 const WORLDBOOK: String = "res://data/worldbook.json"
 const LAND_EXTENT: float = 60.0
 const LAND_STEPS: int = 52
@@ -15,6 +16,7 @@ var worldbook: Dictionary = {}
 var m10_world_visual_stats: Dictionary = {}
 var m10_web_perf_profile: String = "reference"
 var game: CanvasLayer
+var original_atlas: Node3D
 var observer: AlchulObserver
 var lens_id: String = "outside"
 var focused_site: Dictionary = {}
@@ -46,6 +48,7 @@ func _ready() -> void:
 	_build_study_sites()
 	_build_study_figure()
 	_build_observer()
+	_build_original_atlas()
 	_build_interface()
 	_set_lens("outside")
 	_build_game_loop()
@@ -377,6 +380,12 @@ func _build_interface() -> void:
 	nearby_label = _text(column, "Approach a marker and press E to inspect.", 13)
 	_text(column, "WASD move · right-drag look · Shift fast · E inspect", 12)
 	_text(column, "No live network, external repositories or literal Alchul body.", 11)
+
+func _build_original_atlas() -> void:
+	original_atlas = ORIGINAL_ATLAS_SCRIPT.new()
+	original_atlas.name = "OriginalFirstPartyMediaAtlas"
+	original_atlas.setup(self, observer)
+	add_child(original_atlas)
 
 func _build_game_loop() -> void:
 	game = GAME_SCRIPT.new()
