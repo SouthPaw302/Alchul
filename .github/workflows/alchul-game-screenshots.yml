@@ -1,0 +1,57 @@
+name: ALCHUL Chapter I — five actual Godot game screens
+
+on:
+  pull_request:
+    paths:
+      - "godot/scripts/game_loop.gd"
+      - "godot/scripts/game_map.gd"
+      - "godot/scripts/world.gd"
+      - "godot/scripts/observer.gd"
+      - "godot/tests/render_chapter_states.gd"
+      - ".github/workflows/alchul-game-screenshots.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  game-screens:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      LIBGL_ALWAYS_SOFTWARE: "1"
+      ALCHUL_GAME_SCREEN_DIR: ${{ github.workspace }}/chapter-screens
+    steps:
+      - name: Checkout candidate
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Install official Godot and native virtual display
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq curl unzip xvfb libgl1-mesa-dri libglu1-mesa libxrandr2
+          curl -fL --retry 3 "https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip" -o "$RUNNER_TEMP/godot.zip"
+          echo "cadd3204e728a35d3f13adb7fd0d7902636b79f6b95c40c265eb73b6c35329e4  $RUNNER_TEMP/godot.zip" | sha256sum -c -
+          unzip -q "$RUNNER_TEMP/godot.zip" -d "$RUNNER_TEMP"
+          chmod +x "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64"
+      - name: Import and run real UI screenshots
+        shell: bash
+        run: |
+          set -euo pipefail
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot --editor --import --quit
+          mkdir -p "$ALCHUL_GAME_SCREEN_DIR"
+          xvfb-run -a -s '-screen 0 1360x840x24' \
+            "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" \
+              --path godot --rendering-method gl_compatibility \
+              --script res://tests/render_chapter_states.gd
+          test "$(find "$ALCHUL_GAME_SCREEN_DIR" -type f -name '*.png' | wc -l)" -eq 5
+      - name: Preserve five actual game-state screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ALCHUL_ChapterI_real_game_screens
+          path: chapter-screens/
+          if-no-files-found: warn
+          retention-days: 90

@@ -61,28 +61,42 @@ unzip -Z1 "$OUT/macos/Alchul-macOS.zip" | grep -q '\.app/Contents/MacOS/'
 unzip -Z1 "$OUT/macos/Alchul-macOS.zip" | grep -q 'Info.plist'
 
 cat > "$OUT/packages/README_START_HERE.txt" <<'DOC'
-ALCHUL — Early Desktop Study (Batch 10 candidate)
-================================================
-This is a real native Godot desktop application, not a website or a
-mockup. The historical reconstruction and its graphics are NOT final.
+ALCHUL — THE BRAIDED REACH
+Chapter I: Complete Exploratory Game · Release 1.0
+==================================================
+A finite, offline Godot desktop game using our current first-party
+ALCHUL world assets. This is a complete four-site field expedition,
+not a finished reconstruction of ALCHUL's entire 66-million-year history.
+Biological and historical proposals remain provisional.
 
-Windows (64-bit):
-  Unzip ALCHUL_Windows_x64.zip and run Alchul.exe.
-Linux (64-bit Intel/AMD):
-  Unzip ALCHUL_Linux_x64.zip and run ./Alchul.x86_64.
-  If needed first: chmod +x Alchul.x86_64
-macOS (Intel and Apple Silicon):
-  Unzip ALCHUL_macOS_Universal.zip, then open the ALCHUL app.
-  This development build has NOT been code signed or Apple-notarized.
-  macOS Gatekeeper may block opening it; no signing claims are made.
+WINDOWS (x64):
+  Extract ALCHUL_Windows_x64.zip, then double-click Alchul.exe.
+LINUX (x64):
+  Extract ALCHUL_Linux_x64.zip and launch ./Alchul.x86_64.
+  If necessary run: chmod +x Alchul.x86_64
+MACOS (universal Intel + Apple Silicon):
+  Extract ALCHUL_macOS_Universal.zip and open the Alchul.app bundle.
+  This is an UN-SIGNED, UN-NOTARIZED developer export.
+  Gatekeeper may block it; production distribution needs code signing.
 
-Controls:
-  WASD = move; hold right mouse and drag to look; Shift = faster;
-  E = inspect nearby site; keys 1, 2, 3 = interpretation lenses.
+THE GAME:
+  1. Select "Begin expedition" or "Continue saved journey".
+  2. Find four orange map pins: bank, nursery, Harvest, witnesses.
+  3. Press E by a marker to add its evidence to the field journal.
+  4. Read differing Outside, Resident and Contact interpretations.
+  5. After all four, revisit the river-reading station and press E
+     to complete the expedition. Replay or keep exploring afterward.
 
-No separate Godot editor installation or web connection is needed.
-No game data is sent to a server. Do not import this software from
-an untrusted repost.
+CONTROLS:
+  WASD / arrows walk         Right mouse drag look
+  Shift faster travel       E inspect site
+  TAB journal               H help
+  ESC pause / resume        1 / 2 / 3 switch interpretive lens
+
+Your progress is stored OFFLINE on the local computer in Godot's
+user data directory. No accounts, web connection or Godot editor.
+These early artifacts are first-party preview materials and
+should not be mistaken for fossil evidence or finished canon.
 DOC
 
 # Package runnable payloads, README, provenance, and SHA256 manifests.
@@ -102,11 +116,11 @@ builds = {
     "macOS_Universal": out / "macos" / "Alchul-macOS.zip",
 }
 description = {
-    "app_name": "ALCHUL — Living World (Study)",
-    "version": "M10 desktop candidate",
+    "app_name": "ALCHUL — The Braided Reach",
+    "version": "Chapter I / 1.0.0",
     "godot_engine_version": "4.7.2-stable",
     "git_commit": sha,
-    "status": "PREVIEW_NOT_CANON",
+    "status": "COMPLETE_CHAPTER_NONCANONICAL_RECONSTRUCTION",
     "unsigned_unnotarized": True,
     "platforms": {},
 }

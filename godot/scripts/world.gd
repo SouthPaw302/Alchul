@@ -6,6 +6,7 @@ extends Node3D
 const OBSERVER_SCENE: Script = preload("res://scripts/observer.gd")
 const M1_ENVIRONMENT: Script = preload("res://scripts/environment_m1.gd")
 const M10_STATIC_BATCHER: Script = preload("res://scripts/m10_static_batcher.gd")
+const GAME_SCRIPT: Script = preload("res://scripts/game_loop.gd")
 const WORLDBOOK: String = "res://data/worldbook.json"
 const LAND_EXTENT: float = 60.0
 const LAND_STEPS: int = 52
@@ -13,6 +14,7 @@ const LAND_STEPS: int = 52
 var worldbook: Dictionary = {}
 var m10_world_visual_stats: Dictionary = {}
 var m10_web_perf_profile: String = "reference"
+var game: CanvasLayer
 var observer: AlchulObserver
 var lens_id: String = "outside"
 var focused_site: Dictionary = {}
@@ -46,6 +48,7 @@ func _ready() -> void:
 	_build_observer()
 	_build_interface()
 	_set_lens("outside")
+	_build_game_loop()
 
 # Diagnostic URL switch for PR-only A/B software-WebGL profiling.
 # The default and all native runs retain the existing scene settings.
@@ -347,6 +350,7 @@ func _text(parent: VBoxContainer, words: String, font_size: int = 14) -> Label:
 func _build_interface() -> void:
 	var ui := CanvasLayer.new()
 	ui.name = "InterpretationHUD"
+	ui.visible = false # Old lens dock under the new complete expedition UI.
 	add_child(ui)
 	var panel := PanelContainer.new()
 	panel.position = Vector2(16, 16)
@@ -374,6 +378,12 @@ func _build_interface() -> void:
 	_text(column, "WASD move · right-drag look · Shift fast · E inspect", 12)
 	_text(column, "No live network, external repositories or literal Alchul body.", 11)
 
+func _build_game_loop() -> void:
+	game = GAME_SCRIPT.new()
+	game.name = "BraidedReachChapter"
+	game.setup(self, observer, worldbook)
+	add_child(game)
+
 func _set_lens(next_id: String) -> void:
 	if not ["outside", "resident", "contact"].has(next_id):
 		return
@@ -391,6 +401,8 @@ func _update_info() -> void:
 	info_label.text = info
 
 func _unhandled_input(event: InputEvent) -> void:
+	if game != null and not game.is_playing():
+		return
 	if event is InputEventKey and event.pressed and not event.echo:
 		match event.keycode:
 			KEY_1: _set_lens("outside")
@@ -400,6 +412,8 @@ func _unhandled_input(event: InputEvent) -> void:
 				if not nearest_site.is_empty():
 					focused_site = nearest_site
 					_update_info()
+					if game != null:
+						game.on_site_interaction(nearest_site)
 
 func _process(delta: float) -> void:
 	if figure_tail != null:
