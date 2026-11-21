@@ -1,0 +1,102 @@
+{
+  "schema": "alchul.m11.t08-t09.engineering-study.v1",
+  "status": "noncanonical_proxy_not_biological_validation",
+  "input_rig": "data/m11_t07_skeletal_reference.json",
+  "units": "dimensionless_T07_normalized_units_not_meters",
+  "scientific_notice": "All segment masses, patch sizes, contact tolerances, task targets, and uncertainties are assumed demonstration values, not fossil-derived or measured in any ALCHUL resident.",
+  "com_profiles": {
+    "H-A": {
+      "pelvis": 0.18,
+      "trunk": 0.27,
+      "head_neck": 0.09,
+      "tail": 0.14,
+      "hindlimbs": 0.24,
+      "forelimbs": 0.08
+    },
+    "H-B": {
+      "pelvis": 0.19,
+      "trunk": 0.29,
+      "head_neck": 0.09,
+      "tail": 0.07,
+      "hindlimbs": 0.24,
+      "forelimbs": 0.12
+    }
+  },
+  "foot_patch": {
+    "backward_reach_x": 0.18,
+    "forward_reach_x": 0.45,
+    "lateral_half_width": 0.12
+  },
+  "load_case": {
+    "additional_mass_fraction_of_base": 0.1,
+    "at": [
+      0.24,
+      1.18,
+      0.02
+    ],
+    "interpretation": "generic temporary cargo proxy; explicitly NOT an anatomical model of pregnancy or egg retention"
+  },
+  "movement_cases": [
+    "two_feet_neutral",
+    "two_feet_forward_reach",
+    "right_foot_only",
+    "two_feet_with_cargo_proxy"
+  ],
+  "mass_uncertainty": {
+    "seed": 20261121,
+    "samples": 256,
+    "segment_scale_min": 0.7,
+    "segment_scale_max": 1.3
+  },
+  "grasp": {
+    "tool_contacts": "three target surface points on a hypothetical bracing fixture, not a force-closed grasp",
+    "fixture_offsets_from_scapula": {
+      "x": 0.9,
+      "y": -0.65,
+      "z_by_digit": [
+        -0.05,
+        0.1,
+        0.25
+      ]
+    },
+    "far_fixture_forward_delta": 1.2,
+    "contact_tolerance": 0.12,
+    "shoulder_samples_deg": [
+      -18,
+      -9,
+      0,
+      12,
+      24
+    ],
+    "elbow_samples_deg": [
+      -68,
+      -48,
+      -32,
+      -16,
+      0,
+      10
+    ],
+    "wrist_yaw_samples_deg": [
+      -24,
+      -12,
+      0,
+      18,
+      34
+    ],
+    "digit_flex_samples_deg": [
+      -34,
+      -20,
+      -10,
+      0,
+      10
+    ]
+  },
+  "excluded_conclusions": [
+    "real-world strength or joint torque",
+    "real grip force closure, friction, or tendon mechanics",
+    "actual fossil center of mass or gait stability",
+    "metabolic and reproductive effects of 75 percent egg retention",
+    "human-like thumb or freely rotating palm",
+    "M11 inhabitant body-plan winner"
+  ]
+}
