@@ -1,0 +1,65 @@
+{
+  "schema": "alchul.m11.t10.force-locomotion-assumption.v1",
+  "status": "noncanonical_mechanical_feasibility_not_biological_validation",
+  "units": "force_over_bodyweight__distance_over_T07_reference_unit__torque_over_bodyweight_unit",
+  "source_rig": "data/m11_t07_skeletal_reference.json",
+  "source_t08_t09_results": "data/m11_t08_t09_results.json",
+  "reference_body_mass": "symbolic_only_no_kilograms",
+  "gravity": "bodyweight=1 arbitrary, only nondimensional ratios",
+  "grip": {
+    "supported_brace": {
+      "fixture_half_depth": 0.15,
+      "contact_vertical_offset": 0.17,
+      "load_bodyweight": 0.32,
+      "finger_normal_capacity_bw_each": 0.22,
+      "support_normal_capacity_bw": 0.75,
+      "finger_mu": 0.52,
+      "support_mu": 0.50,
+      "digit_torque_capacity_bw_length_each": 0.064
+    },
+    "hypothetical_opposing_ring": {
+      "radius_normalized": 0.16,
+      "tool_weight_bodyweight": 0.26,
+      "finger_mu": 0.56,
+      "digit_normal_capacity_bw_each": 0.50,
+      "digit_torque_capacity_bw_length_each": 0.14,
+      "disturbance_horizontal_bw": 0.04,
+      "disturbance_torque_bw_length": 0.008,
+      "note": "Opposing radial three-contact ring is a separate artificial hand-design target; T09 fingertips have not been shown to assume these surface normals. Conditional equilibrium is not force-closure proof."
+    }
+  },
+  "locomotion": {
+    "foot_half_width": 0.12,
+    "support_margin_target": 0.025,
+    "assumed_lateral_shift_limit": 0.35,
+    "stance_leg_torque_capacity_bw_length": 0.15,
+    "assumed_straight_acceleration_over_g": 0.075,
+    "assumed_turn_froude": 0.065,
+    "wet_stone_friction": 0.34,
+    "slippery_mud_friction": 0.055,
+    "supported_digits": ["III", "IV"],
+    "retracted_digit": "II",
+    "contact_model": "two proxy foot patches centered at the metatarsal, not a reconstructed fossil pedal pad or measured ground reaction",
+    "time_model": "ordered pose phases, not dynamically integrated gait"
+  },
+  "clearance": {
+    "corridor_test_widths_normalized": [1.6, 2.2, 2.8, 3.4, 4.0, 4.6, 5.2, 6.0, 7.0],
+    "turn_radius_normalized": 1.10,
+    "samples_straight_per_leg": 21,
+    "samples_turn": 61,
+    "body_half_width": 0.40,
+    "head_half_width": 0.20,
+    "tail_half_width": 0.12,
+    "safety_allowance": 0.08,
+    "corridor_abstract_only": "Generic L-shaped passage in normalized coordinates. Not measured M1-M6 architecture; no claim of settlement fit."
+  },
+  "forbidden_conclusions": [
+    "validated extinct animal anatomy",
+    "biological strength, real newtons or measured muscle moment arms",
+    "actual force-closure grasp by H-A or H-B",
+    "verified digit-II weight bearing",
+    "working animal gait or falls prediction",
+    "actual corridors or architectural safety certification",
+    "selection of canonical ALCHUL species"
+  ]
+}
