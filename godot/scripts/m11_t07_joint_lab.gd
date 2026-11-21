@@ -113,7 +113,8 @@ func _create_skeleton(spec: Dictionary, order: int) -> void:
             push_error("T07: missing normalized anchor " + name)
             return
         var global_anchor := Vector3(float(point[0]), float(point[1]), float(point[2]))
-        var parent_name: String = str(record.get("parent", ""))
+        var parent_value: Variant = record.get("parent", null)
+        var parent_name: String = "" if parent_value == null else str(parent_value)
         skeleton.add_bone(name)
         var index: int = skeleton.get_bone_count() - 1
         var local_anchor: Vector3 = global_anchor
