@@ -1,0 +1,506 @@
+{
+  "input_assumptions_sha256": "251ee4a8db6905c944b477a7d757da686f6ec3fd1207f490aab3ec70f9dff611",
+  "input_rig_geometry_sha256": "cdf658f6de2c8db95a505820bf103c6caaf1d945a1797d832426baca645afb44",
+  "provenance": "Recomputed from T07 skeleton anchor coordinates + T08/T09 explicitly assumed inputs",
+  "schema": "alchul.m11.t08-t09.results.v1",
+  "status": "PROVISIONAL_ASSUMPTION_DRIVEN_ENGINEERING_EXPERIMENT_NOT_FOSSIL_DATA",
+  "t08": {
+    "H-A": {
+      "cases": {
+        "right_foot_only": {
+          "com_xyz": [
+            0.15168,
+            1.63422,
+            0.0
+          ],
+          "projected_com_xz": [
+            0.15168,
+            0.0
+          ],
+          "proxy_static_inside_box": false,
+          "signed_margin": -0.18,
+          "support_box_xmin_xmax_zmin_zmax": [
+            0.07,
+            0.7,
+            0.18,
+            0.42
+          ]
+        },
+        "two_feet_forward_reach": {
+          "com_xyz": [
+            0.18468,
+            1.62082,
+            0.0
+          ],
+          "projected_com_xz": [
+            0.18468,
+            0.0
+          ],
+          "proxy_static_inside_box": true,
+          "signed_margin": 0.11468,
+          "support_box_xmin_xmax_zmin_zmax": [
+            0.07,
+            0.7,
+            -0.42,
+            0.42
+          ]
+        },
+        "two_feet_neutral": {
+          "com_xyz": [
+            0.15168,
+            1.63422,
+            0.0
+          ],
+          "projected_com_xz": [
+            0.15168,
+            0.0
+          ],
+          "proxy_static_inside_box": true,
+          "signed_margin": 0.08168,
+          "support_box_xmin_xmax_zmin_zmax": [
+            0.07,
+            0.7,
+            -0.42,
+            0.42
+          ]
+        },
+        "two_feet_with_cargo_proxy": {
+          "com_xyz": [
+            0.15971,
+            1.59292,
+            0.00182
+          ],
+          "projected_com_xz": [
+            0.15971,
+            0.00182
+          ],
+          "proxy_static_inside_box": true,
+          "signed_margin": 0.08971,
+          "support_box_xmin_xmax_zmin_zmax": [
+            0.07,
+            0.7,
+            -0.42,
+            0.42
+          ]
+        }
+      },
+      "region_centers_xyz": {
+        "forelimbs": [
+          1.453,
+          1.68333,
+          0.0
+        ],
+        "head_neck": [
+          1.724,
+          2.62,
+          0.0
+        ],
+        "hindlimbs": [
+          0.11,
+          0.53667,
+          0.0
+        ],
+        "pelvis": [
+          0.0,
+          1.95,
+          0.0
+        ],
+        "tail": [
+          -2.089,
+          1.675,
+          0.0
+        ],
+        "trunk": [
+          0.542,
+          2.035,
+          0.0
+        ]
+      },
+      "region_mass_fractions": {
+        "forelimbs": 0.08,
+        "head_neck": 0.09,
+        "hindlimbs": 0.24,
+        "pelvis": 0.18,
+        "tail": 0.14,
+        "trunk": 0.27
+      },
+      "sensitivity_neutral": {
+        "fraction_positive": 0.91406,
+        "p05_margin": -0.01107,
+        "p95_margin": 0.18359,
+        "samples": 256
+      },
+      "tail_1p5x_com_x": 0.00509,
+      "tail_halved_com_x": 0.32033
+    },
+    "H-B": {
+      "cases": {
+        "right_foot_only": {
+          "com_xyz": [
+            0.40811,
+            1.6607,
+            0.0
+          ],
+          "projected_com_xz": [
+            0.40811,
+            0.0
+          ],
+          "proxy_static_inside_box": false,
+          "signed_margin": -0.24,
+          "support_box_xmin_xmax_zmin_zmax": [
+            0.07,
+            0.7,
+            0.24,
+            0.48
+          ]
+        },
+        "two_feet_forward_reach": {
+          "com_xyz": [
+            0.45311,
+            1.6433,
+            0.0
+          ],
+          "projected_com_xz": [
+            0.45311,
+            0.0
+          ],
+          "proxy_static_inside_box": true,
+          "signed_margin": 0.24689,
+          "support_box_xmin_xmax_zmin_zmax": [
+            0.07,
+            0.7,
+            -0.48,
+            0.48
+          ]
+        },
+        "two_feet_neutral": {
+          "com_xyz": [
+            0.40811,
+            1.6607,
+            0.0
+          ],
+          "projected_com_xz": [
+            0.40811,
+            0.0
+          ],
+          "proxy_static_inside_box": true,
+          "signed_margin": 0.29189,
+          "support_box_xmin_xmax_zmin_zmax": [
+            0.07,
+            0.7,
+            -0.48,
+            0.48
+          ]
+        },
+        "two_feet_with_cargo_proxy": {
+          "com_xyz": [
+            0.39283,
+            1.617,
+            0.00182
+          ],
+          "projected_com_xz": [
+            0.39283,
+            0.00182
+          ],
+          "proxy_static_inside_box": true,
+          "signed_margin": 0.30717,
+          "support_box_xmin_xmax_zmin_zmax": [
+            0.07,
+            0.7,
+            -0.48,
+            0.48
+          ]
+        }
+      },
+      "region_centers_xyz": {
+        "forelimbs": [
+          1.39867,
+          1.68333,
+          0.0
+        ],
+        "head_neck": [
+          1.61533,
+          2.8,
+          0.0
+        ],
+        "hindlimbs": [
+          0.11,
+          0.53667,
+          0.0
+        ],
+        "pelvis": [
+          0.0,
+          1.95,
+          0.0
+        ],
+        "tail": [
+          -1.1075,
+          1.675,
+          0.0
+        ],
+        "trunk": [
+          0.5035,
+          2.035,
+          0.0
+        ]
+      },
+      "region_mass_fractions": {
+        "forelimbs": 0.12,
+        "head_neck": 0.09,
+        "hindlimbs": 0.24,
+        "pelvis": 0.19,
+        "tail": 0.07,
+        "trunk": 0.29
+      },
+      "sensitivity_neutral": {
+        "fraction_positive": 1.0,
+        "p05_margin": 0.22994,
+        "p95_margin": 0.31124,
+        "samples": 256
+      },
+      "tail_1p5x_com_x": 0.35686,
+      "tail_halved_com_x": 0.46308
+    }
+  },
+  "t09": {
+    "H-A": {
+      "excluded_controls": [
+        "forearm_axial_pronation",
+        "human_thumb_opposition"
+      ],
+      "far": {
+        "all_three_close": false,
+        "contact_count": 0,
+        "digits": {
+          "I": {
+            "error": 1.06444,
+            "finger_flex_deg": 10.0,
+            "predicted_tip": [
+              2.16046,
+              1.57484,
+              0.22
+            ],
+            "target": [
+              3.215,
+              1.43,
+              0.22
+            ]
+          },
+          "II": {
+            "error": 1.0888,
+            "finger_flex_deg": 10.0,
+            "predicted_tip": [
+              2.14732,
+              1.64338,
+              0.37
+            ],
+            "target": [
+              3.215,
+              1.43,
+              0.37
+            ]
+          },
+          "III": {
+            "error": 1.11698,
+            "finger_flex_deg": 10.0,
+            "predicted_tip": [
+              2.13418,
+              1.71191,
+              0.52
+            ],
+            "target": [
+              3.215,
+              1.43,
+              0.52
+            ]
+          }
+        },
+        "elbow_deg": -16,
+        "fixture": "far_unreachable_control",
+        "maximum_contact_error": 1.11698,
+        "sampling": "enumerated finite angles; not continuous IK or force closure",
+        "shoulder_deg": 24,
+        "side": "R",
+        "tolerance": 0.12,
+        "wrist_yaw_deg": 0
+      },
+      "near": {
+        "all_three_close": true,
+        "contact_count": 3,
+        "digits": {
+          "I": {
+            "error": 0.06395,
+            "finger_flex_deg": 10.0,
+            "predicted_tip": [
+              2.03258,
+              1.36852,
+              0.22
+            ],
+            "target": [
+              2.015,
+              1.43,
+              0.22
+            ]
+          },
+          "II": {
+            "error": 0.01862,
+            "finger_flex_deg": 0.0,
+            "predicted_tip": [
+              2.01701,
+              1.41149,
+              0.37
+            ],
+            "target": [
+              2.015,
+              1.43,
+              0.37
+            ]
+          },
+          "III": {
+            "error": 0.02947,
+            "finger_flex_deg": -10.0,
+            "predicted_tip": [
+              2.00398,
+              1.45733,
+              0.52
+            ],
+            "target": [
+              2.015,
+              1.43,
+              0.52
+            ]
+          }
+        },
+        "elbow_deg": -16,
+        "fixture": "near_three_point_brace",
+        "maximum_contact_error": 0.06395,
+        "sampling": "enumerated finite angles; not continuous IK or force closure",
+        "shoulder_deg": 12,
+        "side": "R",
+        "tolerance": 0.12,
+        "wrist_yaw_deg": 0
+      },
+      "statement": "Close fingertip proximity at finite sampled poses only; no thumb, no force closure, no tendon model"
+    },
+    "H-B": {
+      "excluded_controls": [
+        "forearm_axial_pronation",
+        "human_thumb_opposition"
+      ],
+      "far": {
+        "all_three_close": false,
+        "contact_count": 0,
+        "digits": {
+          "I": {
+            "error": 0.98857,
+            "finger_flex_deg": 10.0,
+            "predicted_tip": [
+              2.15917,
+              1.58818,
+              0.22
+            ],
+            "target": [
+              3.135,
+              1.43,
+              0.22
+            ]
+          },
+          "II": {
+            "error": 1.01463,
+            "finger_flex_deg": 10.0,
+            "predicted_tip": [
+              2.14603,
+              1.65672,
+              0.37
+            ],
+            "target": [
+              3.135,
+              1.43,
+              0.37
+            ]
+          },
+          "III": {
+            "error": 1.04321,
+            "finger_flex_deg": 0.0,
+            "predicted_tip": [
+              2.12577,
+              1.69409,
+              0.52
+            ],
+            "target": [
+              3.135,
+              1.43,
+              0.52
+            ]
+          }
+        },
+        "elbow_deg": -16,
+        "fixture": "far_unreachable_control",
+        "maximum_contact_error": 1.04321,
+        "sampling": "enumerated finite angles; not continuous IK or force closure",
+        "shoulder_deg": 24,
+        "side": "R",
+        "tolerance": 0.12,
+        "wrist_yaw_deg": 0
+      },
+      "near": {
+        "all_three_close": true,
+        "contact_count": 3,
+        "digits": {
+          "I": {
+            "error": 0.03769,
+            "finger_flex_deg": 10.0,
+            "predicted_tip": [
+              1.96352,
+              1.40535,
+              0.22
+            ],
+            "target": [
+              1.935,
+              1.43,
+              0.22
+            ]
+          },
+          "II": {
+            "error": 0.01627,
+            "finger_flex_deg": -10.0,
+            "predicted_tip": [
+              1.92511,
+              1.41708,
+              0.37
+            ],
+            "target": [
+              1.935,
+              1.43,
+              0.37
+            ]
+          },
+          "III": {
+            "error": 0.04282,
+            "finger_flex_deg": -20.0,
+            "predicted_tip": [
+              1.90688,
+              1.46229,
+              0.52
+            ],
+            "target": [
+              1.935,
+              1.43,
+              0.52
+            ]
+          }
+        },
+        "elbow_deg": 10,
+        "fixture": "near_three_point_brace",
+        "maximum_contact_error": 0.04282,
+        "sampling": "enumerated finite angles; not continuous IK or force closure",
+        "shoulder_deg": -9,
+        "side": "R",
+        "tolerance": 0.12,
+        "wrist_yaw_deg": 0
+      },
+      "statement": "Close fingertip proximity at finite sampled poses only; no thumb, no force closure, no tendon model"
+    }
+  },
+  "units": "dimensionless_T07_normalized_units_not_meters"
+}
