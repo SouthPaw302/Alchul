@@ -1,14 +1,14 @@
 # Alchul
 
-**The central and independent home for the Alchul universe and its native Godot 4 world.** This repository now contains authoritative lore, research, a first Godot runtime study, self-contained scene data, tests, and its own validation workflow.
+**The central and independent home for the Alchul universe and its native Godot 4 world.** This repository contains authoritative lore, scientific research, a playable native Godot Chapter I, the integrated M1–M6 first-party media atlas, M11 comparative anatomy research, local scene data, and native validation workflows.
 
-**Start here:** [Centralization policy](CENTRALIZATION.md) · [Native Godot project](godot/README.md) · [Prototype provenance](godot/PROVENANCE.md) · [Read-only prototype audit](godot/PROTOTYPE_AUDIT.md).
+**Post-merge implementation:** [35-step master plan](MEDIA/ALCHUL_POST_MERGE_IMPLEMENTATION_MASTER_PLAN.md) · [M11 comparative anatomy lab](MEDIA/M11_LAB_IMPLEMENTATION_01.md) · [M11 Godot lab scene](godot/scenes/m11_anatomy_lab.tscn).\n\n**Start here:** [Centralization policy](CENTRALIZATION.md) · [Native Godot project](godot/README.md) · [Prototype provenance](godot/PROVENANCE.md) · [Read-only prototype audit](godot/PROTOTYPE_AUDIT.md).
 
 ### Run in a browser — no local installation required
 
-The native Godot 4 project **passes its engine smoke test**, and a single-threaded **Godot Web export builds successfully in GitHub Actions**. Use [the no-local publishing instructions](godot/WEB_PUBLISHING.md).
+The playable desktop Chapter I source and its original-media atlas are now merged into **main**. The independent Godot 4 native checks have passed on the new M11 comparison implementation; the desktop export and browser pipeline remain separate release surfaces. Use [the no-local publishing instructions](godot/WEB_PUBLISHING.md) for Web builds.
 
-A GitHub Pages publishing workflow has been added at [.github/workflows/alchul-pages.yml](.github/workflows/alchul-pages.yml). The build and artifact upload passed, but publishing is **blocked only because GitHub Pages has not yet been enabled** for this repository. To allow the cloud deploy, open [Alchul Settings → Pages](https://github.com/SouthPaw302/Alchul/settings/pages), choose **Source: GitHub Actions**, then [rerun the publishing workflow](https://github.com/SouthPaw302/Alchul/actions/workflows/alchul-pages.yml) against `main`. The expected address after a successful deploy is `https://southpaw302.github.io/Alchul/` (not verified live yet).
+The [GitHub Pages publishing workflow](.github/workflows/alchul-pages.yml) triggers on relevant changes to `main`. The [public ALCHUL site](https://southpaw302.github.io/Alchul/) is an independently deployed browser release surface; **do not assume it matches Chapter I merely because the code was merged**. Verify the latest publish workflow and site build before advertising a current-game release. The browser performance budget remains separate from native validation.
 
 Vercel project creation returned **HTTP 403**, so no Vercel project was created. Previous repositories were not touched.
 
@@ -21,7 +21,7 @@ godot --path godot --editor
 godot --path godot
 ```
 
-Requires a locally installed Godot 4 executable (possibly named `godot4`). This does **not** fetch or clone any other user repository, and there is no configured Vercel deployment. The world scene is a **working noncanonical study**, not a finished game. The native Godot engine smoke test is defined in `godot/tests/smoke.gd` and the Alchul-only GitHub workflow.
+Requires a locally installed Godot 4 executable (possibly named `godot4`). This does **not** fetch or clone any other user repository, and there is no configured Vercel deployment. The current Chapter I is a **playable, finite exploration game**, not completion of the wider Alchul universe or approval of provisional species anatomy. The native Godot engine smoke test is defined in `godot/tests/smoke.gd` and the Alchul-only GitHub workflow.
 
 Canonical repository for the Alchul universe.
 
