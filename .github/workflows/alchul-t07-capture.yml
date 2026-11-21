@@ -1,0 +1,51 @@
+name: ALCHUL T07 — actual Godot skeletal reference captures
+on:
+  pull_request:
+    paths:
+      - "godot/data/m11_t07_skeletal_reference.json"
+      - "godot/scripts/m11_t07_joint_lab.gd"
+      - "godot/scenes/m11_t07_joint_lab.tscn"
+      - "godot/tests/render_m11_t07.gd"
+      - ".github/workflows/alchul-t07-capture.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native-t07-capture:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Install pinned Godot 4 and virtual display
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq curl unzip xvfb libgl1-mesa-dri
+          curl -fL --retry 3 "https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip" -o "$RUNNER_TEMP/godot.zip"
+          echo "cadd3204e728a35d3f13adb7fd0d7902636b79f6b95c40c265eb73b6c35329e4  $RUNNER_TEMP/godot.zip" | sha256sum -c -
+          unzip -q "$RUNNER_TEMP/godot.zip" -d "$RUNNER_TEMP"
+          chmod +x "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64"
+      - name: Import local Godot files
+        run: "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot --editor --import --quit
+      - name: Capture three genuine native views
+        shell: bash
+        env:
+          ALCHUL_T07_CAPTURES: ${{ github.workspace }}/t07-captures
+        run: |
+          set -euo pipefail
+          mkdir -p "$ALCHUL_T07_CAPTURES"
+          xvfb-run -a -s "-screen 0 1280x720x24" \
+            "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --path godot \
+            --script res://tests/render_m11_t07.gd
+          test -s "$ALCHUL_T07_CAPTURES/01_comparison.png"
+          test -s "$ALCHUL_T07_CAPTURES/02_H-A.png"
+          test -s "$ALCHUL_T07_CAPTURES/03_H-B.png"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: t07-real-godot-joint-study-views
+          path: t07-captures/
+          if-no-files-found: error
+          retention-days: 60
