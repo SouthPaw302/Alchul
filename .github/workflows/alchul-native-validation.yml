@@ -32,6 +32,8 @@ jobs:
           python3 godot/tools/validate_m11_t07_skeleton.py
           python3 godot/tools/m11_t08_t09_analysis.py --check
           python3 -m unittest discover -s godot/tests -p 'test_m11_t08_t09.py'
+          python3 godot/tools/m11_t10_mechanics.py --check
+          python3 -m unittest discover -s godot/tests -p 'test_m11_t10_mechanics.py'
 
   godot-native-smoke:
     needs: offline-contract
@@ -125,6 +127,15 @@ jobs:
             --path godot --check-only --script res://scripts/m11_t08_t09_lab.gd
           "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless \
             --path godot --script res://tests/m11_t08_t09_lab_smoke.gd
+
+      - name: Validate T10 corridor debug and noncanonical force study
+        shell: bash
+        run: |
+          set -euo pipefail
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless \
+            --path godot --check-only --script res://scripts/m11_t10_corridor_lab.gd
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless \
+            --path godot --script res://tests/m11_t10_lab_smoke.gd
 
       - name: Verify every original M1–M6 GLB in live game and preserve exact mesh triangle counts
         shell: bash
