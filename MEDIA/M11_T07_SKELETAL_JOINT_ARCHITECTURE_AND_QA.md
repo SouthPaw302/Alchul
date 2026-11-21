@@ -3,6 +3,7 @@
 **Date:** November 21, 2026
 **Status:** FUNCTIONAL GODOT SKELETAL REFERENCE / NONCANONICAL RESEARCH, NOT A FINISHED ORGANISM, NOT AN IK RIG
 **Implementation review:** [PR #8](https://github.com/SouthPaw302/Alchul/pull/8)
+**T07 native validation:** [Passing Godot + graph CI](https://github.com/SouthPaw302/Alchul/actions/runs/44871598124) — after correcting JSON null-root parsing, 43-bone Skeleton3D construction, bounded pose controls, and existing M1–M6/chapter tests all passed. This validates **software behavior only**. Independent visual screenshot workflow remains separately subject to capture review.
 **Rendering and art archive:** [M11 T07 Google Drive folder](https://drive.google.com/drive/folders/1AM7a2CZEpoTmczjJ558-hQTjtVPIjyEh)
 **Reference diagram:** [See 2D render](https://drive.google.com/file/d/1kxS4xFrqVIFtSV3z0KAx1ijAab4JZUyE/view)
 **Distinct production artifact types:** The linked PNG is a *programmatic Python/Matplotlib 2D anatomical-graph reference illustration*, not a Godot screenshot. A separately configured GitHub workflow attempts actual native Godot screenshots for the T07 scene. Do not conflate their provenance.
