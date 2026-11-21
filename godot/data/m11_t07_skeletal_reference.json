@@ -1,0 +1,1009 @@
+{
+  "schema": "alchul.m11.t07.skeletal-reference.v1",
+  "status": "engineering_hypothesis_not_canon",
+  "units": "normalized_sculpture_units_not_meters",
+  "scientific_level": "skeletal topology comparison; no osteological measurements, soft tissue reconstruction, validated range of motion, or muscle loading",
+  "source_refs": [
+    {
+      "scope": "fictional_authority",
+      "path": "CANON.md"
+    },
+    {
+      "scope": "working_evidence",
+      "path": "RESEARCH/MATURE_SURFACE_BODY_EVIDENCE.md"
+    },
+    {
+      "scope": "working_competing_hypotheses",
+      "path": "MEDIA/M11_PEAK_SURFACE_INHABITANTS_COMPARATIVE_DOSSIER.md"
+    },
+    {
+      "scope": "previous_art_qa",
+      "path": "MEDIA/M11_T06_TEN_INDEPENDENT_PLATES_AND_SCIENCE_QA.md"
+    },
+    {
+      "scope": "peer_review",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2880093/",
+      "note": "Maniraptoran asymmetric carpal folding, not a proof of modern descendant joint angles"
+    },
+    {
+      "scope": "peer_review",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4684415/",
+      "note": "Theropod forelimb resting orientations and cautious mobility inferences"
+    },
+    {
+      "scope": "peer_review",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7163733/",
+      "note": "Dromaeosaurid pedal/hindlimb comparisons with lineage variability"
+    },
+    {
+      "scope": "peer_review",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6717499/",
+      "note": "Digit II musculoskeletal modeling; does not dictate mature descendant load-bearing"
+    }
+  ],
+  "coordinate_system": "X anterior (head); Y up; Z lateral; mirrored appendage bones L/R",
+  "joints": {
+    "neck_pitch": {
+      "bone": "neck_02",
+      "axis": "z",
+      "min_deg": -18,
+      "max_deg": 24
+    },
+    "mandible_open": {
+      "bone": "mandible",
+      "axis": "z",
+      "min_deg": -8,
+      "max_deg": 13
+    },
+    "tail_yaw": {
+      "bone": "caudal_01",
+      "axis": "y",
+      "min_deg": -14,
+      "max_deg": 14
+    },
+    "shoulder_swing": {
+      "bone": "humerus_{side}",
+      "axis": "z",
+      "min_deg": -18,
+      "max_deg": 24
+    },
+    "elbow_flex": {
+      "bone": "antebrachium_{side}",
+      "axis": "z",
+      "min_deg": -68,
+      "max_deg": 10
+    },
+    "wrist_fold": {
+      "bone": "carpus_{side}",
+      "axis": "y",
+      "min_deg": -24,
+      "max_deg": 34
+    },
+    "manual_I_flex": {
+      "bone": "manual_I_1_{side}",
+      "axis": "z",
+      "min_deg": -38,
+      "max_deg": 10
+    },
+    "manual_II_flex": {
+      "bone": "manual_II_1_{side}",
+      "axis": "z",
+      "min_deg": -42,
+      "max_deg": 10
+    },
+    "manual_III_flex": {
+      "bone": "manual_III_1_{side}",
+      "axis": "z",
+      "min_deg": -34,
+      "max_deg": 11
+    },
+    "hip_pitch": {
+      "bone": "femur_{side}",
+      "axis": "z",
+      "min_deg": -20,
+      "max_deg": 20
+    },
+    "knee_flex": {
+      "bone": "tibia_{side}",
+      "axis": "z",
+      "min_deg": -46,
+      "max_deg": 10
+    },
+    "ankle_flex": {
+      "bone": "metatarsus_{side}",
+      "axis": "z",
+      "min_deg": -22,
+      "max_deg": 22
+    },
+    "pedal_II_retraction": {
+      "bone": "pedal_II_{side}",
+      "axis": "z",
+      "min_deg": -12,
+      "max_deg": 24
+    }
+  },
+  "angles": "DEGREES ARE CONSERVATIVE ART-TOOL PLACEHOLDERS, NOT MEASURED EXTINCT OR FICTIONAL SPECIES JOINT LIMITS",
+  "blocked_joint_controls": [
+    "forearm_axial_pronation",
+    "human_thumb_opposition",
+    "wrist_free_rotation",
+    "hip_sprawl"
+  ],
+  "pedal_note": "Modeled pedal II III IV are inherited options; dromaeosaurid digit II was specialized and often kept off the ground, not automatically one of three supporting toes in a mature descendant.",
+  "bodies": [
+    {
+      "id": "H-A",
+      "label": "Continuity-biased long tail",
+      "hip_datum_normalized": 1.95,
+      "bones": [
+        {
+          "name": "pelvis",
+          "parent": null,
+          "anchor": [
+            0,
+            1.95,
+            0
+          ],
+          "region": "axial"
+        },
+        {
+          "name": "spine",
+          "parent": "pelvis",
+          "anchor": [
+            0.34,
+            2.09,
+            0
+          ],
+          "region": "axial"
+        },
+        {
+          "name": "thorax",
+          "parent": "spine",
+          "anchor": [
+            1.084,
+            2.12,
+            0
+          ],
+          "region": "axial"
+        },
+        {
+          "name": "neck_01",
+          "parent": "thorax",
+          "anchor": [
+            1.482,
+            2.35,
+            0
+          ],
+          "region": "axial"
+        },
+        {
+          "name": "neck_02",
+          "parent": "neck_01",
+          "anchor": [
+            1.729,
+            2.75,
+            0
+          ],
+          "region": "axial"
+        },
+        {
+          "name": "skull",
+          "parent": "neck_02",
+          "anchor": [
+            1.961,
+            2.76,
+            0
+          ],
+          "region": "cranial"
+        },
+        {
+          "name": "mandible",
+          "parent": "skull",
+          "anchor": [
+            2.197,
+            2.59,
+            0
+          ],
+          "region": "cranial"
+        },
+        {
+          "name": "caudal_01",
+          "parent": "pelvis",
+          "anchor": [
+            -1.058,
+            1.81,
+            0
+          ],
+          "region": "caudal"
+        },
+        {
+          "name": "caudal_02",
+          "parent": "caudal_01",
+          "anchor": [
+            -1.745,
+            1.72,
+            0
+          ],
+          "region": "caudal"
+        },
+        {
+          "name": "caudal_03",
+          "parent": "caudal_02",
+          "anchor": [
+            -2.433,
+            1.63,
+            0
+          ],
+          "region": "caudal"
+        },
+        {
+          "name": "caudal_04",
+          "parent": "caudal_03",
+          "anchor": [
+            -3.12,
+            1.54,
+            0
+          ],
+          "region": "caudal"
+        },
+        {
+          "name": "scapula_L",
+          "parent": "thorax",
+          "anchor": [
+            1.115,
+            2.08,
+            -0.27
+          ],
+          "region": "forelimb"
+        },
+        {
+          "name": "humerus_L",
+          "parent": "scapula_L",
+          "anchor": [
+            1.205,
+            1.79,
+            -0.31
+          ],
+          "region": "forelimb"
+        },
+        {
+          "name": "antebrachium_L",
+          "parent": "humerus_L",
+          "anchor": [
+            1.484,
+            1.66,
+            -0.33
+          ],
+          "region": "forelimb"
+        },
+        {
+          "name": "carpus_L",
+          "parent": "antebrachium_L",
+          "anchor": [
+            1.67,
+            1.6,
+            -0.33
+          ],
+          "region": "forelimb"
+        },
+        {
+          "name": "manual_I_1_L",
+          "parent": "carpus_L",
+          "anchor": [
+            1.833,
+            1.49,
+            -0.225
+          ],
+          "region": "manual"
+        },
+        {
+          "name": "manual_I_2_L",
+          "parent": "manual_I_1_L",
+          "anchor": [
+            1.985,
+            1.37,
+            -0.22
+          ],
+          "region": "manual"
+        },
+        {
+          "name": "manual_II_1_L",
+          "parent": "carpus_L",
+          "anchor": [
+            1.833,
+            1.54,
+            -0.34
+          ],
+          "region": "manual"
+        },
+        {
+          "name": "manual_II_2_L",
+          "parent": "manual_II_1_L",
+          "anchor": [
+            1.985,
+            1.44,
+            -0.37
+          ],
+          "region": "manual"
+        },
+        {
+          "name": "manual_III_1_L",
+          "parent": "carpus_L",
+          "anchor": [
+            1.833,
+            1.59,
+            -0.455
+          ],
+          "region": "manual"
+        },
+        {
+          "name": "manual_III_2_L",
+          "parent": "manual_III_1_L",
+          "anchor": [
+            1.985,
+            1.51,
+            -0.52
+          ],
+          "region": "manual"
+        },
+        {
+          "name": "femur_L",
+          "parent": "pelvis",
+          "anchor": [
+            0.2,
+            1.17,
+            -0.3
+          ],
+          "region": "hindlimb"
+        },
+        {
+          "name": "tibia_L",
+          "parent": "femur_L",
+          "anchor": [
+            -0.12,
+            0.34,
+            -0.3
+          ],
+          "region": "hindlimb"
+        },
+        {
+          "name": "metatarsus_L",
+          "parent": "tibia_L",
+          "anchor": [
+            0.25,
+            0.1,
+            -0.3
+          ],
+          "region": "hindlimb"
+        },
+        {
+          "name": "pedal_II_L",
+          "parent": "metatarsus_L",
+          "anchor": [
+            0.53,
+            0.065,
+            -0.185
+          ],
+          "region": "pedal"
+        },
+        {
+          "name": "pedal_III_L",
+          "parent": "metatarsus_L",
+          "anchor": [
+            0.53,
+            0.065,
+            -0.3
+          ],
+          "region": "pedal"
+        },
+        {
+          "name": "pedal_IV_L",
+          "parent": "metatarsus_L",
+          "anchor": [
+            0.53,
+            0.065,
+            -0.415
+          ],
+          "region": "pedal"
+        },
+        {
+          "name": "scapula_R",
+          "parent": "thorax",
+          "anchor": [
+            1.115,
+            2.08,
+            0.27
+          ],
+          "region": "forelimb"
+        },
+        {
+          "name": "humerus_R",
+          "parent": "scapula_R",
+          "anchor": [
+            1.205,
+            1.79,
+            0.31
+          ],
+          "region": "forelimb"
+        },
+        {
+          "name": "antebrachium_R",
+          "parent": "humerus_R",
+          "anchor": [
+            1.484,
+            1.66,
+            0.33
+          ],
+          "region": "forelimb"
+        },
+        {
+          "name": "carpus_R",
+          "parent": "antebrachium_R",
+          "anchor": [
+            1.67,
+            1.6,
+            0.33
+          ],
+          "region": "forelimb"
+        },
+        {
+          "name": "manual_I_1_R",
+          "parent": "carpus_R",
+          "anchor": [
+            1.833,
+            1.49,
+            0.225
+          ],
+          "region": "manual"
+        },
+        {
+          "name": "manual_I_2_R",
+          "parent": "manual_I_1_R",
+          "anchor": [
+            1.985,
+            1.37,
+            0.22
+          ],
+          "region": "manual"
+        },
+        {
+          "name": "manual_II_1_R",
+          "parent": "carpus_R",
+          "anchor": [
+            1.833,
+            1.54,
+            0.34
+          ],
+          "region": "manual"
+        },
+        {
+          "name": "manual_II_2_R",
+          "parent": "manual_II_1_R",
+          "anchor": [
+            1.985,
+            1.44,
+            0.37
+          ],
+          "region": "manual"
+        },
+        {
+          "name": "manual_III_1_R",
+          "parent": "carpus_R",
+          "anchor": [
+            1.833,
+            1.59,
+            0.455
+          ],
+          "region": "manual"
+        },
+        {
+          "name": "manual_III_2_R",
+          "parent": "manual_III_1_R",
+          "anchor": [
+            1.985,
+            1.51,
+            0.52
+          ],
+          "region": "manual"
+        },
+        {
+          "name": "femur_R",
+          "parent": "pelvis",
+          "anchor": [
+            0.2,
+            1.17,
+            0.3
+          ],
+          "region": "hindlimb"
+        },
+        {
+          "name": "tibia_R",
+          "parent": "femur_R",
+          "anchor": [
+            -0.12,
+            0.34,
+            0.3
+          ],
+          "region": "hindlimb"
+        },
+        {
+          "name": "metatarsus_R",
+          "parent": "tibia_R",
+          "anchor": [
+            0.25,
+            0.1,
+            0.3
+          ],
+          "region": "hindlimb"
+        },
+        {
+          "name": "pedal_II_R",
+          "parent": "metatarsus_R",
+          "anchor": [
+            0.53,
+            0.065,
+            0.185
+          ],
+          "region": "pedal"
+        },
+        {
+          "name": "pedal_III_R",
+          "parent": "metatarsus_R",
+          "anchor": [
+            0.53,
+            0.065,
+            0.3
+          ],
+          "region": "pedal"
+        },
+        {
+          "name": "pedal_IV_R",
+          "parent": "metatarsus_R",
+          "anchor": [
+            0.53,
+            0.065,
+            0.415
+          ],
+          "region": "pedal"
+        }
+      ]
+    },
+    {
+      "id": "H-B",
+      "label": "Manipulation-biased compact tail",
+      "hip_datum_normalized": 1.95,
+      "bones": [
+        {
+          "name": "pelvis",
+          "parent": null,
+          "anchor": [
+            0,
+            1.95,
+            0
+          ],
+          "region": "axial"
+        },
+        {
+          "name": "spine",
+          "parent": "pelvis",
+          "anchor": [
+            0.34,
+            2.09,
+            0
+          ],
+          "region": "axial"
+        },
+        {
+          "name": "thorax",
+          "parent": "spine",
+          "anchor": [
+            1.007,
+            2.12,
+            0
+          ],
+          "region": "axial"
+        },
+        {
+          "name": "neck_01",
+          "parent": "thorax",
+          "anchor": [
+            1.38,
+            2.35,
+            0
+          ],
+          "region": "axial"
+        },
+        {
+          "name": "neck_02",
+          "parent": "neck_01",
+          "anchor": [
+            1.619,
+            3.02,
+            0
+          ],
+          "region": "axial"
+        },
+        {
+          "name": "skull",
+          "parent": "neck_02",
+          "anchor": [
+            1.847,
+            3.03,
+            0
+          ],
+          "region": "cranial"
+        },
+        {
+          "name": "mandible",
+          "parent": "skull",
+          "anchor": [
+            2.079,
+            2.86,
+            0
+          ],
+          "region": "cranial"
+        },
+        {
+          "name": "caudal_01",
+          "parent": "pelvis",
+          "anchor": [
+            -0.665,
+            1.81,
+            0
+          ],
+          "region": "caudal"
+        },
+        {
+          "name": "caudal_02",
+          "parent": "caudal_01",
+          "anchor": [
+            -0.96,
+            1.72,
+            0
+          ],
+          "region": "caudal"
+        },
+        {
+          "name": "caudal_03",
+          "parent": "caudal_02",
+          "anchor": [
+            -1.255,
+            1.63,
+            0
+          ],
+          "region": "caudal"
+        },
+        {
+          "name": "caudal_04",
+          "parent": "caudal_03",
+          "anchor": [
+            -1.55,
+            1.54,
+            0
+          ],
+          "region": "caudal"
+        },
+        {
+          "name": "scapula_L",
+          "parent": "thorax",
+          "anchor": [
+            1.035,
+            2.08,
+            -0.27
+          ],
+          "region": "forelimb"
+        },
+        {
+          "name": "humerus_L",
+          "parent": "scapula_L",
+          "anchor": [
+            1.125,
+            1.79,
+            -0.31
+          ],
+          "region": "forelimb"
+        },
+        {
+          "name": "antebrachium_L",
+          "parent": "humerus_L",
+          "anchor": [
+            1.432,
+            1.66,
+            -0.33
+          ],
+          "region": "forelimb"
+        },
+        {
+          "name": "carpus_L",
+          "parent": "antebrachium_L",
+          "anchor": [
+            1.639,
+            1.6,
+            -0.33
+          ],
+          "region": "forelimb"
+        },
+        {
+          "name": "manual_I_1_L",
+          "parent": "carpus_L",
+          "anchor": [
+            1.82,
+            1.49,
+            -0.225
+          ],
+          "region": "manual"
+        },
+        {
+          "name": "manual_I_2_L",
+          "parent": "manual_I_1_L",
+          "anchor": [
+            1.985,
+            1.37,
+            -0.22
+          ],
+          "region": "manual"
+        },
+        {
+          "name": "manual_II_1_L",
+          "parent": "carpus_L",
+          "anchor": [
+            1.82,
+            1.54,
+            -0.34
+          ],
+          "region": "manual"
+        },
+        {
+          "name": "manual_II_2_L",
+          "parent": "manual_II_1_L",
+          "anchor": [
+            1.985,
+            1.44,
+            -0.37
+          ],
+          "region": "manual"
+        },
+        {
+          "name": "manual_III_1_L",
+          "parent": "carpus_L",
+          "anchor": [
+            1.82,
+            1.59,
+            -0.455
+          ],
+          "region": "manual"
+        },
+        {
+          "name": "manual_III_2_L",
+          "parent": "manual_III_1_L",
+          "anchor": [
+            1.985,
+            1.51,
+            -0.52
+          ],
+          "region": "manual"
+        },
+        {
+          "name": "femur_L",
+          "parent": "pelvis",
+          "anchor": [
+            0.2,
+            1.17,
+            -0.36
+          ],
+          "region": "hindlimb"
+        },
+        {
+          "name": "tibia_L",
+          "parent": "femur_L",
+          "anchor": [
+            -0.12,
+            0.34,
+            -0.36
+          ],
+          "region": "hindlimb"
+        },
+        {
+          "name": "metatarsus_L",
+          "parent": "tibia_L",
+          "anchor": [
+            0.25,
+            0.1,
+            -0.36
+          ],
+          "region": "hindlimb"
+        },
+        {
+          "name": "pedal_II_L",
+          "parent": "metatarsus_L",
+          "anchor": [
+            0.53,
+            0.065,
+            -0.245
+          ],
+          "region": "pedal"
+        },
+        {
+          "name": "pedal_III_L",
+          "parent": "metatarsus_L",
+          "anchor": [
+            0.53,
+            0.065,
+            -0.36
+          ],
+          "region": "pedal"
+        },
+        {
+          "name": "pedal_IV_L",
+          "parent": "metatarsus_L",
+          "anchor": [
+            0.53,
+            0.065,
+            -0.475
+          ],
+          "region": "pedal"
+        },
+        {
+          "name": "scapula_R",
+          "parent": "thorax",
+          "anchor": [
+            1.035,
+            2.08,
+            0.27
+          ],
+          "region": "forelimb"
+        },
+        {
+          "name": "humerus_R",
+          "parent": "scapula_R",
+          "anchor": [
+            1.125,
+            1.79,
+            0.31
+          ],
+          "region": "forelimb"
+        },
+        {
+          "name": "antebrachium_R",
+          "parent": "humerus_R",
+          "anchor": [
+            1.432,
+            1.66,
+            0.33
+          ],
+          "region": "forelimb"
+        },
+        {
+          "name": "carpus_R",
+          "parent": "antebrachium_R",
+          "anchor": [
+            1.639,
+            1.6,
+            0.33
+          ],
+          "region": "forelimb"
+        },
+        {
+          "name": "manual_I_1_R",
+          "parent": "carpus_R",
+          "anchor": [
+            1.82,
+            1.49,
+            0.225
+          ],
+          "region": "manual"
+        },
+        {
+          "name": "manual_I_2_R",
+          "parent": "manual_I_1_R",
+          "anchor": [
+            1.985,
+            1.37,
+            0.22
+          ],
+          "region": "manual"
+        },
+        {
+          "name": "manual_II_1_R",
+          "parent": "carpus_R",
+          "anchor": [
+            1.82,
+            1.54,
+            0.34
+          ],
+          "region": "manual"
+        },
+        {
+          "name": "manual_II_2_R",
+          "parent": "manual_II_1_R",
+          "anchor": [
+            1.985,
+            1.44,
+            0.37
+          ],
+          "region": "manual"
+        },
+        {
+          "name": "manual_III_1_R",
+          "parent": "carpus_R",
+          "anchor": [
+            1.82,
+            1.59,
+            0.455
+          ],
+          "region": "manual"
+        },
+        {
+          "name": "manual_III_2_R",
+          "parent": "manual_III_1_R",
+          "anchor": [
+            1.985,
+            1.51,
+            0.52
+          ],
+          "region": "manual"
+        },
+        {
+          "name": "femur_R",
+          "parent": "pelvis",
+          "anchor": [
+            0.2,
+            1.17,
+            0.36
+          ],
+          "region": "hindlimb"
+        },
+        {
+          "name": "tibia_R",
+          "parent": "femur_R",
+          "anchor": [
+            -0.12,
+            0.34,
+            0.36
+          ],
+          "region": "hindlimb"
+        },
+        {
+          "name": "metatarsus_R",
+          "parent": "tibia_R",
+          "anchor": [
+            0.25,
+            0.1,
+            0.36
+          ],
+          "region": "hindlimb"
+        },
+        {
+          "name": "pedal_II_R",
+          "parent": "metatarsus_R",
+          "anchor": [
+            0.53,
+            0.065,
+            0.245
+          ],
+          "region": "pedal"
+        },
+        {
+          "name": "pedal_III_R",
+          "parent": "metatarsus_R",
+          "anchor": [
+            0.53,
+            0.065,
+            0.36
+          ],
+          "region": "pedal"
+        },
+        {
+          "name": "pedal_IV_R",
+          "parent": "metatarsus_R",
+          "anchor": [
+            0.53,
+            0.065,
+            0.475
+          ],
+          "region": "pedal"
+        }
+      ]
+    }
+  ]
+}
