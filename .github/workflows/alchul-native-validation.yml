@@ -26,7 +26,9 @@ jobs:
         with:
           persist-credentials: false
       - name: Verify scene data and local-only dependencies
-        run: python3 godot/tools/validate_worldbook.py
+        run: |
+          python3 godot/tools/validate_worldbook.py
+          python3 godot/tools/validate_m11_anatomy.py
 
   godot-native-smoke:
     needs: offline-contract
@@ -93,6 +95,15 @@ jobs:
           set -euo pipefail
           "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless \
             --path godot --script res://tests/chapter_full_loop_smoke.gd
+
+      - name: Parse and smoke test separate M11 noncanonical anatomy lab
+        shell: bash
+        run: |
+          set -euo pipefail
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless \
+            --path godot --check-only --script res://scripts/m11_anatomy_lab.gd
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless \
+            --path godot --script res://tests/m11_anatomy_lab_smoke.gd
 
       - name: Verify every original M1–M6 GLB in live game and preserve exact mesh triangle counts
         shell: bash

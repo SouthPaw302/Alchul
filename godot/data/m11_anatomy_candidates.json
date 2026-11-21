@@ -1,0 +1,103 @@
+{
+  "schema": "alchul.m11.anatomy-comparison.v1",
+  "status": "research_only_not_canon",
+  "version": "2026-11-20-01",
+  "units": "arbitrary_normalized_illustration_units_not_meters",
+  "anatomical_certainty": "unmeasured artistic hypotheses; requires research and joint validation",
+  "source_docs": [
+    "CANON.md",
+    "RESEARCH/MATURE_SURFACE_BODY_EVIDENCE.md",
+    "MEDIA/M11_PEAK_SURFACE_INHABITANTS_COMPARATIVE_DOSSIER.md",
+    "MEDIA/M11_BATCH_01_VISUAL_REVIEW_AND_GATES.md"
+  ],
+  "locked_constraints": {
+    "origin": "Earth-born feathered Appalachian maniraptoran/dromaeosaur-grade lineage",
+    "adult_era": "mature surface age before sustained Long Descent; absolute year unresolved",
+    "functional_forelimb_digits": 3,
+    "hindlimb_architecture": "theropod-derived digitigrade",
+    "egg_retention_fraction_approx": 0.75,
+    "reproductive_mechanism": "unresolved; no diagram of a womb or specific organ system",
+    "alchul_visible_body": false,
+    "nonhuman_wrist_pronation": "not unconstrained"
+  },
+  "hypotheses": [
+    {
+      "id": "H-A",
+      "name": "Continuity-biased ground reader",
+      "hip_height": 1.95,
+      "torso_length": 1.55,
+      "tail_length": 2.75,
+      "neck_rise": 0.32,
+      "forelimb_reach": 0.54,
+      "stance_half_width": 0.3,
+      "digit_count": 3,
+      "status": "provisional",
+      "primary_test": "forward bracing while retaining a longer tail and corridor clearance",
+      "potential_failure": "restricted forelimb reach or tail swing may block shared work lanes"
+    },
+    {
+      "id": "H-B",
+      "name": "Manipulation-biased upright reader",
+      "hip_height": 1.95,
+      "torso_length": 1.39,
+      "tail_length": 1.18,
+      "neck_rise": 0.59,
+      "forelimb_reach": 0.62,
+      "stance_half_width": 0.36,
+      "digit_count": 3,
+      "status": "provisional",
+      "primary_test": "closer hand work with shorter tail and revised support demands",
+      "potential_failure": "precision placement could require mammalian wrist or an unstable posture"
+    }
+  ],
+  "plates": [
+    {
+      "id": "M11_VIEW_01",
+      "subject": "H-A lateral pelvis-tail-comparison"
+    },
+    {
+      "id": "M11_VIEW_02",
+      "subject": "H-B matched lateral comparison"
+    },
+    {
+      "id": "M11_VIEW_03",
+      "subject": "paired skull and three-digit forelimb"
+    },
+    {
+      "id": "M11_VIEW_04",
+      "subject": "dorsal mantle coverage variants"
+    },
+    {
+      "id": "M11_VIEW_05",
+      "subject": "digitigrade contact sequence"
+    },
+    {
+      "id": "M11_VIEW_06",
+      "subject": "tail-assisted turn and corridor clearance"
+    },
+    {
+      "id": "M11_VIEW_07",
+      "subject": "three-digit tool bracing"
+    },
+    {
+      "id": "M11_VIEW_08",
+      "subject": "physical riverbank sensing"
+    },
+    {
+      "id": "M11_VIEW_09",
+      "subject": "nursery route under egg-bearing load"
+    },
+    {
+      "id": "M11_VIEW_10",
+      "subject": "replication and disagreement"
+    }
+  ],
+  "prohibitions": [
+    "human thumb",
+    "mammalian shoulder template",
+    "modern beak asserted as proven",
+    "specific reproductive organ asserted as fact",
+    "Alchul visible avatar",
+    "claim of solved biomechanics"
+  ]
+}
