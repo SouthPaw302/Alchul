@@ -40,7 +40,7 @@
 
 **Illustrated hypotheses only:** Exact body ratios, coloring, crest, skull, tail reduction, joint ranges, maternal body shape, sensory organs, cultural roles and named individuals. None are approved canon.
 
-References: [Turner et al., 2007](https://pubmed.ncbi.nlm.nih.gov/17885130/); [Macaulay et al., 2023](https://www.nature.com/articles/s41467-023-37317-y); [Andrews and Mathies, 2000s, reptilian oxygen constraint](https://pubmed.ncbi.nlm.nih.gov/12024290/). Internal interpretive source: `RESEARCH/MATURE_SURFACE_BODY_EVIDENCE.md`.
+References: [Turner et al., 2007](https://pubmed.ncbi.nlm.nih.gov/17885130/); [Macaulay et al., 2023](https://www.nature.com/articles/s41467-023-37317-y); [Andrews (2002), reptilian oxygen constraint](https://pubmed.ncbi.nlm.nih.gov/12024290/). Internal interpretive source: `RESEARCH/MATURE_SURFACE_BODY_EVIDENCE.md`.
 
 ## 4. Review and next production gates
 
