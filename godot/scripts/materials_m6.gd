@@ -5,6 +5,7 @@ extends Node3D
 ## This standalone Godot-native shader study deliberately has no external files.
 
 var height_at: Callable
+var simple_web_shader: bool = false
 var soil_material: ShaderMaterial
 var rock_material: ShaderMaterial
 var fern_material: ShaderMaterial
@@ -60,6 +61,21 @@ void fragment(){
 	ALBEDO=mix(dark_color,light_color,grain);
 	ROUGHNESS=clamp(base_roughness+0.09*(0.5-grain),0.18,1.0);
 	METALLIC=0.0;
+}
+""" % cull
+	# PR-only diagnostic: isolate the fragment-noise cost while retaining
+	# identical authored meshes, material colors and default full-quality shader.
+	if simple_web_shader:
+		sh.code = """
+shader_type spatial;
+render_mode %s, depth_draw_opaque;
+uniform vec3 dark_color;
+uniform vec3 light_color;
+uniform float base_roughness;
+void fragment() {
+	ALBEDO = mix(dark_color, light_color, 0.55);
+	ROUGHNESS = base_roughness;
+	METALLIC = 0.0;
 }
 """ % cull
 	var mat := ShaderMaterial.new()

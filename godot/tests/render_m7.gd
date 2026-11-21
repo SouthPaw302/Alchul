@@ -72,6 +72,8 @@ func _run() -> void:
 		return
 
 	var times: Array[int] = []
+	var draw_calls: Array[int] = []
+	var primitives: Array[int] = []
 	for i in range(PATHS.size()):
 		var start: int = Time.get_ticks_msec()
 		cam.global_position = POSITIONS[i]
@@ -98,12 +100,18 @@ func _run() -> void:
 			quit(1)
 			return
 		times.append(Time.get_ticks_msec() - start)
+		# These counters are from the real Godot RenderingServer frame, not
+		# estimates based on authored node count.
+		draw_calls.append(RenderingServer.get_rendering_info(RenderingServer.RENDERING_INFO_TOTAL_DRAW_CALLS_IN_FRAME))
+		primitives.append(RenderingServer.get_rendering_info(RenderingServer.RENDERING_INFO_TOTAL_PRIMITIVES_IN_FRAME))
 		print("M7 GODOT FRAME ", i+1, "/10 -> ", destination)
 	var summary := FileAccess.open(output_path.path_join("capture_metrics.json"), FileAccess.WRITE)
 	if summary != null:
 		summary.store_string(JSON.stringify({
 			"renderer": "actual Godot 4 native scene under Xvfb/OpenGL Compatibility",
 			"capture_ms": times,
+			"draw_calls_per_view": draw_calls,
+			"primitives_per_view": primitives,
 			"frame_count": PATHS.size(),
 			"resolution": [960,540],
 			"material_state": state,

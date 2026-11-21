@@ -10,13 +10,17 @@ extends Node3D
 const TEXTURE_FOLDER: String = "res://assets/m6/textures/"
 const MATERIAL_NAMES: Array[String] = ["silt", "limestone", "rootwood", "clay", "moss", "fern", "water"]
 
+## Standalone M10 pilot can inspect the materials without patching M6 world nodes.
+var apply_to_existing_scene: bool = true
+
 var materials: Dictionary = {}
 var using_original_assets: Dictionary = {}
 var generated_texture_count: int = 0
 
 func _ready() -> void:
 	_create_materials()
-	_apply_to_existing_m6()
+	if apply_to_existing_scene:
+		_apply_to_existing_m6()
 
 func _create_materials() -> void:
 	var palette: Dictionary = {

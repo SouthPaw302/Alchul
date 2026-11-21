@@ -1,0 +1,62 @@
+name: Alchul M10 WebGL bottleneck profiling (five diagnostic modes)
+
+on:
+  pull_request:
+    paths:
+      - "godot/scripts/world.gd"
+      - "godot/scripts/environment_m1.gd"
+      - "godot/scripts/environment_m8.gd"
+      - "godot/scripts/materials_m6.gd"
+      - "godot/tests/browser_m8.cjs"
+      - "godot/tests/summarize_m10_web_profiles.py"
+      - ".github/workflows/alchul-m10-web-profiles.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  profile-five-software-render-modes:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - name: Checkout Alchul only
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+
+      - name: Install pinned Godot build and Chromium dependencies
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq curl unzip
+          bash godot/tools/build_web.sh
+          npm install --no-save --no-package-lock playwright@1.56.1
+          npx playwright install --with-deps chromium
+
+      - name: Compare equal browser dimensions on the same exact Web export
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8765 --directory godot/build/web >/tmp/alchul-profile-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" || true' EXIT
+          for i in $(seq 1 30); do
+            if curl --fail -s http://127.0.0.1:8765/ > /dev/null; then break; fi
+            sleep 1
+          done
+          for profile in reference no_shadows simple_m6 static_water all_light; do
+            echo "ALCHUL M10 WEBGL PROFILE: $profile"
+            export ALCHUL_M8_BROWSER_DIR="$GITHUB_WORKSPACE/m10-web-profile/$profile"
+            node godot/tests/browser_m8.cjs "http://127.0.0.1:8765/?alchul_perf=$profile"
+          done
+          python3 godot/tests/summarize_m10_web_profiles.py m10-web-profile
+
+      - name: Archive all five real SwiftShader captures and per-mode timing
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: alchul-m10-webgl-five-mode-profiling
+          path: m10-web-profile/
+          if-no-files-found: warn
+          retention-days: 21

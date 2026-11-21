@@ -1,0 +1,88 @@
+name: ALCHUL standalone desktop applications — Windows Linux macOS
+
+on:
+  pull_request:
+    paths:
+      - "godot/**"
+      - ".github/workflows/alchul-desktop-build.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  native-desktop-apps:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      LIBGL_ALWAYS_SOFTWARE: "1"
+    steps:
+      - name: Checkout exact ALCHUL revision (no other repositories)
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+
+      - name: Install Linux CI packaging and virtual-display dependencies
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq curl unzip zip file xvfb libgl1-mesa-dri libglu1-mesa libxrandr2
+
+      - name: Build three genuine Godot release applications with official engine/templates
+        shell: bash
+        run: |
+          set -euo pipefail
+          bash godot/tools/build_desktop.sh
+
+      - name: Validate Linux standalone executable boots without installed Godot
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout 45s xvfb-run -a -s '-screen 0 1280x800x24' \
+            godot/build/desktop/linux/Alchul.x86_64 \
+              --rendering-method gl_compatibility --quit-after 90 \
+            > "$RUNNER_TEMP/desktop_smoke.log" 2>&1
+          cat "$RUNNER_TEMP/desktop_smoke.log"
+          if grep -Ei 'SCRIPT ERROR:|Parse Error:|Invalid call\.' "$RUNNER_TEMP/desktop_smoke.log"; then
+            echo "ALCHUL_DESKTOP_BOOT_FAIL: script error"
+            exit 1
+          fi
+          echo "ALCHUL_LINUX_DESKTOP_BOOT_PASS"
+
+      - name: Archive Windows desktop app
+        uses: actions/upload-artifact@v4
+        with:
+          name: ALCHUL_Windows_x64_desktop_preview
+          path: godot/build/desktop/packages/ALCHUL_Windows_x64.zip
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 0
+
+      - name: Archive Linux desktop app
+        uses: actions/upload-artifact@v4
+        with:
+          name: ALCHUL_Linux_x64_desktop_preview
+          path: godot/build/desktop/packages/ALCHUL_Linux_x64.zip
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 0
+
+      - name: Archive macOS Universal app (UNSIGNED — not notarized)
+        uses: actions/upload-artifact@v4
+        with:
+          name: ALCHUL_macOS_Universal_unsigned_preview
+          path: godot/build/desktop/packages/ALCHUL_macOS_Universal.zip
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 0
+
+      - name: Archive reproducibility notes and SHA-256 checks
+        uses: actions/upload-artifact@v4
+        with:
+          name: ALCHUL_Desktop_build_provenance
+          path: |
+            godot/build/desktop/packages/DESKTOP_BUILD_PROVENANCE.json
+            godot/build/desktop/packages/README_START_HERE.txt
+            godot/build/desktop/packages/*.sha256
+          if-no-files-found: error
+          retention-days: 90

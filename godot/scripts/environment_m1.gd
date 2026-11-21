@@ -7,12 +7,16 @@ const M5_CONNECTIVE: Script = preload("res://scripts/connective_m5.gd")
 const M6_MATERIALS: Script = preload("res://scripts/materials_m6.gd")
 const M7_PBR: Script = preload("res://scripts/materials_m7.gd")
 const M8_ENVIRONMENT: Script = preload("res://scripts/environment_m8.gd")
+const M10_STATIC_BATCHER: Script = preload("res://scripts/m10_static_batcher.gd")
 
 ## Alchul M1 additive river-settlement visual study.
 ## Primitive geometry is intentionally noncanonical. No external files/network.
 ## Does not replace the existing visitor, markers, lenses, or terrain.
 
 var height_at: Callable
+var m10_static_batch_stats: Dictionary = {}
+var m10_extended_batch_stats: Dictionary = {}
+var m10_web_perf_profile: String = "reference"
 var branch_mat: StandardMaterial3D
 var timber_mat: StandardMaterial3D
 var stone_mat: StandardMaterial3D
@@ -38,6 +42,10 @@ func _ready() -> void:
 	_build_m8_environment()
 	_build_bank_reinforcement()
 	_build_wetland_detail()
+	# The parent contains only extra static bankside mesh instances plus independent
+	# child modules; this operation never walks into the other candidates.
+	if OS.get_environment("ALCHUL_M10_STATIC_BATCH") != "0":
+		m10_extended_batch_stats["wetland_detail"] = M10_STATIC_BATCHER.batch_direct_static_meshes(self)
 
 func _mat(color: Color, roughness: float = 0.91, alpha: bool = false) -> StandardMaterial3D:
 	var m := StandardMaterial3D.new()
@@ -120,6 +128,13 @@ func _build_m2_station() -> void:
 	candidate.name = "M2RiverReadingStation_Candidate"
 	candidate.set("height_at", height_at)
 	add_child(candidate)
+	# Full original procedural geometry is retained if the feature is disabled.
+	# Exact 3D transforms are baked into combined meshes; no M8 roof-spike shortcuts.
+	if OS.get_environment("ALCHUL_M10_STATIC_BATCH") != "0":
+		m10_static_batch_stats = M10_STATIC_BATCHER.batch_direct_static_meshes(candidate)
+		print("ALCHUL M10 STATIC BATCH: ", JSON.stringify(m10_static_batch_stats))
+	else:
+		m10_static_batch_stats = {"applied": false, "disabled_for_AB_capture": true}
 
 func _build_river_reading_station() -> void:
 	# Near the existing bank marker at (8,0), leave marker and inspection free.
@@ -149,6 +164,9 @@ func _build_m3_nursery() -> void:
 	candidate.name = "M3ProtectedNursery_Candidate"
 	candidate.set("height_at", height_at)
 	add_child(candidate)
+	# Stage-specific, reversible consolidation of static opaque MeshInstance3D.
+	if OS.get_environment("ALCHUL_M10_STATIC_BATCH") != "0":
+		m10_extended_batch_stats["nursery"] = M10_STATIC_BATCHER.batch_direct_static_meshes(candidate)
 
 func _build_covered_nursery_route() -> void:
 	# A broad, smooth route with protected access. No claims about egg anatomy or incubation.
@@ -174,6 +192,7 @@ func _build_covered_nursery_route() -> void:
 func _build_m8_environment() -> void:
 	var candidate: Node3D = M8_ENVIRONMENT.new()
 	candidate.name = "M8RiverbankWebCandidate"
+	candidate.set("simple_web_water", m10_web_perf_profile in ["static_water", "all_light"])
 	candidate.set("height_at", height_at)
 	add_child(candidate)
 
@@ -185,6 +204,7 @@ func _build_m7_pbr() -> void:
 func _build_m6_materials() -> void:
 	var candidate: Node3D = M6_MATERIALS.new()
 	candidate.name = "M6RiverbankMaterials_Candidate"
+	candidate.set("simple_web_shader", m10_web_perf_profile in ["simple_m6", "all_light"])
 	candidate.set("height_at", height_at)
 	add_child(candidate)
 
@@ -193,12 +213,18 @@ func _build_m5_connective() -> void:
 	candidate.name = "M5SettlementConnectors_Candidate"
 	candidate.set("height_at", height_at)
 	add_child(candidate)
+	# Stage-specific, reversible consolidation of static opaque MeshInstance3D.
+	if OS.get_environment("ALCHUL_M10_STATIC_BATCH") != "0":
+		m10_extended_batch_stats["connective"] = M10_STATIC_BATCHER.batch_direct_static_meshes(candidate)
 
 func _build_m4_harvest() -> void:
 	var candidate: Node3D = M4_HARVEST.new()
 	candidate.name = "M4HarvestPrecinct_Candidate"
 	candidate.set("height_at", height_at)
 	add_child(candidate)
+	# Stage-specific, reversible consolidation of static opaque MeshInstance3D.
+	if OS.get_environment("ALCHUL_M10_STATIC_BATCH") != "0":
+		m10_extended_batch_stats["harvest"] = M10_STATIC_BATCHER.batch_direct_static_meshes(candidate)
 
 func _build_harvest_precinct() -> void:
 	var cx := -5.0

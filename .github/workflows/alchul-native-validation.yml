@@ -61,3 +61,19 @@ jobs:
           set -euo pipefail
           "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless \
             --path godot --script res://tests/smoke.gd
+
+      - name: Verify M10 source GLB, all 28 PNG hashes, and native materials
+        shell: bash
+        run: |
+          set -euo pipefail
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless \
+            --path godot --script res://tests/m10_import_smoke.gd
+
+      - name: Prove M10 source-station mesh consolidation preserves triangles
+        shell: bash
+        env:
+          ALCHUL_M10_STATIC_BATCH: "1"
+        run: |
+          set -euo pipefail
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless \
+            --path godot --script res://tests/m10_static_batch_smoke.gd

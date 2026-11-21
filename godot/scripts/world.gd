@@ -5,11 +5,14 @@ extends Node3D
 
 const OBSERVER_SCENE: Script = preload("res://scripts/observer.gd")
 const M1_ENVIRONMENT: Script = preload("res://scripts/environment_m1.gd")
+const M10_STATIC_BATCHER: Script = preload("res://scripts/m10_static_batcher.gd")
 const WORLDBOOK: String = "res://data/worldbook.json"
 const LAND_EXTENT: float = 60.0
 const LAND_STEPS: int = 52
 
 var worldbook: Dictionary = {}
+var m10_world_visual_stats: Dictionary = {}
+var m10_web_perf_profile: String = "reference"
 var observer: AlchulObserver
 var lens_id: String = "outside"
 var focused_site: Dictionary = {}
@@ -31,6 +34,7 @@ var marker_material: StandardMaterial3D
 
 func _ready() -> void:
 	_load_worldbook()
+	m10_web_perf_profile = _read_m10_web_perf_profile()
 	_initialize_materials()
 	_build_sky_and_light()
 	_build_land()
@@ -43,11 +47,26 @@ func _ready() -> void:
 	_build_interface()
 	_set_lens("outside")
 
+# Diagnostic URL switch for PR-only A/B software-WebGL profiling.
+# The default and all native runs retain the existing scene settings.
+# Read-only; no requests, cookies, or external runtime dependencies.
+func _read_m10_web_perf_profile() -> String:
+	if not OS.has_feature("web"):
+		return "reference"
+	var requested: Variant = JavaScriptBridge.eval("new URLSearchParams(window.location.search).get('alchul_perf') || 'reference'")
+	var mode: String = str(requested)
+	if not mode in ["no_shadows", "simple_m6", "static_water", "all_light"]:
+		mode = "reference"
+	# Test harness can prove which switch Godot actually selected.
+	JavaScriptBridge.eval("window.alchulM10ActiveProfile='" + mode + "'")
+	return mode
+
 func _build_m1_environment() -> void:
 	# Additive, reversible visual study; existing terrain, navigation and interpretive sites remain authoritative.
 	var study: Node3D = M1_ENVIRONMENT.new()
 	study.name = "M1RiverEnvironment_Candidate"
 	study.set("height_at", Callable(self, "terrain_height"))
+	study.set("m10_web_perf_profile", m10_web_perf_profile)
 	add_child(study)
 
 func _load_worldbook() -> void:
@@ -97,7 +116,7 @@ func _build_sky_and_light() -> void:
 	sun.name = "IllustrativeDaylight"
 	sun.rotation_degrees = Vector3(-57.0, 28.0, 0.0)
 	sun.light_energy = 1.15
-	sun.shadow_enabled = true
+	sun.shadow_enabled = not m10_web_perf_profile in ["no_shadows", "all_light"]
 	add_child(sun)
 
 func river_center(x: float) -> float:
@@ -235,6 +254,11 @@ func _build_vegetation() -> void:
 		var stone := _ellipsoid(trees, Vector3(xx, yy + 0.20, zz),
 			Vector3(rng.randf_range(0.35, 1.25), 0.23, rng.randf_range(0.30, 0.80)), clay_material)
 		stone.rotation.y = rng.randf_range(0.0, TAU)
+	# Spatially chunk diffuse background vegetation, keeping per-chunk
+	# frustum culling instead of rendering every tree across the floodplain.
+	if OS.get_environment("ALCHUL_M10_STATIC_BATCH") != "0":
+		m10_world_visual_stats = M10_STATIC_BATCHER.batch_direct_static_meshes(trees, 24.0)
+		print("ALCHUL M10 BACKGROUND VEGETATION BATCH: ", JSON.stringify(m10_world_visual_stats))
 
 func _build_study_sites() -> void:
 	var sites: Array = worldbook.get("sites", [])

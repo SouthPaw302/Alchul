@@ -6,6 +6,7 @@ extends Node3D
 ## No outside assets, HTTP calls or unrelated project dependencies.
 
 var height_at: Callable
+var simple_web_water: bool = false
 var water_surface: MeshInstance3D
 var land_surface: MeshInstance3D
 var collision_body: StaticBody3D
@@ -71,6 +72,17 @@ void fragment() {
 		+ vec3(0.39, 0.36, 0.23) * glint;
 	ROUGHNESS = 0.23 + 0.04 * w2;
 	METALLIC = 0.0;
+}
+"""
+	# Only used by the explicit profiling URL modes on the unmerged PR.
+	# Keeping the material a shader preserves the original native smoke contract.
+	if simple_web_water:
+		shader.code = """
+shader_type spatial;
+render_mode unshaded, cull_disabled, depth_draw_opaque;
+void fragment() {
+	ALBEDO = vec3(0.15, 0.34, 0.31);
+	ROUGHNESS = 0.25;
 }
 """
 	var mat := ShaderMaterial.new()
