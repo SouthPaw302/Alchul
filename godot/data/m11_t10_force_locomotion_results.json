@@ -1,0 +1,1128 @@
+{
+  "assumptions_sha256": "7d56e2bf69f2e8a639dcaf26ae6587a0c2c23e975e25c1cc1474ee8b9c7bc7c4",
+  "candidates": {
+    "H-A": {
+      "corner_clearance": {
+        "caveat": "Arbitrary wall positions and sampled cross-sections; not physical M1\u2013M6 passage widths.",
+        "first_passing_width_IN_TEST_GRID": 4.6,
+        "radius": 1.1,
+        "width_results": [
+          {
+            "clearance_pass": false,
+            "corridor_width": 1.6,
+            "first_violating_frame": 17,
+            "maximum_outside_sample_point_count": 8,
+            "total_samples": 101,
+            "violating_samples": 77
+          },
+          {
+            "clearance_pass": false,
+            "corridor_width": 2.2,
+            "first_violating_frame": 21,
+            "maximum_outside_sample_point_count": 6,
+            "total_samples": 101,
+            "violating_samples": 70
+          },
+          {
+            "clearance_pass": false,
+            "corridor_width": 2.8,
+            "first_violating_frame": 32,
+            "maximum_outside_sample_point_count": 4,
+            "total_samples": 101,
+            "violating_samples": 55
+          },
+          {
+            "clearance_pass": false,
+            "corridor_width": 3.4,
+            "first_violating_frame": 43,
+            "maximum_outside_sample_point_count": 2,
+            "total_samples": 101,
+            "violating_samples": 41
+          },
+          {
+            "clearance_pass": false,
+            "corridor_width": 4.0,
+            "first_violating_frame": 50,
+            "maximum_outside_sample_point_count": 2,
+            "total_samples": 101,
+            "violating_samples": 31
+          },
+          {
+            "clearance_pass": true,
+            "corridor_width": 4.6,
+            "first_violating_frame": null,
+            "maximum_outside_sample_point_count": 0,
+            "total_samples": 101,
+            "violating_samples": 0
+          },
+          {
+            "clearance_pass": true,
+            "corridor_width": 5.2,
+            "first_violating_frame": null,
+            "maximum_outside_sample_point_count": 0,
+            "total_samples": 101,
+            "violating_samples": 0
+          },
+          {
+            "clearance_pass": true,
+            "corridor_width": 6.0,
+            "first_violating_frame": null,
+            "maximum_outside_sample_point_count": 0,
+            "total_samples": 101,
+            "violating_samples": 0
+          },
+          {
+            "clearance_pass": true,
+            "corridor_width": 7.0,
+            "first_violating_frame": null,
+            "maximum_outside_sample_point_count": 0,
+            "total_samples": 101,
+            "violating_samples": 0
+          }
+        ]
+      },
+      "digit_levers_T07_segment_length": {
+        "I": 0.193724,
+        "II": 0.184402,
+        "III": 0.183655
+      },
+      "force_checks": {
+        "hypothetical_ring_clamp": {
+          "all_three_contacts_reachable_with_T07": false,
+          "case": "hypothetical_ring_three_opposed_contact_directions",
+          "contacts": [
+            {
+              "digit": "I",
+              "force": [
+                -0.279762,
+                0.156667
+              ],
+              "joint_torque_upper_proxy": 0.062116,
+              "normal": 0.279762,
+              "position": [
+                0.16,
+                0.0
+              ],
+              "tangent": 0.156667
+            },
+            {
+              "digit": "II",
+              "force": [
+                0.20937,
+                -0.202161
+              ],
+              "joint_torque_upper_proxy": 0.053669,
+              "normal": 0.279762,
+              "position": [
+                -0.08,
+                0.138564
+              ],
+              "tangent": -0.080239
+            },
+            {
+              "digit": "III",
+              "force": [
+                0.030392,
+                0.305495
+              ],
+              "joint_torque_upper_proxy": 0.056382,
+              "normal": 0.279762,
+              "position": [
+                -0.08,
+                -0.138564
+              ],
+              "tangent": -0.126427
+            }
+          ],
+          "equilibrium_feasible_conditional": true,
+          "finger_normal_required": 0.279762,
+          "force_closure_verified": false,
+          "meaning": "Conditional 2D single-wrench equilibrium on an unattested opposing geometry; NOT actual ALCHUL grip.",
+          "normal_and_joint_capacity_pass": true,
+          "requires_new_nonhuman_hand_pose_geometry": true,
+          "residual_wrench": 0.0,
+          "torque_capacity_per_digit": 0.14
+        },
+        "hypothetical_ring_low_friction": {
+          "all_three_contacts_reachable_with_T07": false,
+          "case": "hypothetical_ring_three_opposed_contact_directions",
+          "contacts": [
+            {
+              "digit": "I",
+              "force": [
+                -1.958333,
+                0.156667
+              ],
+              "joint_torque_upper_proxy": 0.380588,
+              "normal": 1.958333,
+              "position": [
+                0.16,
+                0.0
+              ],
+              "tangent": 0.156667
+            },
+            {
+              "digit": "II",
+              "force": [
+                1.048656,
+                -1.655847
+              ],
+              "joint_torque_upper_proxy": 0.361423,
+              "normal": 1.958333,
+              "position": [
+                -0.08,
+                0.138564
+              ],
+              "tangent": -0.080239
+            },
+            {
+              "digit": "III",
+              "force": [
+                0.869677,
+                1.75918
+              ],
+              "joint_torque_upper_proxy": 0.360406,
+              "normal": 1.958333,
+              "position": [
+                -0.08,
+                -0.138564
+              ],
+              "tangent": -0.126427
+            }
+          ],
+          "equilibrium_feasible_conditional": false,
+          "finger_normal_required": 1.958333,
+          "force_closure_verified": false,
+          "meaning": "Conditional 2D single-wrench equilibrium on an unattested opposing geometry; NOT actual ALCHUL grip.",
+          "normal_and_joint_capacity_pass": false,
+          "requires_new_nonhuman_hand_pose_geometry": true,
+          "residual_wrench": 0.0,
+          "torque_capacity_per_digit": 0.14
+        },
+        "slippery_wet_fixture": {
+          "backing_wall": true,
+          "case": "backed_fixture_static_brace",
+          "contact_type": "wall-assisted push. Not an opposable free grasp.",
+          "equilibrium_feasible_assumed": false,
+          "fingers": [
+            {
+              "digit": "I",
+              "distal_joint_torque_upper_proxy": 0.206897,
+              "force": [
+                1.066667,
+                0.053333
+              ],
+              "friction_utilization": 1.0,
+              "normal": 1.066667,
+              "position": [
+                -0.15,
+                -0.17
+              ],
+              "tangent": 0.053333,
+              "torque_limit": 0.064
+            },
+            {
+              "digit": "II",
+              "distal_joint_torque_upper_proxy": 0.196941,
+              "force": [
+                1.066667,
+                0.053333
+              ],
+              "friction_utilization": 1.0,
+              "normal": 1.066667,
+              "position": [
+                -0.15,
+                0.0
+              ],
+              "tangent": 0.053333,
+              "torque_limit": 0.064
+            },
+            {
+              "digit": "III",
+              "distal_joint_torque_upper_proxy": 0.196143,
+              "force": [
+                1.066667,
+                0.053333
+              ],
+              "friction_utilization": 1.0,
+              "normal": 1.066667,
+              "position": [
+                -0.15,
+                0.17
+              ],
+              "tangent": 0.053333,
+              "torque_limit": 0.064
+            }
+          ],
+          "friction_pass": true,
+          "near_reachable_from_T09": true,
+          "normal_required_per_digit": 1.066667,
+          "normal_strength_pass": false,
+          "resultant_wrench_residual": 1e-06,
+          "support_force": [
+            -3.2,
+            0.16
+          ],
+          "supporting_evidence": "T09 fingertip proximity only; surface normals invented.",
+          "torque_proxy_pass": false
+        },
+        "supported_fixture": {
+          "backing_wall": true,
+          "case": "backed_fixture_static_brace",
+          "contact_type": "wall-assisted push. Not an opposable free grasp.",
+          "equilibrium_feasible_assumed": true,
+          "fingers": [
+            {
+              "digit": "I",
+              "distal_joint_torque_upper_proxy": 0.023103,
+              "force": [
+                0.106667,
+                0.053333
+              ],
+              "friction_utilization": 0.961538,
+              "normal": 0.106667,
+              "position": [
+                -0.15,
+                -0.17
+              ],
+              "tangent": 0.053333,
+              "torque_limit": 0.064
+            },
+            {
+              "digit": "II",
+              "distal_joint_torque_upper_proxy": 0.021991,
+              "force": [
+                0.106667,
+                0.053333
+              ],
+              "friction_utilization": 0.961538,
+              "normal": 0.106667,
+              "position": [
+                -0.15,
+                0.0
+              ],
+              "tangent": 0.053333,
+              "torque_limit": 0.064
+            },
+            {
+              "digit": "III",
+              "distal_joint_torque_upper_proxy": 0.021902,
+              "force": [
+                0.106667,
+                0.053333
+              ],
+              "friction_utilization": 0.961538,
+              "normal": 0.106667,
+              "position": [
+                -0.15,
+                0.17
+              ],
+              "tangent": 0.053333,
+              "torque_limit": 0.064
+            }
+          ],
+          "friction_pass": true,
+          "near_reachable_from_T09": true,
+          "normal_required_per_digit": 0.106667,
+          "normal_strength_pass": true,
+          "resultant_wrench_residual": 1e-06,
+          "support_force": [
+            -0.32,
+            0.16
+          ],
+          "supporting_evidence": "T09 fingertip proximity only; surface normals invented.",
+          "torque_proxy_pass": true
+        },
+        "unsupported_no_wall": {
+          "backing_wall": false,
+          "case": "backed_fixture_static_brace",
+          "contact_type": "wall-assisted push. Not an opposable free grasp.",
+          "equilibrium_feasible_assumed": false,
+          "fingers": [
+            {
+              "digit": "I",
+              "distal_joint_torque_upper_proxy": 0.010332,
+              "force": [
+                0.0,
+                0.053333
+              ],
+              "friction_utilization": null,
+              "normal": 0.0,
+              "position": [
+                -0.15,
+                -0.17
+              ],
+              "tangent": 0.053333,
+              "torque_limit": 0.064
+            },
+            {
+              "digit": "II",
+              "distal_joint_torque_upper_proxy": 0.009835,
+              "force": [
+                0.0,
+                0.053333
+              ],
+              "friction_utilization": null,
+              "normal": 0.0,
+              "position": [
+                -0.15,
+                0.0
+              ],
+              "tangent": 0.053333,
+              "torque_limit": 0.064
+            },
+            {
+              "digit": "III",
+              "distal_joint_torque_upper_proxy": 0.009795,
+              "force": [
+                0.0,
+                0.053333
+              ],
+              "friction_utilization": null,
+              "normal": 0.0,
+              "position": [
+                -0.15,
+                0.17
+              ],
+              "tangent": 0.053333,
+              "torque_limit": 0.064
+            }
+          ],
+          "friction_pass": false,
+          "near_reachable_from_T09": true,
+          "normal_required_per_digit": 0.0,
+          "normal_strength_pass": true,
+          "resultant_wrench_residual": 0.161791,
+          "support_force": [
+            0.0,
+            0.0
+          ],
+          "supporting_evidence": "T09 fingertip proximity only; surface normals invented.",
+          "torque_proxy_pass": true
+        },
+        "very_weak_finger_joint": {
+          "backing_wall": true,
+          "case": "backed_fixture_static_brace",
+          "contact_type": "wall-assisted push. Not an opposable free grasp.",
+          "equilibrium_feasible_assumed": false,
+          "fingers": [
+            {
+              "digit": "I",
+              "distal_joint_torque_upper_proxy": 0.023103,
+              "force": [
+                0.106667,
+                0.053333
+              ],
+              "friction_utilization": 0.961538,
+              "normal": 0.106667,
+              "position": [
+                -0.15,
+                -0.17
+              ],
+              "tangent": 0.053333,
+              "torque_limit": 0.001
+            },
+            {
+              "digit": "II",
+              "distal_joint_torque_upper_proxy": 0.021991,
+              "force": [
+                0.106667,
+                0.053333
+              ],
+              "friction_utilization": 0.961538,
+              "normal": 0.106667,
+              "position": [
+                -0.15,
+                0.0
+              ],
+              "tangent": 0.053333,
+              "torque_limit": 0.001
+            },
+            {
+              "digit": "III",
+              "distal_joint_torque_upper_proxy": 0.021902,
+              "force": [
+                0.106667,
+                0.053333
+              ],
+              "friction_utilization": 0.961538,
+              "normal": 0.106667,
+              "position": [
+                -0.15,
+                0.17
+              ],
+              "tangent": 0.053333,
+              "torque_limit": 0.001
+            }
+          ],
+          "friction_pass": true,
+          "near_reachable_from_T09": true,
+          "normal_required_per_digit": 0.106667,
+          "normal_strength_pass": true,
+          "resultant_wrench_residual": 1e-06,
+          "support_force": [
+            -0.32,
+            0.16
+          ],
+          "supporting_evidence": "T09 fingertip proximity only; surface normals invented.",
+          "torque_proxy_pass": false
+        }
+      },
+      "head_length_normalized": 2.197,
+      "stepping": {
+        "foot_lateral_offset": 0.3,
+        "friction_cases": {
+          "slippery_mud": {
+            "assumed_mu": 0.055,
+            "no_slip_proxy": false
+          },
+          "wet_stone": {
+            "assumed_mu": 0.34,
+            "no_slip_proxy": true
+          }
+        },
+        "friction_required_accel_over_g": 0.075,
+        "hip_normalized": 1.95,
+        "implied_body_lean_deg_if_rigid": 6.001358,
+        "modelled_shift_feasible": true,
+        "no_shift_one_foot_inside": false,
+        "phases": [
+          {
+            "COM_shift_z": 0.0,
+            "COM_z": 0.0,
+            "contacts": [
+              "L",
+              "R"
+            ],
+            "margin": 0.08168,
+            "phase": "double_support_start",
+            "within_assumed_contact": true
+          },
+          {
+            "COM_shift_z": 0.1025,
+            "COM_z": 0.1025,
+            "contacts": [
+              "L",
+              "R"
+            ],
+            "margin": 0.08168,
+            "phase": "transfer_to_right",
+            "within_assumed_contact": true
+          },
+          {
+            "COM_shift_z": 0.205,
+            "COM_z": 0.205,
+            "contacts": [
+              "R"
+            ],
+            "margin": 0.025,
+            "phase": "right_stance",
+            "within_assumed_contact": true
+          },
+          {
+            "COM_shift_z": 0.0,
+            "COM_z": 0.0,
+            "contacts": [
+              "L",
+              "R"
+            ],
+            "margin": 0.08168,
+            "phase": "transfer_to_left",
+            "within_assumed_contact": true
+          },
+          {
+            "COM_shift_z": -0.205,
+            "COM_z": -0.205,
+            "contacts": [
+              "L"
+            ],
+            "margin": 0.025,
+            "phase": "left_stance",
+            "within_assumed_contact": true
+          },
+          {
+            "COM_shift_z": 0.0,
+            "COM_z": 0.0,
+            "contacts": [
+              "L",
+              "R"
+            ],
+            "margin": 0.08168,
+            "phase": "double_support_end",
+            "within_assumed_contact": true
+          }
+        ],
+        "required_com_lateral_shift_for_0p025_margin": 0.205,
+        "required_stance_leg_roll_moment_proxy": 0.095,
+        "shift_limit": 0.35,
+        "stance_leg_torque_proxy_cap": 0.15,
+        "warning": "quasi-static phase checklist, not momentum integration or active muscle model"
+      },
+      "tail_length_normalized": 3.12
+    },
+    "H-B": {
+      "corner_clearance": {
+        "caveat": "Arbitrary wall positions and sampled cross-sections; not physical M1\u2013M6 passage widths.",
+        "first_passing_width_IN_TEST_GRID": 2.8,
+        "radius": 1.1,
+        "width_results": [
+          {
+            "clearance_pass": false,
+            "corridor_width": 1.6,
+            "first_violating_frame": 18,
+            "maximum_outside_sample_point_count": 4,
+            "total_samples": 101,
+            "violating_samples": 52
+          },
+          {
+            "clearance_pass": false,
+            "corridor_width": 2.2,
+            "first_violating_frame": 24,
+            "maximum_outside_sample_point_count": 2,
+            "total_samples": 101,
+            "violating_samples": 38
+          },
+          {
+            "clearance_pass": true,
+            "corridor_width": 2.8,
+            "first_violating_frame": null,
+            "maximum_outside_sample_point_count": 0,
+            "total_samples": 101,
+            "violating_samples": 0
+          },
+          {
+            "clearance_pass": true,
+            "corridor_width": 3.4,
+            "first_violating_frame": null,
+            "maximum_outside_sample_point_count": 0,
+            "total_samples": 101,
+            "violating_samples": 0
+          },
+          {
+            "clearance_pass": true,
+            "corridor_width": 4.0,
+            "first_violating_frame": null,
+            "maximum_outside_sample_point_count": 0,
+            "total_samples": 101,
+            "violating_samples": 0
+          },
+          {
+            "clearance_pass": true,
+            "corridor_width": 4.6,
+            "first_violating_frame": null,
+            "maximum_outside_sample_point_count": 0,
+            "total_samples": 101,
+            "violating_samples": 0
+          },
+          {
+            "clearance_pass": true,
+            "corridor_width": 5.2,
+            "first_violating_frame": null,
+            "maximum_outside_sample_point_count": 0,
+            "total_samples": 101,
+            "violating_samples": 0
+          },
+          {
+            "clearance_pass": true,
+            "corridor_width": 6.0,
+            "first_violating_frame": null,
+            "maximum_outside_sample_point_count": 0,
+            "total_samples": 101,
+            "violating_samples": 0
+          },
+          {
+            "clearance_pass": true,
+            "corridor_width": 7.0,
+            "first_violating_frame": null,
+            "maximum_outside_sample_point_count": 0,
+            "total_samples": 101,
+            "violating_samples": 0
+          }
+        ]
+      },
+      "digit_levers_T07_segment_length": {
+        "I": 0.204083,
+        "II": 0.195256,
+        "III": 0.194551
+      },
+      "force_checks": {
+        "hypothetical_ring_clamp": {
+          "all_three_contacts_reachable_with_T07": false,
+          "case": "hypothetical_ring_three_opposed_contact_directions",
+          "contacts": [
+            {
+              "digit": "I",
+              "force": [
+                -0.279762,
+                0.156667
+              ],
+              "joint_torque_upper_proxy": 0.065438,
+              "normal": 0.279762,
+              "position": [
+                0.16,
+                0.0
+              ],
+              "tangent": 0.156667
+            },
+            {
+              "digit": "II",
+              "force": [
+                0.20937,
+                -0.202161
+              ],
+              "joint_torque_upper_proxy": 0.056828,
+              "normal": 0.279762,
+              "position": [
+                -0.08,
+                0.138564
+              ],
+              "tangent": -0.080239
+            },
+            {
+              "digit": "III",
+              "force": [
+                0.030392,
+                0.305495
+              ],
+              "joint_torque_upper_proxy": 0.059728,
+              "normal": 0.279762,
+              "position": [
+                -0.08,
+                -0.138564
+              ],
+              "tangent": -0.126427
+            }
+          ],
+          "equilibrium_feasible_conditional": true,
+          "finger_normal_required": 0.279762,
+          "force_closure_verified": false,
+          "meaning": "Conditional 2D single-wrench equilibrium on an unattested opposing geometry; NOT actual ALCHUL grip.",
+          "normal_and_joint_capacity_pass": true,
+          "requires_new_nonhuman_hand_pose_geometry": true,
+          "residual_wrench": 0.0,
+          "torque_capacity_per_digit": 0.14
+        },
+        "hypothetical_ring_low_friction": {
+          "all_three_contacts_reachable_with_T07": false,
+          "case": "hypothetical_ring_three_opposed_contact_directions",
+          "contacts": [
+            {
+              "digit": "I",
+              "force": [
+                -1.958333,
+                0.156667
+              ],
+              "joint_torque_upper_proxy": 0.40094,
+              "normal": 1.958333,
+              "position": [
+                0.16,
+                0.0
+              ],
+              "tangent": 0.156667
+            },
+            {
+              "digit": "II",
+              "force": [
+                1.048656,
+                -1.655847
+              ],
+              "joint_torque_upper_proxy": 0.382698,
+              "normal": 1.958333,
+              "position": [
+                -0.08,
+                0.138564
+              ],
+              "tangent": -0.080239
+            },
+            {
+              "digit": "III",
+              "force": [
+                0.869677,
+                1.75918
+              ],
+              "joint_torque_upper_proxy": 0.381788,
+              "normal": 1.958333,
+              "position": [
+                -0.08,
+                -0.138564
+              ],
+              "tangent": -0.126427
+            }
+          ],
+          "equilibrium_feasible_conditional": false,
+          "finger_normal_required": 1.958333,
+          "force_closure_verified": false,
+          "meaning": "Conditional 2D single-wrench equilibrium on an unattested opposing geometry; NOT actual ALCHUL grip.",
+          "normal_and_joint_capacity_pass": false,
+          "requires_new_nonhuman_hand_pose_geometry": true,
+          "residual_wrench": 0.0,
+          "torque_capacity_per_digit": 0.14
+        },
+        "slippery_wet_fixture": {
+          "backing_wall": true,
+          "case": "backed_fixture_static_brace",
+          "contact_type": "wall-assisted push. Not an opposable free grasp.",
+          "equilibrium_feasible_assumed": false,
+          "fingers": [
+            {
+              "digit": "I",
+              "distal_joint_torque_upper_proxy": 0.217961,
+              "force": [
+                1.066667,
+                0.053333
+              ],
+              "friction_utilization": 1.0,
+              "normal": 1.066667,
+              "position": [
+                -0.15,
+                -0.17
+              ],
+              "tangent": 0.053333,
+              "torque_limit": 0.064
+            },
+            {
+              "digit": "II",
+              "distal_joint_torque_upper_proxy": 0.208534,
+              "force": [
+                1.066667,
+                0.053333
+              ],
+              "friction_utilization": 1.0,
+              "normal": 1.066667,
+              "position": [
+                -0.15,
+                0.0
+              ],
+              "tangent": 0.053333,
+              "torque_limit": 0.064
+            },
+            {
+              "digit": "III",
+              "distal_joint_torque_upper_proxy": 0.20778,
+              "force": [
+                1.066667,
+                0.053333
+              ],
+              "friction_utilization": 1.0,
+              "normal": 1.066667,
+              "position": [
+                -0.15,
+                0.17
+              ],
+              "tangent": 0.053333,
+              "torque_limit": 0.064
+            }
+          ],
+          "friction_pass": true,
+          "near_reachable_from_T09": true,
+          "normal_required_per_digit": 1.066667,
+          "normal_strength_pass": false,
+          "resultant_wrench_residual": 1e-06,
+          "support_force": [
+            -3.2,
+            0.16
+          ],
+          "supporting_evidence": "T09 fingertip proximity only; surface normals invented.",
+          "torque_proxy_pass": false
+        },
+        "supported_fixture": {
+          "backing_wall": true,
+          "case": "backed_fixture_static_brace",
+          "contact_type": "wall-assisted push. Not an opposable free grasp.",
+          "equilibrium_feasible_assumed": true,
+          "fingers": [
+            {
+              "digit": "I",
+              "distal_joint_torque_upper_proxy": 0.024338,
+              "force": [
+                0.106667,
+                0.053333
+              ],
+              "friction_utilization": 0.961538,
+              "normal": 0.106667,
+              "position": [
+                -0.15,
+                -0.17
+              ],
+              "tangent": 0.053333,
+              "torque_limit": 0.064
+            },
+            {
+              "digit": "II",
+              "distal_joint_torque_upper_proxy": 0.023286,
+              "force": [
+                0.106667,
+                0.053333
+              ],
+              "friction_utilization": 0.961538,
+              "normal": 0.106667,
+              "position": [
+                -0.15,
+                0.0
+              ],
+              "tangent": 0.053333,
+              "torque_limit": 0.064
+            },
+            {
+              "digit": "III",
+              "distal_joint_torque_upper_proxy": 0.023202,
+              "force": [
+                0.106667,
+                0.053333
+              ],
+              "friction_utilization": 0.961538,
+              "normal": 0.106667,
+              "position": [
+                -0.15,
+                0.17
+              ],
+              "tangent": 0.053333,
+              "torque_limit": 0.064
+            }
+          ],
+          "friction_pass": true,
+          "near_reachable_from_T09": true,
+          "normal_required_per_digit": 0.106667,
+          "normal_strength_pass": true,
+          "resultant_wrench_residual": 1e-06,
+          "support_force": [
+            -0.32,
+            0.16
+          ],
+          "supporting_evidence": "T09 fingertip proximity only; surface normals invented.",
+          "torque_proxy_pass": true
+        },
+        "unsupported_no_wall": {
+          "backing_wall": false,
+          "case": "backed_fixture_static_brace",
+          "contact_type": "wall-assisted push. Not an opposable free grasp.",
+          "equilibrium_feasible_assumed": false,
+          "fingers": [
+            {
+              "digit": "I",
+              "distal_joint_torque_upper_proxy": 0.010884,
+              "force": [
+                0.0,
+                0.053333
+              ],
+              "friction_utilization": null,
+              "normal": 0.0,
+              "position": [
+                -0.15,
+                -0.17
+              ],
+              "tangent": 0.053333,
+              "torque_limit": 0.064
+            },
+            {
+              "digit": "II",
+              "distal_joint_torque_upper_proxy": 0.010414,
+              "force": [
+                0.0,
+                0.053333
+              ],
+              "friction_utilization": null,
+              "normal": 0.0,
+              "position": [
+                -0.15,
+                0.0
+              ],
+              "tangent": 0.053333,
+              "torque_limit": 0.064
+            },
+            {
+              "digit": "III",
+              "distal_joint_torque_upper_proxy": 0.010376,
+              "force": [
+                0.0,
+                0.053333
+              ],
+              "friction_utilization": null,
+              "normal": 0.0,
+              "position": [
+                -0.15,
+                0.17
+              ],
+              "tangent": 0.053333,
+              "torque_limit": 0.064
+            }
+          ],
+          "friction_pass": false,
+          "near_reachable_from_T09": true,
+          "normal_required_per_digit": 0.0,
+          "normal_strength_pass": true,
+          "resultant_wrench_residual": 0.161791,
+          "support_force": [
+            0.0,
+            0.0
+          ],
+          "supporting_evidence": "T09 fingertip proximity only; surface normals invented.",
+          "torque_proxy_pass": true
+        },
+        "very_weak_finger_joint": {
+          "backing_wall": true,
+          "case": "backed_fixture_static_brace",
+          "contact_type": "wall-assisted push. Not an opposable free grasp.",
+          "equilibrium_feasible_assumed": false,
+          "fingers": [
+            {
+              "digit": "I",
+              "distal_joint_torque_upper_proxy": 0.024338,
+              "force": [
+                0.106667,
+                0.053333
+              ],
+              "friction_utilization": 0.961538,
+              "normal": 0.106667,
+              "position": [
+                -0.15,
+                -0.17
+              ],
+              "tangent": 0.053333,
+              "torque_limit": 0.001
+            },
+            {
+              "digit": "II",
+              "distal_joint_torque_upper_proxy": 0.023286,
+              "force": [
+                0.106667,
+                0.053333
+              ],
+              "friction_utilization": 0.961538,
+              "normal": 0.106667,
+              "position": [
+                -0.15,
+                0.0
+              ],
+              "tangent": 0.053333,
+              "torque_limit": 0.001
+            },
+            {
+              "digit": "III",
+              "distal_joint_torque_upper_proxy": 0.023202,
+              "force": [
+                0.106667,
+                0.053333
+              ],
+              "friction_utilization": 0.961538,
+              "normal": 0.106667,
+              "position": [
+                -0.15,
+                0.17
+              ],
+              "tangent": 0.053333,
+              "torque_limit": 0.001
+            }
+          ],
+          "friction_pass": true,
+          "near_reachable_from_T09": true,
+          "normal_required_per_digit": 0.106667,
+          "normal_strength_pass": true,
+          "resultant_wrench_residual": 1e-06,
+          "support_force": [
+            -0.32,
+            0.16
+          ],
+          "supporting_evidence": "T09 fingertip proximity only; surface normals invented.",
+          "torque_proxy_pass": false
+        }
+      },
+      "head_length_normalized": 2.079,
+      "stepping": {
+        "foot_lateral_offset": 0.36,
+        "friction_cases": {
+          "slippery_mud": {
+            "assumed_mu": 0.055,
+            "no_slip_proxy": false
+          },
+          "wet_stone": {
+            "assumed_mu": 0.34,
+            "no_slip_proxy": true
+          }
+        },
+        "friction_required_accel_over_g": 0.075,
+        "hip_normalized": 1.95,
+        "implied_body_lean_deg_if_rigid": 7.738941,
+        "modelled_shift_feasible": true,
+        "no_shift_one_foot_inside": false,
+        "phases": [
+          {
+            "COM_shift_z": 0.0,
+            "COM_z": 0.0,
+            "contacts": [
+              "L",
+              "R"
+            ],
+            "margin": 0.29189,
+            "phase": "double_support_start",
+            "within_assumed_contact": true
+          },
+          {
+            "COM_shift_z": 0.1325,
+            "COM_z": 0.1325,
+            "contacts": [
+              "L",
+              "R"
+            ],
+            "margin": 0.29189,
+            "phase": "transfer_to_right",
+            "within_assumed_contact": true
+          },
+          {
+            "COM_shift_z": 0.265,
+            "COM_z": 0.265,
+            "contacts": [
+              "R"
+            ],
+            "margin": 0.025,
+            "phase": "right_stance",
+            "within_assumed_contact": true
+          },
+          {
+            "COM_shift_z": 0.0,
+            "COM_z": 0.0,
+            "contacts": [
+              "L",
+              "R"
+            ],
+            "margin": 0.29189,
+            "phase": "transfer_to_left",
+            "within_assumed_contact": true
+          },
+          {
+            "COM_shift_z": -0.265,
+            "COM_z": -0.265,
+            "contacts": [
+              "L"
+            ],
+            "margin": 0.025,
+            "phase": "left_stance",
+            "within_assumed_contact": true
+          },
+          {
+            "COM_shift_z": 0.0,
+            "COM_z": 0.0,
+            "contacts": [
+              "L",
+              "R"
+            ],
+            "margin": 0.29189,
+            "phase": "double_support_end",
+            "within_assumed_contact": true
+          }
+        ],
+        "required_com_lateral_shift_for_0p025_margin": 0.265,
+        "required_stance_leg_roll_moment_proxy": 0.095,
+        "shift_limit": 0.35,
+        "stance_leg_torque_proxy_cap": 0.15,
+        "warning": "quasi-static phase checklist, not momentum integration or active muscle model"
+      },
+      "tail_length_normalized": 1.55
+    }
+  },
+  "schema": "alchul.m11.t10.force-locomotion-result.v1",
+  "scientific_boundary": "Not fitted to any fossil, body tissue, physics engine contact simulation or measured ALCHUL settlement",
+  "source_T07_geometry_sha256": "cdf658f6de2c8db95a505820bf103c6caaf1d945a1797d832426baca645afb44",
+  "source_T08_T09_assumptions_sha256": "251ee4a8db6905c944b477a7d757da686f6ec3fd1207f490aab3ec70f9dff611",
+  "status": "ASSUMPTION_DRIVEN_MATH_AND_ENGINEERING_CONSISTENCY_NOT_BIOLOGICAL_VALIDATION"
+}
