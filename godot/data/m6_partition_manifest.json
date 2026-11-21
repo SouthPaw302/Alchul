@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "source_file": "ALC_M6_RIVERBANK_DETAIL_TEXTURED_v001.glb",
+  "source_sha256": "0f640fc0a5bc8dd385d272a7d4bde33af110931f26da785d5546150b7a42c606",
+  "source_bytes": 13728468,
+  "source_triangles": 141176,
+  "derived": [
+    {
+      "path": "m6/ALCHUL_M6_GEOMETRY_01.glb",
+      "sha256": "e85a96b47a8bf614e594c212eb18c2c87480df93fa0375eefa6446b5773fb5ba",
+      "bytes": 1107488,
+      "triangle_count": 38262,
+      "geometry_names": [
+        "m6__clay",
+        "m6__fern_000000_023718"
+      ],
+      "bounds": [
+        [
+          -25.00815,
+          -0.96412,
+          -24.68871
+        ],
+        [
+          25.27899,
+          9.74088,
+          23.80665
+        ]
+      ]
+    },
+    {
+      "path": "m6/ALCHUL_M6_GEOMETRY_02.glb",
+      "sha256": "a99267aa463d903a36ccf2993c7aae70c9ffda33b5619cccaa63f4020b7f4840",
+      "bytes": 1076672,
+      "triangle_count": 23718,
+      "geometry_names": [
+        "m6__fern_023718_047436"
+      ],
+      "bounds": [
+        [
+          -23.59196,
+          -0.38624,
+          -23.68046
+        ],
+        [
+          23.82736,
+          1.5082,
+          24.77393
+        ]
+      ]
+    },
+    {
+      "path": "m6/ALCHUL_M6_GEOMETRY_03.glb",
+      "sha256": "3213060f8918e44f80dc31680e595b008000dd31ccae0be49ee25513c76c0ee2",
+      "bytes": 1303860,
+      "triangle_count": 53006,
+      "geometry_names": [
+        "m6__limestone",
+        "m6__moss"
+      ],
+      "bounds": [
+        [
+          -25.0,
+          -1.02705,
+          -25.0
+        ],
+        [
+          25.0,
+          1.72929,
+          25.0
+        ]
+      ]
+    },
+    {
+      "path": "m6/ALCHUL_M6_GEOMETRY_04.glb",
+      "sha256": "a66e5c0939cde8e68daf4ce47facfa6831305c10978990ad44c2bf549df3bfd6",
+      "bytes": 1000040,
+      "triangle_count": 26190,
+      "geometry_names": [
+        "m6__rootwood",
+        "m6__silt",
+        "m6__water"
+      ],
+      "bounds": [
+        [
+          -25.0,
+          -1.33044,
+          -25.0
+        ],
+        [
+          25.0,
+          9.80841,
+          25.0
+        ]
+      ]
+    }
+  ],
+  "geometry_policy": "native GLB geometric redistribution only; no simplification; all triangles preserved; M6 albedo/normal/roughness textures are external originals"
+}
