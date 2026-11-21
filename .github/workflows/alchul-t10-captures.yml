@@ -1,0 +1,58 @@
+name: ALCHUL M11 T10 — real Godot corridor diagnostics
+on:
+  pull_request:
+    paths:
+      - "godot/data/m11_t10*"
+      - "godot/scripts/m11_t10*"
+      - "godot/scenes/m11_t10*"
+      - "godot/tests/render_m11_t10.gd"
+      - ".github/workflows/alchul-t10-captures.yml"
+  push:
+    branches: [main]
+    paths:
+      - "godot/data/m11_t10*"
+      - "godot/scripts/m11_t10*"
+      - "godot/scenes/m11_t10*"
+      - "godot/tests/render_m11_t10.gd"
+      - ".github/workflows/alchul-t10-captures.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  t10-engine-view:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Install pinned Godot and virtual display
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq curl unzip xvfb libgl1-mesa-dri
+          curl -fL --retry 3 "https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip" -o "$RUNNER_TEMP/godot.zip"
+          echo "cadd3204e728a35d3f13adb7fd0d7902636b79f6b95c40c265eb73b6c35329e4  $RUNNER_TEMP/godot.zip" | sha256sum -c -
+          unzip -q "$RUNNER_TEMP/godot.zip" -d "$RUNNER_TEMP"
+          chmod +x "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64"
+      - name: Import project
+        run: "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot --editor --import --quit
+      - name: Capture actual native debug scene
+        shell: bash
+        env:
+          ALCHUL_T10_CAPTURES: ${{ github.workspace }}/t10-native-captures
+        run: |
+          set -euo pipefail
+          mkdir -p "$ALCHUL_T10_CAPTURES"
+          xvfb-run -a -s "-screen 0 1280x720x24" \
+            "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --path godot \
+            --script res://tests/render_m11_t10.gd
+          test -s "$ALCHUL_T10_CAPTURES/01_width_2p8.png"
+          test -s "$ALCHUL_T10_CAPTURES/02_width_4p6.png"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: m11-t10-original-godot-screenshot-study
+          path: t10-native-captures/
+          if-no-files-found: error
+          retention-days: 90
