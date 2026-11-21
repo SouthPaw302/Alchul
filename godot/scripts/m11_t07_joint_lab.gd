@@ -114,7 +114,8 @@ func _create_skeleton(spec: Dictionary, order: int) -> void:
             return
         var global_anchor := Vector3(float(point[0]), float(point[1]), float(point[2]))
         var parent_name: String = str(record.get("parent", ""))
-        var index: int = skeleton.add_bone(name)
+        skeleton.add_bone(name)
+        var index: int = skeleton.get_bone_count() - 1
         var local_anchor: Vector3 = global_anchor
         if not parent_name.is_empty():
             if not indices.has(parent_name):
