@@ -28,6 +28,9 @@ func _run() -> void:
     if summary.get("visitor_waypoints", 0) != 4 or summary.get("instanced_reeds", 0) != 360:
         _fail("new world wayfinding or environment missing")
         return
+    if int(summary.get("canopy_instances", 0)) < 100 or not bool(summary.get("source_PBR_families", false)):
+        _fail("quality foliage or first-party PBR material integration missing")
+        return
     if bool(summary.get("scientific_vegetation_id", true)):
         _fail("fictional vegetation claimed real evidence")
         return
