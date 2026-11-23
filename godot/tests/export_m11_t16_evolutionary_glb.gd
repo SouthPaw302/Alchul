@@ -65,6 +65,8 @@ func _run() -> void:
             _fail("missing actual candidate " + candidate)
             return
         var portable: Node3D = _clean_portable_model(node)
+        root.add_child(portable)
+        await process_frame
         var exporter := GLTFDocument.new()
         var state := GLTFState.new()
         var append_result: Error = exporter.append_from_scene(portable, state)
@@ -96,6 +98,7 @@ func _run() -> void:
             return
         restored.free()
         files.append(name)
+        root.remove_child(portable)
         portable.free()
     var manifest := {"files":files,"classification":"three speculative pre-KPg evolved trajectories",
         "source_rig":"T07 43 named controls + T16 parent-local morphometric changes",
