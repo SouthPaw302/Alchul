@@ -2,7 +2,9 @@
 
 **The central and independent home for the Alchul universe and its native Godot 4 world.** This repository contains authoritative lore, scientific research, a playable native Godot Chapter I, the integrated M1–M6 first-party media atlas, M11 comparative anatomy research, local scene data, and native validation workflows.
 
-**Latest research milestone:** [T11 reproductive gas and nursery constraint study](MEDIA/M11_T11_REPRODUCTIVE_GAS_NURSERY_CONSTRAINTS.md) — provisional, independent Godot study and reproducible dimensionless screening; no approved organ anatomy or biological viability claim.
+**Science-first operating rule:** [Reconstruct the real Earth from the Late Cretaceous through the present (2026)](RESEARCH/SCIENCE_FIRST_EARTH_TO_PRESENT_T12.md), with its source limitations, **before** overlaying [T12 six provisional inhabitants](MEDIA/M11_T12_SIX_INHABITANTS_SCIENCE_FIRST_ATLAS.md) or imagined later history. Fossil evidence never establishes non-avian dinosaur survival beyond K–Pg, and the New Madrid seismic zone is an intraplate system within the North American plate. The hidden civilization is explicitly in-universe fiction.
+
+**Previous research milestone:** [T11 reproductive gas and nursery constraint study](MEDIA/M11_T11_REPRODUCTIVE_GAS_NURSERY_CONSTRAINTS.md) — provisional, independent Godot study and reproducible dimensionless screening; no approved organ anatomy or biological viability claim.
 
 **Post-merge implementation:** [35-step master plan](MEDIA/ALCHUL_POST_MERGE_IMPLEMENTATION_MASTER_PLAN.md) · [M11 comparative anatomy lab](MEDIA/M11_LAB_IMPLEMENTATION_01.md) · [M11 Godot lab scene](godot/scenes/m11_anatomy_lab.tscn).
 
