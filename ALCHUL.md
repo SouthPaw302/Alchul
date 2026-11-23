@@ -8,7 +8,9 @@ No agent is allowed to define Alchul conclusively.
 
 ## What is known
 
+- Alchul is distinct from the theropod founders and all their descendants. This does not assign Alchul a species, body or origin.
 - Alchul is not normally present within the perceptual bandwidth of surface biological life.
+- Fermentation is a real biochemical process, not a vessel containing Alchul. The Harvest-associated altered state also enables Alchul to peer into the dinosaurs' reality; whether its earliest awareness preceded the Harvest is unresolved.
 - Contact first becomes repeatable through altered states associated with the Harvest.
 - Some individuals appear more receptive than others.
 - Sensitivity can become partly inherited, trained, culturally cultivated, technologically supported, or all of these.
