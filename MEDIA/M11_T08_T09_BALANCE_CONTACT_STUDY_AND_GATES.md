@@ -14,7 +14,7 @@
 - `godot/tests/test_m11_t08_t09.py`: 9 automated checks covering mass normalization, deterministic runs, in/out contact scenarios, range rejection, forbidding invalid science status, and separate fingers.
 - `godot/scripts/m11_t08_t09_lab.gd`, `godot/scenes/m11_t08_t09_lab.tscn`, `godot/tests/m11_t08_t09_lab_smoke.gd`: isolated Godot study scene overlays computed COM and support rectangles on the **real T07 Skeleton3D scaffolds**, and displays separate modeled fixture/hand-tip points; no Chapter I edits.
 - `godot/tools/render_m11_t08_t09.py`: optional accurate numerical Matplotlib diagrams; screenshots from this script **are not Godot renders**.
-- `godot/tests/render_m11_t08_t09.gd` and `.github/workflows/alchul-t08-t09-capture.yml`: separate true native-engine screenshot candidate workflow, requiring independent build-artifact confirmation.
+- `godot/tests/render_m11_t08_t09.gd` and `.github/workflows/alchul-native-validation.yml (m11-native-captures job)`: separate true native-engine screenshot candidate workflow, requiring independent build-artifact confirmation.
 - `.github/workflows/alchul-native-validation.yml`: standard offline verification and native smoke regressions.
 
 ## 2. T08 computed outcome, not historical measurement

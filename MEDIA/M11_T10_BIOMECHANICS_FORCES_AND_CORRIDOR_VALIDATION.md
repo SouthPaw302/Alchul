@@ -18,7 +18,7 @@ The T10 bundle comprises:
 - `godot/tools/render_m11_t10.py`: numerical illustrations and an animated, sampled rigid-tail corner study. PNGs/GIF **are Python renders, not Godot engine captures**.
 - `godot/scripts/m11_t10_corridor_lab.gd` and `godot/scenes/m11_t10_corridor_lab.tscn`: interactive 2D Godot diagnostic showing two competing model sweeps. Space plays; left/right steps; C compares width 2.8 and 4.6. Separate from Chapter I.
 - `godot/tests/m11_t10_lab_smoke.gd`: native Godot scene smoke, verifying science status, frames and expected clearance outcomes.
-- `godot/tests/render_m11_t10.gd` and `.github/workflows/alchul-t10-captures.yml`: optional **genuine Godot debug-scene** screenshots generated in Actions. Capture must be verified independently; Python diagrams cannot substitute for native screenshots.
+- `godot/tests/render_m11_t10.gd` and `.github/workflows/alchul-native-validation.yml (m11-native-captures job)`: optional **genuine Godot debug-scene** screenshots generated in Actions. Capture must be verified independently; Python diagrams cannot substitute for native screenshots.
 
 ## 2. Forces: what is genuinely solved
 

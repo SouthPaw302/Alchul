@@ -17,7 +17,7 @@ T07 adds the following **entirely isolated** Godot 4 source:
 - `godot/scenes/m11_t07_joint_lab.tscn`: standalone study scene. It does not replace `scenes/main.tscn`, edit the existing M11 T05 lab, or add a production character to Chapter I.
 - `godot/tools/validate_m11_t07_skeleton.py`: a standard-library validator for parent graph integrity, named digits, mirrored attachments, bound joint controls and source status.
 - `godot/tests/m11_t07_joint_smoke.gd`: a *real Godot* test of hierarchy, controlled pose requests, prohibited motions and both modes.
-- `godot/tests/render_m11_t07.gd` plus `.github/workflows/alchul-t07-capture.yml`: an independent native Godot image-capture route, with provenance manifest. Render acceptance must be verified from actual workflow artifacts, not inferred from a source commit.
+- `godot/tests/render_m11_t07.gd` plus `.github/workflows/alchul-native-validation.yml (m11-native-captures job)`: an independent native Godot image-capture route, with provenance manifest. Render acceptance must be verified from actual workflow artifacts, not inferred from a source commit.
 - `.github/workflows/alchul-native-validation.yml` runs both Python and Godot native validations.
 
 **Compared body designs:** H-A preserves a longer articulated tail and lower forward-reading orientation. H-B has a shorter tail and raised neck/orientation. Both carry three separate manual digits on each side and a digitigrade hindlimb reference. Mirror names are `L` and `R`, not anthropomorphic left/right handedness or social roles.
