@@ -143,3 +143,64 @@ jobs:
           set -euo pipefail
           "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless \
             --path godot --script res://tests/original_media_atlas_smoke.gd
+
+  m11-native-captures:
+    needs: offline-contract
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      LIBGL_ALWAYS_SOFTWARE: "1"
+      ALCHUL_T07_CAPTURES: \${{ github.workspace }}/m11-native-captures/t07
+      ALCHUL_T08_T09_CAPTURES: \${{ github.workspace }}/m11-native-captures/t08-t09
+      ALCHUL_T10_CAPTURES: \${{ github.workspace }}/m11-native-captures/t10
+    steps:
+      - name: Check out Alchul only
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Install pinned Godot and native virtual display
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq curl unzip xvfb libgl1-mesa-dri libglu1-mesa libxrandr2
+          curl -fL --retry 3 "https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip" -o "$RUNNER_TEMP/godot.zip"
+          echo "cadd3204e728a35d3f13adb7fd0d7902636b79f6b95c40c265eb73b6c35329e4  $RUNNER_TEMP/godot.zip" | sha256sum -c -
+          unzip -q "$RUNNER_TEMP/godot.zip" -d "$RUNNER_TEMP"
+          chmod +x "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64"
+      - name: Import original game and research labs in native Godot
+        shell: bash
+        run: |
+          set -euo pipefail
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless \
+            --path godot --editor --import --quit
+      - name: Capture T07, T08–T09 and T10 real-engine study views
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$ALCHUL_T07_CAPTURES" "$ALCHUL_T08_T09_CAPTURES" "$ALCHUL_T10_CAPTURES"
+          for script in render_m11_t07.gd render_m11_t08_t09.gd render_m11_t10.gd; do
+            xvfb-run -a -s '-screen 0 1280x720x24' \
+              "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" \
+              --path godot --rendering-method gl_compatibility \
+              --script "res://tests/$script"
+          done
+          test -s "$ALCHUL_T07_CAPTURES/01_comparison.png"
+          test -s "$ALCHUL_T07_CAPTURES/02_H-A.png"
+          test -s "$ALCHUL_T07_CAPTURES/03_H-B.png"
+          test -s "$ALCHUL_T08_T09_CAPTURES/01_neutral_near.png"
+          test -s "$ALCHUL_T08_T09_CAPTURES/02_one_foot_far.png"
+          test -s "$ALCHUL_T10_CAPTURES/01_width_2p8.png"
+          test -s "$ALCHUL_T10_CAPTURES/02_width_4p6.png"
+          test -s "$ALCHUL_T07_CAPTURES/render_manifest.json"
+          test -s "$ALCHUL_T08_T09_CAPTURES/capture_manifest.json"
+          test -s "$ALCHUL_T10_CAPTURES/native_manifest.json"
+          echo "ALCHUL M11 SEVEN NATIVE ENGINE CAPTURES PASS"
+      - name: Retain all seven real Godot views and provenance manifests
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: alchul-m11-t07-t10-native-engine-evidence
+          path: m11-native-captures/
+          if-no-files-found: warn
+          retention-days: 90
