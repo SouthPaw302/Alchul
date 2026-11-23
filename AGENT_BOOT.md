@@ -22,6 +22,8 @@ Before writing, researching, designing, or modifying canon:
 - Do not assume human-style civilization, technology, writing, government, industry, or spacecraft.
 - Do not define Alchul's true nature.
 - Real science and in-universe interpretation must remain visibly separate.
+- Build the physical Earth chronology, ecology, geology and biosphere independently **through the present** before adding fictional ALCHUL history at any slice; label evidence, inference, canon and unknown separately.
+- Non-avian dinosaur survival past K–Pg is fiction, not an established fossil lineage; present-day New Madrid is intraplate deformation within the North American plate, not outside plate tectonics.
 - `RESEARCH/` may contain only sourced real-world research and explicit inference labels.
 - When evidence is uncertain, record uncertainty instead of silently inventing certainty.
 - New canon should grow causally from biology, environment, culture, and prior canon.
