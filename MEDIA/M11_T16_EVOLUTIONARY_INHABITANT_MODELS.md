@@ -1,6 +1,6 @@
 # M11 T16 — Evolutionary Reconstruction of Three Provisional Mature-Surface Inhabitants
 
-**Date:** 2026-11-23. **Scope:** fictional pre–K–Pg mature-surface lineage, NOT the modern New Madrid descendants. **Anatomical approval:** NOT GIVEN. **Distribution:** isolated Godot research lab, 3 exportable skinned GLBs and local-only opt-in game hook; never included visibly in the default public Chapter I.
+**Date:** 2026-11-23. **Scope:** fictional pre–K–Pg mature-surface lineage, NOT the modern New Madrid descendants. **Anatomical approval:** NOT GIVEN. **Distribution:** isolated Godot research lab and three separate glTF2 skin-weighted research GLBs. **Chapter I is untouched**; models are deliberately not included in playable public assets.
 
 ## Problem
 
@@ -46,9 +46,9 @@ The interpolation parameter is **between two prior fictional model geometries**,
 - Independently replayable profile/COM/sensitivity predictor: `python3 godot/tools/m11_t16_evolutionary_models.py --check`. Optional generation of a machine-readable hypothesis report: same command without `--check` (writes `godot/data/m11_t16_evolved_candidate_bones.json`; it is a reproducible output, not canonical source).
 - Actual native three-model Godot scene: `godot/scenes/m11_t16_evolutionary_lab.tscn` and code `godot/scripts/m11_t16_evolutionary_lab.gd`. Controls 0–3 show all/individual, Space pause.
 - Native true skinned model smoke: `godot/tests/m11_t16_evolutionary_smoke.gd`.
-- Skinned glTF/GLB export and round trip: `godot/tests/export_m11_t16_evolutionary_glb.gd`, 3 separately editable GLBs, original Godot cycles **not** baked to portable animation.
+- Reproducible glTF/GLB export and round trip: `python3 godot/tools/m11_t16_export_glb.py --out ./m11-t16-evolved-glb` and `godot/tests/verify_m11_t16_exported_glb.gd`, three separately editable **43-joint weighted** glTF2 GLBs; original Godot `BoneAttachment3D` visual-volume overlays are not baked into these portable assets,, original Godot cycles **not** baked to portable animation.
 - Native three-view capture: `godot/tests/render_m11_t16_evolutionary.gd`.
-- Local opt-in settlement integration: `godot/scenes/m11_t16_experimental_inhabitants.tscn` and `godot/scripts/m11_t16_experimental_inhabitants.gd`. These load real original M2–M5 first-party assets, with candidate geometry visually positioned near them; scale is not calibrated.
+- Isolated opt-in settlement integration: `godot/scenes/m11_t16_experimental_inhabitants.tscn` and `godot/scripts/m11_t16_experimental_inhabitants.gd`. These load real original M2–M5 first-party assets, with candidate geometry visually positioned near them; scale is not calibrated.
 
 ## Remaining scientific and artistic gates
 
