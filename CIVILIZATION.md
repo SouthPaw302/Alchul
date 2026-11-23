@@ -83,6 +83,8 @@ stone → bronze → iron → fossil-fuel industry → electronics.
 A better lineage is:
 predation → fermentation → preservation → fire → chemistry → geology → environmental engineering → altered-state science → boundary physics → displacement → living/ecological machines.
 
+The creator reiterates that biology and technology **co-develop**: a lineage with unusually refined perception of matter's existing stresses learns to influence those physical systems, and the tools themselves extend what bodies can sense and do. No early stage is stone-moving telekinesis. Later boundary physics is an explicit fictional development, not a real-world scientific finding.
+
 ## Architecture
 
 Early settlements are shaped around:
