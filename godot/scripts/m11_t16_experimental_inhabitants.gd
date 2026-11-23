@@ -62,7 +62,7 @@ func enable_experimental_stage() -> bool:
     # Remove all references used by the stand-alone bone lab. Only real
     # T13 Skeleton3D, weighted ArrayMesh and child actors remain visible.
     for node_name in ["MatchedT07Camera", "ResearchAmbient", "AnatomyKey", "SharedFloorReference",
-        "SkeletalStudyHud"]:
+        "SkeletalStudyHud", "EvolutionaryMorphologyBanner"]:
         var unwanted: Node = rig_lab.get_node_or_null(node_name)
         if unwanted == null:
             continue
