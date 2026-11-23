@@ -2,6 +2,8 @@
 
 **The central and independent home for the Alchul universe and its native Godot 4 world.** This repository contains authoritative lore, scientific research, a playable native Godot Chapter I, the integrated M1–M6 first-party media atlas, M11 comparative anatomy research, local scene data, and native validation workflows.
 
+**Latest research milestone:** [T11 reproductive gas and nursery constraint study](MEDIA/M11_T11_REPRODUCTIVE_GAS_NURSERY_CONSTRAINTS.md) — provisional, independent Godot study and reproducible dimensionless screening; no approved organ anatomy or biological viability claim.
+
 **Post-merge implementation:** [35-step master plan](MEDIA/ALCHUL_POST_MERGE_IMPLEMENTATION_MASTER_PLAN.md) · [M11 comparative anatomy lab](MEDIA/M11_LAB_IMPLEMENTATION_01.md) · [M11 Godot lab scene](godot/scenes/m11_anatomy_lab.tscn).
 
 **Start here:** [Centralization policy](CENTRALIZATION.md) · [Native Godot project](godot/README.md) · [Prototype provenance](godot/PROVENANCE.md) · [Read-only prototype audit](godot/PROTOTYPE_AUDIT.md).

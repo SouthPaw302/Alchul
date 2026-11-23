@@ -1,0 +1,125 @@
+{
+  "schema_version": "m11_t11_v1",
+  "scientific_status": "noncanonical_dimensionless_screening_not_biological_viability",
+  "fixed_canon": {
+    "fraction_internal_development": 0.75,
+    "definition": "normalized embryonic developmental progress, not chronological fraction of pregnancy",
+    "context": "peak surface descendants only; does not apply to founder, First Below, or modern population by default"
+  },
+  "model": {
+    "sample_count": 101,
+    "relative_demand_at_start": 0.18,
+    "relative_demand_at_end": 1,
+    "relative_demand_exponent": 2,
+    "maternal_load_floor": 0.2,
+    "maternal_load_growth": 0.8,
+    "maternal_budget_index": 1,
+    "acceptable_nursery_humidity_index": [
+      0.4,
+      0.85
+    ],
+    "maximum_nursery_heat_stress_index": 0.7
+  },
+  "scenarios": {
+    "reference": {
+      "internal_conductance": 1.25,
+      "internal_gradient": 0.8,
+      "external_conductance": 1.8,
+      "external_gradient": 0.75,
+      "external_ventilation": 0.85,
+      "maternal_burden_coefficient": 0.5,
+      "clutch_load_index": 0.55,
+      "nursery_humidity_index": 0.65,
+      "nursery_heat_stress_index": 0.3,
+      "description": "Arbitrary well-supplied comparison; a software control, not a plausible evolved animal"
+    },
+    "internal_hypoxia": {
+      "internal_conductance": 1.25,
+      "internal_gradient": 0.35,
+      "external_conductance": 1.8,
+      "external_gradient": 0.75,
+      "external_ventilation": 0.85,
+      "maternal_burden_coefficient": 0.5,
+      "clutch_load_index": 0.55,
+      "nursery_humidity_index": 0.65,
+      "nursery_heat_stress_index": 0.3,
+      "description": "Lower internal oxygen driving gradient; demonstrate supply failure"
+    },
+    "restrictive_internal_transfer": {
+      "internal_conductance": 0.45,
+      "internal_gradient": 0.8,
+      "external_conductance": 1.8,
+      "external_gradient": 0.75,
+      "external_ventilation": 0.85,
+      "maternal_burden_coefficient": 0.5,
+      "clutch_load_index": 0.55,
+      "nursery_humidity_index": 0.65,
+      "nursery_heat_stress_index": 0.3,
+      "description": "Lower internal gas-transfer conductance without specifying an organ"
+    },
+    "stagnant_nursery": {
+      "internal_conductance": 1.25,
+      "internal_gradient": 0.8,
+      "external_conductance": 1.8,
+      "external_gradient": 0.75,
+      "external_ventilation": 0.35,
+      "maternal_burden_coefficient": 0.5,
+      "clutch_load_index": 0.55,
+      "nursery_humidity_index": 0.65,
+      "nursery_heat_stress_index": 0.3,
+      "description": "Poor external nest air exchange after laying"
+    },
+    "excessive_maternal_load": {
+      "internal_conductance": 1.25,
+      "internal_gradient": 0.8,
+      "external_conductance": 1.8,
+      "external_gradient": 0.75,
+      "external_ventilation": 0.85,
+      "maternal_burden_coefficient": 1.2,
+      "clutch_load_index": 1.5,
+      "nursery_humidity_index": 0.65,
+      "nursery_heat_stress_index": 0.3,
+      "description": "Hypothetical reproductive load exceeds assumed maternal budget"
+    },
+    "desiccating_nursery": {
+      "internal_conductance": 1.25,
+      "internal_gradient": 0.8,
+      "external_conductance": 1.8,
+      "external_gradient": 0.75,
+      "external_ventilation": 0.85,
+      "maternal_burden_coefficient": 0.5,
+      "clutch_load_index": 0.55,
+      "nursery_humidity_index": 0.2,
+      "nursery_heat_stress_index": 0.3,
+      "description": "Hypothetical external nursery outside moisture index bounds"
+    },
+    "overheated_nursery": {
+      "internal_conductance": 1.25,
+      "internal_gradient": 0.8,
+      "external_conductance": 1.8,
+      "external_gradient": 0.75,
+      "external_ventilation": 0.85,
+      "maternal_burden_coefficient": 0.5,
+      "clutch_load_index": 0.55,
+      "nursery_humidity_index": 0.65,
+      "nursery_heat_stress_index": 0.88,
+      "description": "Hypothetical external nursery outside heat stress index bound"
+    }
+  },
+  "forbidden_inferences": [
+    "demonstrated viability",
+    "known eggshell material or vascular system",
+    "placenta or mammalian gestation",
+    "known atmospheric partial pressures or embryo metabolic rates",
+    "real nesting temperatures, humidity or airflow",
+    "fixed clutch size",
+    "sexual or social roles",
+    "approval of H-A or H-B anatomy"
+  ],
+  "evidence_basis": [
+    "https://pubmed.ncbi.nlm.nih.gov/12024290/",
+    "https://pubmed.ncbi.nlm.nih.gov/23348778/",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC3350689/",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC4659668/"
+  ]
+}
