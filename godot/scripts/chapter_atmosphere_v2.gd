@@ -19,6 +19,8 @@ func _ready() -> void:
     _upgrade_daylight()
     _visitor_waypoints()
     _riverbank_groundcover()
+    _upgrade_generated_materials()
+    _living_riparian_canopy()
 
 
 func _upgrade_daylight() -> void:
@@ -160,11 +162,164 @@ func _riverbank_groundcover() -> void:
     add_child(group)
 
 
+
+func _source_material(family: String, tint: Color) -> StandardMaterial3D:
+    var m := StandardMaterial3D.new()
+    m.resource_name = "ChapterI_SourcePBR_" + family
+    m.albedo_color = tint
+    m.roughness = 0.88
+    m.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
+    var path: String = "res://assets/m6/textures/ALC_M6_" + family + "_"
+    var albedo: Resource = load(path + "albedo_768.png")
+    var normal: Resource = load(path + "normal_768.png")
+    var roughness: Resource = load(path + "roughness_768.png")
+    if albedo is Texture2D:
+        m.albedo_texture = albedo
+    if normal is Texture2D:
+        m.normal_enabled = true
+        m.normal_scale = 0.27
+        m.normal_texture = normal
+    if roughness is Texture2D:
+        m.roughness_texture = roughness
+        m.roughness_texture_channel = BaseMaterial3D.TEXTURE_CHANNEL_RED
+    return m
+
+
+func _material_family(tint: Color) -> String:
+    if tint.g > tint.r * 1.23 and tint.g > tint.b * 1.05:
+        return "fern"
+    if tint.g > tint.r * 1.08 and tint.g > tint.b * 1.12:
+        return "moss"
+    if tint.r > tint.g * 1.16:
+        return "rootwood"
+    if tint.r > tint.b * 1.30:
+        return "clay"
+    return "limestone"
+
+
+func _decorate_material(material: Material, edited: Dictionary) -> void:
+    if not (material is StandardMaterial3D):
+        return
+    var mat: StandardMaterial3D = material
+    var id: int = mat.get_instance_id()
+    if edited.has(id) or mat.albedo_texture != null or mat.transparency != BaseMaterial3D.TRANSPARENCY_DISABLED:
+        return
+    edited[id] = true
+    var family: String = _material_family(mat.albedo_color)
+    var source: StandardMaterial3D = _source_material(family, mat.albedo_color)
+    if source.albedo_texture == null:
+        return
+    # M6 original textures become bona fide UV-based source maps on the
+    # original procedurally generated geometry; no GLB original is rewritten.
+    mat.resource_name = "ChapterI_PBR_Upgraded_" + family
+    mat.albedo_color = mat.albedo_color.lerp(Color(0.91, 0.87, 0.78), 0.69)
+    mat.albedo_texture = source.albedo_texture
+    mat.normal_enabled = source.normal_enabled
+    mat.normal_texture = source.normal_texture
+    mat.normal_scale = 0.28
+    mat.roughness_texture = source.roughness_texture
+    mat.roughness_texture_channel = BaseMaterial3D.TEXTURE_CHANNEL_RED
+    mat.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
+
+
+func _walk_generated_materials(node: Node, edited: Dictionary) -> void:
+    if node is GeometryInstance3D:
+        var geo: GeometryInstance3D = node
+        if geo.material_override != null:
+            _decorate_material(geo.material_override, edited)
+    if node is MeshInstance3D:
+        var mesh_instance: MeshInstance3D = node
+        if mesh_instance.mesh != null:
+            for s in range(mesh_instance.mesh.get_surface_count()):
+                _decorate_material(mesh_instance.mesh.surface_get_material(s), edited)
+    for child in node.get_children():
+        _walk_generated_materials(child, edited)
+
+
+func _upgrade_generated_materials() -> void:
+    var study: Node = parent_world.get_node_or_null("M1RiverEnvironment_Candidate")
+    if study == null:
+        return
+    var edited: Dictionary = {}
+    _walk_generated_materials(study, edited)
+
+
+func _living_riparian_canopy() -> void:
+    # The old uniform cone forest is now a read-only archived visualization.
+    # This chapter uses efficient, multi-lobed broadleaf-like silhouettes
+    # with genuine first-party rootwood/fern PBR map inputs.
+    var older: Node3D = parent_world.get_node_or_null("IllustrativeWetlandFlora")
+    if older != null:
+        older.visible = false
+    var rng := RandomNumberGenerator.new()
+    rng.seed = 560187
+    var trunk_mesh := CylinderMesh.new()
+    trunk_mesh.top_radius = 0.13
+    trunk_mesh.bottom_radius = 0.28
+    trunk_mesh.height = 1.0
+    trunk_mesh.radial_segments = 8
+    var crown_mesh := SphereMesh.new()
+    crown_mesh.radius = 1.0
+    crown_mesh.height = 2.0
+    crown_mesh.radial_segments = 12
+    crown_mesh.rings = 8
+    var tree_count: int = 142
+    var trunks := MultiMesh.new()
+    trunks.mesh = trunk_mesh
+    trunks.transform_format = MultiMesh.TRANSFORM_3D
+    trunks.instance_count = tree_count
+    var canopy_main := MultiMesh.new()
+    canopy_main.mesh = crown_mesh
+    canopy_main.transform_format = MultiMesh.TRANSFORM_3D
+    canopy_main.instance_count = tree_count
+    var canopy_left := MultiMesh.new()
+    canopy_left.mesh = crown_mesh
+    canopy_left.transform_format = MultiMesh.TRANSFORM_3D
+    canopy_left.instance_count = tree_count
+    var canopy_right := MultiMesh.new()
+    canopy_right.mesh = crown_mesh
+    canopy_right.transform_format = MultiMesh.TRANSFORM_3D
+    canopy_right.instance_count = tree_count
+    for i in range(tree_count):
+        var x: float = rng.randf_range(-54.0, 54.0)
+        var z: float = rng.randf_range(-54.0, 54.0)
+        if absf(z - parent_world.river_center(x)) < 9.0 or (x*x + (z-7.0)*(z-7.0)) < 400.0:
+            x = 36.0 + 17.0 * float(i % 9) / 9.0
+            z = -20.0 - 30.0 * float(i % 17) / 17.0
+        var y: float = parent_world.terrain_height(x, z)
+        var height: float = rng.randf_range(4.8, 11.5)
+        var spin: float = rng.randf_range(-0.7, 0.7)
+        var trunk_basis := Basis().rotated(Vector3.UP, spin).scaled(Vector3(1.0, height, 1.0))
+        trunks.set_instance_transform(i, Transform3D(trunk_basis, Vector3(x, y + height * 0.50, z)))
+        var spread: float = rng.randf_range(1.7, 3.15)
+        var center_basis := Basis().rotated(Vector3.UP, spin).scaled(Vector3(spread, height * 0.23, spread * 0.83))
+        canopy_main.set_instance_transform(i, Transform3D(center_basis, Vector3(x, y + height * 0.92, z)))
+        var leaf_basis := Basis().rotated(Vector3.UP, spin).scaled(Vector3(spread * 0.70, height * 0.20, spread * 0.70))
+        canopy_left.set_instance_transform(i, Transform3D(leaf_basis,
+            Vector3(x - spread * 0.53, y + height * 0.86, z + spread * 0.14)))
+        canopy_right.set_instance_transform(i, Transform3D(leaf_basis,
+            Vector3(x + spread * 0.55, y + height * 0.88, z - spread * 0.15)))
+    var trunk_mat: Material = _source_material("rootwood", Color(0.80, 0.72, 0.59))
+    var leaf_mat: Material = _source_material("fern", Color(0.64, 0.78, 0.59))
+    var shadow_leaf_mat: Material = _source_material("moss", Color(0.54, 0.64, 0.52))
+    for spec in [
+        {"name":"TreeStems", "mm":trunks, "material":trunk_mat},
+        {"name":"LeafCanopies", "mm":canopy_main, "material":leaf_mat},
+        {"name":"WestCrowns", "mm":canopy_left, "material":shadow_leaf_mat},
+        {"name":"EastCrowns", "mm":canopy_right, "material":leaf_mat}
+    ]:
+        var group := MultiMeshInstance3D.new()
+        group.name = "ChapterI_" + str(spec["name"])
+        group.multimesh = spec["mm"]
+        group.material_override = spec["material"]
+        add_child(group)
+
+
 func visual_summary() -> Dictionary:
     var count: int = 0
     for child in get_children():
         if child.name.begins_with("VisitorNavigation_"):
             count += 1
-    return {"visitor_waypoints":count, "instanced_reeds":360,
+    return {"visitor_waypoints":count, "instanced_reeds":360, "canopy_instances":142, "source_PBR_families":true,
         "scientific_vegetation_id":false, "alchul_body_visible":false,
         "original_media_replaced":false, "gameplay_scopes":["surface-era", "not_present_day"]}
