@@ -70,7 +70,7 @@ func _run() -> void:
                             return
                         sum += w
                     if not is_equal_approx(sum, 1.0):
-                        _die("unnormalized skin weights")
+                        _die("unnormalized skin weights %s/%d/%d = %.7f values=%s" % [key, surf, i, sum, str([weights[i*4], weights[i*4+1], weights[i*4+2], weights[i*4+3]])])
                         return
         var body_proxy: StaticBody3D = body.get_node_or_null("ProxyEnvelope_NotAnatomical")
         if body_proxy == null or body_proxy.get_child_count() < 2:
