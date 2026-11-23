@@ -1,0 +1,284 @@
+{
+  "schema_version": "m11_t11_v1",
+  "scientific_status": "noncanonical_dimensionless_screening_not_biological_viability",
+  "canon_fraction_internal": 0.75,
+  "units": "dimensionless indices, NOT partial pressure, oxygen flux, metabolic rate, temperature, or days",
+  "stage_definition": "0..1 embryonic developmental progress (not chronological time)",
+  "scenarios": {
+    "reference": {
+      "scenario": "reference",
+      "minimum_internal_oxygen_margin": 0.35875,
+      "minimum_external_oxygen_margin": 0.1475,
+      "minimum_maternal_budget_margin": 0.82125,
+      "relative_demand_at_laying": 0.64125,
+      "internal_supply_index": 1,
+      "external_supply_index": 1.1475,
+      "constraints": {
+        "internal_oxygen_index": true,
+        "external_oxygen_index": true,
+        "maternal_load_index": true,
+        "nursery_moisture_index": true,
+        "nursery_heat_index": true
+      },
+      "screening_pass": true,
+      "meaning": "algebraic consistency within invented assumptions; never a viability prediction"
+    },
+    "internal_hypoxia": {
+      "scenario": "internal_hypoxia",
+      "minimum_internal_oxygen_margin": -0.20375,
+      "minimum_external_oxygen_margin": 0.1475,
+      "minimum_maternal_budget_margin": 0.82125,
+      "relative_demand_at_laying": 0.64125,
+      "internal_supply_index": 0.4375,
+      "external_supply_index": 1.1475,
+      "constraints": {
+        "internal_oxygen_index": false,
+        "external_oxygen_index": true,
+        "maternal_load_index": true,
+        "nursery_moisture_index": true,
+        "nursery_heat_index": true
+      },
+      "screening_pass": false,
+      "meaning": "algebraic consistency within invented assumptions; never a viability prediction"
+    },
+    "restrictive_internal_transfer": {
+      "scenario": "restrictive_internal_transfer",
+      "minimum_internal_oxygen_margin": -0.28125,
+      "minimum_external_oxygen_margin": 0.1475,
+      "minimum_maternal_budget_margin": 0.82125,
+      "relative_demand_at_laying": 0.64125,
+      "internal_supply_index": 0.36,
+      "external_supply_index": 1.1475,
+      "constraints": {
+        "internal_oxygen_index": false,
+        "external_oxygen_index": true,
+        "maternal_load_index": true,
+        "nursery_moisture_index": true,
+        "nursery_heat_index": true
+      },
+      "screening_pass": false,
+      "meaning": "algebraic consistency within invented assumptions; never a viability prediction"
+    },
+    "stagnant_nursery": {
+      "scenario": "stagnant_nursery",
+      "minimum_internal_oxygen_margin": 0.35875,
+      "minimum_external_oxygen_margin": -0.5275,
+      "minimum_maternal_budget_margin": 0.82125,
+      "relative_demand_at_laying": 0.64125,
+      "internal_supply_index": 1,
+      "external_supply_index": 0.4725,
+      "constraints": {
+        "internal_oxygen_index": true,
+        "external_oxygen_index": false,
+        "maternal_load_index": true,
+        "nursery_moisture_index": true,
+        "nursery_heat_index": true
+      },
+      "screening_pass": false,
+      "meaning": "algebraic consistency within invented assumptions; never a viability prediction"
+    },
+    "excessive_maternal_load": {
+      "scenario": "excessive_maternal_load",
+      "minimum_internal_oxygen_margin": 0.35875,
+      "minimum_external_oxygen_margin": 0.1475,
+      "minimum_maternal_budget_margin": -0.17,
+      "relative_demand_at_laying": 0.64125,
+      "internal_supply_index": 1,
+      "external_supply_index": 1.1475,
+      "constraints": {
+        "internal_oxygen_index": true,
+        "external_oxygen_index": true,
+        "maternal_load_index": false,
+        "nursery_moisture_index": true,
+        "nursery_heat_index": true
+      },
+      "screening_pass": false,
+      "meaning": "algebraic consistency within invented assumptions; never a viability prediction"
+    },
+    "desiccating_nursery": {
+      "scenario": "desiccating_nursery",
+      "minimum_internal_oxygen_margin": 0.35875,
+      "minimum_external_oxygen_margin": 0.1475,
+      "minimum_maternal_budget_margin": 0.82125,
+      "relative_demand_at_laying": 0.64125,
+      "internal_supply_index": 1,
+      "external_supply_index": 1.1475,
+      "constraints": {
+        "internal_oxygen_index": true,
+        "external_oxygen_index": true,
+        "maternal_load_index": true,
+        "nursery_moisture_index": false,
+        "nursery_heat_index": true
+      },
+      "screening_pass": false,
+      "meaning": "algebraic consistency within invented assumptions; never a viability prediction"
+    },
+    "overheated_nursery": {
+      "scenario": "overheated_nursery",
+      "minimum_internal_oxygen_margin": 0.35875,
+      "minimum_external_oxygen_margin": 0.1475,
+      "minimum_maternal_budget_margin": 0.82125,
+      "relative_demand_at_laying": 0.64125,
+      "internal_supply_index": 1,
+      "external_supply_index": 1.1475,
+      "constraints": {
+        "internal_oxygen_index": true,
+        "external_oxygen_index": true,
+        "maternal_load_index": true,
+        "nursery_moisture_index": true,
+        "nursery_heat_index": false
+      },
+      "screening_pass": false,
+      "meaning": "algebraic consistency within invented assumptions; never a viability prediction"
+    }
+  },
+  "reference_profile": [
+    {
+      "stage": 0,
+      "demand": 0.18,
+      "internal_supply": 1,
+      "external_supply": 1.1475,
+      "maternal_load": 0.055
+    },
+    {
+      "stage": 0.05,
+      "demand": 0.18205,
+      "internal_supply": 1,
+      "external_supply": 1.1475,
+      "maternal_load": 0.05555
+    },
+    {
+      "stage": 0.1,
+      "demand": 0.1882,
+      "internal_supply": 1,
+      "external_supply": 1.1475,
+      "maternal_load": 0.0572
+    },
+    {
+      "stage": 0.15,
+      "demand": 0.19845,
+      "internal_supply": 1,
+      "external_supply": 1.1475,
+      "maternal_load": 0.05995
+    },
+    {
+      "stage": 0.2,
+      "demand": 0.2128,
+      "internal_supply": 1,
+      "external_supply": 1.1475,
+      "maternal_load": 0.0638
+    },
+    {
+      "stage": 0.25,
+      "demand": 0.23125,
+      "internal_supply": 1,
+      "external_supply": 1.1475,
+      "maternal_load": 0.06875
+    },
+    {
+      "stage": 0.3,
+      "demand": 0.2538,
+      "internal_supply": 1,
+      "external_supply": 1.1475,
+      "maternal_load": 0.0748
+    },
+    {
+      "stage": 0.35,
+      "demand": 0.28045,
+      "internal_supply": 1,
+      "external_supply": 1.1475,
+      "maternal_load": 0.08195
+    },
+    {
+      "stage": 0.4,
+      "demand": 0.3112,
+      "internal_supply": 1,
+      "external_supply": 1.1475,
+      "maternal_load": 0.0902
+    },
+    {
+      "stage": 0.45,
+      "demand": 0.34605,
+      "internal_supply": 1,
+      "external_supply": 1.1475,
+      "maternal_load": 0.09955
+    },
+    {
+      "stage": 0.5,
+      "demand": 0.385,
+      "internal_supply": 1,
+      "external_supply": 1.1475,
+      "maternal_load": 0.11
+    },
+    {
+      "stage": 0.55,
+      "demand": 0.42805,
+      "internal_supply": 1,
+      "external_supply": 1.1475,
+      "maternal_load": 0.12155
+    },
+    {
+      "stage": 0.6,
+      "demand": 0.4752,
+      "internal_supply": 1,
+      "external_supply": 1.1475,
+      "maternal_load": 0.1342
+    },
+    {
+      "stage": 0.65,
+      "demand": 0.52645,
+      "internal_supply": 1,
+      "external_supply": 1.1475,
+      "maternal_load": 0.14795
+    },
+    {
+      "stage": 0.7,
+      "demand": 0.5818,
+      "internal_supply": 1,
+      "external_supply": 1.1475,
+      "maternal_load": 0.1628
+    },
+    {
+      "stage": 0.75,
+      "demand": 0.64125,
+      "internal_supply": 1,
+      "external_supply": 1.1475,
+      "maternal_load": 0.17875
+    },
+    {
+      "stage": 0.8,
+      "demand": 0.7048,
+      "internal_supply": 1,
+      "external_supply": 1.1475,
+      "maternal_load": 0.1958
+    },
+    {
+      "stage": 0.85,
+      "demand": 0.77245,
+      "internal_supply": 1,
+      "external_supply": 1.1475,
+      "maternal_load": 0.21395
+    },
+    {
+      "stage": 0.9,
+      "demand": 0.8442,
+      "internal_supply": 1,
+      "external_supply": 1.1475,
+      "maternal_load": 0.2332
+    },
+    {
+      "stage": 0.95,
+      "demand": 0.92005,
+      "internal_supply": 1,
+      "external_supply": 1.1475,
+      "maternal_load": 0.25355
+    },
+    {
+      "stage": 1,
+      "demand": 1,
+      "internal_supply": 1,
+      "external_supply": 1.1475,
+      "maternal_load": 0.275
+    }
+  ]
+}
