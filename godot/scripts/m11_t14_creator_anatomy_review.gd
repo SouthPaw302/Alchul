@@ -88,10 +88,16 @@ func _build_review_overlay() -> void:
     title_col.add_child(_font("Scientific comparators ≠ fictional evolved morphology. H-C hybrid remains unbuilt; no present-day descendant is depicted.", 13, ACCENT))
 
     var naming_left := _font("H-A / LONG TAIL", 16, GOLD)
-    naming_left.position = Vector2(420, 268)
+    naming_left.position = Vector2(355, 263)
+    naming_left.size = Vector2(250, 28)
+    naming_left.custom_minimum_size = Vector2(250, 28)
+    naming_left.autowrap_mode = TextServer.AUTOWRAP_OFF
     layer.add_child(naming_left)
     var naming_right := _font("H-B / COMPACT TAIL", 16, ACCENT)
-    naming_right.position = Vector2(865, 268)
+    naming_right.position = Vector2(840, 263)
+    naming_right.size = Vector2(260, 28)
+    naming_right.custom_minimum_size = Vector2(260, 28)
+    naming_right.autowrap_mode = TextServer.AUTOWRAP_OFF
     layer.add_child(naming_right)
 
     var warning_panel := PanelContainer.new()
