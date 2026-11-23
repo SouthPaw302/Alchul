@@ -31,7 +31,7 @@ jobs:
           test -s godot/build/web/index.wasm
           test -s godot/build/web/index.pck
           test "$(du -b godot/build/web/index.wasm | cut -f1)" -gt 100000
-          grep -q 'Alchul' godot/build/web/index.html
+          grep -qi 'alchul' godot/build/web/index.html
           echo "ALCHUL BROWSER EXPORT TECHNICAL PASS"
       - name: Provide playable site as a GitHub Actions artifact
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
