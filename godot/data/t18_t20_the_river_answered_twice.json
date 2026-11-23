@@ -1,0 +1,156 @@
+{
+  "schema": "alchul.t18_t20.living_scene.v1",
+  "status": "PROVISIONAL_FICTIONAL_CULTURE_NOT_ANATOMY_CANON",
+  "era": "undated mature pre-KPg surface civilization",
+  "title": "The River Answered Twice",
+  "scene": "A reed-and-clay recording station at the Braided Reach, visited after the Harvest",
+  "primary_source_scene": "res://assets/m2/ALC_M2_RIVER_STATION_v001.glb",
+  "physical_source_model": "res://scenes/m11_t17_physical_sensing_lab.tscn",
+  "lexicon": [
+    {
+      "id": "ATTEND",
+      "cue": "one contact tap + still tail",
+      "translation": "Notice the bank before moving",
+      "ambiguous_context": "stalking prey or reading a support"
+    },
+    {
+      "id": "CHANGE",
+      "cue": "two quick contact taps, long pause, soft final tap",
+      "translation": "I detected a change",
+      "ambiguous_context": "what changed is not specified"
+    },
+    {
+      "id": "UNCERTAIN",
+      "cue": "the expected final pulse is withheld",
+      "translation": "I suspect, but cannot certify",
+      "ambiguous_context": "respectful reservation, not incompetence"
+    },
+    {
+      "id": "REPEAT",
+      "cue": "three evenly spaced strikes across a shared reed",
+      "translation": "Test this independently",
+      "ambiguous_context": "challenge and instruction"
+    },
+    {
+      "id": "DIFFER",
+      "cue": "rhythmic answer shifted one interval",
+      "translation": "My reading differs from yours",
+      "ambiguous_context": "may invite adjustment, not contest rank"
+    },
+    {
+      "id": "SAFE_ROUTE",
+      "cue": "diagonal caudal barrier then body shifts sideways",
+      "translation": "Use the broader checked way",
+      "ambiguous_context": "route safety, not a personal command"
+    },
+    {
+      "id": "WITNESS_KEPT",
+      "cue": "touch near removable third reed",
+      "translation": "Preserve the extraordinary account separately",
+      "ambiguous_context": "no automatic supernatural cause"
+    }
+  ],
+  "actors": [
+    {
+      "id": "listener",
+      "role": "River Listener",
+      "first_reading": "Bank pulse is approaching",
+      "gesture": "CHANGE",
+      "caution": "Sensitivity is not infallibility"
+    },
+    {
+      "id": "turner",
+      "role": "Reed Turner",
+      "first_reading": "The support may be responding to its own load",
+      "gesture": "REPEAT",
+      "caution": "Measurement does not cover every experience"
+    },
+    {
+      "id": "keeper",
+      "role": "Nursery Keeper",
+      "first_reading": "Close the narrow route; preserve the wide path",
+      "gesture": "SAFE_ROUTE",
+      "caution": "Safety need not wait for agreement"
+    },
+    {
+      "id": "witness",
+      "role": "Harvest Witness",
+      "first_reading": "For one instant I knew the bend without its water",
+      "gesture": "WITNESS_KEPT",
+      "caution": "A report is not a direct command from Alchul"
+    }
+  ],
+  "opening": [
+    "The clay bank answers the Listener's contact foot a little late. The low reed stave gives a second, contrary reply.",
+    "The Turner hears ordinary wood changing under a load. The Listener hears a river pulse moving through wet sediment.",
+    "A Keeper blocks the narrow route but keeps the broad path open. No one has to agree in order to help.",
+    "From the Harvest, a witness carries an account of this same bend in another condition. It is placed beside the test, not inside it."
+  ],
+  "trials": [
+    {
+      "id": "water",
+      "key": "1",
+      "title": "Redirect the water",
+      "stimulus": [
+        "river_pulse"
+      ],
+      "intent": "Check whether the bank pulse tracks changed water flow",
+      "ending": "The river answered",
+      "conclusion": "The pulse follows the water intervention. The Listener's explanation gains support, but the test can be repeated elsewhere."
+    },
+    {
+      "id": "support",
+      "key": "2",
+      "title": "Change the support load",
+      "stimulus": [
+        "bank_vibration"
+      ],
+      "intent": "Check whether the stave answers its own weight",
+      "ending": "The support answered",
+      "conclusion": "The pulse follows the weighted reed. The Turner's explanation gains support; the Listener still felt a real change."
+    },
+    {
+      "id": "ambiguous",
+      "key": "3",
+      "title": "Leave both sources and add interference",
+      "stimulus": [
+        "river_pulse",
+        "bank_vibration"
+      ],
+      "intent": "Expose how concurrent causes and noisy testimony can prevent a single answer",
+      "ending": "The account stays unclosed",
+      "conclusion": "Both readings survive. The narrow route stays closed, the new test is kept, and no account is erased."
+    }
+  ],
+  "narrative_lenses": [
+    {
+      "id": "trace",
+      "name": "The Trace",
+      "description": "Material record: water, support vibration and reed movement"
+    },
+    {
+      "id": "reading",
+      "name": "The Reading",
+      "description": "Four residents interpret the place through different work and responsibilities"
+    },
+    {
+      "id": "unclosed",
+      "name": "The Unclosed Account",
+      "description": "Altered-state testimony remains meaningful without becoming a physical measurement"
+    }
+  ],
+  "choices": {
+    "next": "SPACE",
+    "lens": "L",
+    "trial_water": "1",
+    "trial_support": "2",
+    "trial_ambiguous": "3",
+    "repeat": "R",
+    "test": "T"
+  },
+  "ending_principle": "A community learns to act together without pretending every witness is certain.",
+  "governance": "This scene proposes a way of keeping disagreement, not a universal legal system, caste or religion.",
+  "biological_scope": "The inhabitants are left offscreen; T16 E1-E3 are morphology hypotheses, not jobs or definitive species.",
+  "contact_scope": "Alchul is separately real in fictional canon; this episode does not reveal Alchul's form, intention or exact involvement.",
+  "evidence_scope": "T17 physical readings are normalized illustrative model values and never proofs of ancient physics."
+}
