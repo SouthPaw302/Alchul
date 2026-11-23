@@ -157,6 +157,19 @@ jobs:
           "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless \
             --path godot --script res://tests/chapter_full_loop_smoke.gd
 
+      - name: Validate Chapter I 1.1 navigation, paired-control gameplay, save and release invariants
+        shell: bash
+        run: |
+          set -euo pipefail
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot \
+            --check-only --script res://scripts/chapter_signal_instrument.gd
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot \
+            --check-only --script res://scripts/chapter_game_v2.gd
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot \
+            --check-only --script res://scripts/chapter_atmosphere_v2.gd
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot \
+            --script res://tests/chapter_v2_play_smoke.gd
+
       - name: Parse and smoke test separate M11 noncanonical anatomy lab
         shell: bash
         run: |
