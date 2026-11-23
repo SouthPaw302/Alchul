@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/m11_t13_skinned_character_lab.gd" id="1_t13"]
+
+[node name="M11_T13_SkinnedRig_Provisional_NotCanon" type="Node3D"]
+script = ExtResource("1_t13")
