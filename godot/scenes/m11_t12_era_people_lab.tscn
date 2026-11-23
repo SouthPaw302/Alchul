@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/m11_t12_era_people_lab.gd" id="1_t12"]
+
+[node name="M11_T12_ScienceFirstEarthAndSixPeople_NotCanon" type="Node2D"]
+script = ExtResource("1_t12")
