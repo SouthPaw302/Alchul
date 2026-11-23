@@ -76,6 +76,21 @@ jobs:
           if-no-files-found: error
           retention-days: 90
 
+      - name: Archive T13 skinned rig, evidence and procedural animation sources
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: alchul-m11-t13-provisional-rig-source
+          path: |
+            MEDIA/M11_T13_PROVISIONAL_SKINNED_RIG_AND_CONTEXT_GATES.md
+            godot/scripts/m11_t13_skinned_character_lab.gd
+            godot/scenes/m11_t13_skinned_character_lab.tscn
+            godot/tests/m11_t13_skinned_lab_smoke.gd
+            godot/tests/render_m11_t13.gd
+            godot/tests/export_m11_t13_glb.gd
+          if-no-files-found: error
+          retention-days: 90
+
   godot-native-smoke:
     needs: offline-contract
     runs-on: ubuntu-24.04
@@ -192,6 +207,37 @@ jobs:
           "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot             --check-only --script res://scripts/m11_t12_era_people_lab.gd
           "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot             --script res://tests/m11_t12_lab_smoke.gd
 
+      - name: Parse and smoke test T13 skinned, animated provisional surface bodies
+        shell: bash
+        run: |
+          set -euo pipefail
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot \
+            --check-only --script res://scripts/m11_t13_skinned_character_lab.gd
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot \
+            --script res://tests/m11_t13_skinned_lab_smoke.gd
+
+      - name: Export T13 reproducible skin-weighted H-A and H-B GLBs and round-trip
+        shell: bash
+        env:
+          ALCHUL_T13_EXPORTS: ${{ github.workspace }}/m11-t13-glb
+        run: |
+          set -euo pipefail
+          mkdir -p "$ALCHUL_T13_EXPORTS"
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot \
+            --script res://tests/export_m11_t13_glb.gd
+          test -s "$ALCHUL_T13_EXPORTS/ALCHUL_T13_H-A_provisional_skin.glb"
+          test -s "$ALCHUL_T13_EXPORTS/ALCHUL_T13_H-B_provisional_skin.glb"
+          test -s "$ALCHUL_T13_EXPORTS/export_manifest.json"
+
+      - name: Archive T13 skinned GLB exports independently
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: alchul-m11-t13-skinned-glb-exports
+          path: m11-t13-glb/
+          if-no-files-found: error
+          retention-days: 90
+
       - name: Verify every original M1–M6 GLB in live game and preserve exact mesh triangle counts
         shell: bash
         run: |
@@ -210,6 +256,7 @@ jobs:
       ALCHUL_T10_CAPTURES: ${{ github.workspace }}/m11-native-captures/t10
       ALCHUL_T11_CAPTURES: ${{ github.workspace }}/m11-native-captures/t11
       ALCHUL_T12_CAPTURES: ${{ github.workspace }}/m11-native-captures/t12
+      ALCHUL_T13_CAPTURES: ${{ github.workspace }}/m11-native-captures/t13
     steps:
       - name: Check out Alchul only
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -235,8 +282,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p "$ALCHUL_T07_CAPTURES" "$ALCHUL_T08_T09_CAPTURES" "$ALCHUL_T10_CAPTURES" "$ALCHUL_T11_CAPTURES" "$ALCHUL_T12_CAPTURES"
-          for script in render_m11_t07.gd render_m11_t08_t09.gd render_m11_t10.gd render_m11_t11.gd render_m11_t12.gd; do
+          mkdir -p "$ALCHUL_T07_CAPTURES" "$ALCHUL_T08_T09_CAPTURES" "$ALCHUL_T10_CAPTURES" "$ALCHUL_T11_CAPTURES" "$ALCHUL_T12_CAPTURES" "$ALCHUL_T13_CAPTURES"
+          for script in render_m11_t07.gd render_m11_t08_t09.gd render_m11_t10.gd render_m11_t11.gd render_m11_t12.gd render_m11_t13.gd; do
             xvfb-run -a -s '-screen 0 1280x720x24' \
               "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" \
               --path godot --rendering-method gl_compatibility \
@@ -259,12 +306,16 @@ jobs:
           test -s "$ALCHUL_T12_CAPTURES/02_kpg_extinction_boundary.png"
           test -s "$ALCHUL_T12_CAPTURES/03_six_provisional_surface_roles.png"
           test -s "$ALCHUL_T12_CAPTURES/render_manifest.json"
-          echo "ALCHUL M11 TWELVE NATIVE ENGINE CAPTURES PASS"
-      - name: Retain all twelve real Godot views and provenance manifests
+          test -s "$ALCHUL_T13_CAPTURES/01_skinned_pair_walk.png"
+          test -s "$ALCHUL_T13_CAPTURES/02_grip_contrast.png"
+          test -s "$ALCHUL_T13_CAPTURES/03_communicate_lod1.png"
+          test -s "$ALCHUL_T13_CAPTURES/render_manifest.json"
+          echo "ALCHUL M11 FIFTEEN NATIVE ENGINE CAPTURES PASS"
+      - name: Retain all fifteen real Godot views and provenance manifests
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: alchul-m11-t07-t12-native-engine-evidence
+          name: alchul-m11-t07-t13-native-engine-evidence
           path: m11-native-captures/
           if-no-files-found: warn
           retention-days: 90
