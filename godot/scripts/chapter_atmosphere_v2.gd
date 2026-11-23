@@ -6,6 +6,7 @@ var parent_world: Node3D
 var book: Dictionary = {}
 var pollen: MultiMeshInstance3D
 var key_light: DirectionalLight3D
+var rendered_canopy_count: int = 0
 const GOLD: Color = Color(0.96, 0.76, 0.46)
 const MIST: Color = Color(0.56, 0.68, 0.64)
 
@@ -42,7 +43,7 @@ func _upgrade_daylight() -> void:
         env.ambient_light_energy = 0.76
         # Godot Compatibility renderer may omit volumetric fog; this falls
         # back to the native sky and landscape without a black screen.
-        env.fog_enabled = true
+        env.fog_enabled = not OS.has_feature("web")
         env.fog_density = 0.005
         env.fog_light_color = MIST
     key_light = parent_world.get_node_or_null("IllustrativeDaylight")
@@ -175,7 +176,7 @@ func _source_material(family: String, tint: Color) -> StandardMaterial3D:
     var roughness: Resource = load(path + "roughness_768.png")
     if albedo is Texture2D:
         m.albedo_texture = albedo
-    if normal is Texture2D:
+    if normal is Texture2D and not OS.has_feature("web"):
         m.normal_enabled = true
         m.normal_scale = 0.27
         m.normal_texture = normal
@@ -261,9 +262,12 @@ func _living_riparian_canopy() -> void:
     var crown_mesh := SphereMesh.new()
     crown_mesh.radius = 1.0
     crown_mesh.height = 2.0
-    crown_mesh.radial_segments = 12
-    crown_mesh.rings = 8
-    var tree_count: int = 142
+    crown_mesh.radial_segments = 7 if OS.has_feature("web") else 12
+    crown_mesh.rings = 5 if OS.has_feature("web") else 8
+    # Keep rich near-camera shape on native; compatibility-WebGL SwiftShader
+    # uses a distinct low-detail canopy budget to preserve canvas progress.
+    var tree_count: int = 52 if OS.has_feature("web") else 142
+    rendered_canopy_count = tree_count
     var trunks := MultiMesh.new()
     trunks.mesh = trunk_mesh
     trunks.transform_format = MultiMesh.TRANSFORM_3D
@@ -312,6 +316,8 @@ func _living_riparian_canopy() -> void:
         group.name = "ChapterI_" + str(spec["name"])
         group.multimesh = spec["mm"]
         group.material_override = spec["material"]
+        if OS.has_feature("web"):
+            group.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
         add_child(group)
 
 
@@ -320,6 +326,6 @@ func visual_summary() -> Dictionary:
     for child in get_children():
         if child.name.begins_with("VisitorNavigation_"):
             count += 1
-    return {"visitor_waypoints":count, "instanced_reeds":360, "canopy_instances":142, "source_PBR_families":true,
+    return {"visitor_waypoints":count, "instanced_reeds":360, "canopy_instances":rendered_canopy_count, "source_PBR_families":true,
         "scientific_vegetation_id":false, "alchul_body_visible":false,
         "original_media_replaced":false, "gameplay_scopes":["surface-era", "not_present_day"]}
