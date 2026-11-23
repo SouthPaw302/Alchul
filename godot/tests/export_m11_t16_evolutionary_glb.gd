@@ -72,7 +72,16 @@ func _run() -> void:
             if child is BoneAttachment3D:
                 original_skeleton.remove_child(child)
                 child.free()
-        var shell: MeshInstance3D = node.get_node("SkinnedShell_LOD0")
+        # Imported GLTF exporters bind reliably when MeshInstance3D is a
+        # direct child of its Skeleton3D and references it as "..".
+        # Reparent export-only source nodes; the research scene is discarded.
+        for lod in range(2):
+            var skin_mesh: MeshInstance3D = node.get_node("SkinnedShell_LOD" + str(lod))
+            node.remove_child(skin_mesh)
+            original_skeleton.add_child(skin_mesh)
+            skin_mesh.skeleton = NodePath("..")
+            skin_mesh.visible = lod == 0
+        var shell: MeshInstance3D = original_skeleton.get_node("SkinnedShell_LOD0")
         var skeleton: Skeleton3D = node.get_node("ResearchSkeleton3D")
         print("T16 GLB PRECHECK " + candidate + " root_visible=" + str(node.is_visible_in_tree()) +
             " shell_visible=" + str(shell.is_visible_in_tree()) +
