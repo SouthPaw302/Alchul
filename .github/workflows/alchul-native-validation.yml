@@ -43,6 +43,7 @@ jobs:
           python3 -m unittest discover -s godot/tests -p 'test_m11_t15_geometry.py'
           python3 godot/tools/m11_t16_evolutionary_models.py --check
           python3 godot/tools/m11_t17_sensing.py
+          python3 godot/tools/validate_t18_t20_story.py
           python3 -m unittest discover -s godot/tests -p 'test_m11_t12_science_first.py'
 
       - name: Archive T11 research-only sources and recorded assumptions
@@ -167,6 +168,25 @@ jobs:
             godot/scenes/m11_t17_physical_sensing_lab.tscn
             godot/tests/m11_t17_sensing_smoke.gd
             godot/tests/render_m11_t17.gd
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Archive T18–T20 complete living-world sources and original stories
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: alchul-t18-t20-embodied-worldbuilding-source
+          path: |
+            LORE/T18_THE_UNCLOSED_ACCOUNT.md
+            LORE/T19_THE_LANGUAGE_OF_WEIGHTS.md
+            LORE/T20_THE_TWO_READINGS.md
+            WRITING/T18_T20_THE_RIVER_ANSWERED_TWICE.md
+            godot/data/t18_t20_the_river_answered_twice.json
+            godot/scripts/t18_t20_living_world_scene.gd
+            godot/scenes/t18_t20_living_world_scene.tscn
+            godot/tests/t18_t20_living_world_smoke.gd
+            godot/tests/render_t18_t20_living_world.gd
+            godot/tools/validate_t18_t20_story.py
           if-no-files-found: error
           retention-days: 90
 
@@ -389,6 +409,15 @@ jobs:
           "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot \
             --script res://tests/m11_t17_sensing_smoke.gd
 
+      - name: Play T18–T20 same-river living-story scene and branching reader disagreement
+        shell: bash
+        run: |
+          set -euo pipefail
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot \
+            --check-only --script res://scripts/t18_t20_living_world_scene.gd
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot \
+            --script res://tests/t18_t20_living_world_smoke.gd
+
       - name: Verify every original M1–M6 GLB in live game and preserve exact mesh triangle counts
         shell: bash
         run: |
@@ -413,6 +442,7 @@ jobs:
       ALCHUL_T16_CAPTURES: ${{ github.workspace }}/m11-native-captures/t16
       ALCHUL_T16_EVOLUTIONARY_CAPTURES: ${{ github.workspace }}/m11-native-captures/t16-evolutionary
       ALCHUL_T17_CAPTURES: ${{ github.workspace }}/m11-native-captures/t17
+      ALCHUL_T18_T20_CAPTURES: ${{ github.workspace }}/m11-native-captures/t18-t20
     steps:
       - name: Check out Alchul only
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -438,8 +468,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p "$ALCHUL_T07_CAPTURES" "$ALCHUL_T08_T09_CAPTURES" "$ALCHUL_T10_CAPTURES" "$ALCHUL_T11_CAPTURES" "$ALCHUL_T12_CAPTURES" "$ALCHUL_T13_CAPTURES" "$ALCHUL_T14_CAPTURES" "$ALCHUL_T15_CAPTURES" "$ALCHUL_T16_CAPTURES" "$ALCHUL_T16_EVOLUTIONARY_CAPTURES" "$ALCHUL_T17_CAPTURES"
-          for script in render_m11_t07.gd render_m11_t08_t09.gd render_m11_t10.gd render_m11_t11.gd render_m11_t12.gd render_m11_t13.gd render_m11_t14.gd render_m11_t15.gd render_m11_t16.gd render_m11_t16_evolutionary.gd render_m11_t17.gd; do
+          mkdir -p "$ALCHUL_T07_CAPTURES" "$ALCHUL_T08_T09_CAPTURES" "$ALCHUL_T10_CAPTURES" "$ALCHUL_T11_CAPTURES" "$ALCHUL_T12_CAPTURES" "$ALCHUL_T13_CAPTURES" "$ALCHUL_T14_CAPTURES" "$ALCHUL_T15_CAPTURES" "$ALCHUL_T16_CAPTURES" "$ALCHUL_T16_EVOLUTIONARY_CAPTURES" "$ALCHUL_T17_CAPTURES" "$ALCHUL_T18_T20_CAPTURES"
+          for script in render_m11_t07.gd render_m11_t08_t09.gd render_m11_t10.gd render_m11_t11.gd render_m11_t12.gd render_m11_t13.gd render_m11_t14.gd render_m11_t15.gd render_m11_t16.gd render_m11_t16_evolutionary.gd render_m11_t17.gd render_t18_t20_living_world.gd; do
             xvfb-run -a -s '-screen 0 1280x720x24' \
               "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" \
               --path godot --rendering-method gl_compatibility \
@@ -485,12 +515,16 @@ jobs:
           test -s "$ALCHUL_T17_CAPTURES/02_water_source_off.png"
           test -s "$ALCHUL_T17_CAPTURES/03_false_alarm_test.png"
           test -s "$ALCHUL_T17_CAPTURES/render_manifest.json"
-          echo "ALCHUL M11 THIRTY NATIVE ENGINE CAPTURES PASS"
-      - name: Retain all thirty real Godot views and provenance manifests
+          for frame in 01_reed_bed_three_accounts.png 02_two_interpretations.png 03_support_answer.png 04_unclosed_account.png; do
+            test -s "$ALCHUL_T18_T20_CAPTURES/$frame"
+          done
+          test -s "$ALCHUL_T18_T20_CAPTURES/render_manifest.json"
+          echo "ALCHUL M11 THIRTY-FOUR REAL GODOT RESEARCH AND STORY CAPTURES PASS"
+      - name: Retain all thirty-four real Godot views and provenance manifests
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: alchul-m11-t07-t17-native-engine-evidence
+          name: alchul-m11-t07-t20-native-engine-evidence
           path: m11-native-captures/
           if-no-files-found: warn
           retention-days: 90
