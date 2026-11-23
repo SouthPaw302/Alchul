@@ -148,7 +148,7 @@ func _make_mesh(spec: Dictionary, skeleton: Skeleton3D, radial: int) -> ArrayMes
             var t: float = float(ring) / 2.0
             var center: Vector3 = a.lerp(b, t)
             var taper: float = 1.07 - 0.22 * t
-            var child_weight: float = 0.04 if ring == 0 else (0.5 if ring == 1 else 0.96)
+            var child_weight: float = 0.0625 if ring == 0 else (0.5 if ring == 1 else 0.9375)
             for j in range(radial + 1):
                 var angle: float = TAU * float(j) / float(radial)
                 var normal: Vector3 = u * cos(angle) + v * sin(angle)
