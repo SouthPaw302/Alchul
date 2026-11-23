@@ -72,8 +72,13 @@ func _run() -> void:
         if import_node == null or not _contains_skeleton(import_node):
             _fail("GLB lost the 43-bone reference rig " + key)
             return
-        if not _contains_skin(import_node):
-            _fail("GLB lost weighted skin " + key)
+        # Validate portable glTF *skin objects* rather than relying on the Godot
+        # importer's optional MeshInstance3D.skin property representation.
+        print("T13 GLB skin audit: " + key + " source=" + str(state.skins.size()) +
+            " reimport=" + str(check_state.skins.size()) +
+            " explicit_mesh_skin=" + str(_contains_skin(import_node)))
+        if state.skins.is_empty() or check_state.skins.is_empty():
+            _fail("GLB lost its glTF skin bindings " + key)
             return
         import_node.free()
         files.append(name)
