@@ -69,7 +69,7 @@ func _run() -> void:
                             _die("invalid influence")
                             return
                         sum += w
-                    if not is_equal_approx(sum, 1.0):
+                    if absf(sum - 1.0) > 0.00025: # GPU skin-weight packing quantizes even exact binary weights
                         _die("unnormalized skin weights %s/%d/%d = %.7f values=%s" % [key, surf, i, sum, str([weights[i*4], weights[i*4+1], weights[i*4+2], weights[i*4+3]])])
                         return
         var body_proxy: StaticBody3D = body.get_node_or_null("ProxyEnvelope_NotAnatomical")
