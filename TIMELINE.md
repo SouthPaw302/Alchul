@@ -21,6 +21,8 @@ Repeated aggregation changes social tolerance, learning, juvenile exposure to ad
 
 A subset of Harvest participants experiences repeatable anomalies associated with altered states and particular places.
 
+The same Harvest-associated opening lets Alchul peer into their reality, although whether Alchul already knew of them is unresolved. Alchul is not a member of the founder lineage.
+
 These begin as:
 - fixation on apparently empty locations
 - unusual dreams
