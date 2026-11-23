@@ -72,6 +72,14 @@ func _run() -> void:
             if child is BoneAttachment3D:
                 original_skeleton.remove_child(child)
                 child.free()
+        var shell: MeshInstance3D = node.get_node("SkinnedShell_LOD0")
+        var skeleton: Skeleton3D = node.get_node("ResearchSkeleton3D")
+        print("T16 GLB PRECHECK " + candidate + " root_visible=" + str(node.is_visible_in_tree()) +
+            " shell_visible=" + str(shell.is_visible_in_tree()) +
+            " skeleton_visible=" + str(skeleton.is_visible_in_tree()) +
+            " skin_binds=" + str(shell.skin.get_bind_count()) +
+            " path=" + str(shell.skeleton) +
+            " path_resolves=" + str(shell.get_node_or_null(shell.skeleton) == skeleton))
         var exporter := GLTFDocument.new()
         var state := GLTFState.new()
         var append_result: Error = exporter.append_from_scene(node, state)
