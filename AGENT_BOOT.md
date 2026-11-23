@@ -20,7 +20,8 @@ Before writing, researching, designing, or modifying canon:
 - Treat Git as canonical authority.
 - Do not turn the founders into generic "raptors," birds, or reptilian humanoids.
 - Do not assume human-style civilization, technology, writing, government, industry, or spacecraft.
-- Do not define Alchul's true nature.
+- Do not define Alchul's true nature. Alchul is explicitly not a descendant of the dinosaur lineage; Harvest altered states permit **reciprocal perception** without defining the mechanism or origin.
+- Preserve the creator's matter co-evolution principle: evolving perceptual capacity and process-based technology reinforce one another; no unsupported early telekinesis.
 - Real science and in-universe interpretation must remain visibly separate.
 - Build the physical Earth chronology, ecology, geology and biosphere independently **through the present** before adding fictional ALCHUL history at any slice; label evidence, inference, canon and unknown separately.
 - Non-avian dinosaur survival past K–Pg is fiction, not an established fossil lineage; present-day New Madrid is intraplate deformation within the North American plate, not outside plate tectonics.

@@ -18,6 +18,7 @@ This file contains locked in-universe facts. Real-world evidence belongs in `RES
 - Naturally fermented plant material becomes a recurring ecological resource for a localized population.
 - Repeated Harvest gatherings gradually alter social behavior, learning, tolerance, ritual, and selection.
 - Fermentation is not itself supernatural.
+- Creator clarification (2026-11-23): fermentation-associated altered states open the earliest known perceptual aperture in both directions. Individuals can perceive Alchul-associated effects, and Alchul uses that condition to peer into their reality. The physical mechanism, whether Alchul already knew of them, and Alchul's nature remain unresolved. This is in-universe canon, not empirical fact.
 - Altered states become one of the first reliable conditions under which certain individuals perceive Alchul or effects associated with Alchul.
 - Over deep time, the Harvest becomes chemistry, medicine, ritual, experimental method, and eventually part of a larger science.
 
@@ -26,6 +27,7 @@ This file contains locked in-universe facts. Real-world evidence belongs in `RES
 - Alchul is real within the story.
 - Alchul does not exist within the ordinary perceptual bandwidth of surface biological life.
 - Alchul's true nature, origin, sex/gender, body, number, and ontology remain unresolved.
+- Alchul is not one of the dinosaurs or any lineage of their descendants. Its distinctness is canon; its physical nature, taxonomy and origin are not defined.
 - Alchul is not to be reduced to a standard alien, demon, deity, machine, or extra-dimensional species.
 - Alchul initially influences through perception, dreams, repeated patterns, intuitions, altered-state contact, and ideas rather than direct technological gifts.
 - Alchul does not build the civilization for them. The population develops through experience, selection, experimentation, failure, culture, and long spans of time.
@@ -61,6 +63,7 @@ This file contains locked in-universe facts. Real-world evidence belongs in `RES
 - By a human analogy this civilization may sit near a cusp-industrial threshold, but its industry does not reproduce the human path of standardized factories, fossil fuels, mass metallurgy, and electronics.
 - The surface civilization never passes through a human-style Iron Age. Material engineering develops around sensing and working existing properties of stone, wood, water, heat, pressure, chemistry, organisms, and environmental systems. This does not settle whether isolated metals were ever used.
 - Surface technology increasingly works by cultivating or redirecting natural process: fire, fermentation, water, pressure, heat, gas, mineral chemistry, structural stress, living systems, and ecological feedback.
+- Their evolved bodily ability to detect and exploit material properties and their technical means of influencing matter co-develop. In the surface era, sensitive observation and physical process-engineering do the work; increasingly direct boundary/matter displacement develops much later, not as ungrounded early telekinesis.
 - Some tools and structures are manufactured objects; others are modified landscapes, cultivated organisms, managed chemical systems, or natural structures made functional through repeated intervention.
 - The distinction between natural system and technical system has already begun to blur before the Long Descent.
 - This resemblance to nature is primarily functional rather than camouflage.
