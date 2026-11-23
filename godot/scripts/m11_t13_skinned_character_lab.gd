@@ -23,11 +23,20 @@ func _ready() -> void:
     _prepare_materials()
     for candidate in registry.get("bodies", []):
         _create_character_shell(candidate)
-    var hud: Node = get_node_or_null("SkeletalStudyHud/PanelContainer/VBoxContainer")
-    if hud != null and hud.get_child_count() > 0:
-        (hud.get_child(0) as Label).text = "ALCHUL / T13 — SKINNED CHARACTER ENGINEERING STUDY • NOT CANON"
+    _replace_t07_header(get_node("SkeletalStudyHud"))
+    var camera: Camera3D = get_node("MatchedT07Camera")
+    camera.position = Vector3(0.0, 3.2, 12.8)
+    camera.fov = 50.0
+    camera.look_at(Vector3(0.0, 1.65, 0.0))
     _apply_pose(0.0)
     _update_hud()
+
+
+func _replace_t07_header(node: Node) -> void:
+    if node is Label and (node as Label).text.begins_with("ALCHUL / T07"):
+        (node as Label).text = "ALCHUL / T13 — SKINNED RIG STUDY | NOT CANON"
+    for child in node.get_children():
+        _replace_t07_header(child)
 
 
 func _prepare_materials() -> void:
@@ -101,6 +110,17 @@ func _create_character_shell(spec: Dictionary) -> void:
     var skeleton: Skeleton3D = entry["skeleton"]
     var old_visual: Node3D = root_node.get_node("JointAndBoneVisuals")
     old_visual.visible = false
+    # T07 created reference rest transforms but did not initialize pose translations.
+    # Skinning requires global rest = initial pose; otherwise weighted geometry
+    # collapses around the skeleton origin despite valid vertex-bone indices.
+    for bone_id in range(skeleton.get_bone_count()):
+        skeleton.set_bone_pose_position(bone_id, skeleton.get_bone_rest(bone_id).origin)
+    skeleton.force_update_all_bone_transforms()
+    var hypothesis_label: Label3D = root_node.get_node("HypothesisLabel")
+    hypothesis_label.text = ("H-A  /  LONG TAIL" if key == "H-A" else "H-B  /  COMPACT TAIL") + "  •  UNMEASURED"
+    hypothesis_label.position = Vector3(-1.15, 3.38, 0.0)
+    hypothesis_label.font_size = 36
+    hypothesis_label.pixel_size = 0.004
     skins[key] = {}
     for lod in range(2):
         var mesh := MeshInstance3D.new()
