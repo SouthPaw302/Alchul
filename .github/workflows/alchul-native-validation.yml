@@ -149,6 +149,7 @@ jobs:
             godot/tests/render_m11_t16_evolutionary.gd
             godot/tests/export_m11_t16_evolutionary_glb.gd
             godot/tools/m11_t16_export_glb.py
+            godot/tests/verify_m11_t16_exported_glb.gd
           if-no-files-found: error
           retention-days: 90
 
@@ -351,6 +352,7 @@ jobs:
             test -s "$ALCHUL_T16_EVOLUTIONARY_EXPORTS/ALCHUL_T16_${hypothesis}_evolutionary_hypothesis.glb"
           done
           test -s "$ALCHUL_T16_EVOLUTIONARY_EXPORTS/model_manifest.json"
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot --script res://tests/verify_m11_t16_exported_glb.gd
 
       - name: Archive T16 three separately editable weighted skinned GLB reconstructions
         if: success()
