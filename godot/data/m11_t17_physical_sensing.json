@@ -1,0 +1,207 @@
+{
+  "schema": "alchul.m11.t17.physical-stimulus-lab.v1",
+  "status": "FICTIONAL_CAUSAL_SENSOR_ENGINEERING_NOT_VERIFIED_RECEPTOR_BIOLOGY",
+  "era": "mature surface reconstruction only",
+  "independent_lenses": [
+    "outside_physical",
+    "resident_interpretation",
+    "contact_testimony_unresolved"
+  ],
+  "model_units": "dimensionless test stimuli and arbitrary positions; not field instrument measurements",
+  "evolutionary_context": "technical amplification of plausible mechanical/chemical cues could co-develop with evolved sensitivity; none of these detector surfaces is a fossil organ",
+  "falsification_conditions": [
+    "shutting off stimulus reduces matched channel reading",
+    "cross-talk and noise may cause false positives and observer disagreement",
+    "same input/seed generates identical outputs",
+    "contact-linked testimony cannot be converted into physical sensor reading",
+    "no telekinesis or unknown force equation"
+  ],
+  "sources": [
+    {
+      "id": "river_pulse",
+      "site": "bank",
+      "channel": "water",
+      "position": [
+        8,
+        0
+      ],
+      "amplitude": 0.86,
+      "spread": 9,
+      "frequency": 0.33,
+      "phase": 0.1,
+      "physical_cause": "oscillating water level and flow through river station"
+    },
+    {
+      "id": "bank_vibration",
+      "site": "bank",
+      "channel": "vibration",
+      "position": [
+        8,
+        1
+      ],
+      "amplitude": 0.67,
+      "spread": 7,
+      "frequency": 0.61,
+      "phase": 0.8,
+      "physical_cause": "periodic substrate stress from water-bearing sediments"
+    },
+    {
+      "id": "nursery_wood_stress",
+      "site": "nursery",
+      "channel": "stress",
+      "position": [
+        -10,
+        7
+      ],
+      "amplitude": 0.78,
+      "spread": 5,
+      "frequency": 0.17,
+      "phase": 0.2,
+      "physical_cause": "support stave deflection under hypothetical repeated loading"
+    },
+    {
+      "id": "harvest_warmth",
+      "site": "harvest",
+      "channel": "heat",
+      "position": [
+        -5,
+        -2
+      ],
+      "amplitude": 0.69,
+      "spread": 6,
+      "frequency": 0.12,
+      "phase": 1.3,
+      "physical_cause": "organic processing temperature gradient"
+    },
+    {
+      "id": "harvest_gas",
+      "site": "harvest",
+      "channel": "gas",
+      "position": [
+        -6,
+        -2
+      ],
+      "amplitude": 0.8,
+      "spread": 5,
+      "frequency": 0.09,
+      "phase": 0.3,
+      "physical_cause": "gas release from organic fermentation; not proof of anomalous perception"
+    },
+    {
+      "id": "witness_air_noise",
+      "site": "witness",
+      "channel": "acoustic",
+      "position": [
+        13,
+        10
+      ],
+      "amplitude": 0.51,
+      "spread": 8,
+      "frequency": 0.43,
+      "phase": 0.7,
+      "physical_cause": "wind-modulated resonance of surface materials"
+    }
+  ],
+  "sensors": [
+    {
+      "id": "bank_reader",
+      "position": [
+        7.8,
+        0.2
+      ],
+      "channels": [
+        "water",
+        "vibration",
+        "stress",
+        "heat",
+        "gas",
+        "acoustic"
+      ],
+      "threshold": 0.42,
+      "sensitivity": 0.92,
+      "noise": 0.055,
+      "cross_talk": 0.075
+    },
+    {
+      "id": "nursery_reader",
+      "position": [
+        -10,
+        6
+      ],
+      "channels": [
+        "water",
+        "vibration",
+        "stress",
+        "heat",
+        "gas",
+        "acoustic"
+      ],
+      "threshold": 0.58,
+      "sensitivity": 0.78,
+      "noise": 0.075,
+      "cross_talk": 0.06
+    },
+    {
+      "id": "harvest_reader",
+      "position": [
+        -5.6,
+        -1.3
+      ],
+      "channels": [
+        "water",
+        "vibration",
+        "stress",
+        "heat",
+        "gas",
+        "acoustic"
+      ],
+      "threshold": 0.4,
+      "sensitivity": 0.86,
+      "noise": 0.065,
+      "cross_talk": 0.085
+    },
+    {
+      "id": "witness_reader",
+      "position": [
+        12.9,
+        9.9
+      ],
+      "channels": [
+        "water",
+        "vibration",
+        "stress",
+        "heat",
+        "gas",
+        "acoustic"
+      ],
+      "threshold": 0.61,
+      "sensitivity": 0.75,
+      "noise": 0.11,
+      "cross_talk": 0.12
+    }
+  ],
+  "false_positive_demo": {
+    "sensor": "witness_reader",
+    "channel": "water",
+    "amplitude": 0.67,
+    "reason": "unrelated vibrating substrate leaks into a water-channel proxy, not a supernatural signal"
+  },
+  "provenance": {
+    "real_world": [
+      "real physical wave attenuation and environmental noise are qualitatively motivated, but no coefficients measured",
+      "fermentation produces chemical, heat and gas signals under plausible conditions"
+    ],
+    "fictional": [
+      "these people can learn to detect subtle physical patterns",
+      "material influence and technology reinforce each other"
+    ],
+    "unresolved": [
+      "specific receptor anatomy",
+      "true thresholds and signal transduction",
+      "Alchul ontology and physical mechanism"
+    ]
+  },
+  "canon_approved_sensor_organs": false,
+  "alchul_physical_signal": false,
+  "modern_species_model": false
+}
