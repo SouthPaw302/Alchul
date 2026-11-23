@@ -1,6 +1,6 @@
 # T18–T20 — The River Answered Twice: Worldbuilding Delivery
 
-**Date:** 2026-11-23 · **Scope:** mature surface ALCHUL, undated fictional scene. **Purpose:** build culture through scenes, not label an imaginary event as Earth history. This material is a proposed culture layer compatible with established canon, not an anatomy or language lock.
+**Date:** 2026-11-23 · **Delivered:** [PR #22 merged into main](https://github.com/SouthPaw302/Alchul/pull/22), [T18–T20 Drive archive](https://drive.google.com/drive/folders/1mKZuLh-Y17EJ_6BChZN-h7tEw3Q3IVI_). **Scope:** mature surface ALCHUL, undated fictional scene. **Purpose:** build culture through scenes, not label an imaginary event as Earth history. This material is a proposed culture layer compatible with established canon, not an anatomy or language lock.
 
 ## Three linked completed worldbuilding modules
 
@@ -37,6 +37,6 @@ godot --headless --path godot --script res://tests/t18_t20_living_world_smoke.gd
 godot --path godot res://scenes/t18_t20_living_world_scene.tscn
 ```
 
-The graphical GitHub Actions capture workflow renders four genuine Godot views: account bed, opposed readings, a support answer and an unclosed account. It also archives the markdown stories, scene source and interaction data.
+Native Godot's story test passed (three lenses, seven encoded signals, three endings, genuinely different readings and repeatability). The initial graphical GitHub Actions capture run rendered four genuine Godot views: account bed, opposed readings, a support answer and an unclosed account. It also archives the markdown stories, scene source and interaction data.
 
 **Canon respected:** ALCHUL's separate real existence, the two-way Harvest opening, the evolutionary co-development of perception and matter process, nonhuman ecological language, and the distinction between testimony and physical evidence. **Not declared canon:** particular gestures, their formal grammar, characters, a legal system, dates, native vocabulary, apparatus design, a proven contact episode or an approved T16 body. These are now usable story materials, which was the requested milestone.
