@@ -398,9 +398,9 @@ func _build_game_loop() -> void:
     if figure != null:
         figure.visible = false
     game = GAME_SCRIPT.new()
-	game.name = "BraidedReachChapter"
-	game.setup(self, observer, worldbook)
-	add_child(game)
+    game.name = "BraidedReachChapter"
+    game.setup(self, observer, worldbook)
+    add_child(game)
 
 func _set_lens(next_id: String) -> void:
 	if not ["outside", "resident", "contact"].has(next_id):
