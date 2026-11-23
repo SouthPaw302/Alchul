@@ -28,6 +28,8 @@ var state_text: Label
 var signal_text: Label
 var science_text: Label
 var import_mesh_count: int = 0
+var source_span: float = 8.0
+var source_center: Vector3 = Vector3.ZERO
 
 
 func _ready() -> void:
@@ -116,6 +118,8 @@ func _create_source() -> void:
         return
     var span: float = maxf(bounds.size.length(), 8.0)
     var center: Vector3 = bounds.get_center()
+    source_span = span
+    source_center = center
     camera.position = center + Vector3(span * 0.66, span * 0.51, span * 0.85)
     camera.far = maxf(1200, span * 5.0)
     camera.look_at(center)
@@ -142,7 +146,11 @@ func _build_reed_bed() -> void:
     add_child(reed_bed)
     # Spatial arrangement is for the scene display, not an archaeological
     # claim about real settled ALCHUL architecture or metric dimensions.
-    reed_bed.position = Vector3(0, 0.7, 0)
+    # A legible *interpretive inset* in the foreground of the real source M2
+    # geometry, not a claim that this exact object was an original asset.
+    reed_bed.position = source_center + Vector3(
+        source_span * 0.035, source_span * 0.04, source_span * 0.33)
+    reed_bed.scale = Vector3.ONE * clampf(source_span * 0.027, 1.0, 5.5)
     _make_box(reed_bed, "RecordBed", Vector3.ZERO,
         Vector3(5.2, 0.25, 2.1), Color(0.47, 0.38, 0.30))
     var translations: Array[String] = ["TRACE", "READING", "UNCLOSED"]
