@@ -1,6 +1,6 @@
 # ALCHUL — M11 T13: Skinned Rig Engineering, Motion Studies, and Canon Context
 
-**Working date:** 2026-11-23. **Classification:** implementation research / NONCANONICAL morphology / not a released character.  
+**Working date:** 2026-11-23. **Delivery:** [PR #14 merged](https://github.com/SouthPaw302/Alchul/pull/14); reproducible **noncanonical engineering prototype**, NOT approved anatomy or a released NPC. **Validated:** [pinned native engine, 43-bone skinning and GLB roundtrip](https://github.com/SouthPaw302/Alchul/actions/runs/45123874973); [Chromium Web preview](https://github.com/SouthPaw302/Alchul/actions/runs/45123875107); [three desktop targets](https://github.com/SouthPaw302/Alchul/actions/runs/45123875117). **Archive:** [T13 research, two GLBs, and 15 native Godot captures](https://drive.google.com/drive/folders/12MUqdfvCfZq4v-B87LQlTv7aAAs5EoIt).  
 **Previous gates:** [T07 skeleton](M11_T07_SKELETAL_JOINT_ARCHITECTURE_AND_QA.md), [T08–T09 model](M11_T08_T09_BALANCE_CONTACT_STUDY_AND_GATES.md), [T10 dynamics proxies](M11_T10_BIOMECHANICS_FORCES_AND_CORRIDOR_VALIDATION.md), [T11 gas/egg-retention](M11_T11_REPRODUCTIVE_GAS_NURSERY_CONSTRAINTS.md), [T12 Earth through present](../RESEARCH/SCIENCE_FIRST_EARTH_TO_PRESENT_T12.md).
 
 ## 1. Historical and creator context reconfirmed before T13
@@ -41,8 +41,10 @@ Controls: 0 = both hypotheses, 1/2 = individual; 3–7 choose five motions; L sw
 
 ## 3. Acceptance boundaries and next decisions
 
-**Technical prototype gate:** Confirm native Godot smoke, screenshots, three-stage CI, actual weighted-vertex GLB round-trip, source provenance and Drive archive before merge. Review any discrepancies rather than claiming graphics quality from source code alone.
+**Technical prototype gate PASSED (2026-11-23):** Both actual 43-bone skinned meshes and the five procedural clips pass native Godot smoke; the 2 LOD and 3 procedural materials are verified; the export/re-import script reports **two glTF skin objects in each GLB** on both write and readback. Native Godot produced 15 images across T07–T13, including three T13 poses. Python source validation, Chromium Web preview and desktop CI passed before merging PR #14. Source, both binary GLBs and real engine renders were archived in the linked Drive T13 folder. This is *not* a realistic morphology or publication-fidelity art approval.
 
 **Not passed by this implementation:** production-quality deformation, proper subsurface mesh and keratin/feather anatomy, muscle-driven gait, IK contact closure, egg-bearing physiology, facial signaling, verified LOD visual equivalence, actual scene collisions, native hardware performance, approved body scale, and baked animation tracks in portable GLB. The scientific reconstruction and T14 creator-approved anatomy are independent gates. `CANON.md` may be updated only for **direct creator statements** about Alchul/Harvest/matter co-development, not for T13 shape, colors, gestures or organs.
+
+**Binary export nuance:** The glTF 2.0 state carries both skin bindings after round-trip, although the Godot re-importer's optional `MeshInstance3D.skin` field need not be populated explicitly. The exported GLB files do NOT contain baked procedural animation loops; the latter remain executable GDScript source.
 
 **Provenance:** [Godot Skeleton3D](https://docs.godotengine.org/en/stable/classes/class_skeleton3d.html), [MeshInstance3D skinned mesh](https://docs.godotengine.org/en/stable/classes/class_meshinstance3d.html), [procedural ArrayMesh arrays](https://docs.godotengine.org/en/stable/tutorials/3d/procedural_geometry/arraymesh.html), [GLTFDocument round-trip](https://docs.godotengine.org/en/stable/classes/class_gltfdocument.html). These are *engine API* references, not evidence that a particular extinct organism had these proportions.
