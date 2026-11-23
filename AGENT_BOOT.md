@@ -10,9 +10,10 @@ Before writing, researching, designing, or modifying canon:
 6. Read `CIVILIZATION.md`.
 7. Read `DEEP_EARTH.md`.
 8. Read `VISUAL_CANON.md`.
-9. Read relevant files in `RESEARCH/`.
-10. Read `ARCHIVE/SESSION_2026-09-28_29_ORIGIN.md` when reconstructing intent, unresolved questions, or conversation history.
-11. Read prose only after canon and research.
+9. Read `RESEARCH/SCIENCE_FIRST_EARTH_TO_PRESENT_T12.md` before any world era, character or settlement work.
+10. Read relevant files in `RESEARCH/`.
+11. Read `ARCHIVE/SESSION_2026-09-28_29_ORIGIN.md` when reconstructing intent, unresolved questions, or conversation history.
+12. Read prose only after canon and research.
 
 ## Rules
 
