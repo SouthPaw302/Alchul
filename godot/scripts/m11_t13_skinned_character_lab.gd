@@ -343,6 +343,7 @@ func _update_hud() -> void:
         label.name = "T13State"
         label.position = Vector2(20, 112)
         label.add_theme_font_size_override("font_size", 16)
+        label.add_theme_color_override("font_color", Color(0.11, 0.21, 0.23))
         (get_node("SkeletalStudyHud") as CanvasLayer).add_child(label)
         existing = label
     (existing as Label).text = "MOTION: %s  |  LOD: %s  |  SURFACE: %s  |  %s" % [
