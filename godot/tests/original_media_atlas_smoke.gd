@@ -73,8 +73,8 @@ func _run() -> void:
 		_fail("source atlas broke the chapter game")
 		return
 	game._start_new()
-	if not game.is_playing() or archive.selected != 1:
-		_fail("new game should open with imported M1 river model")
+	if not game.is_playing() or archive.selected != 0:
+		_fail("new game should open integrated playable geography; source GLBs remain selectable F1–F7")
 		return
 	game._pause()
 	if game.state != "paused":
