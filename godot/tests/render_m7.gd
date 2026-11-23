@@ -94,9 +94,18 @@ func _run() -> void:
 		# Prevent a historic regression where the ground was invisible due to
 		# triangle winding. This camera/pixel is part of the stable review rig.
 		if i == 0:
-			var ground: Color = image.get_pixel(480, 450)
-			if ground.g > 0.56 or ground.b > 0.56:
-				push_error("M7 VISUAL FAIL: floodplain pixel resembles sky; inspect terrain winding")
+			var upper_sky: Color = image.get_pixel(480, 18)
+			var ground_region: Color = image.get_pixel(480, 450)
+			# Chapter I 1.1 intentionally uses green PBR foliage and brighter
+			# textures. The old fixed 'green > 0.56' test falsely rejected
+			# visible groundcover. Keep the real anti-invisible-terrain gate:
+			# the lower scene must differ from the sky sampled from the same
+			# actual native-engine frame.
+			var red_delta: float = upper_sky.r - ground_region.r
+			var green_delta: float = upper_sky.g - ground_region.g
+			var blue_delta: float = upper_sky.b - ground_region.b
+			if red_delta * red_delta + green_delta * green_delta + blue_delta * blue_delta < 0.0081:
+				push_error("M7 VISUAL FAIL: lower-scene color indistinguishable from sky; inspect terrain winding")
 				quit(1)
 				return
 		var destination: String = output_path.path_join(PATHS[i] + ".png")

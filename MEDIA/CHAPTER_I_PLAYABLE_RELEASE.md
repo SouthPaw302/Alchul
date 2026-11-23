@@ -1,5 +1,7 @@
 # ALCHUL — The Braided Reach · Chapter I
 
+**Chapter I 1.1 follow-up (2026-11-23):** This original 1.0 document is retained as a historical baseline. The [1.1 game/visual rebuild](CHAPTER_I_V1P1_GAMEPLAY_VISUAL_REBUILD.md) adds a compact UI, original M6 PBR source-textured geometry, varied canopy instances, four physical comparison instruments, and six real native Godot QA screens. The player now starts in the integrated chapter, while original M1–M6 models remain selectable through the F8 source archive. No anatomy is canon-approved; a passing PR is not yet a deployed website.
+
 **Version:** 1.0.0 — complete standalone **exploration chapter**  
 **Date:** November 19, 2026  
 **Status:** Playable self-contained field expedition; historical material is explicitly a fictional/scientific reconstruction, **not approved character/canon**.  
