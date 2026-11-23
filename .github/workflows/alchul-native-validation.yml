@@ -37,6 +37,24 @@ jobs:
           python3 godot/tools/m11_t11_reproduction.py --check
           python3 -m unittest discover -s godot/tests -p 'test_m11_t11_reproduction.py'
 
+      - name: Archive T11 research-only sources and recorded assumptions
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: alchul-m11-t11-provisional-source
+          path: |
+            MEDIA/M11_T11_REPRODUCTIVE_GAS_NURSERY_CONSTRAINTS.md
+            godot/data/m11_t11_reproductive_constraints.json
+            godot/data/m11_t11_screening_results.json
+            godot/tools/m11_t11_reproduction.py
+            godot/scripts/m11_t11_reproductive_lab.gd
+            godot/scenes/m11_t11_reproductive_lab.tscn
+            godot/tests/test_m11_t11_reproduction.py
+            godot/tests/m11_t11_lab_smoke.gd
+            godot/tests/render_m11_t11.gd
+          if-no-files-found: error
+          retention-days: 90
+
   godot-native-smoke:
     needs: offline-contract
     runs-on: ubuntu-24.04
