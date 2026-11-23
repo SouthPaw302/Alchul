@@ -6,7 +6,8 @@ extends Node3D
 const OBSERVER_SCENE: Script = preload("res://scripts/observer.gd")
 const M1_ENVIRONMENT: Script = preload("res://scripts/environment_m1.gd")
 const M10_STATIC_BATCHER: Script = preload("res://scripts/m10_static_batcher.gd")
-const GAME_SCRIPT: Script = preload("res://scripts/game_loop.gd")
+const GAME_SCRIPT: Script = preload("res://scripts/chapter_game_v2.gd")
+const CHAPTER_ATMOSPHERE: Script = preload("res://scripts/chapter_atmosphere_v2.gd")
 const ORIGINAL_ATLAS_SCRIPT: Script = preload("res://scripts/original_media_atlas.gd")
 const WORLDBOOK: String = "res://data/worldbook.json"
 const LAND_EXTENT: float = 60.0
@@ -388,7 +389,15 @@ func _build_original_atlas() -> void:
 	add_child(original_atlas)
 
 func _build_game_loop() -> void:
-	game = GAME_SCRIPT.new()
+    var atmosphere: Node3D = CHAPTER_ATMOSPHERE.new()
+    atmosphere.name = "ChapterI_VisitorAtmosphere_And_Navigation_NotCanon"
+    atmosphere.setup(self, worldbook)
+    add_child(atmosphere)
+    # The old primitive study figure remains available in research scenes
+    # but is not presented as a finalized historical creature in Chapter I.
+    if figure != null:
+        figure.visible = false
+    game = GAME_SCRIPT.new()
 	game.name = "BraidedReachChapter"
 	game.setup(self, observer, worldbook)
 	add_child(game)
