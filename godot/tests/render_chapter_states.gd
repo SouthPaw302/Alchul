@@ -1,10 +1,10 @@
 extends SceneTree
 
-## Five actual Godot UI/state screenshots for the finite ALCHUL chapter.
+## Six genuine Godot views of the redesigned Chapter I, including the playable instrument.
 ## Native Compatibility renderer under a virtual desktop; no mock images.
 const NAMES: Array[String] = [
 	"01_title", "02_expedition", "03_river_account",
-	"04_field_journal", "05_chapter_ending"
+	"04_paired_control", "05_field_journal", "06_chapter_ending"
 ]
 
 func _initialize() -> void:
@@ -58,8 +58,13 @@ func _run() -> void:
 		push_error("ALCHUL GAME SCREEN FAIL: river account")
 		quit(1)
 		return
-	chapter._show_journal()
+	chapter._show_survey("bank")
 	if not await _capture(out.path_join(NAMES[3] + ".png")):
+		push_error("ALCHUL GAME SCREEN FAIL: interactive paired-control panel")
+		quit(1)
+		return
+	chapter._show_journal()
+	if not await _capture(out.path_join(NAMES[4] + ".png")):
 		push_error("ALCHUL GAME SCREEN FAIL: journal")
 		quit(1)
 		return
@@ -72,11 +77,11 @@ func _run() -> void:
 		push_error("ALCHUL GAME SCREEN FAIL: ending not actually reached")
 		quit(1)
 		return
-	if not await _capture(out.path_join(NAMES[4] + ".png")):
+	if not await _capture(out.path_join(NAMES[5] + ".png")):
 		push_error("ALCHUL GAME SCREEN FAIL: ending")
 		quit(1)
 		return
 	DirAccess.remove_absolute(ProjectSettings.globalize_path(chapter.SAVE_PATH))
-	print("ALCHUL GAME FIVE REAL NATIVE UI CAPTURES PASS")
+	print("ALCHUL GAME SIX REAL NATIVE UI CAPTURES PASS")
 	scene.queue_free()
 	quit(0)
