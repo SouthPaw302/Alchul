@@ -34,6 +34,8 @@ jobs:
           python3 -m unittest discover -s godot/tests -p 'test_m11_t08_t09.py'
           python3 godot/tools/m11_t10_mechanics.py --check
           python3 -m unittest discover -s godot/tests -p 'test_m11_t10_mechanics.py'
+          python3 godot/tools/m11_t11_reproduction.py --check
+          python3 -m unittest discover -s godot/tests -p 'test_m11_t11_reproduction.py'
 
   godot-native-smoke:
     needs: offline-contract
@@ -137,6 +139,13 @@ jobs:
           "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless \
             --path godot --script res://tests/m11_t10_lab_smoke.gd
 
+      - name: Check T11 research-only gas/burden/nursery screen in native Godot
+        shell: bash
+        run: |
+          set -euo pipefail
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless             --path godot --check-only --script res://scripts/m11_t11_reproductive_lab.gd
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless             --path godot --script res://tests/m11_t11_lab_smoke.gd
+
       - name: Verify every original M1–M6 GLB in live game and preserve exact mesh triangle counts
         shell: bash
         run: |
@@ -153,6 +162,7 @@ jobs:
       ALCHUL_T07_CAPTURES: ${{ github.workspace }}/m11-native-captures/t07
       ALCHUL_T08_T09_CAPTURES: ${{ github.workspace }}/m11-native-captures/t08-t09
       ALCHUL_T10_CAPTURES: ${{ github.workspace }}/m11-native-captures/t10
+      ALCHUL_T11_CAPTURES: ${{ github.workspace }}/m11-native-captures/t11
     steps:
       - name: Check out Alchul only
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -178,8 +188,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p "$ALCHUL_T07_CAPTURES" "$ALCHUL_T08_T09_CAPTURES" "$ALCHUL_T10_CAPTURES"
-          for script in render_m11_t07.gd render_m11_t08_t09.gd render_m11_t10.gd; do
+          mkdir -p "$ALCHUL_T07_CAPTURES" "$ALCHUL_T08_T09_CAPTURES" "$ALCHUL_T10_CAPTURES" "$ALCHUL_T11_CAPTURES"
+          for script in render_m11_t07.gd render_m11_t08_t09.gd render_m11_t10.gd render_m11_t11.gd; do
             xvfb-run -a -s '-screen 0 1280x720x24' \
               "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" \
               --path godot --rendering-method gl_compatibility \
@@ -195,12 +205,15 @@ jobs:
           test -s "$ALCHUL_T07_CAPTURES/render_manifest.json"
           test -s "$ALCHUL_T08_T09_CAPTURES/capture_manifest.json"
           test -s "$ALCHUL_T10_CAPTURES/native_manifest.json"
-          echo "ALCHUL M11 SEVEN NATIVE ENGINE CAPTURES PASS"
-      - name: Retain all seven real Godot views and provenance manifests
+          test -s "$ALCHUL_T11_CAPTURES/01_reference_screen.png"
+          test -s "$ALCHUL_T11_CAPTURES/02_internal_hypoxia_screen.png"
+          test -s "$ALCHUL_T11_CAPTURES/render_manifest.json"
+          echo "ALCHUL M11 NINE NATIVE ENGINE CAPTURES PASS"
+      - name: Retain all nine real Godot views and provenance manifests
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: alchul-m11-t07-t10-native-engine-evidence
+          name: alchul-m11-t07-t11-native-engine-evidence
           path: m11-native-captures/
           if-no-files-found: warn
           retention-days: 90
