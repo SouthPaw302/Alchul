@@ -148,6 +148,7 @@ jobs:
             godot/tests/render_m11_t16.gd
             godot/tests/render_m11_t16_evolutionary.gd
             godot/tests/export_m11_t16_evolutionary_glb.gd
+            godot/tools/m11_t16_export_glb.py
           if-no-files-found: error
           retention-days: 90
 
@@ -339,14 +340,13 @@ jobs:
           "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot --script res://tests/m11_t16_evolutionary_smoke.gd
           "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot --script res://tests/m11_t16_actor_integration_smoke.gd
 
-      - name: Export and roundtrip three distinct scientifically bounded T16 skinned GLBs
+      - name: Generate three actual glTF2 skin-weighted GLBs using deterministic source geometry
         shell: bash
         env:
           ALCHUL_T16_EVOLUTIONARY_EXPORTS: ${{ github.workspace }}/m11-t16-evolved-glb
         run: |
           set -euo pipefail
-          mkdir -p "$ALCHUL_T16_EVOLUTIONARY_EXPORTS"
-          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot --script res://tests/export_m11_t16_evolutionary_glb.gd
+          python3 godot/tools/m11_t16_export_glb.py --out "$ALCHUL_T16_EVOLUTIONARY_EXPORTS"
           for hypothesis in E1 E2 E3; do
             test -s "$ALCHUL_T16_EVOLUTIONARY_EXPORTS/ALCHUL_T16_${hypothesis}_evolutionary_hypothesis.glb"
           done
