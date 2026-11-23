@@ -389,18 +389,18 @@ func _build_original_atlas() -> void:
 	add_child(original_atlas)
 
 func _build_game_loop() -> void:
-    var atmosphere: Node3D = CHAPTER_ATMOSPHERE.new()
-    atmosphere.name = "ChapterI_VisitorAtmosphere_And_Navigation_NotCanon"
-    atmosphere.setup(self, worldbook)
-    add_child(atmosphere)
-    # The old primitive study figure remains available in research scenes
-    # but is not presented as a finalized historical creature in Chapter I.
-    if figure != null:
-        figure.visible = false
-    game = GAME_SCRIPT.new()
-    game.name = "BraidedReachChapter"
-    game.setup(self, observer, worldbook)
-    add_child(game)
+	var atmosphere: Node3D = CHAPTER_ATMOSPHERE.new()
+	atmosphere.name = "ChapterI_VisitorAtmosphere_And_Navigation_NotCanon"
+	atmosphere.setup(self, worldbook)
+	add_child(atmosphere)
+	# The old primitive study figure remains available in research scenes
+	# but is not presented as a finalized historical creature in Chapter I.
+	if figure != null:
+	    figure.visible = false
+	game = GAME_SCRIPT.new()
+	game.name = "BraidedReachChapter"
+	game.setup(self, observer, worldbook)
+	add_child(game)
 
 func _set_lens(next_id: String) -> void:
 	if not ["outside", "resident", "contact"].has(next_id):
