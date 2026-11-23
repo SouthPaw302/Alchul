@@ -396,7 +396,7 @@ func _build_game_loop() -> void:
 	# The old primitive study figure remains available in research scenes
 	# but is not presented as a finalized historical creature in Chapter I.
 	if figure != null:
-	    figure.visible = false
+		figure.visible = false
 	game = GAME_SCRIPT.new()
 	game.name = "BraidedReachChapter"
 	game.setup(self, observer, worldbook)
