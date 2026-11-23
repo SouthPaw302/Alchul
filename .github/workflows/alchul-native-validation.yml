@@ -41,6 +41,7 @@ jobs:
           python3 -m unittest discover -s godot/tests -p 'test_m11_t14_anatomy.py'
           python3 godot/tools/validate_m11_t15_geometry.py
           python3 -m unittest discover -s godot/tests -p 'test_m11_t15_geometry.py'
+          python3 godot/tools/m11_t16_evolutionary_models.py --check
           python3 -m unittest discover -s godot/tests -p 'test_m11_t12_science_first.py'
 
       - name: Archive T11 research-only sources and recorded assumptions
@@ -126,6 +127,27 @@ jobs:
             godot/scenes/m11_t15_settlement_geometry_lab.tscn
             godot/tests/m11_t15_settlement_smoke.gd
             godot/tests/render_m11_t15.gd
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Archive T16 evolutionary morphometry source, three-dimensional prototypes and study tests
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: alchul-m11-t16-evolutionary-inhabitant-source
+          path: |
+            MEDIA/M11_T16_EVOLUTIONARY_INHABITANT_MODELS.md
+            godot/data/m11_t16_evolutionary_profiles.json
+            godot/tools/m11_t16_evolutionary_models.py
+            godot/scripts/m11_t16_evolutionary_lab.gd
+            godot/scripts/m11_t16_experimental_inhabitants.gd
+            godot/scenes/m11_t16_evolutionary_lab.tscn
+            godot/scenes/m11_t16_experimental_inhabitants.tscn
+            godot/tests/m11_t16_evolutionary_smoke.gd
+            godot/tests/m11_t16_actor_integration_smoke.gd
+            godot/tests/render_m11_t16.gd
+            godot/tests/render_m11_t16_evolutionary.gd
+            godot/tests/export_m11_t16_evolutionary_glb.gd
           if-no-files-found: error
           retention-days: 90
 
@@ -307,6 +329,38 @@ jobs:
           "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot \
             --script res://tests/m11_t15_settlement_smoke.gd
 
+      - name: Validate T16 three evolutionary 43-control weighted meshes and default-disabled playable game hook
+        shell: bash
+        run: |
+          set -euo pipefail
+          for script in res://scripts/m11_t16_evolutionary_lab.gd res://scripts/m11_t16_experimental_inhabitants.gd res://scripts/world.gd; do
+            "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot --check-only --script "$script"
+          done
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot --script res://tests/m11_t16_evolutionary_smoke.gd
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot --script res://tests/m11_t16_actor_integration_smoke.gd
+
+      - name: Export and roundtrip three distinct scientifically bounded T16 skinned GLBs
+        shell: bash
+        env:
+          ALCHUL_T16_EVOLUTIONARY_EXPORTS: ${{ github.workspace }}/m11-t16-evolved-glb
+        run: |
+          set -euo pipefail
+          mkdir -p "$ALCHUL_T16_EVOLUTIONARY_EXPORTS"
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot --script res://tests/export_m11_t16_evolutionary_glb.gd
+          for hypothesis in E1 E2 E3; do
+            test -s "$ALCHUL_T16_EVOLUTIONARY_EXPORTS/ALCHUL_T16_${hypothesis}_evolutionary_hypothesis.glb"
+          done
+          test -s "$ALCHUL_T16_EVOLUTIONARY_EXPORTS/model_manifest.json"
+
+      - name: Archive T16 three separately editable weighted skinned GLB reconstructions
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: alchul-m11-t16-three-evolutionary-skinned-glbs
+          path: m11-t16-evolved-glb/
+          if-no-files-found: error
+          retention-days: 90
+
       - name: Verify every original M1–M6 GLB in live game and preserve exact mesh triangle counts
         shell: bash
         run: |
@@ -328,6 +382,8 @@ jobs:
       ALCHUL_T13_CAPTURES: ${{ github.workspace }}/m11-native-captures/t13
       ALCHUL_T14_CAPTURES: ${{ github.workspace }}/m11-native-captures/t14
       ALCHUL_T15_CAPTURES: ${{ github.workspace }}/m11-native-captures/t15
+      ALCHUL_T16_CAPTURES: ${{ github.workspace }}/m11-native-captures/t16
+      ALCHUL_T16_EVOLUTIONARY_CAPTURES: ${{ github.workspace }}/m11-native-captures/t16-evolutionary
     steps:
       - name: Check out Alchul only
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -353,8 +409,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p "$ALCHUL_T07_CAPTURES" "$ALCHUL_T08_T09_CAPTURES" "$ALCHUL_T10_CAPTURES" "$ALCHUL_T11_CAPTURES" "$ALCHUL_T12_CAPTURES" "$ALCHUL_T13_CAPTURES" "$ALCHUL_T14_CAPTURES" "$ALCHUL_T15_CAPTURES"
-          for script in render_m11_t07.gd render_m11_t08_t09.gd render_m11_t10.gd render_m11_t11.gd render_m11_t12.gd render_m11_t13.gd render_m11_t14.gd render_m11_t15.gd; do
+          mkdir -p "$ALCHUL_T07_CAPTURES" "$ALCHUL_T08_T09_CAPTURES" "$ALCHUL_T10_CAPTURES" "$ALCHUL_T11_CAPTURES" "$ALCHUL_T12_CAPTURES" "$ALCHUL_T13_CAPTURES" "$ALCHUL_T14_CAPTURES" "$ALCHUL_T15_CAPTURES" "$ALCHUL_T16_CAPTURES" "$ALCHUL_T16_EVOLUTIONARY_CAPTURES"
+          for script in render_m11_t07.gd render_m11_t08_t09.gd render_m11_t10.gd render_m11_t11.gd render_m11_t12.gd render_m11_t13.gd render_m11_t14.gd render_m11_t15.gd render_m11_t16.gd render_m11_t16_evolutionary.gd; do
             xvfb-run -a -s '-screen 0 1280x720x24' \
               "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" \
               --path godot --rendering-method gl_compatibility \
@@ -389,12 +445,19 @@ jobs:
             test -s "$ALCHUL_T15_CAPTURES/${stage}_original_GLB_geometry.png"
           done
           test -s "$ALCHUL_T15_CAPTURES/render_manifest.json"
-          echo "ALCHUL M11 TWENTY-TWO NATIVE ENGINE CAPTURES PASS"
-      - name: Retain all twenty-two real Godot views and provenance manifests
+          test -s "$ALCHUL_T16_CAPTURES/01_original_river_station_two_rigs.png"
+          test -s "$ALCHUL_T16_CAPTURES/02_original_harvest_two_rigs.png"
+          test -s "$ALCHUL_T16_CAPTURES/render_manifest.json"
+          test -s "$ALCHUL_T16_EVOLUTIONARY_CAPTURES/01_three_evolutionary_models.png"
+          test -s "$ALCHUL_T16_EVOLUTIONARY_CAPTURES/02_three_models_grip.png"
+          test -s "$ALCHUL_T16_EVOLUTIONARY_CAPTURES/03_three_models_lod1.png"
+          test -s "$ALCHUL_T16_EVOLUTIONARY_CAPTURES/render_manifest.json"
+          echo "ALCHUL M11 TWENTY-SEVEN NATIVE ENGINE CAPTURES PASS"
+      - name: Retain all twenty-seven real Godot views and provenance manifests
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: alchul-m11-t07-t15-native-engine-evidence
+          name: alchul-m11-t07-t16-native-engine-evidence
           path: m11-native-captures/
           if-no-files-found: warn
           retention-days: 90
