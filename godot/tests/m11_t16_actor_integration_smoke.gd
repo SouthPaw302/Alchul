@@ -40,8 +40,8 @@ func _run() -> void:
     root.add_child(lab)
     await process_frame
     var summary: Dictionary = lab.integration_summary()
-    if summary.get("actor_count", 0) != 2 or not summary.get("actual_43_bone_skinned", false):
-        _fail("two weighted inhabitants not staged")
+    if summary.get("actor_count", 0) != 3 or not summary.get("actual_43_bone_skinned", false):
+        _fail("three evolutionary weighted inhabitants not staged")
         return
     if not summary.get("source_original_glb", false) or int(summary.get("source_meshes",0)) < 1:
         _fail("no original first party source settlement model")
@@ -49,14 +49,14 @@ func _run() -> void:
     if summary.get("creator_approved", true) or summary.get("canon_promoted", true) or summary.get("production_frame_budget_verified", true):
         _fail("research incorrectly promoted to production")
         return
-    var rig: Node = lab.get_node_or_null("T13WeightedRigOnly_Unapproved")
+    var rig: Node = lab.get_node_or_null("EvolutionaryWeightedRig_NotCanon")
     if rig == null:
         _fail("T13 source rig not instanced")
         return
     if (rig.get_node("MatchedT07Camera") as Camera3D).current:
         _fail("T13 reference camera takes over scene")
         return
-    for key in ["H-A","H-B"]:
+    for key in ["E1","E2","E3"]:
         var body: Node3D = rig.get_node("T07_" + key)
         var skeleton: Skeleton3D = body.get_node("ResearchSkeleton3D")
         if skeleton.get_bone_count() != 43:
@@ -88,6 +88,6 @@ func _run() -> void:
     if lab.integration_summary().get("actor_count", -1) != 0 or lab.set_motion("walk"):
         _fail("research shutdown did not remove actors")
         return
-    print("ALCHUL T16 NATIVE PASS: default game gated; 2 actual skinned rigs on 4 original source GLBs, 5 cycles, 2 LOD, 0 species approvals")
+    print("ALCHUL T16 NATIVE PASS: default game gated; 3 distinct evolutionary skinned rigs on 4 original source GLBs, 5 cycles, 2 LOD, 0 species approvals")
     lab.queue_free()
     quit(0)
