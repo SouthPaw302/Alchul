@@ -24,6 +24,14 @@ func _ready() -> void:
         push_error("T14 cannot load approved anatomy from evidence-only review")
         return
     playing = false
+    # T13's own top banner and world-space labels are redundant and partly
+    # overlap in a scientific A/B presentation. Retain rigs, hide decoration.
+    var original_hud: CanvasLayer = get_node("SkeletalStudyHud")
+    original_hud.visible = false
+    for model_key in ["H-A","H-B"]:
+        var world_label: Label3D = get_node_or_null("T07_" + model_key + "/HypothesisLabel")
+        if world_label != null:
+            world_label.visible = false
     set_clip("rest")
     sample_pose(0.0)
     set_display_mode("both")
@@ -63,9 +71,32 @@ func _build_review_overlay() -> void:
     layer.name = "T14ReviewLayer"
     add_child(layer)
 
+    var title_panel := PanelContainer.new()
+    title_panel.name = "T14ScientificHeader"
+    title_panel.position = Vector2(20, 15)
+    title_panel.custom_minimum_size = Vector2(1240, 95)
+    var banner := StyleBoxFlat.new()
+    banner.bg_color = Color(0.065, 0.105, 0.12, 0.94)
+    banner.set_content_margin_all(13)
+    title_panel.add_theme_stylebox_override("panel", banner)
+    layer.add_child(title_panel)
+    var title_col := VBoxContainer.new()
+    title_col.add_theme_constant_override("separation", 4)
+    title_panel.add_child(title_col)
+    title_col.add_child(_font("ALCHUL  /  T14  —  CREATOR ANATOMY REVIEW", 23, GOLD))
+    title_col.add_child(_font("TWO REAL GODOT SKINNED ENGINEERING HYPOTHESES   •   ZERO APPROVED SPECIES   •   UNMEASURED NORMALIZED UNITS", 13, PAPER))
+    title_col.add_child(_font("Scientific comparators ≠ fictional evolved morphology. H-C hybrid remains unbuilt; no present-day descendant is depicted.", 13, ACCENT))
+
+    var naming_left := _font("H-A / LONG TAIL", 16, GOLD)
+    naming_left.position = Vector2(420, 268)
+    layer.add_child(naming_left)
+    var naming_right := _font("H-B / COMPACT TAIL", 16, ACCENT)
+    naming_right.position = Vector2(865, 268)
+    layer.add_child(naming_right)
+
     var warning_panel := PanelContainer.new()
-    warning_panel.position = Vector2(20, 163)
-    warning_panel.custom_minimum_size = Vector2(410, 92)
+    warning_panel.position = Vector2(20, 141)
+    warning_panel.custom_minimum_size = Vector2(395, 99)
     var info_style := StyleBoxFlat.new()
     info_style.bg_color = Color(0.065, 0.105, 0.12, 0.89)
     info_style.set_content_margin_all(13)
@@ -73,9 +104,9 @@ func _build_review_overlay() -> void:
     layer.add_child(warning_panel)
     var explanation := VBoxContainer.new()
     warning_panel.add_child(explanation)
-    explanation.add_child(_font("T14 / CREATOR ANATOMY REVIEW", 18, GOLD))
-    explanation.add_child(_font("REAL FOSSIL COMPARATORS + MODEL PROXIES; NOT A REAL DESCENDANT", 12, PAPER))
-    explanation.add_child(_font("0 paired • 1 long tail • 2 compact tail • 3-7 procedural motion", 12, ACCENT))
+    explanation.add_child(_font("COMPARATIVE EVIDENCE  /  NONCANONICAL", 16, GOLD))
+    explanation.add_child(_font("Fossil comparators and software proxies only.", 12, PAPER))
+    explanation.add_child(_font("0 both  |  1 long tail  |  2 compact tail", 12, ACCENT))
 
     var a: VBoxContainer = _panel(20, 385, "H-A    /    LONG-TAIL CONTINUITY", GOLD)
     a.add_child(_font("T10 fixed 2.8-unit corridor: 55 / 101 sampled rigid-tail frames collide.", 14))
