@@ -8,7 +8,6 @@ const M1_ENVIRONMENT: Script = preload("res://scripts/environment_m1.gd")
 const M10_STATIC_BATCHER: Script = preload("res://scripts/m10_static_batcher.gd")
 const GAME_SCRIPT: Script = preload("res://scripts/chapter_game_v2.gd")
 const CHAPTER_ATMOSPHERE: Script = preload("res://scripts/chapter_atmosphere_v2.gd")
-const EXPERIMENTAL_INHABITANTS: Script = preload("res://scripts/m11_t16_experimental_inhabitants.gd")
 const ORIGINAL_ATLAS_SCRIPT: Script = preload("res://scripts/original_media_atlas.gd")
 const WORLDBOOK: String = "res://data/worldbook.json"
 const LAND_EXTENT: float = 60.0
@@ -402,13 +401,6 @@ func _build_game_loop() -> void:
 	game.name = "BraidedReachChapter"
 	game.setup(self, observer, worldbook)
 	add_child(game)
-	# T16 engineering hook: public gameplay remains identical and unpopulated.
-	# Local Godot can explicitly opt in with ALCHUL_T16_EXPERIMENTAL=1.
-	# Web builds always refuse the opt-in. No anatomy/canon approval inferred.
-	var candidate_study: Node3D = EXPERIMENTAL_INHABITANTS.new()
-	candidate_study.name = "ExperimentalInhabitants_NotReleased"
-	candidate_study.set("embedded_in_chapter", true)
-	add_child(candidate_study)
 
 func _set_lens(next_id: String) -> void:
 	if not ["outside", "resident", "contact"].has(next_id):
