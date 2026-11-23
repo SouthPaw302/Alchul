@@ -1,0 +1,293 @@
+{
+  "version": "t12_real_earth_v1",
+  "baseline_date": "2026-11-23",
+  "authority_policy": {
+    "real_science_precedes_story": true,
+    "fossil_continuity_claimed": false,
+    "surviving_non_avian_dinosaurs_claimed": false,
+    "hidden_civilization_evidence_claimed": false,
+    "correct_intraplate_tectonics": true,
+    "fiction_canon_is_not_paleontology": true,
+    "modern_alchul_body_reconstructed": false,
+    "scope": "northern Mississippi Embayment, Reelfoot Rift, future New Madrid region; regional constraints are NOT evidence of an exact site",
+    "labels": [
+      "published_evidence",
+      "reasoned_regional_inference",
+      "fictional_canon",
+      "fictional_unresolved"
+    ],
+    "real_present_day": "New Madrid seismicity is intraplate deformation within the North American plate; not a plate boundary and not outside plate tectonics"
+  },
+  "eras": [
+    {
+      "id": "late_cretaceous_appalachia",
+      "name": "Late Cretaceous Appalachia",
+      "time": "~80–72.2 Ma (working regional interval)",
+      "start_ma": 80,
+      "end_ma": 72.2,
+      "kind": "geological_interval",
+      "real_world": {
+        "confidence": "published_evidence_with_regional_limits",
+        "summary": "Eastern North America preserves fragmentary Late Cretaceous terrestrial dinosaur evidence, including dromaeosaurid material; lineage identity at the exact future New Madrid site is unestablished.",
+        "evidence": [
+          "Appalachian theropod remains from eastern North America are fragmentary and sparse.",
+          "The Mississippi Embayment and surrounding regions had dynamic coastal and fluvial environments."
+        ],
+        "limits": [
+          "A named local founding species has not been recovered.",
+          "A single continuous habitat or exact shoreline for this full interval cannot be asserted."
+        ],
+        "source_urls": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC6894593/",
+          "https://www.usgs.gov/programs/earthquake-hazards/new-madrid-seismic-zone"
+        ]
+      },
+      "fiction": {
+        "status": "fictional_canon",
+        "summary": "A dromaeosaur-grade founder lineage in the greater northern embayment is the story's starting premise, not a new fossil identification.",
+        "body_reconstructed": false
+      }
+    },
+    {
+      "id": "maastrichtian",
+      "name": "Maastrichtian transition",
+      "time": "~72.2–66.0 Ma",
+      "start_ma": 72.2,
+      "end_ma": 66,
+      "kind": "geological_interval",
+      "real_world": {
+        "confidence": "published_evidence_with_regional_limits",
+        "summary": "The McNairy sedimentary system and regional changing coastal/floodplain landscapes constrain candidate settings. Open caves or specific settlements at ~70 Ma are not established.",
+        "evidence": [
+          "Late Cretaceous sedimentary deposits in the northern embayment provide a real stratigraphic context.",
+          "Mesozoic deposits cannot establish a fossil civilization or an occupied cave."
+        ],
+        "limits": [
+          "Do not map a modern river bend directly onto a Cretaceous scene.",
+          "Do not infer that a present-day Ozark cave was open in the Maastrichtian."
+        ],
+        "source_urls": [
+          "https://www.usgs.gov/publications/upper-maastrichtian-ammonite-biostratigraphy-gulf-coastal-plain-mississippi-embayment",
+          "https://pubs.usgs.gov/pp/p1151h/structure.html"
+        ]
+      },
+      "fiction": {
+        "status": "fictional_working_era",
+        "summary": "A surface civilization and First Below trials occur before the K–Pg event; ~70 Ma is a scenario for one early below-ground site, NOT a dated archaeological discovery or locked peak date.",
+        "body_reconstructed": false
+      }
+    },
+    {
+      "id": "kpg_boundary",
+      "name": "K–Pg extinction boundary",
+      "time": "66.0 Ma",
+      "start_ma": 66,
+      "end_ma": 66,
+      "kind": "event",
+      "real_world": {
+        "confidence": "established_global_event",
+        "summary": "At approximately 66 Ma, the K–Pg crisis ends the known non-avian dinosaur record; birds are surviving dinosaurs.",
+        "evidence": [
+          "Non-avian dinosaur survival after the boundary is not supported by the established fossil record.",
+          "Chicxulub impact consequences and ecological disruption shape the real boundary."
+        ],
+        "limits": [
+          "ALCHUL's surviving branch is a fictional divergence from the real record.",
+          "Do not depict a real subterranean refuge with fossil-proof labels."
+        ],
+        "source_urls": [
+          "https://www.nps.gov/subjects/fossils/extinction-events.htm",
+          "https://www.nhm.ac.uk/discover/how-an-asteroid-caused-extinction-of-dinosaurs.html"
+        ]
+      },
+      "fiction": {
+        "status": "fictional_counterfactual",
+        "summary": "In the story, a pre-existing deep population survives; this is a deliberate fictional exception, not a paleontological claim.",
+        "body_reconstructed": false
+      }
+    },
+    {
+      "id": "paleogene",
+      "name": "Paleogene",
+      "time": "66.0–23.03 Ma",
+      "start_ma": 66,
+      "end_ma": 23.03,
+      "kind": "geological_interval",
+      "real_world": {
+        "confidence": "geological_timescale_and_regional_record",
+        "summary": "Post-extinction climate, ecosystems, basin sedimentation and faunal turnover proceed through the Paleocene, Eocene and Oligocene; no hidden non-avian lineage is known.",
+        "evidence": [
+          "Geological time boundaries are internationally standardized.",
+          "Embayment sedimentary history continues into the Cenozoic."
+        ],
+        "limits": [
+          "No continuously inhabited subterranean ALCHUL stratigraphic layer has been identified.",
+          "Do not project a single unchanging underground ecology over tens of millions of years."
+        ],
+        "source_urls": [
+          "https://stratigraphy.org/chart/",
+          "https://www.usgs.gov/publications/examination-reelfoot-rift-petroleum-system-south-central-united-states-and-elements"
+        ]
+      },
+      "fiction": {
+        "status": "fictional_unresolved",
+        "summary": "Long-duration underground divergence remains a story premise; body plans, ecology and technology for this interval are not reconstructed.",
+        "body_reconstructed": false
+      }
+    },
+    {
+      "id": "neogene",
+      "name": "Neogene",
+      "time": "23.03–2.58 Ma",
+      "start_ma": 23.03,
+      "end_ma": 2.58,
+      "kind": "geological_interval",
+      "real_world": {
+        "confidence": "geological_timescale_and_regional_record",
+        "summary": "Cenozoic landscape and drainage evolution affected sediments and fault inheritance in the Mississippi Embayment; precise hidden habitat geometry remains unknown.",
+        "evidence": [
+          "Neogene dates have stratigraphic definitions.",
+          "Ancient Reelfoot structures and younger sedimentary cover have distinct origins."
+        ],
+        "limits": [
+          "Modern faults cannot be used as exact ancient cave access routes.",
+          "No verified non-avian underground descendants."
+        ],
+        "source_urls": [
+          "https://stratigraphy.org/chart/",
+          "https://www.usgs.gov/programs/earthquake-hazards/new-madrid-seismic-zone"
+        ]
+      },
+      "fiction": {
+        "status": "fictional_unresolved",
+        "summary": "The deep civilization may change substantially in-story; the present body cannot be extrapolated from an unapproved peak-surface template.",
+        "body_reconstructed": false
+      }
+    },
+    {
+      "id": "pleistocene",
+      "name": "Pleistocene",
+      "time": "2.58 Ma–11.7 ka",
+      "start_ma": 2.58,
+      "end_ma": 0.0117,
+      "kind": "geological_interval",
+      "real_world": {
+        "confidence": "geological_timescale_and_regional_record",
+        "summary": "Quaternary climate shifts, river incision and alluviation change landscapes; old basement faults persist beneath younger alluvium.",
+        "evidence": [
+          "Pleistocene forms part of the Quaternary.",
+          "Recent river deposits overlie older embayment rocks."
+        ],
+        "limits": [
+          "Do not assume one modern river channel persisted unchanged for millions of years.",
+          "This interval contains no direct ALCHUL evidence."
+        ],
+        "source_urls": [
+          "https://stratigraphy.org/chart/",
+          "https://www.usgs.gov/programs/earthquake-hazards/new-madrid-seismic-zone"
+        ]
+      },
+      "fiction": {
+        "status": "fictional_unresolved",
+        "summary": "Any interaction with Quaternary landscapes would need an explicitly dated, physical access hypothesis; unknown presently.",
+        "body_reconstructed": false
+      }
+    },
+    {
+      "id": "holocene",
+      "name": "Holocene to 1810 CE",
+      "time": "~11.7 ka–1810 CE",
+      "start_ma": 0.0117,
+      "end_ma": 0.000216,
+      "kind": "geological_interval",
+      "real_world": {
+        "confidence": "regional_history_with_unresolved_site_details",
+        "summary": "Modern river systems, Holocene deposition, and the distinct histories of Indigenous peoples precede modern earthquake documentation.",
+        "evidence": [
+          "Holocene alluvium and river movement shape the regional surface.",
+          "Human archaeological and historical traditions must remain independently sourced and never be treated as automatic evidence of ALCHUL contact."
+        ],
+        "limits": [
+          "Do not appropriate Indigenous records as secret-dinosaur proof.",
+          "No ALCHUL settlement or contact is established in actual regional history."
+        ],
+        "source_urls": [
+          "https://stratigraphy.org/chart/",
+          "https://www.usgs.gov/programs/earthquake-hazards/new-madrid-seismic-zone"
+        ]
+      },
+      "fiction": {
+        "status": "fictional_unresolved",
+        "summary": "Any human contact is an optional, independently documented fictional narrative layer, not an explanation of real peoples' beliefs.",
+        "body_reconstructed": false
+      }
+    },
+    {
+      "id": "new_madrid_1811_1812",
+      "name": "1811–1812 earthquakes",
+      "time": "December 1811–February 1812",
+      "start_ma": null,
+      "end_ma": null,
+      "kind": "historical_event",
+      "real_world": {
+        "confidence": "historical_geophysical_evidence",
+        "summary": "The New Madrid area experienced a series of major earthquakes caused by slip on inherited faults within the North American plate.",
+        "evidence": [
+          "Multiple major events occurred in the winter 1811–1812 sequence.",
+          "Ancient Reelfoot rift structures are associated with modern intraplate deformation."
+        ],
+        "limits": [
+          "The exact rupture mechanisms and future recurrence remain research topics.",
+          "Do not attribute the historical earthquakes to an invented civilization."
+        ],
+        "source_urls": [
+          "https://www.usgs.gov/programs/earthquake-hazards/science/summary-1811-1812-new-madrid-earthquakes-sequence",
+          "https://www.usgs.gov/programs/earthquake-hazards/new-madrid-seismic-zone"
+        ]
+      },
+      "fiction": {
+        "status": "fictional_unresolved",
+        "summary": "ALCHUL's presence near earthquakes is an unproven story choice; it cannot replace plate-stress explanations.",
+        "body_reconstructed": false
+      }
+    },
+    {
+      "id": "present_2026",
+      "name": "Present-day New Madrid",
+      "time": "2026 CE",
+      "start_ma": null,
+      "end_ma": null,
+      "kind": "modern_observation",
+      "real_world": {
+        "confidence": "monitored_geophysical_evidence",
+        "summary": "The New Madrid seismic zone is an active, monitored intraplate fault system within the North American plate, over an ancient failed rift and younger embayment sediments.",
+        "evidence": [
+          "Earthquake monitoring documents regional seismicity.",
+          "The seismic zone is not a tectonic plate boundary; regional plate stress can reactivate old faults."
+        ],
+        "limits": [
+          "No real-world ALCHUL descendants or concealed Type 1.7 civilization have been found.",
+          "Modern geomorphology is not a map of the late-Cretaceous surface."
+        ],
+        "source_urls": [
+          "https://www.usgs.gov/programs/earthquake-hazards/new-madrid-seismic-zone",
+          "https://dnr.mo.gov/land-geology/hazards/earthquakes/science/facts-new-madrid-seismic-zone"
+        ]
+      },
+      "fiction": {
+        "status": "fictional_canon_unreconstructed",
+        "summary": "The narrative's civilization remains active in the present; its current biology, settlement geometry, engineering and public signatures remain unreconstructed fictional hypotheses.",
+        "body_reconstructed": false
+      }
+    }
+  ],
+  "forbidden_real_history_claims": [
+    "nonavian_dinosaur_survived_kpg_as_observed_fact",
+    "plate_free_new_madrid_fault",
+    "known_underground_dinosaur_civilization",
+    "precisely_mapped_70ma_cave",
+    "modern_inhabitants_share_surface_body",
+    "indigenous_traditions_prove_contact"
+  ],
+  "provenance_note": "Sources apply to their specific claims, not evidence for the fictional overlays. Regional constraints are not exact-site finds."
+}
