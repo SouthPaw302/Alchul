@@ -1,0 +1,179 @@
+{
+  "schema_version": "m11_t12_people_v1",
+  "science_first": true,
+  "biological_approval": "not_approved",
+  "selected_era_scope": "pre_kpg_peak_surface_undated",
+  "time_rule": "Peak-surface chronology is before K–Pg but not numerically fixed; do not set roles at 70 Ma or in 2026.",
+  "ancestor_status": "fictional_theropod_derived_population_not_an_identified_fossil_taxon",
+  "structural_hypotheses": [
+    "H-A",
+    "H-B"
+  ],
+  "shared_constraints": [
+    "three candidate manipulative digits inherited from maniraptoran-grade ancestry; specific opposition unapproved",
+    "digitigrade and feather-derived features possible for a peak-surface descendant; dimensions unapproved",
+    "an individual job or reproductive state does not prove sex, gender, caste, genotype or specialized species",
+    "no validated musculoskeletal loads, shell physiology, eye/ear organs, voices or tail mechanics",
+    "do not render these as modern members of a surviving real species"
+  ],
+  "roles": [
+    {
+      "id": "water_reader",
+      "title": "River reader",
+      "life_stage": "adult",
+      "activity": "Compares water level, flow cues and substrate vibration with recorded changes; not anomalous perception.",
+      "environments": [
+        "river_margin",
+        "reading_station"
+      ],
+      "functional_variation": "low-contact bracing posture with deliberate environmental sampling; exact joint angles unknown",
+      "testable_question": "Can a candidate three-digit forelimb brace near a wet sampling fixture without requiring primate pronation?",
+      "required_models": [
+        "T07_joint_reference",
+        "T09_fixture_reach",
+        "T10_wet_substrate_proxy"
+      ],
+      "risk": "Slippery flow edges and false-positive readings",
+      "render_marker": "water",
+      "individual_status": "provisional",
+      "body_plan_approved": false,
+      "sex_or_gender_inferred": false,
+      "specialist_is_caste": false,
+      "post_kpg_body_claimed": false,
+      "visual_anatomy_is_factual": false
+    },
+    {
+      "id": "independent_colleague",
+      "title": "Independent observer",
+      "life_stage": "adult",
+      "activity": "Records a second reading of the same event, explicitly allowing disagreement and measurement error.",
+      "environments": [
+        "reading_station",
+        "testimony_circle"
+      ],
+      "functional_variation": "distinct attention and head/body orientation for parallel sampling; no unique sensory organ asserted",
+      "testable_question": "Can two observers record conflicting outcomes without invoking Alchul as the explanation?",
+      "required_models": [
+        "M11_comparative_attention",
+        "chapter_interpretation_lenses"
+      ],
+      "risk": "Social disagreement and unreliable indicators",
+      "render_marker": "compare",
+      "individual_status": "provisional",
+      "body_plan_approved": false,
+      "sex_or_gender_inferred": false,
+      "specialist_is_caste": false,
+      "post_kpg_body_claimed": false,
+      "visual_anatomy_is_factual": false
+    },
+    {
+      "id": "egg_bearing_adult",
+      "title": "Egg-bearing individual",
+      "life_stage": "adult",
+      "activity": "Moves between sheltered workplaces while carrying developing eggs internally at the peak-surface stage; no reproductive organ depicted.",
+      "environments": [
+        "nursery_approach",
+        "safe_route"
+      ],
+      "functional_variation": "possible activity pacing and load redistribution; bodily shape, sex and size remain unapproved",
+      "testable_question": "Does assumed added load reduce clearance or support stability in actual settlement geometry?",
+      "required_models": [
+        "T08_center_of_mass_proxy",
+        "T10_corridor_proxy",
+        "T11_reproductive_indices"
+      ],
+      "risk": "Maternal gas-exchange and mobility constraints, unknown load magnitude",
+      "render_marker": "burden",
+      "individual_status": "provisional",
+      "body_plan_approved": false,
+      "sex_or_gender_inferred": false,
+      "specialist_is_caste": false,
+      "post_kpg_body_claimed": false,
+      "visual_anatomy_is_factual": false
+    },
+    {
+      "id": "juvenile_learner",
+      "title": "Juvenile learner",
+      "life_stage": "juvenile",
+      "activity": "Learns route use, materials and patterned environmental observations by watching and trying; milestone ages are unknown.",
+      "environments": [
+        "nursery_approach",
+        "training_terrace"
+      ],
+      "functional_variation": "developmental stage differs from adult; no fixed scaled adult skeleton or modern-human classroom",
+      "testable_question": "Do trial-and-error and repeat exposure explain learned site behaviors without inherited mystical skill?",
+      "required_models": [
+        "founder_juvenile_learning",
+        "route_observation_framework"
+      ],
+      "risk": "Hazards from water, heat and uneven walking substrates",
+      "render_marker": "learning",
+      "individual_status": "provisional",
+      "body_plan_approved": false,
+      "sex_or_gender_inferred": false,
+      "specialist_is_caste": false,
+      "post_kpg_body_claimed": false,
+      "visual_anatomy_is_factual": false
+    },
+    {
+      "id": "nursery_worker",
+      "title": "Nursery caretaker",
+      "life_stage": "adult",
+      "activity": "Coordinates protected external incubation areas, ventilation, moisture monitoring and care; not presumed egg-bearing.",
+      "environments": [
+        "nursery_approach",
+        "incubation_recess"
+      ],
+      "functional_variation": "tool placement and constrained reaching across incubation surfaces; no sex-specific body morphology",
+      "testable_question": "Can moisture buffering coexist with gas exchange and safe access?",
+      "required_models": [
+        "T11_nursery_air_exchange",
+        "T09_three_digit_bracing"
+      ],
+      "risk": "Poor ventilation, drying, overheating, cross-site contamination",
+      "render_marker": "nest",
+      "individual_status": "provisional",
+      "body_plan_approved": false,
+      "sex_or_gender_inferred": false,
+      "specialist_is_caste": false,
+      "post_kpg_body_claimed": false,
+      "visual_anatomy_is_factual": false
+    },
+    {
+      "id": "harvest_specialist",
+      "title": "Harvest specialist",
+      "life_stage": "adult",
+      "activity": "Studies naturally fermented plant resources, controlled storage and process variability; no invented industrial equipment.",
+      "environments": [
+        "harvest_processing",
+        "plant_storage"
+      ],
+      "functional_variation": "material sorting and three-digit handling tasks; mechanism and exact hand pads remain unknown",
+      "testable_question": "Are fermentation changes explainable as biology and chemistry before any anomalous interpretation is added?",
+      "required_models": [
+        "fermentation_real_biology",
+        "T09_three_digit_contact",
+        "site_process_records"
+      ],
+      "risk": "Toxins, contamination, gas buildup, inconsistent batch conditions",
+      "render_marker": "harvest",
+      "individual_status": "provisional",
+      "body_plan_approved": false,
+      "sex_or_gender_inferred": false,
+      "specialist_is_caste": false,
+      "post_kpg_body_claimed": false,
+      "visual_anatomy_is_factual": false
+    }
+  ],
+  "comparative_checklist": {
+    "original_individual_count": 6,
+    "separate_age_stages": true,
+    "egg_bearing_not_caregiver_equivalence": true,
+    "no_fixed_sex_roles": true,
+    "no_fixed_height_mass_or_clutch": true,
+    "no_invented_sensory_organs": true,
+    "modern_biology_requires_separate_future_study": true,
+    "evidence_before_visual_promotion": true
+  },
+  "program_goal": "Construct a research-only working roster, not a canonical population census or game NPC character pack."
+}

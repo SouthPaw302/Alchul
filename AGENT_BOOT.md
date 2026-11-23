@@ -10,9 +10,10 @@ Before writing, researching, designing, or modifying canon:
 6. Read `CIVILIZATION.md`.
 7. Read `DEEP_EARTH.md`.
 8. Read `VISUAL_CANON.md`.
-9. Read relevant files in `RESEARCH/`.
-10. Read `ARCHIVE/SESSION_2026-09-28_29_ORIGIN.md` when reconstructing intent, unresolved questions, or conversation history.
-11. Read prose only after canon and research.
+9. Read `RESEARCH/SCIENCE_FIRST_EARTH_TO_PRESENT_T12.md` before any world era, character or settlement work.
+10. Read relevant files in `RESEARCH/`.
+11. Read `ARCHIVE/SESSION_2026-09-28_29_ORIGIN.md` when reconstructing intent, unresolved questions, or conversation history.
+12. Read prose only after canon and research.
 
 ## Rules
 
@@ -21,6 +22,8 @@ Before writing, researching, designing, or modifying canon:
 - Do not assume human-style civilization, technology, writing, government, industry, or spacecraft.
 - Do not define Alchul's true nature.
 - Real science and in-universe interpretation must remain visibly separate.
+- Build the physical Earth chronology, ecology, geology and biosphere independently **through the present** before adding fictional ALCHUL history at any slice; label evidence, inference, canon and unknown separately.
+- Non-avian dinosaur survival past K–Pg is fiction, not an established fossil lineage; present-day New Madrid is intraplate deformation within the North American plate, not outside plate tectonics.
 - `RESEARCH/` may contain only sourced real-world research and explicit inference labels.
 - When evidence is uncertain, record uncertainty instead of silently inventing certainty.
 - New canon should grow causally from biology, environment, culture, and prior canon.
