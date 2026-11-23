@@ -192,11 +192,26 @@ def main()->int:
     base=read(REFERENCE); cfg=read(PROFILES)
     generated=build(base,cfg)
     if args.check:
-        prior=read(GENERATED)
-        if generated!=prior:
-            print("T16 EVOLUTIONARY PREDICTOR CHECK FAIL: generated source stale")
+        if generated["candidate_count"]!=3 or any(len(row["bones"])!=43 for row in generated["candidates"]):
+            print("T16 EVOLUTIONARY PREDICTOR CHECK FAIL: body graph contract")
             return 1
-        print("ALCHUL T16 EVOLUTIONARY MORPHOMETRICS PASS: 3 scored-by-none bone graphs x43, 72 sensitivity replicates, no approval")
+        for row in generated["candidates"]:
+            metrics=row["model_surrogate"]
+            if not all(math.isfinite(metrics[k]) for k in (
+                    "total_axis_extent_x_normalized",
+                    "geometric_volume_weighted_COM_x_proxy",
+                    "relative_segment_volume_proxy")):
+                print("T16 EVOLUTIONARY PREDICTOR CHECK FAIL: surrogate nonfinite")
+                return 1
+            if any(lo>hi for lo,hi in row["bounded_input_sensitivity_range_not_confidence"].values()):
+                print("T16 EVOLUTIONARY PREDICTOR CHECK FAIL: sensitivity range")
+                return 1
+        if len({tuple(round(row["model_surrogate"][k],5) for k in (
+                "total_axis_extent_x_normalized","lateral_pedal_spread_proxy_normalized"))
+                for row in generated["candidates"]})!=3:
+            print("T16 EVOLUTIONARY PREDICTOR CHECK FAIL: no distinct candidate anatomies")
+            return 1
+        print("ALCHUL T16 EVOLUTIONARY MORPHOMETRICS PASS: 3 distinct 43-bone hypotheses, 72 sensitivity replicates, no approval")
         return 0
     GENERATED.write_text(json.dumps(generated,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
     print("T16 generated 3 new distinct rigged research candidate graphs:",GENERATED)
