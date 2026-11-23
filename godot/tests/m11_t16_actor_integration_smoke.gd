@@ -18,13 +18,8 @@ func _run() -> void:
     var game: Node = public_scene.instantiate()
     root.add_child(game)
     await process_frame
-    var default_actor: Node = game.get_node_or_null("ExperimentalInhabitants_NotReleased")
-    if default_actor == null:
-        _fail("chapter opt-in integration hook absent")
-        return
-    var prior: Dictionary = default_actor.integration_summary()
-    if prior.get("experiment_enabled", true) or prior.get("actor_count", -1) != 0 or prior.get("creator_approved", true):
-        _fail("default game leaks research-only actors")
+    if game.get_node_or_null("ExperimentalInhabitants_NotReleased") != null:
+        _fail("public game must have no T16 model, experimental hook or surplus assets")
         return
     if game.get_node_or_null("BraidedReachChapter") == null:
         _fail("playable game lost")
