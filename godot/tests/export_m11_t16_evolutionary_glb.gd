@@ -64,13 +64,20 @@ func _run() -> void:
         if node == null:
             _fail("missing actual candidate " + candidate)
             return
-        var portable: Node3D = _clean_portable_model(node)
-        root.add_child(portable)
-        await process_frame
+        # Preserve the exact proven T13 GLB exporter structure. Godot-only
+        # BoneAttachment soft-tissue primitives cannot be round-tripped as
+        # portable skeleton binding nodes, so remove them from the export copy.
+        var original_skeleton: Skeleton3D = node.get_node("ResearchSkeleton3D")
+        for child in original_skeleton.get_children():
+            if child is BoneAttachment3D:
+                original_skeleton.remove_child(child)
+                child.free()
         var exporter := GLTFDocument.new()
         var state := GLTFState.new()
-        var append_result: Error = exporter.append_from_scene(portable, state)
-        print("T16 glTF input " + candidate + " append=" + str(append_result) + " skins=" + str(state.skins.size()))
+        var append_result: Error = exporter.append_from_scene(node, state)
+        print("T16 glTF source " + candidate + " append=" + str(append_result) +
+            " skins=" + str(state.skins.size()) +
+            " mesh_skin=" + str((node.get_node("SkinnedShell_LOD0") as MeshInstance3D).skin != null))
         if append_result != OK or state.skins.is_empty():
             _fail("cannot serialize skinned bones " + candidate)
             return
@@ -98,8 +105,6 @@ func _run() -> void:
             return
         restored.free()
         files.append(name)
-        root.remove_child(portable)
-        portable.free()
     var manifest := {"files":files,"classification":"three speculative pre-KPg evolved trajectories",
         "source_rig":"T07 43 named controls + T16 parent-local morphometric changes",
         "method":"scientifically bounded scenario shapes, not statistical lineage posterior",
