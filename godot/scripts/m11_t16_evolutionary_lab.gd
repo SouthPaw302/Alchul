@@ -44,15 +44,15 @@ func _ready() -> void:
         evolutionary_metric_proxies[key] = _proxy_report(spec, profile)
         var visual_label: Label3D = (rigs[key]["root"] as Node3D).get_node("HypothesisLabel")
         visual_label.text = key + " | RESEARCH HYPOTHESIS, NOT SPECIES"
-        visual_label.position = Vector3(-1.65, 3.65, 0)
+        visual_label.visible = false # scientific labels use legible screen-space captions
         order += 1
     active_integument = 1.0
     (rigs["H-A"]["root"] as Node3D).visible = false
     (rigs["H-B"]["root"] as Node3D).visible = false
     evolutionary_only = true
     var cam: Camera3D = get_node("MatchedT07Camera")
-    cam.position = Vector3(0, 4.4, 22.0)
-    cam.fov = 57.0
+    cam.position = Vector3(0, 3.45, 12.5)
+    cam.fov = 53.0
     cam.look_at(Vector3(0, 1.6, 0))
     set_clip("rest")
     set_surface_variant("river_silt")
@@ -217,6 +217,15 @@ func _update_evolved_header() -> void:
     sub.add_theme_font_size_override("font_size",14)
     sub.add_theme_color_override("font_color",Color(0.12,0.25,0.25))
     overlay.add_child(sub)
+    var captions: Array[String] = ["E1 / RIVERBANK\nLonger caudal counterbalance", "E2 / MATERIAL SCIENCE\nRestricted three-digit tool reach", "E3 / PROTECTED ROUTE\nAlternative foot support / care"]
+    for i in range(3):
+        var text_note := Label.new()
+        text_note.text = captions[i]
+        text_note.position = Vector2(45 + i * 425, 605)
+        text_note.custom_minimum_size = Vector2(378, 70)
+        text_note.add_theme_font_size_override("font_size", 18)
+        text_note.add_theme_color_override("font_color", Color(0.10,0.18,0.18))
+        overlay.add_child(text_note)
 
 
 func model_summary() -> Dictionary:
