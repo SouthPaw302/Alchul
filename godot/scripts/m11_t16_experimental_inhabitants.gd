@@ -3,7 +3,7 @@ extends Node3D
 ## T16: opt-in engineering integration, NEVER an approved playable NPC.
 ## In the chapter the source scene is OFF unless ALCHUL_T16_EXPERIMENTAL=1
 ## in a local Godot process. Default public Web export renders no inhabitants.
-const T13_SCENE: PackedScene = preload("res://scenes/m11_t13_skinned_character_lab.tscn")
+const EVOLVED_SCENE: PackedScene = preload("res://scenes/m11_t16_evolutionary_lab.tscn")
 const T14_DATA: String = "res://data/m11_t14_anatomy_review.json"
 const STAGES: Dictionary = {
     "M2":"res://assets/m2/ALC_M2_RIVER_STATION_v001.glb",
@@ -56,8 +56,8 @@ func enable_experimental_stage() -> bool:
         _research_environment()
         if not select_source("M2"):
             return false
-    rig_lab = T13_SCENE.instantiate()
-    rig_lab.name = "T13WeightedRigOnly_Unapproved"
+    rig_lab = EVOLVED_SCENE.instantiate()
+    rig_lab.name = "EvolutionaryWeightedRig_NotCanon"
     add_child(rig_lab)
     # Remove all references used by the stand-alone bone lab. Only real
     # T13 Skeleton3D, weighted ArrayMesh and child actors remain visible.
@@ -72,10 +72,10 @@ func enable_experimental_stage() -> bool:
             (unwanted as CanvasLayer).visible = false
         if unwanted is Node3D:
             (unwanted as Node3D).visible = false
-    for key in ["H-A","H-B"]:
+    for key in ["E1","E2","E3"]:
         var root_actor: Node3D = rig_lab.get_node_or_null("T07_" + key)
         if root_actor == null:
-            push_error("T16 no actual T13 model " + key)
+            push_error("T16 no actual T16 evolved model " + key)
             return false
         var label: Label3D = root_actor.get_node_or_null("HypothesisLabel")
         if label != null:
@@ -85,7 +85,7 @@ func enable_experimental_stage() -> bool:
         if skeleton.get_bone_count() != 43 or weighted.skin == null:
             push_error("T16 no valid 43-bone weighted skin")
             return false
-    actor_count = 2
+    actor_count = 3
     rig_lab.set_clip("rest")
     rig_lab.set_lod(lod)
     enabled = true
@@ -186,10 +186,11 @@ func select_source(key: String) -> bool:
 func _place_at_source() -> void:
     if rig_lab == null:
         return
-    var span: float = 9.0
-    for key in ["H-A","H-B"]:
+    var placements: Dictionary = {"E1":Vector3(-5.5,0.5,-2.0),
+        "E2":Vector3(0.0,0.5,-2.0), "E3":Vector3(5.5,0.5,-2.0)}
+    for key in ["E1","E2","E3"]:
         var actor: Node3D = rig_lab.get_node("T07_" + key)
-        actor.position = Vector3(-span * 0.28 if key == "H-A" else span * 0.28, 0.5, -2.0)
+        actor.position = placements[key]
         actor.scale = Vector3.ONE * 0.85
 
 
@@ -199,8 +200,9 @@ func place_at_chapter_sites() -> bool:
     var world: Node = get_parent()
     if world == null or not world.has_method("terrain_height"):
         return false
-    var placements: Dictionary = {"H-A":Vector2(8.0, 0.0), "H-B":Vector2(-10.0, 7.0)}
-    for key in ["H-A","H-B"]:
+    var placements: Dictionary = {"E1":Vector2(8.0,0.0), "E2":Vector2(-10.0,7.0),
+        "E3":Vector2(-5.0,-2.0)}
+    for key in ["E1","E2","E3"]:
         var root_actor: Node3D = rig_lab.get_node("T07_" + key)
         var p: Vector2 = placements[key]
         root_actor.position = Vector3(p.x + 3.0, float(world.call("terrain_height", p.x+3.0,p.y+2.0)), p.y + 2.0)
@@ -235,7 +237,7 @@ func disable_experiment() -> void:
 
 func _update_report() -> void:
     if report != null:
-        report.text = "T16 | REAL T13 SKINNED H-A/H-B, NOT AN APPROVED SPECIES  /  %s  /  %d MESH NODES\n" % [current_source, source_mesh_nodes] +             "1-4 source GLB  |  5-9 poses  |  L LOD  |  X disable  |  NO METRIC/GAIT/CANON APPROVAL"
+        report.text = "T16 | 3 EVOLUTIONARY SKINNED E1/E2/E3 MODELS, NOT APPROVED  /  %s  /  %d MESH NODES\n" % [current_source, source_mesh_nodes] +             "1-4 source GLB  |  5-9 poses  |  L LOD  |  X disable  |  NO METRIC/EVOLUTIONARY CERTAINTY"
 
 
 func integration_summary() -> Dictionary:
@@ -243,7 +245,7 @@ func integration_summary() -> Dictionary:
         "embedded_in_chapter":embedded_in_chapter,
         "source_original_glb":real_source_loaded, "source_key":current_source,
         "source_meshes":source_mesh_nodes, "actor_count":actor_count,
-        "actual_43_bone_skinned":enabled and actor_count == 2,
+        "actual_43_bone_skinned":enabled and actor_count == 3,
         "lod":lod, "setup_ms_diagnostic_only":boot_elapsed_ms,
         "production_frame_budget_verified":false,
         "player_accessible_default":false,
