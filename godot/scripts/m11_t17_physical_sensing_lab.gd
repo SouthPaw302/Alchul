@@ -166,12 +166,12 @@ func _readings(sensor_id: String, channel: String, t: float, injected: bool) -> 
         var distance: float = Vector2(float(position[0]),float(position[1])).distance_to(
             Vector2(float(src_pos[0]),float(src_pos[1])))
         var periodic: float = 0.82 + 0.18 * sin(t * float(src["frequency"]) * TAU + float(src["phase"]))
-        var signal: float = float(src["amplitude"]) * exp(-distance / float(src["spread"])) * periodic
+        var energy: float = float(src["amplitude"]) * exp(-distance / float(src["spread"])) * periodic
         if src["channel"] == channel:
-            direct += signal
+            direct += energy
             contributors.append(str(src["id"]))
         else:
-            indirect += signal
+            indirect += energy
     var cross: float = float(sensor["cross_talk"]) * indirect / float(CHANNELS.size())
     var noise: float = float(sensor["noise"]) * sin((t+13.0) *
         float(CHANNELS.find(channel)+2) * 1.73 + float(sensor_id.length()))
