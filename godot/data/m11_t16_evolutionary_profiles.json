@@ -1,0 +1,171 @@
+{
+  "schema": "alchul.m11.t16.evolutionary-morphometric-ensemble.v1",
+  "status": "UNVALIDATED_EVOLUTIONARY_TRAJECTORY_HYPOTHESES_NOT_CANON",
+  "era": "undated mature pre-KPg surface descendants ONLY; no present-day phenotype",
+  "reference": "res://data/m11_t07_skeletal_reference.json",
+  "method": "extant-phylogenetic-bracket-constrained, reference-bone local displacement morphometrics, simple volume/COM surrogate, bounded uncertainty ensemble",
+  "epistemic_limits": {
+    "fossil_basis": "maniraptoran-grade comparative topology, NO recovered fossil of fictional species",
+    "phylogenetic_bracket": "crocodilians and birds bracket deeper archosaur soft-tissue analogies, but do not establish novel organs",
+    "metabolic_model": "unknown; energy or reproductive gas exchange not solved",
+    "reproductive_constraint": "~75% internal embryonic developmental progress is established fictional lore; gas transfer organ unmodeled",
+    "sensory_anatomy": "specialized material perception fictional and not tied to a specific verified ear, pad, feather, or brain organ",
+    "contact": "Alchul is separate; fermentation-linked altered state bi-directional in fiction, not a measurable organ in the model",
+    "not_physical_meters": true,
+    "not_verified_allometry": true,
+    "not_natural_selection_simulation": true,
+    "creator_approved": false,
+    "biological_approved": false,
+    "only_provisional_models": true
+  },
+  "literature": [
+    {
+      "category": "method",
+      "source": "Witmer 1995 Extant Phylogenetic Bracket",
+      "url": "https://people.ohio.edu/witmerl/Downloads/1995_Witmer_Extant_Phylogenetic_Bracket.pdf",
+      "supports": "formal inferential tiers for reconstructing unpreserved anatomy, not a derivation of ALCHUL physiology"
+    },
+    {
+      "category": "anatomy",
+      "source": "Sullivan et al. 2010 carpal joint folding",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2880093/",
+      "supports": "no assumed free primate wrist pronation"
+    },
+    {
+      "category": "integument",
+      "source": "Turner et al. 2007 Velociraptor quill knobs",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17885130/",
+      "supports": "feathers existed in some dromaeosaurids, not specific descendant feather coverage"
+    },
+    {
+      "category": "mass_distribution",
+      "source": "Macaulay et al. 2023 center-of-mass sensitivity",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10033513/",
+      "supports": "COM sensitive to segment volumes and density; no tail length = stability shortcut"
+    },
+    {
+      "category": "foot",
+      "source": "Bishop 2019 dromaeosaurid digit II modeling",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6717499/",
+      "supports": "specialized digit II must not automatically be loaded as a support toe"
+    }
+  ],
+  "model_params_contract": {
+    "morph_source_mix": "bounded interpolation of nonmetric H-A/H-B rig bone-local vectors, not phylogenetic interpolation",
+    "tail_scale": "adjust caudal segment length",
+    "thorax_reach": "adjust spine and thorax local anterior vectors",
+    "neck_height": "adjust cervical vertical local vectors",
+    "forelimb_reach": "adjust humerus/antebrachium/manus anterior reach; never pronate",
+    "hindlimb_height": "adjust hindlimb local vertical vectors",
+    "pedal_spread": "adjust foot geometry in lateral direction",
+    "integument_volume": "soft tissue visual radius adjustment, not a fossil feather-length measurement",
+    "cranial_length": "modify jaw/skull local anterior reach"
+  },
+  "selection_contexts": [
+    {
+      "id": "E1",
+      "label": "Riverbank stress reader",
+      "morph_source_mix": 0.12,
+      "params": {
+        "tail_scale": 0.99,
+        "thorax_reach": 1,
+        "neck_height": 1,
+        "forelimb_reach": 0.99,
+        "hindlimb_height": 1.03,
+        "pedal_spread": 1.08,
+        "integument_volume": 1.04,
+        "cranial_length": 1
+      },
+      "pressures": [
+        "unstable wet-ground locomotion (fictional ecological pressure)",
+        "load transfer while bracing on river margins",
+        "conservation of ancestral axial counterbalance"
+      ],
+      "prior_expectation": "more caudal sweep may increase clearance demand; must be checked, not assumed viable",
+      "sensory_hypothesis": "substrate contact during pauses, no fossil sensory organ claim",
+      "artistic_freedom": "natural mottled river-silt surface, no invented appendage"
+    },
+    {
+      "id": "E2",
+      "label": "Material-process instrument maker",
+      "morph_source_mix": 0.72,
+      "params": {
+        "tail_scale": 0.88,
+        "thorax_reach": 1.02,
+        "neck_height": 1.02,
+        "forelimb_reach": 1.1,
+        "hindlimb_height": 1,
+        "pedal_spread": 1.05,
+        "integument_volume": 0.98,
+        "cranial_length": 0.98
+      },
+      "pressures": [
+        "three-point object stabilization against supports",
+        "turning inside built process stations",
+        "sensing fracture/thermal changes using physical contact"
+      ],
+      "prior_expectation": "more reachable arm does not demonstrate opposition or wrist pronation",
+      "sensory_hypothesis": "contact-based vibration reading inferred as fictional function, not measured receptor anatomy",
+      "artistic_freedom": "duller moss-toned rough surface, no digits added"
+    },
+    {
+      "id": "E3",
+      "label": "Protected-route and nursery caretaker",
+      "morph_source_mix": 0.41,
+      "params": {
+        "tail_scale": 0.92,
+        "thorax_reach": 1.04,
+        "neck_height": 0.97,
+        "forelimb_reach": 1.03,
+        "hindlimb_height": 0.98,
+        "pedal_spread": 1.13,
+        "integument_volume": 1.08,
+        "cranial_length": 1.01
+      },
+      "pressures": [
+        "support stability and low-speed turning on shared circulation routes",
+        "transport of materials and safe retreat",
+        "unknown impacts of ~75% internal embryo development"
+      ],
+      "prior_expectation": "wider assumed support cannot solve embryo oxygen exchange or prove maternal gait",
+      "sensory_hypothesis": "environmental airflow cues are a proposed task, not anatomical proof",
+      "artistic_freedom": "faint terrestrial stripe mottling, no stated sex/caste or dedicated organ"
+    }
+  ],
+  "ensemble": {
+    "replicates_per_profile": 24,
+    "seed": 161723,
+    "mix_perturbation": 0.045,
+    "parameter_perturbation_fraction": 0.055,
+    "confidence_intervals_are_not_empirical": true,
+    "soft_tissue_density_weights": {
+      "axial": 0.95,
+      "cranial": 0.9,
+      "caudal": 0.92,
+      "forelimb": 1,
+      "manual": 1,
+      "hindlimb": 1.07,
+      "pedal": 1
+    }
+  },
+  "nonnegotiable_constraints": [
+    "43 control bones with matched name/parent topology",
+    "non-primate wrist no axial pronation",
+    "forelimbs retain three main manual digits",
+    "digit II retraction allowed and not assumed load-bearing",
+    "no mammalian torso/placenta",
+    "allometric measurements unknown",
+    "real KPg extinction intact",
+    "no canon approval"
+  ],
+  "rendering": {
+    "geometry_source": "weighted mesh from T13 reference",
+    "art_variation_bounded": true,
+    "uv_mapped": true,
+    "material_family": [
+      "soft_tissue_proxy",
+      "filament_proxy",
+      "keratin_proxy"
+    ]
+  }
+}
