@@ -101,7 +101,10 @@ func _run() -> void:
 			# visible groundcover. Keep the real anti-invisible-terrain gate:
 			# the lower scene must differ from the sky sampled from the same
 			# actual native-engine frame.
-			if upper_sky.distance_to(ground_region) < 0.09:
+			var red_delta: float = upper_sky.r - ground_region.r
+			var green_delta: float = upper_sky.g - ground_region.g
+			var blue_delta: float = upper_sky.b - ground_region.b
+			if red_delta * red_delta + green_delta * green_delta + blue_delta * blue_delta < 0.0081:
 				push_error("M7 VISUAL FAIL: lower-scene color indistinguishable from sky; inspect terrain winding")
 				quit(1)
 				return
