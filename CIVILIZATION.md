@@ -145,6 +145,10 @@ They transform underground environments by controlling:
 
 The famous luminous deep world is therefore partly natural and partly the result of millions of years of cultivation and engineering.
 
+## Working T18–T20 embodied-culture exploration (nonbinding, 2026-11-23)
+
+[The Unclosed Account](LORE/T18_THE_UNCLOSED_ACCOUNT.md) and [The Language of Weights](LORE/T19_THE_LANGUAGE_OF_WEIGHTS.md) propose how an ALCHUL community might preserve disagreement, express uncertainty, communicate through posture and shared substrates, and still protect companions. The [Two Readings at the River Gate](LORE/T20_THE_TWO_READINGS.md) and [original fictional scene](WRITING/T18_T20_THE_RIVER_ANSWERED_TWICE.md) show these ideas in action. This is **worldbuilding, not reconstructed Earth history**; it doesn't settle native grammar, final anatomy, Alchul's identity or a universal social institution. An [independent Godot story study](MEDIA/T18_T20_WORLD_BUILDING_DELIVERY.md) carries these concepts in an interactive form.
+
 ## Mature technology
 
 At maturity, a machine may be an ecosystem.
