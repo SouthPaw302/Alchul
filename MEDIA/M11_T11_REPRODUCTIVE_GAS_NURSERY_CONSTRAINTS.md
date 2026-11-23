@@ -77,4 +77,6 @@ The existing GitHub native validation workflow runs these alongside previous T07
 - Physically measured nursery geometry and sustained air/thermal/hydric operating envelope, integrated with proven M1–M6 scenes.
 - Explicit creative authorization before declaring organ anatomy, clutch size, sex roles, hatchling abilities or an H-A/H-B species form to be canon.
 
+**Implementation receipt:** [Merged PR #12](https://github.com/SouthPaw302/Alchul/pull/12); [passing T11 native checks and real Godot captures](https://github.com/SouthPaw302/Alchul/actions/runs/45105480573); [passing desktop builds](https://github.com/SouthPaw302/Alchul/actions/runs/45105480554); [passing actual Chromium Web preview](https://github.com/SouthPaw302/Alchul/actions/runs/45105480593). Original versioned source and rendered evidence: [T11 Google Drive archive](https://drive.google.com/drive/folders/1wcJKPyhqq-GFvv263Hi69Qu-zKVuUSwk). These support engineering/software acceptance only.
+
 **Decision:** T11 is an implemented and reproducible *research feasibility screen*, with biological acceptance open. Proceed to T12 with alternative adult/juvenile/egg-bearing social roles marked provisional; do not replace the Chapter I figure or modify \`CANON.md\`.
