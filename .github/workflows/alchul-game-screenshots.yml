@@ -50,6 +50,24 @@ jobs:
               --path godot --rendering-method gl_compatibility \
               --script res://tests/render_chapter_states.gd
           test "$(find "$ALCHUL_GAME_SCREEN_DIR" -type f -name '*.png' | wc -l)" -eq 6
+      - name: Archive Chapter I 1.1 gameplay and rendering source
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ALCHUL_ChapterI_v1p1_verified_source
+          path: |
+            MEDIA/CHAPTER_I_V1P1_GAMEPLAY_VISUAL_REBUILD.md
+            godot/scripts/chapter_game_v2.gd
+            godot/scripts/chapter_signal_instrument.gd
+            godot/scripts/chapter_atmosphere_v2.gd
+            godot/scripts/world.gd
+            godot/tests/chapter_v2_play_smoke.gd
+            godot/tests/original_media_atlas_smoke.gd
+            godot/tests/render_chapter_states.gd
+            godot/tests/render_m7.gd
+          if-no-files-found: error
+          retention-days: 90
+
       - name: Preserve six actual game-state screenshots
         if: always()
         uses: actions/upload-artifact@v4
