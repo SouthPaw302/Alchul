@@ -1,0 +1,82 @@
+{
+  "schema": "alchul.m11.t15.source-mesh-synthetic-probes.v1",
+  "status": "UNSCALED_ORIGINAL_MESH_INTERSECTIONS_NOT_TRAVERSABILITY",
+  "science_policy": {
+    "actual_glb_source_meshes": true,
+    "source_units_verified_meters": false,
+    "body_to_asset_scale_established": false,
+    "probe_is_synthetic": true,
+    "triangle_intersections_are_not_accessibility_proof": true,
+    "biological_approval": false,
+    "creator_approval": false,
+    "modern_descendant_body_known": false,
+    "fiction_not_earth_evidence": true
+  },
+  "source_anchor": "godot/scripts/original_media_atlas.gd; same first-party M2-M5 GLB paths",
+  "geometry_source_stages": [
+    {
+      "id": "M2",
+      "label": "River-reading station",
+      "path": "res://assets/m2/ALC_M2_RIVER_STATION_v001.glb"
+    },
+    {
+      "id": "M3",
+      "label": "Nursery circulation",
+      "path": "res://assets/m3/ALC_M3_NURSERY_CIRCULATION_v001.glb"
+    },
+    {
+      "id": "M4",
+      "label": "Harvest precinct",
+      "path": "res://assets/m4/ALC_M4_HARVEST_PRECINCT_v001.glb"
+    },
+    {
+      "id": "M5",
+      "label": "Connective settlement",
+      "path": "res://assets/m5/ALC_M5_CONNECTIVE_SETTLEMENT_v001.glb"
+    }
+  ],
+  "candidate_rig": "res://data/m11_t07_skeletal_reference.json",
+  "candidate_ids": [
+    "H-A",
+    "H-B"
+  ],
+  "synthetic_unverified_body_to_asset_scale_factors": [
+    0.22,
+    0.44,
+    0.88
+  ],
+  "sample_site_aabb_fractions": [
+    [
+      0.28,
+      0.42
+    ],
+    [
+      0.42,
+      0.54
+    ],
+    [
+      0.5,
+      0.62
+    ],
+    [
+      0.65,
+      0.54
+    ],
+    [
+      0.78,
+      0.42
+    ]
+  ],
+  "probe_center_y_aabb_fraction": 0.29,
+  "hypothesis": "A repeatable intersection audit of imported triangle meshes for assumed body scales and positions, not a test of designed passageways.",
+  "output_scope": "Per-candidate, per-site, per-scale collision sample counts; raw geometry mesh/triangle/UV inventory; unsupported historical fit must remain UNKNOWN.",
+  "excluded_claims": [
+    "No verified site meters",
+    "No mapped doors",
+    "No actual organism soft tissue or gait",
+    "No body size calibration",
+    "No nest oxygen or nursery burden fit",
+    "No canon anatomical decision",
+    "No present day New Madrid surveyed cave"
+  ]
+}
