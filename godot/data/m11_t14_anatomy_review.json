@@ -1,0 +1,140 @@
+{
+  "schema": "alchul.m11.t14.creator-anatomy-review.v1",
+  "status": "DECISION_PENDING_NOT_CANON",
+  "era_scope": "undated mature pre-KPg surface civilization only",
+  "founder": "real maniraptoran/dromaeosaur-grade comparators, not a named New Madrid fossil",
+  "present_day_body_specified": false,
+  "evidence_classes": [
+    "published_comparative",
+    "project_assumption_model",
+    "fictional_canon",
+    "unresolved"
+  ],
+  "source_links": [
+    {
+      "kind": "published_comparative",
+      "url": "https://www.nature.com/articles/s41467-023-37317-y",
+      "claim": "Archosaur COM distributions vary and cannot be inferred from tail length alone"
+    },
+    {
+      "kind": "published_comparative",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2880093/",
+      "claim": "Maniraptoran carpal asymmetry and folding; descendant pronation range unmeasured"
+    },
+    {
+      "kind": "published_comparative",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6717499/",
+      "claim": "Dromaeosaurid digit II specialization; descendant support unknown"
+    },
+    {
+      "kind": "working_proxy",
+      "path": "MEDIA/M11_T08_T09_BALANCE_CONTACT_STUDY_AND_GATES.md"
+    },
+    {
+      "kind": "working_proxy",
+      "path": "MEDIA/M11_T10_BIOMECHANICS_FORCES_AND_CORRIDOR_VALIDATION.md"
+    },
+    {
+      "kind": "working_proxy",
+      "path": "MEDIA/M11_T11_REPRODUCTIVE_GAS_NURSERY_CONSTRAINTS.md"
+    },
+    {
+      "kind": "working_visual",
+      "path": "MEDIA/M11_T13_PROVISIONAL_SKINNED_RIG_AND_CONTEXT_GATES.md"
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "H-A",
+      "label": "Long-tail continuity",
+      "length_claim": "unmeasured",
+      "sampled_tail_contribution_percent": 14,
+      "nominal_lateral_com_shift_normalized": 0.205,
+      "first_sampled_clear_corridor_width_normalized": 4.6,
+      "violations_at_2p8_of_101": 55,
+      "manipulation": "finite near-fixture point reach only, not physical grasp",
+      "strength": "More ancestral continuity is a design hypothesis, not proof of increased stability",
+      "limitation": "Rigid tail fails 2.8 model corridor; no true 3D muscle/soft tissue, GFR or limb loads",
+      "scientific_approval": false,
+      "creator_approved": false
+    },
+    {
+      "id": "H-B",
+      "label": "Shorter-tail manipulation",
+      "length_claim": "unmeasured",
+      "sampled_tail_contribution_percent": 7,
+      "nominal_lateral_com_shift_normalized": 0.265,
+      "first_sampled_clear_corridor_width_normalized": 2.8,
+      "violations_at_2p8_of_101": 0,
+      "manipulation": "finite near-fixture point reach only, not physical grasp",
+      "strength": "Clears the fixed-width L-corridor in the normalized rigid model only",
+      "limitation": "COM shift proxy larger; no demonstrated wrist clearance or real biological stability",
+      "scientific_approval": false,
+      "creator_approved": false
+    },
+    {
+      "id": "H-C",
+      "label": "Hybrid / new candidate",
+      "length_claim": "NOT_CONSTRUCTED",
+      "sampled_tail_contribution_percent": null,
+      "nominal_lateral_com_shift_normalized": null,
+      "first_sampled_clear_corridor_width_normalized": null,
+      "violations_at_2p8_of_101": null,
+      "manipulation": "untested",
+      "strength": "May combine hypotheses, but no performance can be interpolated without a new rig and repeat of T08-T13",
+      "limitation": "No bone graph, no model validation, no engineering results",
+      "scientific_approval": false,
+      "creator_approved": false
+    }
+  ],
+  "universal_constraints": [
+    "Real founder lineage could retain digitigrade mechanics and nonprimate wrists, but descendant proportions unknown",
+    "All printed angle and dimension values are engineering-only normalized hypotheses, never fossil observations",
+    "Late egg retention ~75% of developmental progress is locked fiction; no archosaur-like internal exchange organ is established",
+    "No true muscle-driven gait, tendon forces, pressure-contact or full 3D manipulation established",
+    "No original M1-M6 settlement corridor width has been matched to T10 normalized widths",
+    "No physical scientific basis for Alchul's ontology or the other-side matter-displacement phenomenon",
+    "Era-specific modern descendants require independent post-KPg/Cenozoic reconstruction"
+  ],
+  "gates": [
+    {
+      "id": "bone_soft_tissue",
+      "status": "open",
+      "reason": "No comparative 3D muscle and tissue reconstruction calibrated to the descendant"
+    },
+    {
+      "id": "grip",
+      "status": "open",
+      "reason": "No actual 3D force closure or measured friction; T09 is reachable-point proxy"
+    },
+    {
+      "id": "locomotion",
+      "status": "open",
+      "reason": "No dynamic GRFs, momentum, compliant tail, full 3D contact or measured substrate"
+    },
+    {
+      "id": "settlement",
+      "status": "open",
+      "reason": "No actual M1-M6 imported corridor clearance and task-specific mesh collisions"
+    },
+    {
+      "id": "reproduction",
+      "status": "open",
+      "reason": "T11 dimensionless physiology scenarios establish constraints but no viable organ"
+    },
+    {
+      "id": "creator",
+      "status": "awaiting_explicit_creator_decision",
+      "reason": "No H-A, H-B or H-C can be canonized without direct creator choice"
+    }
+  ],
+  "current_decision": null,
+  "prohibited_unapproved_promotion": true,
+  "review_options": [
+    "provisional_H-A",
+    "provisional_H-B",
+    "commission_revised_hybrid",
+    "defer_all"
+  ],
+  "note": "Acceptable next milestone is delivery of evidence and visual A/B review; creator approval remains a separate explicit external act."
+}
