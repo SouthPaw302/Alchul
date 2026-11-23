@@ -10,6 +10,38 @@ func _fail(message: String) -> void:
     quit(1)
 
 
+func _clean_portable_model(source: Node3D) -> Node3D:
+    # glTF exporter does not reliably serialize BoneAttachment3D soft-volume
+    # visualization nodes. Export actual 43-control Skeleton3D and the LOD0/1
+    # weighted, textured render skins with reproducible material families.
+    var group := Node3D.new()
+    group.name = "T16_EvolutionaryRig_WeightedMesh"
+    var old_skeleton: Skeleton3D = source.get_node("ResearchSkeleton3D")
+    var new_skeleton := Skeleton3D.new()
+    new_skeleton.name = "ResearchSkeleton3D"
+    group.add_child(new_skeleton)
+    for i in range(old_skeleton.get_bone_count()):
+        new_skeleton.add_bone(old_skeleton.get_bone_name(i))
+        var parent_id: int = old_skeleton.get_bone_parent(i)
+        if parent_id >= 0:
+            new_skeleton.set_bone_parent(i, parent_id)
+        new_skeleton.set_bone_rest(i, old_skeleton.get_bone_rest(i))
+        new_skeleton.set_bone_pose_position(i, old_skeleton.get_bone_rest(i).origin)
+    new_skeleton.force_update_all_bone_transforms()
+    for lod in range(2):
+        var old_mesh: MeshInstance3D = source.get_node("SkinnedShell_LOD" + str(lod))
+        var mesh := MeshInstance3D.new()
+        mesh.name = "WeightedSkin_LOD" + str(lod)
+        mesh.mesh = old_mesh.mesh
+        mesh.skin = old_mesh.skin
+        mesh.skeleton = NodePath("../ResearchSkeleton3D")
+        mesh.visible = lod == 0
+        group.add_child(mesh)
+        for s in range(mesh.mesh.get_surface_count()):
+            mesh.set_surface_override_material(s, old_mesh.get_surface_override_material(s))
+    return group
+
+
 func _run() -> void:
     var folder: String = OS.get_environment("ALCHUL_T16_EVOLUTIONARY_EXPORTS")
     if folder.is_empty():
@@ -32,9 +64,12 @@ func _run() -> void:
         if node == null:
             _fail("missing actual candidate " + candidate)
             return
+        var portable: Node3D = _clean_portable_model(node)
         var exporter := GLTFDocument.new()
         var state := GLTFState.new()
-        if exporter.append_from_scene(node, state) != OK or state.skins.is_empty():
+        var append_result: Error = exporter.append_from_scene(portable, state)
+        print("T16 glTF input " + candidate + " append=" + str(append_result) + " skins=" + str(state.skins.size()))
+        if append_result != OK or state.skins.is_empty():
             _fail("cannot serialize skinned bones " + candidate)
             return
         var name: String = "ALCHUL_T16_" + candidate + "_evolutionary_hypothesis.glb"
@@ -61,6 +96,7 @@ func _run() -> void:
             return
         restored.free()
         files.append(name)
+        portable.free()
     var manifest := {"files":files,"classification":"three speculative pre-KPg evolved trajectories",
         "source_rig":"T07 43 named controls + T16 parent-local morphometric changes",
         "method":"scientifically bounded scenario shapes, not statistical lineage posterior",
