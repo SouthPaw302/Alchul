@@ -1,7 +1,7 @@
 # ALCHUL — M11 / T15 Original-Asset Settlement Geometry and Provisional Body Envelope Audit
 
 **Date:** 2026-11-23  
-**Status:** working *native 3D engineering study* awaiting CI / sample inspection. **Not** a selected body plan, demonstrated corridor access or valid historical architecture.  
+**Status:** original-geometry **subgate validated in native CI**; true passage and anatomical fit remain unestablished. **Not** a selected body plan, demonstrated corridor access or valid historical architecture.  
 **Depends on:** [T14 creator anatomy evidence](M11_T14_CREATOR_ANATOMY_REVIEW_AND_DECISION_GATES.md), [T13 genuine skinning source](M11_T13_PROVISIONAL_SKINNED_RIG_AND_CONTEXT_GATES.md), [T10 mechanics lab](M11_T10_BIOMECHANICS_FORCES_AND_CORRIDOR_VALIDATION.md), [Godot original media atlas](../godot/scripts/original_media_atlas.gd).
 
 ## 1. Work completed toward the settlement fit problem
@@ -31,7 +31,23 @@ The 3D viewer displays imported **actual original artwork**, with deliberately t
 
 **A true pass means:** source asset identity is known, imported geometry—not guessed labels—is checked, physics intersections are reproducible, and scientific uncertainty survives every validation. No health or actual ancient inhabitants are represented.
 
-## 3. Scientific and engineering barriers that remain
+## 3. Verified original-source inventory and reproducible observations
+
+Native CI [run 45131975481](https://github.com/SouthPaw302/Alchul/actions/runs/45131975481) imported all four **first-party creative source** GLBs through Godot 4 and passed the 120 uncalibrated 3D physics queries. Four source renders and the JSON manifest are archived in the [T15 Google Drive folder](https://drive.google.com/drive/folders/11jUeNGrx-3alWqk935bsc10oYu7PDHx8).
+
+| Original art stage | Imported mesh objects | Imported source triangles | UV-bearing source surfaces | Actual triangle colliders |
+|---|---:|---:|---:|---:|
+| M2 river station | 19 | 93,114 | 0 | 19 |
+| M3 nursery | 17 | 63,244 | 0 | 17 |
+| M4 Harvest | 21 | 92,990 | 0 | 21 |
+| M5 connective settlement | 17 | 77,540 | 0 | 17 |
+| **Total** | **74** | **326,888** | **0** | **74** |
+
+**Important art pipeline discovery:** all four source imports have zero UV-bearing surfaces. More sophisticated PBR maps cannot be correctly applied to those specific triangles simply by assigning textures; geometry unwrapping/material preparation is a separate prerequisite for a later graphic upgrade. These counts describe file geometry, not the amount of historical construction.
+
+The native collision query records changing source-triangle overlap counts across H-A/H-B assumed envelopes and ratios. For example, M2 H-A at synthetic ratio 0.22 contacts 1,4,3,2,0 collider objects at the five arbitrary probe positions; at ratio 0.88, 5,8,7,8,1. M3 small ratio has zero samples hitting—but those may be entirely outside supported pathways, and no walkability conclusion is possible. **No sample is a mapped corridor or clearance certificate.**
+
+## 4. Scientific and engineering barriers that remain
 
 1. Original GLB coordinate units do not establish physical metres. A synthetic relative ratio, even if two candidates differ, **cannot** prove any specific historical stature, door height, nursery fit, swimming capacity or corridor passage.
 2. Axis-aligned mesh bounds are not architectural semantics. The five probes are arbitrary source-bounds fractions, **not routed paths**, recognized walkways, doorway positions, child-safe lanes or measured workstations. A hit may be ground or an intentionally load-bearing support; a zero-hit sample may be outside a valid platform. Therefore every result's traversability is `UNKNOWN`.
@@ -41,6 +57,6 @@ The 3D viewer displays imported **actual original artwork**, with deliberately t
 6. The real evolutionary time sequence across K–Pg through present-day New Madrid must be researched independently. T15 studies **undated mature surface** concepts only and cannot define modern descendants.
 7. T14 creator anatomy approval remains open. T15 produces comparative evidence only, does not write `CANON.md`, does not promote bodies into Chapter I, and does not define Alchul.
 
-## 4. Next scientific/production gate
+## 5. Next scientific/production gate
 
 A defensible T15 completion needs deliberate hand-authored or verified semantic route markers in the original M2–M5 assets, a consistent art-system metric or explicitly defined scale calibration (not a fossil measurement), nonconvex body/tail proxies with physical contact, repeated path and functional tasks, and creator-approved scope. **The delivered synthetic collision audit is the first measurable imported-geometry subgate, not completion of historical settlement ergonomics.** The publishing and Chapter I redesign tracks are intentionally untouched.
