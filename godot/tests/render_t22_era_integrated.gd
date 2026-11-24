@@ -47,12 +47,13 @@ func _run() -> void:
     var atlas = load("res://scenes/t22_era_atlas.tscn").instantiate()
     root.add_child(atlas)
     await process_frame
-    atlas._select(4)
+    atlas._select(8)
     if not await _capture(out.path_join("04_modern_earth_only.png")):
         quit(1)
         return
-    atlas.earth_only.button_pressed = false
-    atlas._refresh()
+    atlas.earth_only.set_pressed_no_signal(false)
+    atlas._toggle(false)
+    atlas._select(4)
     if not await _capture(out.path_join("05_modern_fiction_locked.png")):
         quit(1)
         return
