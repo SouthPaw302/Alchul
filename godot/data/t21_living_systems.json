@@ -1,0 +1,207 @@
+{
+  "schema": "alchul.t21.living_systems.v1",
+  "status": "PROVISIONAL_FICTIONAL_SETTLEMENT_NOT_HISTORY_OR_APPROVED_ANATOMY",
+  "era": "mature_surface_before_long_descent",
+  "time_unit": "abstract_watch_not_historical_hour",
+  "readings": "T17 ordinary-physical proxy observation shown for comparison; neither calibrated nor coupled to simulated hydraulic state",
+  "source_scene": "res://assets/m2/ALC_M2_RIVER_STATION_v001.glb",
+  "source_model": "res://scenes/m11_t17_physical_sensing_lab.tscn",
+  "max_watches": 8,
+  "initial_state": {
+    "pressure": 48,
+    "integrity": 70,
+    "clarity": 68,
+    "nursery": 63,
+    "gas": 18,
+    "food": 76,
+    "materials": 6,
+    "record": 0,
+    "route_safe": false
+  },
+  "bands": {
+    "pressure_max": 82,
+    "integrity_min": 50,
+    "clarity_min": 48,
+    "nursery_min": 50,
+    "gas_max": 48,
+    "food_min": 35,
+    "route_safe": true
+  },
+  "places": [
+    {
+      "id": "bank",
+      "name": "ROOT BANK",
+      "meaning": "water loads, seams and pressure cuts",
+      "visual_offset": [
+        -0.11,
+        0.065,
+        0.16
+      ]
+    },
+    {
+      "id": "nursery",
+      "name": "PROTECTED NURSERY",
+      "meaning": "warmth, clean water and accessible evacuation",
+      "visual_offset": [
+        0.11,
+        0.06,
+        0.16
+      ]
+    },
+    {
+      "id": "culture",
+      "name": "HARVEST GROUNDS",
+      "meaning": "independently cultivated microbial food stores",
+      "visual_offset": [
+        -0.11,
+        0.06,
+        0.3
+      ]
+    },
+    {
+      "id": "workshop",
+      "name": "MATERIAL WORKSHOP",
+      "meaning": "wedges, supports, thermal mass and ventilation",
+      "visual_offset": [
+        0.11,
+        0.06,
+        0.3
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "survey",
+      "key": "1",
+      "label": "Paired stave survey",
+      "site": "bank",
+      "effects": {
+        "record": 1
+      },
+      "max_uses": 1,
+      "description": "compare two independent locations and preserve contradictory readings; spending a watch buys a better brace"
+    },
+    {
+      "id": "brace",
+      "key": "2",
+      "label": "Set a seam brace",
+      "site": "workshop",
+      "effects": {
+        "integrity": 16,
+        "pressure": 3,
+        "materials": -2
+      },
+      "max_uses": 2,
+      "description": "improve load-bearing integrity but constrict the water path; after a survey gain 5 additional integrity"
+    },
+    {
+      "id": "relief",
+      "key": "3",
+      "label": "Open relief channel",
+      "site": "bank",
+      "effects": {
+        "pressure": -30,
+        "food": -14,
+        "clarity": -6
+      },
+      "max_uses": 1,
+      "description": "spare the nursery-facing bank by sacrificing cultivated food ground and stirring sediment"
+    },
+    {
+      "id": "screen",
+      "key": "4",
+      "label": "Screen clean intake",
+      "site": "culture",
+      "effects": {
+        "clarity": 20,
+        "food": -5
+      },
+      "max_uses": 2,
+      "description": "improve water clarity at the cost of reducing supply to cultured food processing"
+    },
+    {
+      "id": "vent",
+      "key": "5",
+      "label": "Vent covered chamber",
+      "site": "workshop",
+      "effects": {
+        "gas": -25,
+        "nursery": -7
+      },
+      "max_uses": 2,
+      "description": "reduce trapped gas while losing thermal energy from the nearby sheltered room"
+    },
+    {
+      "id": "warm",
+      "key": "6",
+      "label": "Move thermal mass",
+      "site": "nursery",
+      "effects": {
+        "nursery": 22,
+        "gas": 8,
+        "materials": -1
+      },
+      "max_uses": 2,
+      "description": "restore nursery warmth while consuming material and increasing ventilation demand"
+    },
+    {
+      "id": "store",
+      "key": "7",
+      "label": "Relocate food stores",
+      "site": "culture",
+      "effects": {
+        "food": 14,
+        "materials": -1
+      },
+      "max_uses": 2,
+      "description": "rescue valuable living cultures and prepared stores at the cost of transport material and time"
+    },
+    {
+      "id": "route",
+      "key": "8",
+      "label": "Inspect protected route",
+      "site": "nursery",
+      "effects": {
+        "nursery": -2
+      },
+      "set_true": [
+        "route_safe"
+      ],
+      "max_uses": 1,
+      "description": "confirm a safer accessible evacuation corridor before declaring success"
+    }
+  ],
+  "drift": {
+    "pressure": 7,
+    "gas": 5,
+    "nursery": -3,
+    "food": -3,
+    "clarity_base": -1,
+    "clarity_high_pressure_extra": -1,
+    "bank_damage_per_pressure_above_60": 0.17,
+    "nursery_high_gas_extra": -4,
+    "food_low_clarity_extra": -2
+  },
+  "terminal": {
+    "pressure_over": 110,
+    "integrity_below": 22,
+    "gas_over": 78,
+    "nursery_below": 25
+  },
+  "controls": {
+    "survey": "1",
+    "brace": "2",
+    "relief": "3",
+    "screen": "4",
+    "vent": "5",
+    "warm": "6",
+    "store": "7",
+    "route": "8",
+    "wait": "SPACE",
+    "reset": "R"
+  },
+  "scientific_scope": "All values dimensionless narrative study knobs. Ordinary causal trade-offs are illustrative rather than a calibrated hydrogeological model.",
+  "contact_scope": "Alchul does not operate tools, deliver recipes, measure pressure or appear as an NPC.",
+  "biological_scope": "No sensor organ, exact surface body shape or reproductive anatomy approved; retain roughly three-quarter internal development only as existing fictional premise.",
+  "reference_scope": "The uploaded Silurians.pdf is a summary of a speculative video used only as a thematic comparison, not empirical evidence."
+}
