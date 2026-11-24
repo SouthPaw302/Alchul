@@ -32,6 +32,12 @@ No agent is allowed to define Alchul conclusively.
 - Did Alchul save them out of care, need, curiosity, self-interest, or none of these?
 - Is Alchul more advanced, or merely native to a layer of reality they were not?
 
+## The ALCHUL Chronicles narrative frame (creator direction, November 2026)
+
+In the **fictional present-day framing narrative**, **Alchul is the point of connection** through which the long account of the Silurian-descendant civilization comes into view. The Silurians are **not** the intermediary and Alchul is **not** a member of their species. The translator/interpreter may receive impressions, incomplete accounts and contested memories associated with Alchul, but cannot claim a literal outside-the-story connection, know Alchul's nature or treat any account as infallible.
+
+This is **not** a retroactive technological cause. For early surface residents, Alchul remains only vaguely associated with dreams and the Harvest; their knowledge and technology develop independently. Tens of millions of years later, many descendants may recognize more of his real existence without knowing his entire ontology. See [Chronicles narrative protocol](LORE/CHRONICLES_NARRATIVE_FRAME.md) and [fictional opening frame](WRITING/CHRONICLES_00_THE_FIRST_SILENCE.md).
+
 ## Writing rule
 
 Alchul should never become a lore-dump device.
