@@ -38,12 +38,17 @@ var visible_process_count: int = 0
 func _ready() -> void:
     super._ready()
     _build_living_processes()
-    # Keep the existing first-party M2 geometry. The separate explanatory
-    # terrace is on its near river margin, not claimed to be original M2 mesh.
+    # T21.1 used abstract pastel work-site markers. T21.2 replaces their
+    # presentation with actual modeled working structures; retain the nodes
+    # for backwards-compatible source provenance and state, but hide them.
+    for original_marker in site_markers.values():
+        (original_marker as Node3D).visible = false
+    # Keep the first-party M2 river background visible. The separate terrace
+    # sits along its near margin and is visibly a provisional 3D study.
     camera.position = source_center + Vector3(
-        source_span * 0.47, source_span * 0.44, source_span * 0.72)
+        source_span * 0.39, source_span * 0.37, source_span * 0.60)
     camera.look_at(source_center + Vector3(
-        0.0, source_span * 0.045, source_span * 0.19))
+        0.0, source_span * 0.052, source_span * 0.21))
     camera.make_current()
     _update_hud()
 
