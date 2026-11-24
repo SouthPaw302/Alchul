@@ -1,4 +1,4 @@
-name: ALCHUL T21.3 — Living Process Terrace Godot Validation
+name: ALCHUL T21.3 — Seasonal Life Godot Validation
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
       - "godot/tests/t21_p3_seasonal_smoke.gd"
       - "godot/tests/render_t21_p3_seasonal.gd"
       - "godot/scripts/t21_p3_seasonal_calendar.gd"
-      - ".github/workflows/alchul-t21-p3-living-terrace.yml"
+      - ".github/workflows/alchul-t21-p3-seasonal-life.yml"
   pull_request:
     paths:
       - "godot/scripts/t21_p3_seasonal_terrace.gd"
@@ -17,7 +17,7 @@ on:
       - "godot/tests/t21_p3_seasonal_smoke.gd"
       - "godot/tests/render_t21_p3_seasonal.gd"
       - "godot/scripts/t21_p3_seasonal_calendar.gd"
-      - ".github/workflows/alchul-t21-p3-living-terrace.yml"
+      - ".github/workflows/alchul-t21-p3-seasonal-life.yml"
   workflow_dispatch:
 
 permissions:
