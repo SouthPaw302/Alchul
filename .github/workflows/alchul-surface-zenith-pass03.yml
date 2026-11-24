@@ -1,0 +1,71 @@
+name: ALCHUL Surface Zenith — fidelity pass 03
+on:
+  pull_request:
+    paths:
+      - "godot/scripts/surface_zenith*.gd"
+      - "godot/scenes/surface_zenith*.tscn"
+      - "godot/tests/*surface_zenith*.gd"
+      - ".github/workflows/alchul-surface-zenith-pass03.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  zenith:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    env:
+      LIBGL_ALWAYS_SOFTWARE: "1"
+      ALCHUL_ZENITH_GLB_DIR: ${{ github.workspace }}/zenith-pass03-glb
+      ALCHUL_ZENITH_CAPTURES: ${{ github.workspace }}/zenith-pass03-renders
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Install official pinned Godot 4.7.2 and virtual X display
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq curl unzip xvfb libgl1-mesa-dri libglu1-mesa libxrandr2
+          curl -fL --retry 3 "https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip" -o "$RUNNER_TEMP/godot.zip"
+          echo "cadd3204e728a35d3f13adb7fd0d7902636b79f6b95c40c265eb73b6c35329e4  $RUNNER_TEMP/godot.zip" | sha256sum -c -
+          unzip -q "$RUNNER_TEMP/godot.zip" -d "$RUNNER_TEMP"
+          chmod +x "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64"
+      - name: Import Godot project
+        run: |
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot --editor --import --quit
+      - name: Generate and re-import ten genuine GLB mesh assets
+        run: |
+          set -euo pipefail
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot --script res://tests/export_surface_zenith_fidelity.gd
+          test "$(find "$ALCHUL_ZENITH_GLB_DIR" -name '*.glb' -type f | wc -l)" -eq 10
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot --script res://tests/export_surface_zenith_pass03.gd
+          test "$(find "$ALCHUL_ZENITH_GLB_DIR/textures" -name '*.png' -type f | wc -l)" -eq 16
+      - name: Render ten views and pose, export weighted GLB
+        run: |
+          set -euo pipefail
+          xvfb-run -a -s '-screen 0 1360x840x24' "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --path godot --rendering-method gl_compatibility --script res://tests/render_surface_zenith_pass03.gd
+          test "$(find "$ALCHUL_ZENITH_CAPTURES" -name '*.png' -type f | wc -l)" -eq 11
+      - name: Archive mesh library
+        uses: actions/upload-artifact@v4
+        with:
+          name: ALCHUL_Surface_Zenith_Pass03_GLBS
+          path: zenith-pass03-glb/
+          if-no-files-found: error
+      - name: Archive eleven true Godot renders
+        uses: actions/upload-artifact@v4
+        with:
+          name: ALCHUL_Surface_Zenith_Pass03_Native_Renders
+          path: zenith-pass03-renders/
+          if-no-files-found: error
+      - name: Archive editable Godot source
+        uses: actions/upload-artifact@v4
+        with:
+          name: ALCHUL_Surface_Zenith_Pass03_Source
+          path: |
+            godot/scripts/surface_zenith*.gd
+            godot/scenes/surface_zenith*.tscn
+            godot/tests/*surface_zenith*.gd
+            MEDIA/SURFACE_ZENITH_FIDELITY_PASS03.md
+            .github/workflows/alchul-surface-zenith-pass03.yml
+          if-no-files-found: error
