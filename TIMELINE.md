@@ -2,6 +2,12 @@
 
 Dates are working ranges where science is uncertain. Canonic sequence is more important than exact dates until research narrows them.
 
+## Current authoring scale: long ages of independent development
+
+The phases below are **story sequence markers**, not a compressed single-generation inventor's journey. We are currently developing the inhabitants' technology, culture and settlement ecology as if **no external power supplies causal explanations**. Intelligence and engineering emerge from predatory cognition, evolved sensing, fermentation as a natural process, practical material knowledge, repeated errors, intergenerational memory and environmental challenge. Harvest-associated dreams and intuitions are understood indistinctly by surface inhabitants and may inspire varied cultural beliefs; they are not blueprints or empirical measurements. The story's present-day descendants' greater awareness of Alchul comes only after vast additional evolutionary and cultural intervals, without fixing when any particular community became aware.
+
+See [independent technological evolution and ten working development bands](LORE/INDEPENDENT_TECHNOLOGICAL_EVOLUTION.md). Those bands overlap and must not be assigned absolute dates without further creator direction.
+
 ## Phase 0 — Founder ecology
 Approx. 80–78 Ma onward, working range.
 
