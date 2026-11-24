@@ -27,17 +27,21 @@ func _run() -> void:
     var atlas = load("res://scenes/t22_era_atlas.tscn").instantiate()
     root.add_child(atlas)
     await process_frame
-    if not atlas.open_button.disabled or "FICTIONAL ALCHUL OVERLAY" in atlas.details.text:
+    if not atlas.open_button.disabled or atlas.selection.item_count != 9 or "FICTIONAL ALCHUL OVERLAY" in atlas.details.text:
         _fail("Earth-only default lost")
         return
-    atlas.earth_only.button_pressed = false
-    atlas._refresh()
-    if atlas.open_button.disabled:
+    atlas._select(8)
+    if atlas.selection.selected != 8 or "Present-day New Madrid" not in atlas.details.text:
+        _fail("Earth timeline selection out of sync")
+        return
+    atlas.earth_only.set_pressed_no_signal(false)
+    atlas._toggle(false)
+    if atlas.open_button.disabled or atlas.selection.item_count != 5:
         _fail("surface study not accessible")
         return
     atlas._select(4)
-    if not atlas.open_button.disabled:
-        _fail("modern scene falsely available")
+    if not atlas.open_button.disabled or atlas.selection.selected != 4:
+        _fail("modern scene falsely available or selection out of sync")
         return
     atlas.queue_free()
     var world = load(registry.scene_for("mature_surface")).instantiate()
