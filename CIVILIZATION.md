@@ -16,6 +16,12 @@ Their civilization develops from:
 - Alchul contact
 - later directed biological evolution
 
+## Indigenous innovation — active worldbuilding priority
+
+For the current surface-era development sequence, treat every invention as an achievement of these people through ordinary natural processes. Sensory refinement, fermentation practice, crafts, social institutions, ecological engineering and later geotechnical skill **co-develop internally**. Do not supply a technological shortcut from Alchul, dream instruction, other-side tools, telekinesis or a hidden benefactor. The Harvest may also give rise to dream imagery, archetypes and contested cultural meanings, but their early awareness of Alchul is vague and not operational knowledge.
+
+The author's distant-present setting involves much greater awareness of Alchul after immense evolutionary and cultural time, not the same cognition or technology transplanted into the early surface period. For a working **ten-band, non-human technical development path** and the six-question test for each invention, see [Independent Technological Evolution](LORE/INDEPENDENT_TECHNOLOGICAL_EVOLUTION.md).
+
 ## Social cognition
 
 The founding animals are facultatively social.
