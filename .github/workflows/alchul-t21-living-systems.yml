@@ -1,0 +1,90 @@
+name: ALCHUL T21 — Lived Settlement Worldbuilding Validation
+
+on:
+  pull_request:
+    paths:
+      - 'godot/data/t21_living_systems.json'
+      - 'godot/scripts/t21_living_systems_scene.gd'
+      - 'godot/scenes/t21_living_systems_scene.tscn'
+      - 'godot/tests/t21_living_systems_smoke.gd'
+      - 'godot/tests/render_t21_living_systems.gd'
+      - 'godot/tools/validate_t21_living_systems.py'
+      - '.github/workflows/alchul-t21-living-systems.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'godot/data/t21_living_systems.json'
+      - 'godot/scripts/t21_living_systems_scene.gd'
+      - 'godot/scenes/t21_living_systems_scene.tscn'
+      - 'godot/tests/t21_living_systems_smoke.gd'
+      - 'godot/tests/render_t21_living_systems.gd'
+      - 'godot/tools/validate_t21_living_systems.py'
+      - '.github/workflows/alchul-t21-living-systems.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  living-world:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      LIBGL_ALWAYS_SOFTWARE: "1"
+      ALCHUL_T21_CAPTURES: ${{ github.workspace }}/t21-native-captures
+    steps:
+      - name: Check out source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Check proposed trade-off data and evidence boundaries
+        run: python3 godot/tools/validate_t21_living_systems.py
+      - name: Install pinned native Godot and virtual display
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq curl unzip xvfb libgl1-mesa-dri libglu1-mesa libxrandr2
+          curl -fL --retry 3 "https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip" -o "$RUNNER_TEMP/godot.zip"
+          echo "cadd3204e728a35d3f13adb7fd0d7902636b79f6b95c40c265eb73b6c35329e4  $RUNNER_TEMP/godot.zip" | sha256sum -c -
+          unzip -q "$RUNNER_TEMP/godot.zip" -d "$RUNNER_TEMP"
+          chmod +x "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64"
+      - name: Import native project
+        run: "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot --editor --import --quit
+      - name: Parse T21 and execute eight-watch replay smoke
+        shell: bash
+        run: |
+          set -euo pipefail
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot --check-only --script res://scripts/t21_living_systems_scene.gd
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot --script res://tests/t21_living_systems_smoke.gd
+      - name: Render three actual native states
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$ALCHUL_T21_CAPTURES"
+          xvfb-run -a -s '-screen 0 1360x840x24'             "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64"               --path godot --rendering-method gl_compatibility               --script res://tests/render_t21_living_systems.gd
+          test "$(find "$ALCHUL_T21_CAPTURES" -type f -name '*.png' | wc -l)" -eq 3
+      - name: Archive T21 original writing, source and validation
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ALCHUL_T21_Worldbuilding_Source
+          path: |
+            MEDIA/T21_LIVING_CIVILIZATION_FIRST_SYSTEMS.md
+            WRITING/CHRONICLE_03_THE_SOUND_IN_THE_SUPPORT.md
+            godot/data/t21_living_systems.json
+            godot/scripts/t21_living_systems_scene.gd
+            godot/scenes/t21_living_systems_scene.tscn
+            godot/tests/t21_living_systems_smoke.gd
+            godot/tests/render_t21_living_systems.gd
+            godot/tools/validate_t21_living_systems.py
+          if-no-files-found: error
+          retention-days: 90
+      - name: Preserve actual rendered review images
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ALCHUL_T21_Native_Review_Images
+          path: t21-native-captures/
+          if-no-files-found: warn
+          retention-days: 90
