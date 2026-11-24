@@ -55,10 +55,17 @@ func _surface_maps(family: String) -> Dictionary:
             var a: float = clampf(0.78+grain*0.18+n*0.14,0.43,1.0)
             color.set_pixel(x,y,Color(a,a,a))
             height.set_pixel(x,y,Color(h,h,h))
-    height.bumpmap_to_normal(1.9)
+    # Explicit central differences, independent of deprecated Image convenience methods.
+    var normal := Image.create(MAP_SIZE,MAP_SIZE,false,Image.FORMAT_RGB8)
+    for y in range(MAP_SIZE):
+        for x in range(MAP_SIZE):
+            var dx: float = height.get_pixel(posmod(x+1,MAP_SIZE),y).r-height.get_pixel(posmod(x-1,MAP_SIZE),y).r
+            var dy: float = height.get_pixel(x,posmod(y+1,MAP_SIZE)).r-height.get_pixel(x,posmod(y-1,MAP_SIZE)).r
+            var v3: Vector3 = Vector3(-dx*2.5,-dy*2.5,1.0).normalized()
+            normal.set_pixel(x,y,Color(v3.x*0.5+0.5,v3.y*0.5+0.5,v3.z*0.5+0.5))
     color.generate_mipmaps()
-    height.generate_mipmaps()
-    maps[family] = {"albedo":ImageTexture.create_from_image(color),"normal":ImageTexture.create_from_image(height)}
+    normal.generate_mipmaps()
+    maps[family] = {"albedo":ImageTexture.create_from_image(color),"normal":ImageTexture.create_from_image(normal),"albedo_image":color,"normal_image":normal}
     return maps[family]
 
 func material(tint: Color, rough: float = 0.84) -> StandardMaterial3D:
@@ -255,8 +262,8 @@ func export_maps(dir: String) -> bool:
         return false
     for family in ["skin","leaf","wood","fiber","clay","stone","plumage"]:
         var t: Dictionary = _surface_maps(family)
-        if t["albedo"].get_image().save_png(dir.path_join(family+"_albedo.png")) != OK:
+        if t["albedo_image"].save_png(dir.path_join(family+"_albedo.png")) != OK:
             return false
-        if t["normal"].get_image().save_png(dir.path_join(family+"_normal.png")) != OK:
+        if t["normal_image"].save_png(dir.path_join(family+"_normal.png")) != OK:
             return false
     return true
