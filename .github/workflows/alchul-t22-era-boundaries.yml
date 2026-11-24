@@ -1,0 +1,119 @@
+name: ALCHUL T22 — Integrated Settlement and Era Boundaries
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "godot/scripts/t21*.gd"
+      - "godot/scripts/t22*.gd"
+      - "godot/data/t22_era_registry.json"
+      - "godot/scenes/t21_p9_integrated_settlement.tscn"
+      - "godot/scenes/t22_era_atlas.tscn"
+      - "godot/tests/t22_era_integrated_smoke.gd"
+      - "godot/tests/render_t22_era_integrated.gd"
+      - "godot/scenes/t21_p3_seasonal_terrace.tscn"
+      - "godot/tests/t21_p3_seasonal_smoke.gd"
+      - "godot/tests/render_t21_p3_seasonal.gd"
+      - "godot/scripts/t21_p3_seasonal_calendar.gd"
+      - ".github/workflows/alchul-t22-era-boundaries.yml"
+  pull_request:
+    paths:
+      - "godot/scripts/t21*.gd"
+      - "godot/scripts/t22*.gd"
+      - "godot/data/t22_era_registry.json"
+      - "godot/scenes/t21_p9_integrated_settlement.tscn"
+      - "godot/scenes/t22_era_atlas.tscn"
+      - "godot/tests/t22_era_integrated_smoke.gd"
+      - "godot/tests/render_t22_era_integrated.gd"
+      - "godot/scenes/t21_p3_seasonal_terrace.tscn"
+      - "godot/tests/t21_p3_seasonal_smoke.gd"
+      - "godot/tests/render_t21_p3_seasonal.gd"
+      - "godot/scripts/t21_p3_seasonal_calendar.gd"
+      - ".github/workflows/alchul-t22-era-boundaries.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  living-terrace:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      LIBGL_ALWAYS_SOFTWARE: "1"
+      ALCHUL_T22_CAPTURES: ${{ github.workspace }}/t22-native-captures
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Validate narrative/era/scene contracts
+        run: |
+          python3 godot/tools/validate_t21_living_systems.py
+          python3 godot/tools/validate_t21_p2_terrace.py
+      - name: Install official pinned Godot 4.7.2 and virtual X display
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq curl unzip xvfb libgl1-mesa-dri libglu1-mesa libxrandr2
+          curl -fL --retry 3 "https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip" -o "$RUNNER_TEMP/godot.zip"
+          echo "cadd3204e728a35d3f13adb7fd0d7902636b79f6b95c40c265eb73b6c35329e4  $RUNNER_TEMP/godot.zip" | sha256sum -c -
+          unzip -q "$RUNNER_TEMP/godot.zip" -d "$RUNNER_TEMP"
+          chmod +x "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64"
+      - name: Import original M2 and native project
+        run: |
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot --editor --import --quit
+      - name: Parse and replay native scene
+        shell: bash
+        run: |
+          set -euo pipefail
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot --check-only --script res://scripts/t21_p3_seasonal_terrace.gd
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot --script res://tests/t21_living_systems_smoke.gd
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot --script res://tests/t21_p2_living_terrace_smoke.gd
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot --script res://tests/t21_p3_seasonal_smoke.gd
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot --check-only --script res://scripts/t21_p9_integrated_settlement.gd
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot --check-only --script res://scripts/t22_era_atlas.gd
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot --script res://tests/t22_era_integrated_smoke.gd
+      - name: Render five integrated and era views
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$ALCHUL_T22_CAPTURES"
+          xvfb-run -a -s '-screen 0 1360x840x24' \
+            "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --path godot --rendering-method gl_compatibility \
+            --script res://tests/render_t22_era_integrated.gd
+          test "$(find "$ALCHUL_T22_CAPTURES" -name '*.png' -type f | wc -l)" -eq 5
+      - name: Archive source code and documentation
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ALCHUL_T22_Source
+          path: |
+            MEDIA/T22_ERA_BOUNDARIES_AND_SETTLEMENT_REVIEW.md
+            WRITING/CHRONICLE_06_THE_THRESHOLD.md
+            godot/data/t22_era_registry.json
+            godot/scripts/t21_p9_integrated_settlement.gd
+            godot/scripts/t22_era_registry.gd
+            godot/scripts/t22_era_atlas.gd
+            godot/scenes/t21_p9_integrated_settlement.tscn
+            godot/scenes/t22_era_atlas.tscn
+            godot/tests/t22_era_integrated_smoke.gd
+            godot/tests/render_t22_era_integrated.gd
+            MEDIA/T21_P3_SEASON_RECORD_DELIVERY.md
+            WRITING/CHRONICLE_05_THE_SEASON_RECORD.md
+            godot/scripts/t21_p3_seasonal_terrace.gd
+            godot/scenes/t21_p3_seasonal_terrace.tscn
+            godot/tests/t21_p3_seasonal_smoke.gd
+            godot/tests/render_t21_p3_seasonal.gd
+            godot/scripts/t21_p3_seasonal_calendar.gd
+          if-no-files-found: error
+          retention-days: 90
+      - name: Archive five real native screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ALCHUL_T22_Images
+          path: t22-native-captures/
+          if-no-files-found: warn
+          retention-days: 90
