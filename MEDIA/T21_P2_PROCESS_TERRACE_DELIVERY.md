@@ -46,7 +46,9 @@ The short names used to render personalities are translation conveniences for th
 - Native parse: `godot --headless --path godot --check-only --script res://scripts/t21_p2_living_terrace.gd`.
 - Native scenario: `godot --headless --path godot --script res://tests/t21_p2_living_terrace_smoke.gd`.
 - Render review: four actual Godot captured states via `godot/tests/render_t21_p2_living_terrace.gd` under virtual display. The new GitHub Action is `.github/workflows/alchul-t21-p2-living-terrace.yml`.
-- **Acceptance pending until the new native CI has run successfully:** sources and added scene exist but this document does not itself constitute a verified render. Later pass records may be appended with exact run and Drive archive references.
+- **Native validation verified:** [Godot Actions run #45345133421](https://github.com/SouthPaw302/Alchul/actions/runs/45345133421) passed: independent schema gates, pinned native Godot 4.7.2 import, explicit GDScript parse, the original T21.1 smoke replay, the new T21.2 four-site action/animation smoke, and **four actual 1280×720 native Godot images** (opening, brace, relief/filter, protected nursery/vent). Tested visual commit `3a4a6097757c06cc3930f4986581a19f10f4c2dd`. These remain stylized documentary process views, not final cinematic art.
+- **Verified Google Drive archive:** [T21.2 living process terrace folder](https://drive.google.com/drive/folders/14vNBcpvzn5puSbP0MgJKWtl0oXm3w6qp) contains [native source ZIP](https://drive.google.com/file/d/1q61YyAJK47UBkz59Pu0ZX7M8j-KQKWJn/view?usp=drivesdk) and [four real native scene captures ZIP](https://drive.google.com/file/d/13HMawb02Ok9AzL9HKS-jiDVUFnzoOxA9/view?usp=drivesdk). Folder content and file sizes were checked by Drive readback.
+- **Image inspection correction:** a revised camera brings the four process locations closer and hides T21.1's superseded abstract colored site blocks without breaking its data model. The initial approved screenshot pass was retained as a CI artifact; the **v2 archive** is the final reviewed composition.
 
 ## 6. What T21.2 does not claim
 
