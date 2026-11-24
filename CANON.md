@@ -4,6 +4,14 @@
 
 This file contains locked in-universe facts. Real-world evidence belongs in `RESEARCH/`. Story prose belongs in `WRITING/`. When prose, research notes, and canon conflict, this file controls the fictional universe unless the user explicitly changes canon.
 
+## Creator direction — independent technological development (2026-11-23)
+
+**Active worldbuilding lens:** During the early and mature surface eras, reconstruct this civilization's intelligence, technology, ecology, crafts and society as an **indigenous achievement**. Their own evolutionary potential, daily needs, accidents, experiments, social learning, shared methods, losses and enormous stretches of time provide the complete causal chain for each invention. No technological breakthrough requires outside intervention, gifted designs or supernatural mechanics. Follow [the independent technological evolution directive](LORE/INDEPENDENT_TECHNOLOGICAL_EVOLUTION.md).
+
+The Harvest remains a natural fermentation practice with social and cultural consequences. Dreams, altered perception, archetype-like impressions and ambiguous experiences arise around it; surface-era inhabitants have, at most, **vague and differently interpreted awareness** of Alchul rather than knowledge of an identified being. Canon still permits subtle perceptual influence and a two-way aperture, but do **not** assign a specific tool, physiological innovation or discovery to Alchul's agency. This is a worldbuilding viewpoint, not a denial that Alchul exists in the fictional universe.
+
+Only across the **vast later evolutionary and civilizational spans**, approaching the story's present day, do some descendants gain a much more developed awareness of Alchul's real existence. That future knowledge remains incomplete and is **not retroactive**. Current authoring leaves Alchul offstage to concentrate on the inhabitants' own civilization and technological history. Distinguish fictional scientific hypotheses from established physical mechanisms; do not mistake unresolved evidence for evidence of a supernatural cause.
+
 ## Founder population
 
 - The founding population is terrestrial Earth life.
