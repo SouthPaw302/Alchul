@@ -5,6 +5,8 @@
 **Integration baseline:** GitHub PRs #2 (M9), #3 (M10), #5 (Chapter I), #6 (original-media atlas), and #4 (M11 dossier) have all been merged to `main` in dependency order. No open source PR remains at this checkpoint.  
 **Implementation rule:** do not confuse a successful source merge with a working signed production app, completed biological simulation, approved canon, or measured browser-GPU performance. Every task has an acceptance gate.
 
+**New ALCHUL Chronicles storytelling frame (2026-11-23):** Alchul is the intermediary for the **fictional present-day disclosure narrative**, not an early technological benefactor or a Silurian being. The Silurian civilization's own history still unfolds over vast spans from practical ecology and learning to later independently achieved technologies. **Next milestone remains T21**; a modern disclosure frame must not smuggle the present-day civilization's knowledge, forms or attitudes into mature-surface scenes. [Narrative frame](../LORE/CHRONICLES_NARRATIVE_FRAME.md) and [Chronicles 00](../WRITING/CHRONICLES_00_THE_FIRST_SILENCE.md).
+
 ## Priority 0 — Consolidated repository and reproducible baseline
 
 1. **[IN PROGRESS] Baseline verification on merged `main`.** Check changed source provenance and run native Godot import/game loop/original-mesh tests on the *merged commit*. **Gate:** current `main` CI passes; resolve any regressions before a public release.
