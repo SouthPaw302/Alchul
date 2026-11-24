@@ -1,0 +1,84 @@
+{
+  "schema": "alchul.t22.era_registry.v1",
+  "status": "FICTIONAL_OVERLAY_SEPARATE_FROM_EARTH",
+  "earth_index": "res://data/m11_t12_real_earth_timeline.json",
+  "default_era": "mature_surface",
+  "eras": [
+    {
+      "id": "mature_surface",
+      "title": "Mature surface",
+      "chronology": "Pre-K–Pg; exact fictional date open",
+      "earth_context": "Late Cretaceous regional fluvial/coastal mosaic; no exact site proven.",
+      "fiction": "Braided Reach, cultivated materials, fermentation and protected nursery.",
+      "scene": "res://scenes/t21_p9_integrated_settlement.tscn",
+      "features": [
+        "surface_m2",
+        "root_craft",
+        "culture_stores",
+        "late_egg_development",
+        "season_record"
+      ],
+      "status": "prototype"
+    },
+    {
+      "id": "first_below",
+      "title": "First Below",
+      "chronology": "Pre-K–Pg, after mature surface; exact date open",
+      "earth_context": "Opening and stability of specific ancient cavities unverified.",
+      "fiction": "Deliberate subsurface experiments; failure and return possible.",
+      "scene": null,
+      "features": [
+        "first_below_trials"
+      ],
+      "status": "unbuilt"
+    },
+    {
+      "id": "long_descent",
+      "title": "Long Descent",
+      "chronology": "Pre-K–Pg transition; duration open",
+      "earth_context": "No evidence of a specific inhabited route or ancient cavity.",
+      "fiction": "Staged migration and selective adaptation; mechanisms remain open.",
+      "scene": null,
+      "features": [
+        "staged_descent"
+      ],
+      "status": "unbuilt"
+    },
+    {
+      "id": "kpg_aftermath",
+      "title": "K–Pg aftermath",
+      "chronology": "66 Ma boundary and later recovery; duration open",
+      "earth_context": "Non-avian dinosaurs disappear from the known fossil record; birds survive.",
+      "fiction": "Hidden non-avian survival is explicitly counterfactual.",
+      "scene": null,
+      "features": [
+        "fictional_deep_survival"
+      ],
+      "status": "unbuilt"
+    },
+    {
+      "id": "modern_new_madrid",
+      "title": "Modern New Madrid",
+      "chronology": "Present-day narrative",
+      "earth_context": "Intraplate seismic zone within North American plate; inherited Reelfoot rift.",
+      "fiction": "Advanced hidden civilization; energy scale and design not implemented here.",
+      "scene": null,
+      "features": [
+        "fictional_modern_civilization"
+      ],
+      "status": "unbuilt"
+    }
+  ],
+  "global_denials": [
+    "approved_anatomy",
+    "surface_rig_as_modern_body",
+    "alchul_actuation",
+    "fiction_as_earth_evidence",
+    "modern_fault_as_ancient_cave",
+    "calibrated_physics"
+  ],
+  "sources": [
+    "RESEARCH/SCIENCE_FIRST_EARTH_TO_PRESENT_T12.md",
+    "MEDIA/M11_T14_CREATOR_ANATOMY_REVIEW_AND_DECISION_GATES.md"
+  ]
+}
