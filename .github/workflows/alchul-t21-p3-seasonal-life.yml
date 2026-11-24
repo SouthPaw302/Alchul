@@ -1,0 +1,94 @@
+name: ALCHUL T21.3 — Seasonal Life Godot Validation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "godot/scripts/t21_p3_seasonal_terrace.gd"
+      - "godot/scenes/t21_p3_seasonal_terrace.tscn"
+      - "godot/tests/t21_p3_seasonal_smoke.gd"
+      - "godot/tests/render_t21_p3_seasonal.gd"
+      - "godot/scripts/t21_p3_seasonal_calendar.gd"
+      - ".github/workflows/alchul-t21-p3-seasonal-life.yml"
+  pull_request:
+    paths:
+      - "godot/scripts/t21_p3_seasonal_terrace.gd"
+      - "godot/scenes/t21_p3_seasonal_terrace.tscn"
+      - "godot/tests/t21_p3_seasonal_smoke.gd"
+      - "godot/tests/render_t21_p3_seasonal.gd"
+      - "godot/scripts/t21_p3_seasonal_calendar.gd"
+      - ".github/workflows/alchul-t21-p3-seasonal-life.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  living-terrace:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      LIBGL_ALWAYS_SOFTWARE: "1"
+      ALCHUL_T21P3_CAPTURES: ${{ github.workspace }}/t21-p3-native-captures
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Validate narrative/era/scene contracts
+        run: |
+          python3 godot/tools/validate_t21_living_systems.py
+          python3 godot/tools/validate_t21_p2_terrace.py
+      - name: Install official pinned Godot 4.7.2 and virtual X display
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq curl unzip xvfb libgl1-mesa-dri libglu1-mesa libxrandr2
+          curl -fL --retry 3 "https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip" -o "$RUNNER_TEMP/godot.zip"
+          echo "cadd3204e728a35d3f13adb7fd0d7902636b79f6b95c40c265eb73b6c35329e4  $RUNNER_TEMP/godot.zip" | sha256sum -c -
+          unzip -q "$RUNNER_TEMP/godot.zip" -d "$RUNNER_TEMP"
+          chmod +x "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64"
+      - name: Import original M2 and native project
+        run: |
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot --editor --import --quit
+      - name: Parse and replay native scene
+        shell: bash
+        run: |
+          set -euo pipefail
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot --check-only --script res://scripts/t21_p3_seasonal_terrace.gd
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot --script res://tests/t21_living_systems_smoke.gd
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot --script res://tests/t21_p2_living_terrace_smoke.gd
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --headless --path godot --script res://tests/t21_p3_seasonal_smoke.gd
+      - name: Render three calendar states
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$ALCHUL_T21P3_CAPTURES"
+          xvfb-run -a -s '-screen 0 1360x840x24' \
+            "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --path godot --rendering-method gl_compatibility \
+            --script res://tests/render_t21_p3_seasonal.gd
+          test "$(find "$ALCHUL_T21P3_CAPTURES" -name '*.png' -type f | wc -l)" -eq 3
+      - name: Archive source code and documentation
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ALCHUL_T21P3_Living_Terrace_Source
+          path: |
+            MEDIA/T21_P3_SEASON_RECORD_DELIVERY.md
+            WRITING/CHRONICLE_05_THE_SEASON_RECORD.md
+            godot/scripts/t21_p3_seasonal_terrace.gd
+            godot/scenes/t21_p3_seasonal_terrace.tscn
+            godot/tests/t21_p3_seasonal_smoke.gd
+            godot/tests/render_t21_p3_seasonal.gd
+            godot/scripts/t21_p3_seasonal_calendar.gd
+          if-no-files-found: error
+          retention-days: 90
+      - name: Archive three real native screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ALCHUL_T21P3_Living_Terrace_Images
+          path: t21-p3-native-captures/
+          if-no-files-found: warn
+          retention-days: 90

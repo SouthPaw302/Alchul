@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/t21_p3_seasonal_terrace.gd" id="1_seasons"]
+
+[node name="T21P3_BraidedReach_SeasonalLifeStudy" type="Node3D"]
+script = ExtResource("1_seasons")
