@@ -1,5 +1,7 @@
 # Alchul
 
+**Active creative priority (November 25, 2026):** Continue developing the ALCHUL Chronicles. All outstanding scientific research, human review, model validation, asset QA and release maintenance are parked in the [Deferred Research & Human Validation Register](RESEARCH/PENDING_RESEARCH_AND_HUMAN_VALIDATION.md). They are not prerequisites for writing the story; existing evidence and canon remain preserved.
+
 **The central and independent home for the Alchul universe and its native Godot 4 world.** This repository contains authoritative lore, scientific research, a playable native Godot Chapter I, the integrated M1–M6 first-party media atlas, M11 comparative anatomy research, local scene data, and native validation workflows.
 
 **Chronicles narrative frame:** We tell the present-day frame as a fictional connection through **Alchul**, the distinct and unresolved presence from the September 28–29 [origin archive](ARCHIVE/SESSION_2026-09-28_29_ORIGIN.md), while the Silurians remain the independent actors in their own deep-time story. [Read the framing rules](LORE/CHRONICLES_NARRATIVE_FRAME.md) or [Chronicles 00: The First Silence](WRITING/CHRONICLES_00_THE_FIRST_SILENCE.md). This is a literary viewpoint, not a real contact claim.
